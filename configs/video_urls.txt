@@ -1,0 +1,23 @@
+# Daftar URL video YouTube yang akan dianalisis.
+# Satu URL per baris. Baris yang diawali '#' akan diabaikan.
+# Format yang didukung:
+#   https://www.youtube.com/watch?v=XXXXXXXXXXX
+#   https://youtu.be/XXXXXXXXXXX
+#   https://www.youtube.com/shorts/XXXXXXXXXXX
+#
+# Ganti placeholder di bawah ini dengan URL video aktual.
+
+https://www.youtube.com/watch?v=_8H_-uNHKL4&t=351s
+https://www.youtube.com/watch?v=TcNSqpBPle4
+https://www.youtube.com/watch?v=UEocTRWhtsE
+https://www.youtube.com/watch?v=g7Et92hQ_yE&t=2237s
+https://www.youtube.com/watch?v=5btOJ_Wru2k
+https://www.youtube.com/watch?v=tQKnVXSL7nc
+https://www.youtube.com/watch?v=HcwZx39bP80
+https://www.youtube.com/watch?v=UE2gk8vMgBQ
+https://www.youtube.com/watch?v=LgaDFmaTpak
+https://www.youtube.com/watch?v=u4zZ7gHRBaU
+https://www.youtube.com/watch?v=uxDGtbE72jk
+https://www.youtube.com/watch?v=4yjXBLcjynU
+https://www.youtube.com/watch?v=UTvTHgjI_QI
+https://www.youtube.com/watch?v=BMcbB3SlU1M
