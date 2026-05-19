@@ -10,12 +10,8 @@ tqdm>=4.66.0
 # =========================================================
 # pymongo 3.11 lebih stabil untuk environment
 # Windows + Atlas + TLS pada project ini
-pymongo[srv]==3.11.0
-
-# Dependency DNS untuk mongodb+srv://
-dnspython==1.16.0
-
-# TLS certificate bundle
+pymongo[srv]==4.7.3
+dnspython==2.6.1
 certifi>=2024.0.0
 
 # =========================================================

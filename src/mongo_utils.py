@@ -22,32 +22,68 @@ _CLIENT_CACHE: Dict[str, MongoClient] = {}
 def get_client(uri: str) -> MongoClient:
     """
     Buat atau ambil koneksi MongoDB dari cache.
-
-    Raises:
-        ConnectionFailure: jika tidak dapat terhubung ke MongoDB.
     """
-    if uri in _CLIENT_CACHE:
-        return _CLIENT_CACHE[uri]
+
+    cached_client = _CLIENT_CACHE.get(uri)
+
+    if cached_client is not None:
+
+        try:
+            cached_client.admin.command("ping")
+
+            logger.info(
+                "Menggunakan koneksi MongoDB dari cache."
+            )
+
+            return cached_client
+
+        except Exception:
+
+            logger.warning(
+                "Koneksi cache stale. Membuat koneksi baru..."
+            )
+
+            try:
+                cached_client.close()
+            except Exception:
+                pass
+
+            _CLIENT_CACHE.pop(uri, None)
 
     try:
+
         client: MongoClient = MongoClient(
             uri,
-            tls=True,
+
             tlsCAFile=certifi.where(),
+
             serverSelectionTimeoutMS=30000,
+            connectTimeoutMS=30000,
+            socketTimeoutMS=30000,
+
             maxPoolSize=10,
+
+            retryWrites=True,
+
+            appname="youtube-sentiment-pipeline",
         )
 
-        # Test koneksi
         client.admin.command("ping")
 
-        logger.info("Koneksi MongoDB berhasil.")
+        logger.info(
+            "Koneksi MongoDB berhasil dibuat."
+        )
 
         _CLIENT_CACHE[uri] = client
+
         return client
 
     except ConnectionFailure as exc:
-        logger.error(f"Gagal terhubung ke MongoDB: {exc}")
+
+        logger.error(
+            f"Gagal terhubung ke MongoDB: {exc}"
+        )
+
         raise
 
 
