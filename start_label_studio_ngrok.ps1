@@ -48,7 +48,23 @@ $env:CSRF_TRUSTED_ORIGINS = $url
 $env:LABEL_STUDIO_HOST = $url
 Write-Host "==> Menjalankan Label Studio (Ctrl+C untuk berhenti)..."
 try {
-    label-studio start --port $Port
+    if (Get-Command label-studio -ErrorAction SilentlyContinue) {
+        # 'label-studio' ada di PATH.
+        label-studio start --port $Port
+    } else {
+        # Tidak di PATH -> panggil lewat Python (cari 'python' atau 'py').
+        Write-Host "==> 'label-studio' tidak ada di PATH; mencoba lewat Python..."
+        $pythonCmd = "python"
+        if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
+            if (Get-Command py -ErrorAction SilentlyContinue) { $pythonCmd = "py" }
+        }
+        & $pythonCmd -c "import label_studio" 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            & $pythonCmd -c "import sys; from label_studio.server import main; sys.argv=['label-studio','start','--port','$Port']; sys.exit(main())"
+        } else {
+            Write-Error "Label Studio belum terinstall di Python ini. Jalankan dulu:  pip install -U label-studio"
+        }
+    }
 } finally {
     # Matikan ngrok hanya jika skrip ini yang menjalankannya.
     if ($ngrokProc) { Stop-Process -Id $ngrokProc.Id -ErrorAction SilentlyContinue }
