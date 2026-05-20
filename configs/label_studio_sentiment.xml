@@ -1,0 +1,27 @@
+<View>
+  <Style>
+    .ls-konteks { color:#6b7280; font-size:13px; margin-bottom:.25em; }
+    .ls-komentar { padding:1em; background:#f7f8fa; border-radius:8px;
+                   font-size:17px; line-height:1.6; }
+  </Style>
+
+  <Header value="Tentukan sentimen komentar terhadap Jokowi"/>
+
+  <!-- Konteks (read-only): asal video & jumlah like -->
+  <View className="ls-konteks">
+    <Text name="source_title" value="📺 $source_title"/>
+    <Text name="like_count" value="👍 $like_count like"/>
+  </View>
+
+  <!-- Teks komentar yang dinilai -->
+  <View className="ls-komentar">
+    <Text name="text" value="$text"/>
+  </View>
+
+  <!-- Label sentimen: pilih satu, wajib. Hotkey 1/2/3 untuk kecepatan. -->
+  <Choices name="sentiment" toName="text" choice="single-radio" required="true" showInLine="true">
+    <Choice value="Positif" hotkey="1" background="#16a34a"/>
+    <Choice value="Negatif" hotkey="2" background="#dc2626"/>
+    <Choice value="Netral"  hotkey="3" background="#6b7280"/>
+  </Choices>
+</View>
