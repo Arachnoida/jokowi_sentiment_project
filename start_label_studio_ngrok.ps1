@@ -47,8 +47,14 @@ Write-Host "==> Buka URL itu di browser untuk sign up / login."
 $env:CSRF_TRUSTED_ORIGINS = $url
 $env:LABEL_STUDIO_HOST = $url
 Write-Host "==> Menjalankan Label Studio (Ctrl+C untuk berhenti)..."
+# Prioritas: venv lokal 'ls-venv' (mis. Python 3.12) -> perintah di PATH -> python -c fallback.
+$venvLs = Join-Path $PSScriptRoot "ls-venv\Scripts\label-studio.exe"
 try {
-    if (Get-Command label-studio -ErrorAction SilentlyContinue) {
+    if (Test-Path $venvLs) {
+        # Pakai venv khusus di folder ls-venv (paling andal; hindari Python 3.14 yang tak kompatibel).
+        Write-Host "==> Memakai venv: $venvLs"
+        & $venvLs start --port $Port
+    } elseif (Get-Command label-studio -ErrorAction SilentlyContinue) {
         # 'label-studio' ada di PATH.
         label-studio start --port $Port
     } else {
@@ -62,7 +68,7 @@ try {
         if ($LASTEXITCODE -eq 0) {
             & $pythonCmd -c "import sys; from label_studio.server import main; sys.argv=['label-studio','start','--port','$Port']; sys.exit(main())"
         } else {
-            Write-Error "Label Studio belum terinstall di Python ini. Jalankan dulu:  pip install -U label-studio"
+            Write-Error "Label Studio tak ditemukan / Python tak cocok (mis. 3.14). Buat venv Python 3.12 'ls-venv' (lihat README)."
         }
     }
 } finally {
