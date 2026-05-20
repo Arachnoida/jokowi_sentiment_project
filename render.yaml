@@ -1,14 +1,9 @@
-# Render Blueprint — deploy Label Studio (image Docker resmi) + Postgres gratis.
-# Pakai: dashboard Render -> New -> Blueprint -> pilih repo ini -> Apply.
-# Catatan free-tier: web service "tidur" saat idle (akses pertama lambat bangun),
-# dan Postgres free DIHAPUS otomatis setelah ~30 hari -> rajin Export anotasi!
-
-databases:
-  - name: label-studio-db
-    plan: free
-    region: oregon
-    databaseName: label_studio
-    user: label_studio
+# Render Blueprint — deploy Label Studio (image Docker resmi) + Postgres Neon (gratis & persisten).
+# Pakai: dashboard Render -> New -> Blueprint -> pilih repo ini -> Apply,
+# lalu isi 4 nilai POSTGRE_* (dari connection string Neon) saat diminta.
+#
+# Kenapa Neon: Postgres free yang TIDAK dihapus 30 hari (beda dgn Postgres free Render).
+# Catatan: web service free tetap "tidur" saat idle (akses pertama lambat bangun).
 
 services:
   - type: web
@@ -22,29 +17,22 @@ services:
     dockerCommand: label-studio start --host 0.0.0.0 --port $PORT --no-browser
     healthCheckPath: /health
     envVars:
-      # ---- Database (Postgres) ----
+      # ---- Pilih engine Postgres + paksa SSL (wajib utk Neon) ----
       - key: DJANGO_DB
         value: default
-      - key: POSTGRE_HOST
-        fromDatabase:
-          name: label-studio-db
-          property: host
+      - key: PGSSLMODE
+        value: require
       - key: POSTGRE_PORT
-        fromDatabase:
-          name: label-studio-db
-          property: port
-      - key: POSTGRE_NAME
-        fromDatabase:
-          name: label-studio-db
-          property: database
-      - key: POSTGRE_USER
-        fromDatabase:
-          name: label-studio-db
-          property: user
-      - key: POSTGRE_PASSWORD
-        fromDatabase:
-          name: label-studio-db
-          property: password
+        value: "5432"
+      # ---- Kredensial Neon: diisi di dashboard, TIDAK disimpan di repo ----
+      - key: POSTGRE_HOST          # mis. ep-xxxx-xxxx.us-east-2.aws.neon.tech
+        sync: false
+      - key: POSTGRE_NAME          # mis. neondb
+        sync: false
+      - key: POSTGRE_USER          # mis. neondb_owner
+        sync: false
+      - key: POSTGRE_PASSWORD      # password dari Neon
+        sync: false
       # ---- Host & CSRF (URL publik Render) ----
       # Kalau nama service ditambah sufiks oleh Render, sesuaikan 2 nilai ini
       # ke URL asli di dashboard (Settings -> Environment).
