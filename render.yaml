@@ -1,0 +1,54 @@
+# Render Blueprint — deploy Label Studio (image Docker resmi) + Postgres gratis.
+# Pakai: dashboard Render -> New -> Blueprint -> pilih repo ini -> Apply.
+# Catatan free-tier: web service "tidur" saat idle (akses pertama lambat bangun),
+# dan Postgres free DIHAPUS otomatis setelah ~30 hari -> rajin Export anotasi!
+
+databases:
+  - name: label-studio-db
+    plan: free
+    region: oregon
+    databaseName: label_studio
+    user: label_studio
+
+services:
+  - type: web
+    name: jokowi-label-studio
+    runtime: image
+    plan: free
+    region: oregon
+    image:
+      url: docker.io/heartexlabs/label-studio:latest
+    # Bind ke port yang diberikan Render ($PORT), bukan 8080 default.
+    dockerCommand: label-studio start --host 0.0.0.0 --port $PORT --no-browser
+    healthCheckPath: /health
+    envVars:
+      # ---- Database (Postgres) ----
+      - key: DJANGO_DB
+        value: default
+      - key: POSTGRE_HOST
+        fromDatabase:
+          name: label-studio-db
+          property: host
+      - key: POSTGRE_PORT
+        fromDatabase:
+          name: label-studio-db
+          property: port
+      - key: POSTGRE_NAME
+        fromDatabase:
+          name: label-studio-db
+          property: database
+      - key: POSTGRE_USER
+        fromDatabase:
+          name: label-studio-db
+          property: user
+      - key: POSTGRE_PASSWORD
+        fromDatabase:
+          name: label-studio-db
+          property: password
+      # ---- Host & CSRF (URL publik Render) ----
+      # Kalau nama service ditambah sufiks oleh Render, sesuaikan 2 nilai ini
+      # ke URL asli di dashboard (Settings -> Environment).
+      - key: LABEL_STUDIO_HOST
+        value: https://jokowi-label-studio.onrender.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://jokowi-label-studio.onrender.com
