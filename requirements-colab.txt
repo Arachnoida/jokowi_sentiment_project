@@ -1,0 +1,15 @@
+# =========================================================
+# MODELING — JALUR INDOBERT (Colab / Kaggle, butuh GPU)
+# =========================================================
+# Jangan pasang di mesin lokal tanpa GPU. Di Colab, torch + CUDA biasanya
+# SUDAH terpasang; cukup `pip install transformers datasets evaluate accelerate`.
+#
+# Versi dilonggarkan agar kompatibel dengan image Colab/Kaggle yang berubah-ubah.
+
+transformers>=4.40.0
+datasets>=2.19.0
+evaluate>=0.4.0
+accelerate>=0.30.0
+scikit-learn>=1.4.0
+# torch sudah tersedia di Colab/Kaggle; uncomment jika perlu install manual:
+# torch>=2.2.0

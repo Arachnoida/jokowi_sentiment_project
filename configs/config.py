@@ -71,10 +71,53 @@ class PathConfig:
     OUTPUTS: Path = _ROOT / "outputs"
     LOGS: Path = _ROOT / "logs"
 
+    # --- Tahap modeling ---
+    LABELING: Path = _ROOT / "outputs" / "labeling"
+    SPLITS: Path = _ROOT / "data" / "processed" / "splits"
+    MODELS: Path = _ROOT / "outputs" / "models"
+    REPORTS: Path = _ROOT / "outputs" / "reports"
+
     @classmethod
     def ensure_dirs(cls) -> None:
-        for d in [cls.DATA_RAW, cls.DATA_PROCESSED, cls.OUTPUTS, cls.LOGS]:
+        for d in [cls.DATA_RAW, cls.DATA_PROCESSED, cls.OUTPUTS, cls.LOGS,
+                  cls.LABELING, cls.SPLITS, cls.MODELS, cls.REPORTS]:
             d.mkdir(parents=True, exist_ok=True)
+
+
+class LabelStudioConfig:
+    """Sumber label hasil anotasi manusia di Label Studio."""
+    URL: str = os.getenv(
+        "LABEL_STUDIO_URL",
+        "https://raviarnan-jokowi-label-studio.hf.space",
+    )
+    # Token auth legacy dinonaktifkan untuk org ini; ekspor manual via UI
+    # tetap jadi jalur utama. Token hanya dipakai bila API diaktifkan kembali.
+    API_TOKEN: str = os.getenv("LABEL_STUDIO_API_TOKEN", "")
+    PROJECT_ID: int = int(os.getenv("LABEL_STUDIO_PROJECT_ID", "1"))
+    # Nama Choices di configs/label_studio_sentiment.xml
+    FROM_NAME: str = "sentiment"
+    # File JSON hasil tombol "Export" di UI Label Studio
+    EXPORT_FILE: Path = _ROOT / "outputs" / "labeling" / "label_studio_export.json"
+
+
+class ModelingConfig:
+    """Parameter bersama untuk kedua jalur model (SVM & IndoBERT)."""
+    RANDOM_SEED: int = int(os.getenv("RANDOM_SEED", "42"))
+
+    # Rasio split — total dataset seimbang 1.000/kelas (lihat README modeling).
+    TRAIN_RATIO: float = 0.70
+    VAL_RATIO: float = 0.20
+    TEST_RATIO: float = 0.10
+
+    # Kosakata label. URUTAN menentukan id kelas (jangan diubah sembarangan).
+    LABELS: List[str] = ["Negatif", "Netral", "Positif"]
+
+    # Target jumlah contoh per kelas untuk dataset seimbang.
+    TARGET_PER_CLASS: int = int(os.getenv("TARGET_PER_CLASS", "1000"))
+
+    # IndoBERT (fine-tuning, dijalankan di Colab/Kaggle).
+    INDOBERT_MODEL: str = os.getenv("INDOBERT_MODEL", "indobenchmark/indobert-base-p1")
+    MAX_SEQ_LEN: int = int(os.getenv("MAX_SEQ_LEN", "128"))
 
 
 class Config:
@@ -82,4 +125,6 @@ class Config:
     mongo = MongoConfig
     spark = SparkConfig
     paths = PathConfig
+    label_studio = LabelStudioConfig
+    modeling = ModelingConfig
     load_video_urls = staticmethod(load_video_urls)
