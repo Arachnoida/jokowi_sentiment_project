@@ -148,10 +148,12 @@ def _check_project(c: LSClient, pid: int) -> None:
                 p.get("id"), p.get("title"), p.get("task_number"))
 
 
-def _fetch_taskmap(c: LSClient, pid: int) -> Tuple[Dict[str, int], set]:
-    """comment_id -> task_id (semua task), plus set task_id yang sudah punya prediction."""
+def _fetch_taskmap(c: LSClient, pid: int) -> Tuple[Dict[str, int], set, set]:
+    """comment_id -> task_id (semua task), plus set task_id yang sudah punya
+    prediction dan set task_id yang sudah punya annotation."""
     taskmap: Dict[str, int] = {}
     has_pred: set = set()
+    has_ann: set = set()
     page, page_size = 1, 200
     while True:
         r = c.request("GET", "/api/tasks/",
@@ -169,12 +171,14 @@ def _fetch_taskmap(c: LSClient, pid: int) -> Tuple[Dict[str, int], set]:
                 taskmap[cid] = t["id"]
             if (t.get("total_predictions") or 0) > 0:
                 has_pred.add(t["id"])
+            if (t.get("total_annotations") or 0) > 0:
+                has_ann.add(t["id"])
         if page == 1 or page % 10 == 0:
             logger.info("…ambil task halaman %d (terkumpul %d)", page, len(taskmap))
         if len(tasks) < page_size:
             break
         page += 1
-    return taskmap, has_pred
+    return taskmap, has_pred, has_ann
 
 
 def _result_payload(label: str) -> List[dict]:
@@ -197,9 +201,9 @@ def push(source: Path, mode: str, dry_run: bool, token: Optional[str],
 
     c = LSClient(base, tok)
     _check_project(c, pid)
-    taskmap, has_pred = _fetch_taskmap(c, pid)
-    logger.info("Task di project punya comment_id: %d | sudah ada prediction: %d",
-                len(taskmap), len(has_pred))
+    taskmap, has_pred, has_ann = _fetch_taskmap(c, pid)
+    logger.info("Task di project punya comment_id: %d | sudah ada prediction: %d | "
+                "sudah ada annotation: %d", len(taskmap), len(has_pred), len(has_ann))
 
     matched: List[Tuple[str, str, int]] = [
         (cid, lab, taskmap[cid]) for cid, lab in labels.items() if cid in taskmap
@@ -209,6 +213,11 @@ def push(source: Path, mode: str, dry_run: bool, token: Optional[str],
         before = len(matched)
         matched = [m for m in matched if m[2] not in has_pred]
         logger.info("Resume: lewati %d task yang sudah punya prediction.",
+                    before - len(matched))
+    elif skip_existing and mode == "annotations":
+        before = len(matched)
+        matched = [m for m in matched if m[2] not in has_ann]
+        logger.info("Idempotent: lewati %d task yang sudah punya annotation.",
                     before - len(matched))
     logger.info("Cocok via comment_id: %d | label tanpa task: %d | akan diproses: %d",
                 len(labels) - missing, missing, len(matched))
