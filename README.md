@@ -33,15 +33,27 @@ file CSV/parquet. Koleksi:
 | `processed_svm` | teks terpreprocessing jalur SVM (kolom `svm`) + `split` |
 | `processed_bert` | teks terpreprocessing jalur IndoBERT (kolom `bert`) + `split` |
 
-## Pelabelan
+## Pelabelan & versi dataset
 
-Pelabelan **LLM-assisted** (`annotator="claude-llm"`): 6.000 komentar berlabel di
-`raw_comments`; **3.000 di antaranya seimbang 1.000/kelas** ditandai
-`in_balanced_set=true` (dataset modeling). Rubrik: `outputs/labeling/_RUBRIK.md`.
-Label juga dapat ditinjau di **Label Studio** (HF Spaces) sebagai pra-anotasi.
+Pelabelan **LLM-assisted** (`annotator="claude-llm"`): **10.000 komentar berlabel** di
+`raw_comments`. Rubrik: `outputs/labeling/_RUBRIK.md`.
+
+Tersedia **4 versi dataset**, ditandai flag boolean di `raw_comments`:
+
+| Versi | Flag (`raw_comments`) | N | Distribusi (Neg/Net/Pos) |
+|-------|------------------------|---|---------------------------|
+| v1 — imbalanced 6k | `in_set6k` | 6.000 | 2622 / 1002 / 2376 |
+| v2 — balanced 3k | `in_balanced_set` | 3.000 | 1000 / 1000 / 1000 |
+| v3 — imbalanced 10k | `in_set10k` | 10.000 | 4100 / 1936 / 3964 |
+| v4 — balanced 10k | `in_balanced10k` | 5.808 | 1936 / 1936 / 1936 |
+
+Versi balanced disimpan juga sebagai CSV: `outputs/labeling/balanced_1000.csv` (v2) &
+`balanced_10k.csv` (v4). Notebook preprocessing saat ini memakai **v2**
+(`in_balanced_set`); ganti filter query untuk memakai versi lain.
 
 > Catatan metodologi: ini label LLM (bukan gold-standard manusia) — laporkan sebagai
-> *LLM-assisted labeling* di skripsi.
+> *LLM-assisted labeling* di skripsi. Netral adalah kelas terlangka & ter-noisy
+> (intrinsik low-confidence).
 
 ## Notebooks
 
