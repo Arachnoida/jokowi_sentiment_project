@@ -4,3 +4,8 @@ ls-venv/
 __pycache__/
 .ipynb_checkpoints/
 logs/
+# Data turunan (regenerate via notebook preprocessing)
+data/processed/
+
+# Backup lokal labeling
+*.backup.csv
