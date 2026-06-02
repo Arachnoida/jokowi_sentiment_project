@@ -32,6 +32,8 @@ SLANG_DICT = {
     "aja": "saja", "gk": "tidak", "tak": "tidak", "gakk": "tidak",
     "sdh": "sudah", "org": "orang", "tau": "tahu", "cuma": "hanya",
     "kak": "", "bang": "", "kok": "", "kan": "",
+    "jgn": "jangan",                       # pertahankan negasi
+    "jkw": "jokowi", "roi": "roy",          # konsolidasi entitas (typo umum)
     "lah": "", "dong": "", "deh": "", "sih": "", "nih": "",
     "wkwk": "", "wkwkwk": "", "haha": "", "hehe": "", "hihi": "",
     "kwkw": "", "xD": "", "xd": "",
@@ -68,6 +70,7 @@ STOPWORDS_ID = {
     "selalu", "pernah",
     "satu", "dua", "tiga", "beberapa", "setiap", "semua",
     "lain", "sama", "baru", "lama", "besar", "kecil",
+    "nya", "si",  # klitik/partikel berdiri sendiri — noise utk TF-IDF
 }
 
 _RE_URL = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)

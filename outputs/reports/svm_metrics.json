@@ -3,47 +3,47 @@
   "best_params": {
     "clf__C": "0.1",
     "tfidf__min_df": "2",
-    "tfidf__ngram_range": "(1, 1)"
+    "tfidf__ngram_range": "(1, 2)"
   },
   "val": {
-    "accuracy": 0.8133,
-    "macro_f1": 0.813,
-    "weighted_f1": 0.813,
+    "accuracy": 0.8467,
+    "macro_f1": 0.8465,
+    "weighted_f1": 0.8465,
     "per_class": {
       "Negatif": {
-        "precision": 0.8407,
-        "recall": 0.765,
-        "f1-score": 0.801,
+        "precision": 0.9075,
+        "recall": 0.785,
+        "f1-score": 0.8418,
         "support": 200
       },
       "Netral": {
-        "precision": 0.8,
-        "recall": 0.86,
-        "f1-score": 0.8289,
+        "precision": 0.8157,
+        "recall": 0.885,
+        "f1-score": 0.8489,
         "support": 200
       },
       "Positif": {
-        "precision": 0.803,
-        "recall": 0.815,
-        "f1-score": 0.8089,
+        "precision": 0.8286,
+        "recall": 0.87,
+        "f1-score": 0.8488,
         "support": 200
       }
     },
     "confusion_matrix": [
       [
-        153,
+        157,
         22,
-        25
+        21
       ],
       [
-        13,
-        172,
+        8,
+        177,
         15
       ],
       [
-        16,
-        21,
-        163
+        8,
+        18,
+        174
       ]
     ],
     "labels": [
@@ -53,43 +53,43 @@
     ]
   },
   "test": {
-    "accuracy": 0.6967,
-    "macro_f1": 0.6988,
-    "weighted_f1": 0.6988,
+    "accuracy": 0.6933,
+    "macro_f1": 0.6944,
+    "weighted_f1": 0.6944,
     "per_class": {
       "Negatif": {
-        "precision": 0.8333,
-        "recall": 0.7,
-        "f1-score": 0.7609,
+        "precision": 0.7872,
+        "recall": 0.74,
+        "f1-score": 0.7629,
         "support": 100
       },
       "Netral": {
-        "precision": 0.6271,
-        "recall": 0.74,
-        "f1-score": 0.6789,
+        "precision": 0.6273,
+        "recall": 0.69,
+        "f1-score": 0.6571,
         "support": 100
       },
       "Positif": {
-        "precision": 0.6633,
+        "precision": 0.6771,
         "recall": 0.65,
-        "f1-score": 0.6566,
+        "f1-score": 0.6633,
         "support": 100
       }
     },
     "confusion_matrix": [
       [
-        70,
-        18,
-        12
-      ],
-      [
-        5,
         74,
-        21
+        17,
+        9
       ],
       [
         9,
-        26,
+        69,
+        22
+      ],
+      [
+        11,
+        24,
         65
       ]
     ],
