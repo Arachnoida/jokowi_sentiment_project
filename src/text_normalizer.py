@@ -53,8 +53,10 @@ SLANG_DICT = {
 }
 
 STOPWORDS_ID = {
+    # Catatan: kata negasi (tidak/bukan/belum/jangan/tanpa) SENGAJA TIDAK
+    # dimasukkan — krusial untuk sentimen ("tidak palsu" != "palsu").
     "yang", "dan", "di", "ke", "dari", "untuk", "dengan", "pada",
-    "adalah", "ini", "itu", "atau", "tidak", "juga", "sudah",
+    "adalah", "ini", "itu", "atau", "juga", "sudah",
     "akan", "ada", "bisa", "lebih", "saat", "kami",
     "mereka", "kita", "anda", "ia", "dia",
     "kamu", "saya", "apa", "bagaimana", "mengapa",
@@ -63,7 +65,7 @@ STOPWORDS_ID = {
     "telah", "sedang", "masih", "sangat", "sekali", "amat",
     "oleh", "dalam", "luar", "bawah", "atas", "antara", "setelah",
     "sebelum", "sejak", "selama", "sering", "kadang", "jarang",
-    "selalu", "bukan", "belum", "pernah",
+    "selalu", "pernah",
     "satu", "dua", "tiga", "beberapa", "setiap", "semua",
     "lain", "sama", "baru", "lama", "besar", "kecil",
 }
