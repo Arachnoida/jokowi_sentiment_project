@@ -1,0 +1,102 @@
+{
+  "model": "SVM+TF-IDF",
+  "best_params": {
+    "clf__C": "0.1",
+    "tfidf__min_df": "2",
+    "tfidf__ngram_range": "(1, 1)"
+  },
+  "val": {
+    "accuracy": 0.8133,
+    "macro_f1": 0.813,
+    "weighted_f1": 0.813,
+    "per_class": {
+      "Negatif": {
+        "precision": 0.8407,
+        "recall": 0.765,
+        "f1-score": 0.801,
+        "support": 200
+      },
+      "Netral": {
+        "precision": 0.8,
+        "recall": 0.86,
+        "f1-score": 0.8289,
+        "support": 200
+      },
+      "Positif": {
+        "precision": 0.803,
+        "recall": 0.815,
+        "f1-score": 0.8089,
+        "support": 200
+      }
+    },
+    "confusion_matrix": [
+      [
+        153,
+        22,
+        25
+      ],
+      [
+        13,
+        172,
+        15
+      ],
+      [
+        16,
+        21,
+        163
+      ]
+    ],
+    "labels": [
+      "Negatif",
+      "Netral",
+      "Positif"
+    ]
+  },
+  "test": {
+    "accuracy": 0.6967,
+    "macro_f1": 0.6988,
+    "weighted_f1": 0.6988,
+    "per_class": {
+      "Negatif": {
+        "precision": 0.8333,
+        "recall": 0.7,
+        "f1-score": 0.7609,
+        "support": 100
+      },
+      "Netral": {
+        "precision": 0.6271,
+        "recall": 0.74,
+        "f1-score": 0.6789,
+        "support": 100
+      },
+      "Positif": {
+        "precision": 0.6633,
+        "recall": 0.65,
+        "f1-score": 0.6566,
+        "support": 100
+      }
+    },
+    "confusion_matrix": [
+      [
+        70,
+        18,
+        12
+      ],
+      [
+        5,
+        74,
+        21
+      ],
+      [
+        9,
+        26,
+        65
+      ]
+    ],
+    "labels": [
+      "Negatif",
+      "Netral",
+      "Positif"
+    ]
+  }
+}

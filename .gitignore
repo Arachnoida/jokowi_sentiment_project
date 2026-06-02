@@ -9,3 +9,6 @@ data/processed/
 
 # Backup lokal labeling
 *.backup.csv
+
+# Model binary (regenerate via notebook 06/07)
+outputs/models/
