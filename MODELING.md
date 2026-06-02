@@ -52,6 +52,25 @@ dihitung inline. Helper `compare_models()` tersedia di `src/modeling/evaluate.py
 Target: mengungguli baseline SVM (> 0,70). Konfigurasi: 4 epoch, lr 2e-5, batch 16,
 max_len 128, `metric_for_best_model="macro_f1"`, seed 42.
 
+## Eksperimen lintas versi dataset (SVM)
+
+`train_svm.ipynb` melatih SVM pada **4 versi** (lihat README untuk definisi flag).
+Split kanonik per versi (urut `comment_id` + `seed=42`) → identik dengan IndoBERT.
+Artefak: `outputs/reports/svm_versions_{metrics.json,table.csv,compare.png,confusion.png}`.
+
+| Versi | n_train | macro-F1 | accuracy | F1 Neg/Net/Pos |
+|-------|---------|----------|----------|-----------------|
+| v1 imbalanced 6k | 4198 | 0,602 | 0,643 | 0,70 / 0,45 / 0,65 |
+| **v2 balanced 3k** | 2098 | **0,694** | 0,693 | 0,76 / 0,66 / 0,66 |
+| v3 imbalanced 10k | 6997 | 0,626 | 0,656 | 0,71 / 0,49 / 0,68 |
+| v4 balanced 10k | 4063 | 0,651 | 0,651 | 0,66 / 0,67 / 0,62 |
+
+Temuan: (1) **balance > imbalance** pada macro-F1 — versi imbalanced membuat F1 kelas
+minoritas (Netral) anjlok; (2) **kualitas > kuantitas** — v2 (balanced 3k, high-conf)
+mengungguli v4 (balanced 10k) karena v4 menyertakan banyak Netral low-confidence;
+(3) accuracy pada versi imbalanced bias ke kelas mayoritas (selalu > macro-F1). IndoBERT
+per versi: set `VERSION_FLAG` di `indobert_finetune_colab.ipynb`.
+
 ## Kode pendukung
 
 ```
