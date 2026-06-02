@@ -97,6 +97,22 @@ keunggulannya tumbuh seiring data & pada kelas sulit (Netral, di mana konteks me
 metrik (8 konfigurasi × 5 metrik). Dihasilkan dari `svm_versions_metrics.json` +
 `indobert_metrics_{is6,ibs,is10,ib10}.json`.
 
+## Eksperimen peningkatan akurasi (ringkasan)
+
+| Track | Tindakan | Hasil |
+|-------|----------|-------|
+| **B** Fitur+ensemble SVM | char n-gram + ComplementNB/LogReg + voting (`improve_svm.ipynb`) | Ensemble word+char terbaik, **+2–3%** (CV) |
+| **D** Cross-validation | 5-fold CV (`improve_svm.ipynb`) | **macro-F1 jujur ~0,59–0,62**; single-split 0,694 ternyata optimistik |
+| **C** IndoBERTweet | ganti model domain-medsos + weighted loss (`indobertweet_improve_colab.ipynb`) | siap dijalankan di Colab |
+| **A** Kualitas label | 3-pass LLM consensus voting pada 2.525 baris conf<0,6 (877 label dikoreksi) | **Tidak ada gain terukur** → label dikembalikan |
+
+**Temuan track A (penting & jujur):** relabel konsensus LLM mengoreksi 877 label dan
+menaikkan cakupan conf≥0,6 (74%→98%), **tetapi macro-F1 SVM tidak membaik** (v1/v3/v4
+datar; "penurunan" v2 0,694→0,59 sebenarnya menyingkap nilai CV sejati — 0,694 itu split
+beruntung). **Kesimpulan:** tanpa *gold-standard* manusia, relabel LLM tidak menaikkan
+performa terukur; plafon ~0,6 lebih ditentukan **ambiguitas tugas (Positif↔Netral)**
+daripada noise label yang bisa dibersihkan. Label asli dipertahankan demi konsistensi.
+
 ## Kode pendukung
 
 ```
