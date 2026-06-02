@@ -1,32 +1,49 @@
 # Notebooks — alur pipeline
 
-Arsitektur: **MongoDB Atlas** (DB `youtube_sentiment`) sebagai sumber & tujuan data.
-Tidak pakai file CSV/parquet sebagai dataset; semua data dokumen JSON di Mongo.
-Notebook tanpa nomor — urutan alur dijelaskan di bawah.
+Arsitektur: **MongoDB Atlas** (DB `youtube_sentiment`) sebagai sumber & tujuan data —
+semua dokumen JSON di Mongo, tanpa file CSV/parquet sebagai dataset. Notebook
+dikelompokkan per tahap dalam folder bernomor; **nama file** tetap tanpa nomor.
 
-## Alur (urut dijalankan)
+## Struktur folder
 
-| # | Notebook | Tahap | Baca | Tulis |
-|---|----------|-------|------|-------|
-| 1 | `ingestion.ipynb` | Data collection | YouTube Data API | `raw_comments` |
-| 2 | `export_labeling.ipynb` | Labeling (bridge) | `raw_comments` | ekspor ke Label Studio |
-| 3 | `preprocessing_svm.ipynb` | Preprocessing | `raw_comments` (`in_balanced_set`) | `processed_svm` |
-| 3 | `preprocessing_indobert.ipynb` | Preprocessing | `raw_comments` (`in_balanced_set`) | `processed_bert` |
-| 4 | `train_svm.ipynb` | Modeling (lokal) | `processed_svm` | model + metrik |
-| 4 | `indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` | model + metrik |
+```
+notebooks/
+├── 1_data_collection/
+│   ├── ingestion.ipynb              YouTube Data API → raw_comments
+│   └── export_labeling.ipynb        raw_comments → ekspor ke Label Studio
+├── 2_preprocessing/
+│   ├── preprocessing_svm.ipynb      raw_comments → processed_svm  (kolom `svm`)
+│   └── preprocessing_indobert.ipynb raw_comments → processed_bert (kolom `bert`)
+├── 3_modeling/
+│   ├── train_svm.ipynb              processed_svm  → model SVM + metrik (lokal)
+│   └── indobert_finetune_colab.ipynb processed_bert → IndoBERT + metrik (Colab/GPU)
+└── utils/
+    ├── config.ipynb                 cek koneksi & konfigurasi
+    ├── database_maintenance.ipynb   operasi pemeliharaan koleksi
+    └── reset_database.ipynb         reset/kosongkan koleksi
+```
 
-Preprocessing SVM & IndoBERT memakai **split identik** (seed=42, urut `comment_id`,
+## Urutan alur
+
+| Tahap | Notebook | Baca → Tulis |
+|-------|----------|--------------|
+| 1. Data collection | `1_data_collection/ingestion.ipynb` | YouTube API → `raw_comments` |
+| 1. Labeling (bridge) | `1_data_collection/export_labeling.ipynb` | `raw_comments` → Label Studio |
+| 2. Preprocessing | `2_preprocessing/preprocessing_svm.ipynb` | `raw_comments` → `processed_svm` |
+| 2. Preprocessing | `2_preprocessing/preprocessing_indobert.ipynb` | `raw_comments` → `processed_bert` |
+| 3. Modeling (lokal) | `3_modeling/train_svm.ipynb` | `processed_svm` → model + metrik |
+| 3. Modeling (Colab/GPU) | `3_modeling/indobert_finetune_colab.ipynb` | `processed_bert` → model + metrik |
+
+Preprocessing SVM & IndoBERT memakai **split identik** (urut `comment_id` + `seed=42`,
 split sebelum preprocessing) → test/val sama persis untuk perbandingan adil.
 
-## Utilitas (situasional)
-- `config.ipynb` — cek koneksi & konfigurasi.
-- `database_maintenance.ipynb` — operasi pemeliharaan koleksi.
-- `reset_database.ipynb` — reset/kosongkan koleksi.
-
 ## Koneksi
-Notebook membaca `MONGO_URI` dari `.env` (lokal) atau `getpass` (Colab). Lihat
-`.env.example`. Preprocessing & modeling bersifat **self-contained** (tanpa `import src`).
+
+Notebook membaca `MONGO_URI` dari `.env` (lokal) atau `getpass` (Colab); lihat
+`../.env.example`. Notebook preprocessing & modeling bersifat **self-contained** (tanpa
+`import src`) sehingga bisa dijalankan lokal maupun di Colab.
 
 ## Arsip
+
 Notebook/skrip alur lama (Spark, parquet) ada di `../archive/` — disimpan untuk
 referensi, **bukan bagian pipeline aktif**.

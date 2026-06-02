@@ -45,16 +45,18 @@ Label juga dapat ditinjau di **Label Studio** (HF Spaces) sebagai pra-anotasi.
 
 ## Notebooks
 
-Notebook **tanpa nomor**; urutan alur ada di [`notebooks/README.md`](notebooks/README.md).
+Dikelompokkan per tahap dalam folder bernomor (file tanpa nomor); detail di
+[`notebooks/README.md`](notebooks/README.md).
 
 | Notebook | Tahap | Baca → Tulis |
 |----------|-------|--------------|
-| `ingestion.ipynb` | Collection | YouTube API → `raw_comments` |
-| `export_labeling.ipynb` | bridge | `raw_comments` → Label Studio |
-| `preprocessing_svm.ipynb` | Preprocessing | `raw_comments` → `processed_svm` |
-| `preprocessing_indobert.ipynb` | Preprocessing | `raw_comments` → `processed_bert` |
-| `train_svm.ipynb` | Modeling (lokal) | `processed_svm` → model + metrik |
-| `indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` → model + metrik |
+| `1_data_collection/ingestion.ipynb` | Collection | YouTube API → `raw_comments` |
+| `1_data_collection/export_labeling.ipynb` | bridge | `raw_comments` → Label Studio |
+| `2_preprocessing/preprocessing_svm.ipynb` | Preprocessing | `raw_comments` → `processed_svm` |
+| `2_preprocessing/preprocessing_indobert.ipynb` | Preprocessing | `raw_comments` → `processed_bert` |
+| `3_modeling/train_svm.ipynb` | Modeling (lokal) | `processed_svm` → model + metrik |
+| `3_modeling/indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` → model + metrik |
+| `utils/` | utilitas | config / database_maintenance / reset_database |
 | `config` / `database_maintenance` / `reset_database` | utilitas | — |
 
 Notebook preprocessing & modeling **self-contained** (tanpa `import src`) → bisa

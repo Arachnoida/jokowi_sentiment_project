@@ -27,11 +27,11 @@ Membandingkan dua paradigma pada dataset & split yang **identik**:
 ## Alur kerja
 
 1. **Pelabelan** (sudah): label `claude-llm` di `raw_comments`, 3.000 ditandai balanced.
-2. **`notebooks/preprocessing_svm.ipynb`** → `processed_svm` (kolom `svm` + `split`).
-3. **`notebooks/preprocessing_indobert.ipynb`** → `processed_bert` (kolom `bert` + `split`).
-4. **`notebooks/train_svm.ipynb`** — baca `processed_svm`, TF-IDF→LinearSVC, tuning di
+2. **`notebooks/2_preprocessing/preprocessing_svm.ipynb`** → `processed_svm` (kolom `svm` + `split`).
+3. **`notebooks/2_preprocessing/preprocessing_indobert.ipynb`** → `processed_bert` (kolom `bert` + `split`).
+4. **`notebooks/3_modeling/train_svm.ipynb`** — baca `processed_svm`, TF-IDF→LinearSVC, tuning di
    val (`PredefinedSplit`), refit train+val, evaluasi test. Lokal.
-5. **`notebooks/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
+5. **`notebooks/3_modeling/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
    `indobert-base-p1` di Colab/GPU, evaluasi test set identik.
 6. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
 
