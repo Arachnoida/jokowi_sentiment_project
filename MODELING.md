@@ -91,6 +91,12 @@ Khas literatur: transformer butuh data lebih banyak untuk mengungguli ML klasik 
 keunggulannya tumbuh seiring data & pada kelas sulit (Netral, di mana konteks membantu).
 **macro-F1 tertinggi keseluruhan tetap SVM v2 (0,694)**; **IndoBERT terbaik = v4 (0,666)**.
 
+![Perbandingan semua hasil model](outputs/reports/all_models_comparison.png)
+
+*Atas:* macro-F1 SVM vs IndoBERT per versi (crossover terlihat). *Bawah:* heatmap semua
+metrik (8 konfigurasi × 5 metrik). Dihasilkan dari `svm_versions_metrics.json` +
+`indobert_metrics_{is6,ibs,is10,ib10}.json`.
+
 ## Kode pendukung
 
 ```
