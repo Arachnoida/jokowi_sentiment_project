@@ -33,6 +33,26 @@ file CSV/parquet. Koleksi:
 | `processed_svm` | teks terpreprocessing jalur SVM (kolom `svm`) + `split` |
 | `processed_bert` | teks terpreprocessing jalur IndoBERT (kolom `bert`) + `split` |
 
+## Diagram alur
+
+![Diagram arsitektur pipeline](outputs/architecture_diagram.png)
+
+<details><summary>Versi Mermaid (auto-render di GitHub, mudah diedit)</summary>
+
+```mermaid
+flowchart TD
+    A["1 · Pengumpulan Data<br/>YouTube API → raw_comments (14.107)"] --> B
+    B["2 · Pelabelan LLM (claude-llm) · 10.000 komentar<br/>4 versi: v1 6k-imbal · v2 3k-bal · v3 10k-imbal · v4 ~5.8k-bal"]
+    B --> C & D
+    C["3a · Preprocessing SVM<br/>clean agresif + slang + stopword (negasi disimpan) + stemming<br/>→ processed_svm"] --> E
+    D["3b · Preprocessing IndoBERT<br/>cleaning minimal (morfologi & negasi utuh)<br/>→ processed_bert"] --> F
+    E["4a · SVM + TF-IDF (lokal/CPU)"] --> G
+    F["4b · IndoBERT fine-tune (Colab/GPU)"] --> G
+    G["5 · Perbandingan SVM vs IndoBERT × 4 versi (macro-F1)<br/>Crossover: data kecil → SVM, data 10k → IndoBERT<br/>terbaik: SVM v2 = 0,694 · IndoBERT v4 = 0,666"]
+```
+Penyimpanan terpusat: **MongoDB Atlas** (DB `youtube_sentiment`). Semua data = dokumen JSON.
+</details>
+
 ## Pelabelan & versi dataset
 
 Pelabelan **LLM-assisted** (`annotator="claude-llm"`): **10.000 komentar berlabel** di
