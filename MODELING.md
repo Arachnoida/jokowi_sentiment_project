@@ -71,6 +71,26 @@ mengungguli v4 (balanced 10k) karena v4 menyertakan banyak Netral low-confidence
 (3) accuracy pada versi imbalanced bias ke kelas mayoritas (selalu > macro-F1). IndoBERT
 per versi: set `VERSION_FLAG` di `indobert_finetune_colab.ipynb`.
 
+## Perbandingan final: SVM vs IndoBERT × 4 versi
+
+IndoBERT difine-tune per versi (`VERSION_FLAG` di `indobert_finetune_colab.ipynb`),
+dievaluasi pada test set **identik** dengan SVM. Artefak:
+`outputs/reports/{model_comparison.csv, svm_vs_indobert.png}` +
+`indobert_metrics_{is6,ibs,is10,ib10}.json`.
+
+| Versi | SVM macro-F1 | IndoBERT macro-F1 | Pemenang |
+|-------|--------------|-------------------|----------|
+| v1 imbalanced 6k | 0,602 | 0,597 | SVM |
+| v2 balanced 3k | **0,694** | 0,633 | SVM |
+| v3 imbalanced 10k | 0,626 | **0,644** | IndoBERT |
+| v4 balanced 10k | 0,651 | **0,666** | IndoBERT |
+
+**Temuan utama — *crossover* ukuran data:** pada data **kecil** (3k–6k) **SVM unggul**
+(paling tajam di v2: 0,694 vs 0,633); pada data **10k** **IndoBERT menyalip** (v3 & v4).
+Khas literatur: transformer butuh data lebih banyak untuk mengungguli ML klasik —
+keunggulannya tumbuh seiring data & pada kelas sulit (Netral, di mana konteks membantu).
+**macro-F1 tertinggi keseluruhan tetap SVM v2 (0,694)**; **IndoBERT terbaik = v4 (0,666)**.
+
 ## Kode pendukung
 
 ```
