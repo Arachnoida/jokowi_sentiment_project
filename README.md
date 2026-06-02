@@ -1,211 +1,116 @@
-# YouTube Comment Sentiment Analysis (Big Data Pipeline)
+# Analisis Sentimen Komentar YouTube — Isu Ijazah Jokowi
 
-## Ringkasan Proyek
+Pipeline end-to-end analisis sentimen komentar YouTube berbahasa Indonesia seputar
+**dugaan ijazah palsu Jokowi**, membandingkan dua model: **SVM + TF-IDF** vs
+**IndoBERT**.
 
-Pipeline end-to-end untuk analisis sentimen komentar YouTube berbahasa Indonesia.
-Sistem mendukung ingestion dari **banyak video sekaligus** (sekitar 20 video),
-dengan pelacakan status per video, mekanisme resume, dan pemrosesan data
-agregat lintas video menggunakan Apache Spark (PySpark).
+**Polaritas di-anchor ke ISU/NARASI TUDUHAN**, bukan ke sosok Jokowi (3 kelas):
 
-## Arsitektur Alur Data
+| Kelas | Arti |
+|-------|------|
+| **Positif** (0→ id 2) | mendukung / mempercayai / menguatkan tuduhan ijazah palsu |
+| **Negatif** | menolak / membantah / mengkritik narasi tuduhan |
+| **Netral** | tidak jelas sikap / bertanya / informasi saja |
 
-```
-configs/video_urls.txt  (daftar ~20 URL YouTube)
-        |
-        v
-[01_config.ipynb]
-  - validasi semua URL
-  - ekstrak videoId dari tiap URL
-  - daftarkan job ke MongoDB (ingestion_jobs collection)
-        |
-        v
-[02_ingestion.ipynb]  <-- loop per video dengan resume support
-  - cek status job (skip jika sudah "completed")
-  - youtube_ingest.py: ambil komentar via API + pagination
-  - mongo_utils.py: simpan ke raw_comments (dengan video_id sebagai partisi logis)
-  - ingestion_tracker.py: update status job (pending -> running -> completed/failed)
-        |
-        v
-[03_preprocessing_spark.ipynb]
-  - baca SEMUA raw_comments dari MongoDB (lintas video)
-  - PySpark DataFrame transformations
-  |-- Jalur A (SVM + TF-IDF): cleaning agresif + stemming PySastrawi
-  |-- Jalur B (IndoBERT): cleaning minimal, morfologi terjaga
-        |
-        v
-[04_export_labeling.ipynb]
-  - gabungkan hasil dua jalur
-  - ekspor ke JSONL / CSV / Parquet
-  - siap untuk labeling manual atau hybrid
-```
+> Id kelas (untuk model): `Negatif=0, Netral=1, Positif=2`.
 
-## Struktur Folder
+## Empat tahap
 
 ```
-youtube_sentiment_project/
-├── README.md
-├── requirements.txt
-├── .env.example
-├── configs/
-│   ├── __init__.py
-│   ├── config.py
-│   └── video_urls.txt          <-- daftar URL video (satu per baris)
-├── src/
-│   ├── __init__.py
-│   ├── utils.py
-│   ├── mongo_utils.py
-│   ├── ingestion_tracker.py    <-- pelacak status ingestion per video
-│   ├── youtube_ingest.py
-│   ├── text_normalizer.py
-│   ├── preprocess_spark.py
-│   └── notebook_helpers.py
-├── notebooks/
-│   ├── 01_config.ipynb
-│   ├── 02_ingestion.ipynb
-│   ├── 03_preprocessing_spark.ipynb
-│   └── 04_export_labeling.ipynb
-├── data/
-│   ├── raw/
-│   └── processed/
-├── outputs/
-└── logs/
+1. Data collection   YouTube Data API  ─► MongoDB Atlas (raw_comments)
+2. Preprocessing     raw_comments      ─► processed_svm / processed_bert
+3. Modeling          processed_*       ─► SVM (lokal) & IndoBERT (Colab/GPU)
+4. Visualization     hasil + korpus    ─► EDA & perbandingan model
 ```
 
-## Instalasi di Windows
+Semua data berupa **dokumen JSON di MongoDB Atlas** (DB `youtube_sentiment`) — bukan
+file CSV/parquet. Koleksi:
 
-### 1. Buat dan aktifkan virtual environment
+| Koleksi | Isi |
+|---------|-----|
+| `raw_comments` | komentar mentah (+ field label hasil pelabelan + flag `in_balanced_set`) |
+| `ingestion_jobs` | status ingestion per video (resume support) |
+| `processed_svm` | teks terpreprocessing jalur SVM (kolom `svm`) + `split` |
+| `processed_bert` | teks terpreprocessing jalur IndoBERT (kolom `bert`) + `split` |
 
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-```
+## Pelabelan
 
-### 2. Install dependencies
+Pelabelan **LLM-assisted** (`annotator="claude-llm"`): 6.000 komentar berlabel di
+`raw_comments`; **3.000 di antaranya seimbang 1.000/kelas** ditandai
+`in_balanced_set=true` (dataset modeling). Rubrik: `outputs/labeling/_RUBRIK.md`.
+Label juga dapat ditinjau di **Label Studio** (HF Spaces) sebagai pra-anotasi.
 
-```powershell
+> Catatan metodologi: ini label LLM (bukan gold-standard manusia) — laporkan sebagai
+> *LLM-assisted labeling* di skripsi.
+
+## Notebooks
+
+Notebook **tanpa nomor**; urutan alur ada di [`notebooks/README.md`](notebooks/README.md).
+
+| Notebook | Tahap | Baca → Tulis |
+|----------|-------|--------------|
+| `ingestion.ipynb` | Collection | YouTube API → `raw_comments` |
+| `export_labeling.ipynb` | bridge | `raw_comments` → Label Studio |
+| `preprocessing_svm.ipynb` | Preprocessing | `raw_comments` → `processed_svm` |
+| `preprocessing_indobert.ipynb` | Preprocessing | `raw_comments` → `processed_bert` |
+| `train_svm.ipynb` | Modeling (lokal) | `processed_svm` → model + metrik |
+| `indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` → model + metrik |
+| `config` / `database_maintenance` / `reset_database` | utilitas | — |
+
+Notebook preprocessing & modeling **self-contained** (tanpa `import src`) → bisa
+dijalankan lokal maupun di Google Colab.
+
+## Setup
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+cp .env.example .env               # lalu isi MONGO_URI (Atlas) & YOUTUBE_API_KEY
 ```
 
-### 3. Konfigurasi environment
-
-```powershell
-copy .env.example .env
-```
-
-Isi `.env`:
+`.env` (kunci utama):
 
 ```env
-YOUTUBE_API_KEY=your_api_key_here
-MONGO_URI=mongodb://localhost:27017
+YOUTUBE_API_KEY=...
+MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/?retryWrites=true&w=majority
 MONGO_DB_NAME=youtube_sentiment
-MONGO_COLLECTION_RAW=raw_comments
-MONGO_COLLECTION_SVM=processed_svm
-MONGO_COLLECTION_BERT=processed_bert
-MONGO_COLLECTION_JOBS=ingestion_jobs
-TARGET_COMMENT_COUNT=10000
+LABEL_STUDIO_URL=https://raviarnan-jokowi-label-studio.hf.space
 ```
 
-### 4. Isi daftar video
+> Notebook lokal membaca `MONGO_URI` dari `.env`; di Colab diminta via `getpass`.
+> Akses Atlas butuh IP masuk **Network Access allowlist** (diatur project owner).
 
-Edit `configs/video_urls.txt`, satu URL per baris:
+## Hasil modeling (sementara)
 
-```
-https://www.youtube.com/watch?v=VIDEO_ID_1
-https://www.youtube.com/watch?v=VIDEO_ID_2
-https://youtu.be/VIDEO_ID_3
-# Baris yang diawali # adalah komentar dan akan diabaikan
-```
+| Model | Sumber | macro-F1 (test) | Status |
+|-------|--------|-----------------|--------|
+| SVM + TF-IDF | `processed_svm` | **0,699** | ✅ selesai (lokal) |
+| IndoBERT | `processed_bert` | — | ⏳ jalankan di Colab |
 
-### 5. Pastikan MongoDB berjalan
+Detail metodologi modeling: [`MODELING.md`](MODELING.md). Artefak: `outputs/reports/`.
 
-```powershell
-net start MongoDB
-```
+## Skema data
 
-### 6. Jalankan notebook secara berurutan
-
-```
-01_config.ipynb                  -- validasi URL dan daftarkan job
-02_ingestion.ipynb               -- ambil komentar semua video
-03_preprocessing_spark.ipynb     -- preprocessing dua jalur
-04_export_labeling.ipynb         -- ekspor dataset siap labeling
-```
-
-## Mekanisme Resume Ingestion
-
-Jika ingestion terputus di tengah jalan (quota habis, koneksi error, dsb.),
-cukup jalankan ulang `02_ingestion.ipynb`. Video dengan status `completed`
-otomatis dilewati, sehingga hanya video yang `pending` atau `failed` yang
-diproses ulang.
-
-Status per video tersimpan di MongoDB collection `ingestion_jobs`:
-
-| Status      | Keterangan                                      |
-|-------------|--------------------------------------------------|
-| `pending`   | Belum diproses                                   |
-| `running`   | Sedang diproses (atau crash tanpa update status) |
-| `completed` | Berhasil selesai                                 |
-| `failed`    | Gagal dengan error message                       |
-
-## Skema Data
-
-### ingestion_jobs (MongoDB)
-
+**raw_comments** (sesudah pelabelan):
 ```json
 {
-  "video_id": "dQw4w9WgXcQ",
-  "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "video_title": "Judul Video",
-  "status": "completed",
-  "comment_count": 9847,
-  "started_at": "2025-01-20T08:00:00",
-  "completed_at": "2025-01-20T08:05:30",
-  "error_message": null
+  "comment_id": "UgxABC123_xyz", "video_id": "dQw4w9WgXcQ",
+  "text": "Semakin terlihat PALSU.", "like_count": 42,
+  "published_at": "2025-01-15T10:23:45Z", "source_title": "Judul Video",
+  "label": "Positif", "annotator": "claude-llm", "confidence": 0.8,
+  "notes": "menguatkan tuduhan", "in_balanced_set": true
 }
 ```
 
-### raw_comments (MongoDB)
-
+**processed_svm / processed_bert**:
 ```json
-{
-  "comment_id": "UgxABC123_xyz",
-  "video_id": "dQw4w9WgXcQ",
-  "text": "Mantap banget videonya bro!! 🔥",
-  "published_at": "2024-01-15T10:23:45.000Z",
-  "like_count": 42,
-  "author_channel_id": "UCxxxxxxxxxxxx",
-  "source_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "source_title": "Judul Video",
-  "fetched_at": "2025-01-20T08:00:00.123456"
-}
+{ "comment_id": "UgxABC123_xyz", "text": "Semakin terlihat PALSU.",
+  "svm": "makin lihat palsu", "label": "Positif", "label_id": 2, "split": "train" }
 ```
 
-### Output Labeling
+## Arsip
 
-```json
-{
-  "comment_id": "UgxABC123_xyz",
-  "video_id": "dQw4w9WgXcQ",
-  "text_original": "Mantap banget videonya bro!! 🔥",
-  "text_svm": "mantap video",
-  "text_bert": "mantap banget videonya bro",
-  "label": null
-}
-```
-
-## Catatan Kompatibilitas
-
-### Python 3.14.3
-- PySastrawi: install dari source jika wheel belum tersedia:
-  `pip install git+https://github.com/har07/PySastrawi.git`
-- Hindari library yang bergantung pada `pkg_resources` lama.
-
-### Apache Spark 4.1.x
-- Butuh Java 11 atau 17. Set `JAVA_HOME` dengan benar.
-- Set `PYSPARK_PYTHON` ke interpreter aktif:
-  `set PYSPARK_PYTHON=.venv\Scripts\python.exe`
-- MongoDB Spark Connector JAR: https://www.mongodb.com/try/download/spark-connector
-
-### Jalur SVM vs IndoBERT
-- **SVM + TF-IDF**: preprocessing agresif untuk bag-of-words yang bersih.
-- **IndoBERT**: preprocessing minimal, jangan stem atau hapus stopword.
+Alur lama (Spark + parquet) disimpan di [`archive/`](archive/README.md) untuk
+referensi — **bukan bagian pipeline aktif**. Pipeline sekarang pandas + MongoDB
+(dataset kecil, Spark tak diperlukan).

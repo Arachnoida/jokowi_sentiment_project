@@ -1,65 +1,71 @@
 # Tahap Modeling — SVM vs IndoBERT
 
-Klasifikasi sentimen komentar YouTube terhadap Jokowi ke **3 kelas**:
-`Negatif (0)`, `Netral (1)`, `Positif (2)`.
+Klasifikasi sentimen komentar YouTube (isu ijazah Jokowi) ke **3 kelas**:
+`Negatif (0)`, `Netral (1)`, `Positif (2)`. Polaritas di-anchor ke **narasi tuduhan**
+(lihat `outputs/labeling/_RUBRIK.md`).
 
 Membandingkan dua paradigma pada dataset & split yang **identik**:
 
-| Jalur | Paradigma | Input | Preprocessing | Tempat latih |
-|-------|-----------|-------|---------------|--------------|
-| **A — SVM + TF-IDF** | ML tradisional | `text_svm` | clean agresif + slang + buang stopword + **stemming** | Lokal (CPU) |
-| **B — IndoBERT** | Deep learning (fine-tuning) | `text_bert` | cleaning minimal (morfologi terjaga) | Colab/Kaggle (GPU) |
+| Jalur | Paradigma | Input (Mongo) | Preprocessing | Tempat latih |
+|-------|-----------|---------------|---------------|--------------|
+| **A — SVM + TF-IDF** | ML tradisional | `processed_svm.svm` | clean agresif + slang + buang stopword + **stemming**; **negasi dipertahankan** | Lokal (CPU) |
+| **B — IndoBERT** | Deep learning (fine-tuning) | `processed_bert.bert` | cleaning minimal (morfologi & negasi terjaga) | Colab/Kaggle (GPU) |
 
 ## Desain dataset
 
-- **Seimbang: 1.000 contoh/kelas → 3.000 total** (anotasi manual di Label Studio).
-- **Split stratified 70/20/10** (train/val/test) menjaga proporsi kelas, seed `42`,
-  dibuat **sekali** dan dipakai kedua model agar perbandingan adil.
+- **Seimbang: 1.000/kelas → 3.000 total** (komentar `in_balanced_set=true` di
+  `raw_comments`), label **LLM-assisted** (`claude-llm`).
+- **Split stratified 70/20/10** (train/val/test), seed `42`, **urut `comment_id` +
+  dilakukan SEBELUM preprocessing** → notebook SVM & IndoBERT menghasilkan **test/val
+  identik** (perbandingan adil). Disimpan via field `split` di `processed_svm`/`processed_bert`.
 - Metrik utama **macro-F1**; karena seimbang, **accuracy** juga bermakna. Selalu
   laporkan **per-kelas P/R/F1 + confusion matrix**.
 
-> Catatan metodologi: test set seimbang mengukur performa pada *kondisi seimbang*,
-> bukan distribusi dunia nyata yang timpang. Wajar untuk studi perbandingan model —
-> laporkan apa adanya.
+> Catatan: test set seimbang mengukur performa pada *kondisi seimbang*, bukan distribusi
+> dunia nyata yang timpang. Wajar untuk studi perbandingan model — laporkan apa adanya.
 
 ## Alur kerja
 
-1. **Anotasi** di Label Studio (project id=1 "Sentimen Jokowi"). Hotkey `1/2/3`.
-2. **Ekspor**: UI Label Studio → *Export → JSON* → simpan ke
-   `outputs/labeling/label_studio_export.json`.
-3. **`notebooks/05_build_dataset.ipynb`** — parse ekspor → preprocessing dua jalur →
-   split → simpan ke `data/processed/splits/{train,val,test}.parquet`.
-4. **`notebooks/06_train_svm.ipynb`** — latih + evaluasi SVM (lokal).
-5. **`notebooks/07_indobert_finetune_colab.ipynb`** — unggah 3 parquet ke Colab,
-   fine-tune IndoBERT, unduh `indobert_test_metrics.json`.
-6. **Bandingkan** — taruh kedua file metrik di `outputs/reports/`:
-   ```python
-   import json
-   from src.modeling.evaluate import compare_models
-   compare_models({
-       "SVM+TF-IDF": json.load(open("outputs/reports/svm_test_metrics.json")),
-       "IndoBERT":   json.load(open("outputs/reports/indobert_test_metrics.json")),
-   })
-   ```
+1. **Pelabelan** (sudah): label `claude-llm` di `raw_comments`, 3.000 ditandai balanced.
+2. **`notebooks/preprocessing_svm.ipynb`** → `processed_svm` (kolom `svm` + `split`).
+3. **`notebooks/preprocessing_indobert.ipynb`** → `processed_bert` (kolom `bert` + `split`).
+4. **`notebooks/train_svm.ipynb`** — baca `processed_svm`, TF-IDF→LinearSVC, tuning di
+   val (`PredefinedSplit`), refit train+val, evaluasi test. Lokal.
+5. **`notebooks/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
+   `indobert-base-p1` di Colab/GPU, evaluasi test set identik.
+6. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
 
-## Kode
+Notebook modeling **self-contained** (tanpa `import src`) — metrik & confusion matrix
+dihitung inline. Helper `compare_models()` tersedia di `src/modeling/evaluate.py`.
+
+## Hasil
+
+### SVM + TF-IDF (test) — ✅ selesai
+- **Macro-F1 0,699** | Accuracy 0,697 | Weighted-F1 0,699.
+- Per-kelas F1: **Negatif 0,761** (P 0,83), Netral 0,679, Positif 0,657.
+- Kebingungan utama di seputar **Netral** (Positif↔Netral); Negatif vs Positif jarang tertukar.
+- Param terbaik: `C=0.1`, unigram `(1,1)`, `min_df=2`.
+- Artefak: `outputs/models/svm_tfidf.joblib` (gitignored), `outputs/reports/svm_metrics.json`,
+  `svm_test_confusion.png`.
+
+### IndoBERT (test) — ⏳ menunggu run di Colab/GPU
+Target: mengungguli baseline SVM (> 0,70). Konfigurasi: 4 epoch, lr 2e-5, batch 16,
+max_len 128, `metric_for_best_model="macro_f1"`, seed 42.
+
+## Kode pendukung
 
 ```
 src/modeling/
-├── labels.py      # kosakata label + parser ekspor Label Studio
-├── dataset.py     # preprocessing dua jalur + split stratified + simpan/muat
-├── train_svm.py   # TF-IDF + LinearSVC (grid search di val)
-└── evaluate.py    # metrik bersama (macro-F1, confusion matrix, compare)
+├── labels.py     # kosakata label (LABELS, LABEL2ID) + parser ekspor Label Studio
+└── evaluate.py   # metrik bersama (macro-F1, confusion matrix, compare_models)
 ```
+
+> Alur lama (`dataset.py` build parquet, `train_svm.py` baca parquet) diarsipkan di
+> `archive/src/modeling/` — digantikan notebook berbasis Mongo.
 
 ## Dependency
 
-- **Lokal (SVM):** `pip install -r requirements.txt` (sudah termasuk scikit-learn,
-  joblib, matplotlib, pyarrow).
-- **Colab (IndoBERT):** `requirements-colab.txt` (transformers, datasets, evaluate,
-  accelerate). Torch sudah ada di Colab/Kaggle.
-
-## Status saat ini
-
-⏳ **Menunggu labeling.** Infrastruktur siap; training dimulai begitu `label_studio_export.json`
-berisi cukup contoh per kelas (idealnya mendekati 1.000/kelas).
+- **Lokal (SVM):** `pip install -r requirements.txt` (scikit-learn, joblib, matplotlib,
+  pymongo, dll). Tanpa Spark.
+- **Colab (IndoBERT):** notebook meng-`%pip install` transformers + torch sendiri;
+  set Runtime → GPU (T4).
