@@ -1,0 +1,22 @@
+{
+  "1 word+LinearSVC (baseline)": {
+    "cv_macro_f1": 0.5915,
+    "cv_std": 0.0223
+  },
+  "2 word+char+LinearSVC": {
+    "cv_macro_f1": 0.5959,
+    "cv_std": 0.0174
+  },
+  "3 word+ComplementNB": {
+    "cv_macro_f1": 0.5847,
+    "cv_std": 0.0099
+  },
+  "4 word+char+LogReg": {
+    "cv_macro_f1": 0.6129,
+    "cv_std": 0.0267
+  },
+  "5 Ensemble (SVC+NB+LogReg)": {
+    "cv_macro_f1": 0.618,
+    "cv_std": 0.0241
+  }
+}
