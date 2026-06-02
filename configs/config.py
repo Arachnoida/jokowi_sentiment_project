@@ -55,15 +55,6 @@ class MongoConfig:
     COLLECTION_JOBS: str = os.getenv("MONGO_COLLECTION_JOBS", "ingestion_jobs")
 
 
-class SparkConfig:
-    APP_NAME: str = "YoutubeSentimentPipeline"
-    MASTER: str = "local[*]"
-    MONGO_CONNECTOR_JAR: str = os.getenv("MONGO_CONNECTOR_JAR", "")
-    MONGO_SPARK_PACKAGE: str = (
-        "org.mongodb.spark:mongo-spark-connector_2.12:10.3.0"
-    )
-
-
 class PathConfig:
     ROOT: Path = _ROOT
     DATA_RAW: Path = _ROOT / "data" / "raw"
@@ -123,7 +114,6 @@ class ModelingConfig:
 class Config:
     youtube = YoutubeConfig
     mongo = MongoConfig
-    spark = SparkConfig
     paths = PathConfig
     label_studio = LabelStudioConfig
     modeling = ModelingConfig
