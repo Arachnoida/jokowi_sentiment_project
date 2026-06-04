@@ -156,8 +156,21 @@ def _fetch_taskmap(c: LSClient, pid: int) -> Tuple[Dict[str, int], set, set]:
     has_ann: set = set()
     page, page_size = 1, 200
     while True:
-        r = c.request("GET", "/api/tasks/",
-                      params={"project": pid, "page": page, "page_size": page_size})
+        # HF Space free-tier kerap memutus koneksi di tengah paginasi besar;
+        # ulangi halaman yang sama beberapa kali sebelum menyerah.
+        r = None
+        for attempt in range(1, 7):
+            try:
+                r = c.request("GET", "/api/tasks/",
+                              params={"project": pid, "page": page,
+                                      "page_size": page_size})
+                break
+            except requests.exceptions.RequestException as exc:
+                logger.warning("Gagal ambil halaman %d (percobaan %d/6): %s",
+                               page, attempt, exc)
+                time.sleep(min(2 ** attempt, 20))
+        if r is None:
+            raise RuntimeError(f"Gagal ambil task halaman {page} setelah 6x percobaan.")
         if r.status_code == 404:  # melewati halaman terakhir
             break
         r.raise_for_status()
@@ -232,22 +245,33 @@ def push(source: Path, mode: str, dry_run: bool, token: Optional[str],
 
     ok = err = 0
     for i, (cid, lab, tid) in enumerate(matched, 1):
-        try:
-            if mode == "predictions":
-                r = c.request("POST", "/api/predictions/", json={
-                    "task": tid, "result": _result_payload(lab),
-                    "model_version": "claude-llm",
-                }, timeout=30)
-            else:
-                r = c.request("POST", f"/api/tasks/{tid}/annotations/", json={
-                    "result": _result_payload(lab), "ground_truth": False,
-                }, timeout=30)
-            r.raise_for_status()
-            ok += 1
-        except Exception as exc:  # noqa: BLE001
+        if mode == "predictions":
+            path, body = "/api/predictions/", {
+                "task": tid, "result": _result_payload(lab),
+                "model_version": "claude-llm",
+            }
+        else:
+            path, body = f"/api/tasks/{tid}/annotations/", {
+                "result": _result_payload(lab), "ground_truth": False,
+            }
+        # HF Space free-tier sering memutus koneksi; ulangi POST yg sama
+        # beberapa kali dgn backoff sebelum dihitung gagal.
+        last = None
+        for attempt in range(1, 6):
+            try:
+                r = c.request("POST", path, json=body, timeout=30)
+                r.raise_for_status()
+                ok += 1
+                last = None
+                break
+            except Exception as exc:  # noqa: BLE001
+                last = exc
+                time.sleep(min(2 ** attempt, 15))
+        if last is not None:
             err += 1
             if err <= 10:
-                logger.warning("Gagal task %s (%s): %s", tid, cid, exc)
+                logger.warning("Gagal task %s (%s): %s", tid, cid, last)
+        time.sleep(0.15)  # jeda kecil agar Space tidak kewalahan
         if i % 250 == 0:
             logger.info("…%d/%d (ok=%d err=%d)", i, len(matched), ok, err)
     logger.info("SELESAI: %s dibuat=%d, gagal=%d, label-tanpa-task=%d",
