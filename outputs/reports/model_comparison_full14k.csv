@@ -1,0 +1,6 @@
+versi,SVM,IndoBERT,winner
+v1 imbalanced 6k,0.6015,0.5973,SVM
+v2 balanced 3k,0.6944,0.633,SVM
+v3 imbalanced 10k,0.6256,0.6442,IndoBERT
+v4 balanced 10k,0.6511,0.666,IndoBERT
+v5 full 14k,0.6692,,-

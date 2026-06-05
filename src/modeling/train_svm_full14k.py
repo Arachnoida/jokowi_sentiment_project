@@ -224,6 +224,54 @@ def main() -> None:
     fig2.tight_layout()
     fig2.savefig(rep / "svm_full14k_confusion.png", dpi=120)
 
+    # --- Perbandingan SVM vs IndoBERT (jika metrik IndoBERT per versi tersedia) ---
+    SUF = {
+        "v1 imbalanced 6k": "is6",
+        "v2 balanced 3k": "ibs",
+        "v3 imbalanced 10k": "is10",
+        "v4 balanced 10k": "ib10",
+        "v5 full 14k": "if14",
+    }
+    cmp_rows = []
+    for name, _ in VERSIONS:
+        s = results[name]
+        f = rep / f"indobert_metrics_{SUF[name]}.json"
+        b = json.load(open(f))["test"] if f.exists() else None
+        cmp_rows.append(
+            {
+                "versi": name,
+                "SVM": s["macro_f1"],
+                "IndoBERT": round(b["macro_f1"], 4) if b else None,
+                "winner": "-" if not b else ("SVM" if s["macro_f1"] > b["macro_f1"] else "IndoBERT"),
+            }
+        )
+    cmp = pd.DataFrame(cmp_rows)
+    have = [r for r in cmp_rows if r["IndoBERT"] is not None]
+    if have:
+        names_h = [r["versi"] for r in have]
+        xh = np.arange(len(names_h))
+        wb = 0.38
+        fig3, ax3 = plt.subplots(figsize=(11, 4.5))
+        ax3.bar(xh - wb / 2, [r["SVM"] for r in have], wb, label="SVM+TF-IDF")
+        ax3.bar(xh + wb / 2, [r["IndoBERT"] for r in have], wb, label="IndoBERT")
+        ax3.set_xticks(xh, names_h, rotation=12)
+        ax3.set_ylim(0, 0.8)
+        ax3.set_ylabel("macro-F1 (test)")
+        ax3.legend()
+        ax3.set_title("SVM vs IndoBERT lintas versi (termasuk v5 full 14k)")
+        ax3.grid(axis="y", alpha=0.3)
+        for i, r in enumerate(have):
+            ax3.text(i - wb / 2, r["SVM"] + 0.01, f"{r['SVM']:.3f}", ha="center", fontsize=8)
+            ax3.text(i + wb / 2, r["IndoBERT"] + 0.01, f"{r['IndoBERT']:.3f}", ha="center", fontsize=8)
+        fig3.tight_layout()
+        fig3.savefig(rep / "svm_vs_indobert_full14k.png", dpi=120)
+        cmp.to_csv(rep / "model_comparison_full14k.csv", index=False)
+        print("\nSVM vs IndoBERT:")
+        print(cmp.to_string(index=False))
+    else:
+        print("\n(Metrik IndoBERT belum ada — jalankan notebook Colab utk tiap versi, "
+              "taruh indobert_metrics_{suf}.json di outputs/reports/, lalu jalankan ulang skrip ini.)")
+
     print("\nTersimpan ke", rep)
     print(comp.to_string(index=False))
 
