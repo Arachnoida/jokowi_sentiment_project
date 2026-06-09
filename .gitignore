@@ -7,6 +7,9 @@ logs/
 # Data turunan (regenerate via notebook preprocessing)
 data/processed/
 
+# Snapshot Parquet untuk Spark (regenerate via `python -m src.spark.export_mongo`)
+data/spark_parquet/
+
 # Backup lokal labeling
 *.backup.csv
 

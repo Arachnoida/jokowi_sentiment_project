@@ -113,6 +113,55 @@ beruntung). **Kesimpulan:** tanpa *gold-standard* manusia, relabel LLM tidak men
 performa terukur; plafon ~0,6 lebih ditentukan **ambiguitas tugas (Positif↔Netral)**
 daripada noise label yang bisa dibersihkan. Label asli dipertahankan demi konsistensi.
 
+## Jalur PySpark (Big Data) — migrasi dari notebook ke `.py`
+
+Sebagai pemenuhan komponen **Big Data**, jalur SVM dimigrasikan dari notebook ke
+**skrip PySpark** (`src/spark/`). Spark **4.x** dipakai karena environment memakai
+**Java 21** (Spark 3.5 tidak didukung resmi di Java 21); dijalankan mode lokal
+`local[*]`. Dataset 14k kecil — Spark di sini untuk **mendemonstrasikan pipeline
+ML terdistribusi**, bukan karena volume menuntutnya (dicatat jujur).
+
+```
+src/spark/
+├── session.py          # builder SparkSession (local[*], log diredam) + path helper
+├── export_mongo.py     # one-time: Mongo -> Parquet (lepas dari konektor Mongo-Spark)
+├── udf.py              # bungkus text_normalizer + Sastrawi jadi UDF Spark
+├── preprocess_spark.py # recompute fitur svm/bert dari teks mentah via UDF (distributed)
+└── train_svm_spark.py  # Spark ML: Tokenizer->CountVectorizer->IDF->OneVsRest(LinearSVC)
+```
+
+**Cara jalan:** `python -m src.spark.export_mongo` → `python -m src.spark.preprocess_spark`
+→ `python -m src.spark.train_svm_spark`. Artefak: `outputs/reports/svm_spark_*` +
+`svm_sklearn_vs_spark.csv`.
+
+**Kesetaraan dijaga:** split train/val/test deterministik dihitung sekali (logika
+identik `train_svm_full14k.py`) lalu di-join ke Spark DataFrame → **test set identik**
+lintas sklearn/Spark/IndoBERT. Preprocessing Spark **terverifikasi 100% cocok** dengan
+fitur Mongo (`svm` & `bert`).
+
+### SVM Spark vs SVM sklearn (test macro-F1)
+
+| Versi | sklearn | **PySpark** | selisih | F1 Neg/Net/Pos (Spark) |
+|-------|---------|-------------|---------|------------------------|
+| v1 imbalanced 6k | 0,602 | 0,562 | −0,039 | 0,65 / 0,41 / 0,63 |
+| v2 balanced 3k | 0,694 | 0,545 | −0,150 | 0,59 / 0,54 / 0,50 |
+| v3 imbalanced 10k | 0,626 | 0,561 | −0,065 | 0,64 / 0,43 / 0,61 |
+| v4 balanced 10k | 0,651 | 0,627 | −0,024 | 0,62 / 0,67 / 0,59 |
+| v5 full 14k | 0,669 | 0,615 | −0,054 | 0,65 / 0,56 / 0,63 |
+
+**Kenapa Spark sedikit di bawah sklearn (struktural, bukan bug/tuning):**
+Spark MLlib `CountVectorizer+IDF` **tidak punya `sublinear_tf`** (TfidfVectorizer
+sklearn memakainya), multiclass lewat **OneVsRest** (Spark hanya SVM biner), dan
+regularisasi diparametri `regParam` (bukan `C`). Menambah `regParam=0.001` ke grid
+**tidak terpilih** → gap memang dari pembobotan TF-IDF, bukan tuning. **Pola peringkat
+tetap sama** (v4/v5 terbaik di antara multi-kelas; Netral kelas tersulit). Untuk angka
+final skripsi tetap pakai **sklearn**; Spark dilaporkan sebagai jalur Big Data setara
+metodologi.
+
+> **IndoBERT tidak dimigrasi ke Spark.** Spark MLlib tidak punya jalur fine-tune
+> transformer; IndoBERT tetap HuggingFace/PyTorch di Colab GPU. Ini batas wajar — Spark
+> menangani jalur SVM/feature-engineering, transformer di luar cakupannya.
+
 ## Kode pendukung
 
 ```
@@ -126,7 +175,9 @@ src/modeling/
 
 ## Dependency
 
-- **Lokal (SVM):** `pip install -r requirements.txt` (scikit-learn, joblib, matplotlib,
-  pymongo, dll). Tanpa Spark.
+- **Lokal (SVM sklearn):** `pip install -r requirements.txt` (scikit-learn, joblib,
+  matplotlib, pymongo, dll).
+- **Lokal (SVM PySpark):** sama `requirements.txt` (sudah memuat `pyspark>=4.0`) +
+  **JDK 17/21** terpasang (`java -version`). Jalan mode lokal `local[*]`, tanpa cluster.
 - **Colab (IndoBERT):** notebook meng-`%pip install` transformers + torch sendiri;
   set Runtime → GPU (T4).

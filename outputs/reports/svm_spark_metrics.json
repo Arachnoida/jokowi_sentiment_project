@@ -1,0 +1,225 @@
+{
+  "model": "SVM+TF-IDF (PySpark MLlib)",
+  "by_version": {
+    "v1 imbalanced 6k": {
+      "accuracy": 0.585,
+      "macro_f1": 0.5624,
+      "weighted_f1": 0.6009,
+      "per_class": {
+        "Negatif": {
+          "f1": 0.6499,
+          "support": 262
+        },
+        "Netral": {
+          "f1": 0.4099,
+          "support": 100
+        },
+        "Positif": {
+          "f1": 0.6273,
+          "support": 238
+        }
+      },
+      "confusion_matrix": [
+        [
+          155,
+          70,
+          37
+        ],
+        [
+          15,
+          58,
+          27
+        ],
+        [
+          45,
+          55,
+          138
+        ]
+      ],
+      "n_train": 5398,
+      "n_test": 600,
+      "best_params": {
+        "minDF": 1.0,
+        "regParam": 0.1,
+        "ngram": "(1,2)"
+      },
+      "val_macro_f1": 0.529
+    },
+    "v2 balanced 3k": {
+      "accuracy": 0.5433,
+      "macro_f1": 0.5447,
+      "weighted_f1": 0.5447,
+      "per_class": {
+        "Negatif": {
+          "f1": 0.593,
+          "support": 100
+        },
+        "Netral": {
+          "f1": 0.5382,
+          "support": 100
+        },
+        "Positif": {
+          "f1": 0.5028,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          51,
+          35,
+          14
+        ],
+        [
+          13,
+          67,
+          20
+        ],
+        [
+          8,
+          47,
+          45
+        ]
+      ],
+      "n_train": 2698,
+      "n_test": 300,
+      "best_params": {
+        "minDF": 1.0,
+        "regParam": 0.01,
+        "ngram": "(1,2)"
+      },
+      "val_macro_f1": 0.5719
+    },
+    "v3 imbalanced 10k": {
+      "accuracy": 0.578,
+      "macro_f1": 0.5609,
+      "weighted_f1": 0.5877,
+      "per_class": {
+        "Negatif": {
+          "f1": 0.6362,
+          "support": 410
+        },
+        "Netral": {
+          "f1": 0.4335,
+          "support": 194
+        },
+        "Positif": {
+          "f1": 0.6129,
+          "support": 396
+        }
+      },
+      "confusion_matrix": [
+        [
+          244,
+          91,
+          75
+        ],
+        [
+          43,
+          106,
+          45
+        ],
+        [
+          70,
+          98,
+          228
+        ]
+      ],
+      "n_train": 8997,
+      "n_test": 1000,
+      "best_params": {
+        "minDF": 1.0,
+        "regParam": 0.01,
+        "ngram": "(1,2)"
+      },
+      "val_macro_f1": 0.5884
+    },
+    "v4 balanced 10k": {
+      "accuracy": 0.6317,
+      "macro_f1": 0.6268,
+      "weighted_f1": 0.6268,
+      "per_class": {
+        "Negatif": {
+          "f1": 0.6205,
+          "support": 193
+        },
+        "Netral": {
+          "f1": 0.668,
+          "support": 194
+        },
+        "Positif": {
+          "f1": 0.592,
+          "support": 194
+        }
+      },
+      "confusion_matrix": [
+        [
+          103,
+          59,
+          31
+        ],
+        [
+          13,
+          161,
+          20
+        ],
+        [
+          23,
+          68,
+          103
+        ]
+      ],
+      "n_train": 5224,
+      "n_test": 581,
+      "best_params": {
+        "minDF": 1.0,
+        "regParam": 0.1,
+        "ngram": "(1,2)"
+      },
+      "val_macro_f1": 0.5959
+    },
+    "v5 full 14k": {
+      "accuracy": 0.6215,
+      "macro_f1": 0.6151,
+      "weighted_f1": 0.624,
+      "per_class": {
+        "Negatif": {
+          "f1": 0.6484,
+          "support": 553
+        },
+        "Netral": {
+          "f1": 0.5642,
+          "support": 306
+        },
+        "Positif": {
+          "f1": 0.6326,
+          "support": 552
+        }
+      },
+      "confusion_matrix": [
+        [
+          355,
+          98,
+          100
+        ],
+        [
+          62,
+          200,
+          44
+        ],
+        [
+          125,
+          105,
+          322
+        ]
+      ],
+      "n_train": 12633,
+      "n_test": 1411,
+      "best_params": {
+        "minDF": 3.0,
+        "regParam": 0.01,
+        "ngram": "(1,2)"
+      },
+      "val_macro_f1": 0.5768
+    }
+  }
+}

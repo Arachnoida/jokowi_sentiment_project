@@ -39,3 +39,10 @@ ipykernel>=6.27.0
 scikit-learn>=1.4.0
 joblib>=1.3.0
 matplotlib>=3.8.0
+
+# =========================================================
+# BIG DATA — JALUR PYSPARK (src/spark/)
+# =========================================================
+# Spark 4.x karena environment memakai Java 21 (Spark 3.5 tidak didukung di
+# Java 21). Mode lokal local[*]; dataset 14k -> demonstrasi pipeline distributed.
+pyspark>=4.0,<4.1

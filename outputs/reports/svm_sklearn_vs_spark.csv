@@ -1,0 +1,6 @@
+versi,SVM_sklearn,SVM_spark,selisih
+v1 imbalanced 6k,0.6015,0.5624,-0.0391
+v2 balanced 3k,0.6944,0.5447,-0.1497
+v3 imbalanced 10k,0.6256,0.5609,-0.0647
+v4 balanced 10k,0.6511,0.6268,-0.0243
+v5 full 14k,0.6692,0.6151,-0.0541
