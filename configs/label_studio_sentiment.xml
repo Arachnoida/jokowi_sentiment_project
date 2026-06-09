@@ -5,7 +5,14 @@
                    font-size:17px; line-height:1.6; }
   </Style>
 
-  <Header value="Tentukan sentimen komentar terhadap Jokowi"/>
+  <Header value="Sikap komentar terhadap NARASI tuduhan 'ijazah Jokowi palsu' (BUKAN terhadap sosok Jokowi)"/>
+
+  <!-- Pengingat rubrik: acuan polaritas = sikap thd TUDUHAN, jangan terbalik. -->
+  <View className="ls-konteks">
+    <Text name="rubrik1" value="🟢 Positif = percaya/mendukung tuduhan (ijazah palsu)"/>
+    <Text name="rubrik2" value="🔴 Negatif = menolak/membantah tuduhan (ijazah asli / fitnah)"/>
+    <Text name="rubrik3" value="⚪ Netral = sikap tak jelas / bertanya / info saja"/>
+  </View>
 
   <!-- Konteks (read-only): asal video & jumlah like -->
   <View className="ls-konteks">
