@@ -199,7 +199,8 @@ Dua level tampilan (lihat juga `session.py`, `cluster.sh`):
   mesin, port `7077`/`8080` + port acak driver/block-manager tidak diblok firewall.
   Catatan UDF Python: job **SVM** (`train_svm_spark`) murni JVM → mesin teman cukup
   Spark+Java. Job ber-UDF (`preprocess_spark`/`eda_spark`) butuh PySastrawi + `src/`
-  di mesin teman juga.
+  di mesin teman juga. **Panduan lengkap + troubleshooting (untuk dibagikan ke anggota
+  kelompok):** [`docs/spark_cluster_kelompok.md`](docs/spark_cluster_kelompok.md).
 
 **Kesetaraan dijaga:** split train/val/test deterministik dihitung sekali (logika
 identik `train_svm_full14k.py`) lalu di-join ke Spark DataFrame → **test set identik**
