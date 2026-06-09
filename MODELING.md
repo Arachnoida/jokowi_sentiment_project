@@ -173,8 +173,33 @@ Dua level tampilan (lihat juga `session.py`, `cluster.sh`):
   `PYSPARK_PYTHON`=venv + `PYTHONPATH`=akar proyek → UDF Sastrava bisa diimpor di
   Worker (terverifikasi: `preprocess_spark` di cluster tetap 100% cocok). pip-pyspark
   4.x tak punya `start-master.sh`, jadi `cluster.sh` meluncurkan Master/Worker via
-  `bin/spark-class` (cara yang sama di balik layar). Atur resource Worker via env
-  `WORKER_CORES`/`WORKER_MEM`. Log daemon di `logs/spark/` (gitignored).
+  `bin/spark-class` (cara yang sama di balik layar). Log daemon di `logs/spark/` (gitignored).
+
+- **Banyak Worker (1 mesin).** `WORKER_COUNT` menentukan jumlah worker; resource
+  bersifat per-worker (total core = `WORKER_COUNT × WORKER_CORES`, jangan > core fisik):
+  ```bash
+  WORKER_COUNT=3 WORKER_CORES=2 bash src/spark/cluster.sh start   # 3 Worker node
+  ```
+  Terverifikasi: 3 Worker ALIVE (6 core), job menebar 1 executor ke tiap worker.
+
+- **Cluster ANTAR-MESIN (tugas kelompok).** Komputer teman bisa ikut sebagai Worker
+  lewat LAN — benar-benar terdistribusi:
+  ```bash
+  # MESIN MASTER (kamu) — bind ke IP LAN, bukan 127.0.0.1:
+  SPARK_MASTER_HOST=192.168.1.50 WORKER_COUNT=1 bash src/spark/cluster.sh start
+
+  # MESIN TEMAN — sudah pasang Java + pyspark 4.0.x + punya folder repo:
+  MASTER=spark://192.168.1.50:7077 bash src/spark/join_worker.sh
+
+  # SUBMIT job dari mesin Master (driver harus terjangkau executor remote):
+  SPARK_MASTER=spark://192.168.1.50:7077 SPARK_DRIVER_HOST=192.168.1.50 \
+    python -m src.spark.train_svm_spark
+  ```
+  Syarat: satu LAN (atau IP Master terjangkau), **versi Spark sama (4.0.x)** di semua
+  mesin, port `7077`/`8080` + port acak driver/block-manager tidak diblok firewall.
+  Catatan UDF Python: job **SVM** (`train_svm_spark`) murni JVM → mesin teman cukup
+  Spark+Java. Job ber-UDF (`preprocess_spark`/`eda_spark`) butuh PySastrawi + `src/`
+  di mesin teman juga.
 
 **Kesetaraan dijaga:** split train/val/test deterministik dihitung sekali (logika
 identik `train_svm_full14k.py`) lalu di-join ke Spark DataFrame → **test set identik**

@@ -72,6 +72,11 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
         os.environ.setdefault("PYSPARK_PYTHON", str(venv_py))
         os.environ.setdefault("PYSPARK_DRIVER_PYTHON", str(venv_py))
         builder = builder.config("spark.executorEnv.PYTHONPATH", str(project_root()))
+        # Cluster ANTAR-MESIN: executor remote harus bisa menghubungi balik driver.
+        # Set SPARK_DRIVER_HOST=<IP LAN mesin ini> saat submit (lihat join_worker.sh).
+        driver_host = os.environ.get("SPARK_DRIVER_HOST")
+        if driver_host:
+            builder = builder.config("spark.driver.host", driver_host)
 
     spark = builder.getOrCreate()
     spark.sparkContext.setLogLevel("ERROR")
