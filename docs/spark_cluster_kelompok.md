@@ -1,45 +1,74 @@
 # 🖥️🖥️ Spark Cluster Antar-Mesin — Panduan & Troubleshooting (Tugas Kelompok)
 
 Tujuan: jalankan **satu Master** (di mesin koordinator) + **beberapa Worker** dari
-komputer anggota lain lewat LAN, lalu submit job SVM yang tereksekusi terdistribusi.
+komputer anggota lain, lalu submit job SVM yang tereksekusi terdistribusi.
 
-> **Istilah:** `MASTER_IP` = IP LAN mesin yang menjalankan Master (contoh di repo ini
-> `192.168.1.50`). Ganti dengan IP mesin koordinator kalian.
+> **Istilah:** `MASTER_IP` = IP mesin yang menjalankan Master. Bisa **IP LAN**
+> (`192.168.x` bila satu WiFi) atau **IP Tailscale** (`100.x` bila lewat VPN mesh).
+> Ganti contoh di bawah dengan IP mesin koordinator kalian.
+
+> ✅ **Status: SUDAH DIUJI antar-mesin** dari repo ini — Master + 1 Worker remote
+> (`rocky-server`) lewat **Tailscale**, job terbukti dieksekusi di mesin lain
+> (lihat bagian "Bukti & temuan" di bawah).
 
 ---
 
 ## ✅ Checklist prasyarat (SEMUA mesin)
 
-- [ ] **Satu jaringan/LAN sama** (WiFi yang sama paling gampang). Bukan hotspot terisolasi.
-- [ ] **Java 17 atau 21** terpasang → `java -version`.
+- [ ] **Saling terjangkau jaringan** — TIDAK wajib WiFi sama. Dua opsi:
+  - **LAN/WiFi sama** (paling gampang, latency rendah) → IP `192.168.x`/`10.x`.
+  - **Tailscale** (beda lokasi/jaringan pun bisa) → install Tailscale di semua mesin, satu tailnet, pakai IP `100.x`.
+- [ ] **Java 17 atau 21** terpasang → `java -version`. (Rocky/RHEL: `sudo dnf install -y java-21-openjdk-headless`)
 - [ ] **PySpark versi SAMA persis** di semua mesin → `python -c "import pyspark; print(pyspark.__version__)"` harus `4.0.x` di semua. **Beda versi = pasti gagal.**
-- [ ] Mesin koordinator tahu **IP LAN-nya** → `hostname -I` (ambil yang `192.168.x.x`/`10.x.x.x`).
+- [ ] Koordinator tahu **IP-nya** → LAN: `hostname -I`; Tailscale: `tailscale ip -4`.
+- [ ] (Job baca Parquet, mis. SVM) data sudah **direplikasi** ke tiap Worker → `sync_data_to_worker.sh` (cluster tanpa HDFS, lihat langkah 2b).
 - [ ] (Khusus job ber-UDF) PySastrawi + folder `src/` ada di mesin Worker — lihat catatan di bawah.
 
 ---
 
 ## 🚀 Langkah jalan (urut)
 
+> Ganti `MASTER_IP` di bawah dengan IP koordinator: **LAN** `192.168.1.50` **atau**
+> **Tailscale** `100.95.198.108`. Polanya identik, cuma beda alamat.
+
 ### 1. Mesin koordinator (Master)
 ```bash
-# bind Master ke IP LAN (WAJIB; jangan 127.0.0.1 atau worker remote tak bisa konek)
-SPARK_MASTER_HOST=192.168.1.50 WORKER_COUNT=1 bash src/spark/cluster.sh start
+# bind Master ke IP yang dijangkau worker (WAJIB; jangan 127.0.0.1)
+SPARK_MASTER_HOST=MASTER_IP WORKER_COUNT=1 bash src/spark/cluster.sh start
 ```
 Buka `http://localhost:8080` → harus muncul **Master ALIVE**.
 
-### 2. Mesin tiap anggota (Worker)
+### 2a. Replikasi data ke tiap Worker (untuk job baca Parquet, mis. SVM)
 ```bash
-# di folder repo, MASTER = spark://<MASTER_IP>:7077
-MASTER=spark://192.168.1.50:7077 bash src/spark/join_worker.sh
+# dari KOORDINATOR — cluster tanpa HDFS: data harus ada di tiap node, path sama
+bash src/spark/sync_data_to_worker.sh ravi@worker-host
 ```
-Cek di `:8080` mesin koordinator → Worker baru muncul di tabel **Workers**.
+(Job demo `_demo_remote` murni komputasi → langkah ini boleh dilewati.)
+
+### 2b. Mesin tiap anggota (Worker)
+```bash
+# di folder repo, MASTER = spark://MASTER_IP:7077
+MASTER=spark://MASTER_IP:7077 bash src/spark/join_worker.sh
+```
+Skrip auto-pilih IP Tailscale (`100.x`) bila MASTER beralamat `100.x`. Cek di
+`:8080` koordinator → Worker baru muncul **ALIVE** di tabel **Workers**.
+Biarkan terminal ini **terbuka** (worker hidup selama terminal hidup).
 
 ### 3. Submit job (dari mesin koordinator)
 ```bash
-SPARK_MASTER=spark://192.168.1.50:7077 SPARK_DRIVER_HOST=192.168.1.50 \
+SPARK_MASTER=spark://MASTER_IP:7077 SPARK_DRIVER_HOST=MASTER_IP \
   python -m src.spark.train_svm_spark
 ```
 Selama jalan, `:8080` → **Running Applications (1)** + executor tersebar ke semua Worker.
+
+> **Bukti task di mesin remote** (paling meyakinkan untuk laporan): matikan worker
+> lokal lalu jalankan job demo — seluruh task wajib mendarat di worker remote:
+> ```bash
+> kill $(cat logs/spark/worker-1.pid); rm logs/spark/worker-1.pid
+> SPARK_MASTER=spark://MASTER_IP:7077 SPARK_DRIVER_HOST=MASTER_IP \
+>   SPARK_LOCAL_IP=MASTER_IP python -m src.spark._demo_remote
+> ```
+> Output mencetak tabel executor + `tasks_selesai` per host.
 
 ---
 
@@ -72,6 +101,10 @@ curl -s -o /dev/null -w "%{http_code}\n" http://192.168.1.50:8080/   # harus 200
 | `JAVA_HOME is not set` / `java: command not found` | Java belum ada | install JDK 17/21, cek `java -version` |
 | `ModuleNotFoundError: pyspark` | pyspark belum dipasang di mesin itu | `pip install "pyspark>=4.0,<4.1"` (venv yg sama dipakai skrip) |
 | Job UDF error `No module named 'Sastrawi'` / `src` di executor remote | mesin worker tak punya dependency Python | pakai job **SVM** (tanpa UDF), atau pasang PySastrawi + sediakan `src/` di worker |
+| Executor remote: `Cannot run program ".venv/bin/python": No such file` | **Arrow** memaksa executor spawn Python pakai path venv koordinator yg tak ada di worker | sudah ditangani: `session.py` **mematikan Arrow di mode cluster** otomatis → job SVM jadi murni-JVM, worker tak perlu Python |
+| Executor remote: `FileNotFoundException ... features_spark.parquet` | cluster tanpa HDFS, file cuma ada di koordinator | replikasi dulu: `bash src/spark/sync_data_to_worker.sh user@worker` |
+| Worker remote **mati sendiri** begitu SSH ditutup (khusus **Tailscale SSH**) | Tailscale SSH membunuh proses background saat sesi tutup (nohup/setsid pun kena) | jalankan `join_worker.sh` di **foreground** pada terminal yang dibiarkan terbuka (jangan background) |
+| Worker join via Tailscale bind ke IP `192.168.x` (tak terjangkau Master) | `hostname -I` mengembalikan IP LAN, bukan Tailscale | `join_worker.sh` kini auto-pilih `tailscale ip -4` bila MASTER `100.x`; atau set `SPARK_LOCAL_IP=<IP_tailscale_mesin_itu>` manual |
 
 ---
 
@@ -88,6 +121,11 @@ sudo ufw disable        # ingat ufw enable lagi setelah selesai
 ```
 Windows: izinkan `java`/`python` di Windows Defender Firewall (Private network), atau
 matikan sementara untuk profil Private.
+
+**Tailscale:** secara default semua port antar perangkat di tailnet kalian terbuka
+(kecuali kalian pasang ACL ketat), jadi biasanya **tak perlu utak-atik firewall** —
+trafik lewat interface `tailscale0`. Pastikan saja `ufw`/`firewalld` lokal tak memblok
+interface itu. Cek dari worker: `nc -zv <MASTER_IP_tailscale> 7077` harus *succeeded*.
 
 ---
 
@@ -127,6 +165,28 @@ bash src/spark/cluster.sh stop
 4. Screenshot `:8080` **saat job berjalan** (Worker ALIVE dari beberapa mesin + Running
    Application) untuk laporan.
 
-> Catatan: bagian antar-mesin belum diuji dari repo ini (hanya 1 mesin tersedia);
-> multi-worker di 1 mesin sudah terverifikasi. Kalau ada error saat 2 mesin, salin log
-> Worker (`logs/spark/worker-*.log` di Master, atau output terminal `join_worker.sh`).
+---
+
+## 🔬 Bukti & temuan (dari uji nyata antar-mesin)
+
+Diuji: koordinator + `rocky-server` (mesin remote, Rocky Linux 9.7) lewat **Tailscale**.
+
+**Terbukti:** Worker remote mendaftar ke Master, dan job sintetis (`_demo_remote`,
+agregasi 8 juta baris) **seluruh task-nya dieksekusi di mesin remote** (driver di
+koordinator cuma mengkoordinir). Cross-machine Spark **berfungsi**.
+
+**3 jebakan yang ditemukan & sudah ditangani (lihat tabel di atas):**
+1. **Arrow** memaksa Python di executor → dimatikan otomatis di mode cluster (`session.py`).
+2. **No-HDFS** → data Parquet harus direplikasi (`sync_data_to_worker.sh`).
+3. **Tailscale SSH** membunuh worker background → jalankan di foreground.
+
+**Catatan kejujuran untuk laporan (penting):** pada job **SVM 14k baris**, hampir
+semua task justru jatuh ke **node lokal**; worker remote "kelaparan" task. Sebabnya
+data terlalu kecil/cepat + latency antar-mesin (mis. ~100 ms lewat Tailscale) →
+node lokal menyelesaikan partisi sebelum scheduler sempat menawarkannya ke node
+remote (*locality/latency starvation*). **Distribusi antar-mesin baru benar-benar
+"menang" ketika volume data cukup besar** untuk menutup overhead jaringan — ini
+justru ilustrasi tepat kapan Big Data terdistribusi relevan dan kapan tidak.
+
+> Kalau ada error saat menambah mesin, salin log Worker (`logs/spark/worker-*.log`
+> di koordinator, atau output terminal `join_worker.sh`) saat melapor.

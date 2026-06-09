@@ -55,6 +55,14 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
     ui_enabled = os.environ.get("SPARK_UI", "1") != "0"
     ui_port = os.environ.get("SPARK_UI_PORT", "4040")
     master = os.environ.get("SPARK_MASTER", "local[*]")
+    is_cluster = not master.startswith("local")
+
+    # Arrow mempercepat transfer JVM<->Python (collect/toPandas/createDataFrame),
+    # TAPI memaksa setiap executor men-spawn Python worker -> pada cluster
+    # ANTAR-MESIN itu mengharuskan interpreter+lib Python identik di SETIAP node.
+    # Job SVM tak punya Python-UDF, jadi dengan Arrow OFF ia jadi 100% JVM di
+    # executor (node remote cukup Spark+Java). Maka: Arrow ON hanya di local[*].
+    arrow_enabled = "false" if is_cluster else "true"
 
     builder = (
         SparkSession.builder.appName(app_name)
@@ -62,7 +70,7 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
         .config("spark.ui.enabled", "true" if ui_enabled else "false")
         .config("spark.ui.port", ui_port)
         .config("spark.sql.shuffle.partitions", shuffle_partitions)
-        .config("spark.sql.execution.arrow.pyspark.enabled", "true")
+        .config("spark.sql.execution.arrow.pyspark.enabled", arrow_enabled)
     )
 
     if not master.startswith("local"):
