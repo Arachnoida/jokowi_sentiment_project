@@ -46,15 +46,25 @@ _ENV_CANDIDATES = [ROOT / ".env", ROOT.parent / "jokowi-label-studio" / ".env"]
 
 
 def _extract_token(text: str) -> Optional[str]:
-    """Cari token di isi file .env: baris KEY=val (key mengandung TOKEN) atau JWT polos."""
+    """Cari token di isi file .env.
+
+    Mengenali: baris ``KEY=val`` atau ``KEY: val`` di mana key mengandung TOKEN/PAT
+    (nilai boleh JWT mentah atau dipetik), maupun JWT polos satu baris.
+    """
     for line in text.splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        if "=" in line and "TOKEN" in line.split("=", 1)[0].upper():
-            val = line.split("=", 1)[1].strip().strip('"').strip("'")
-            if val:
-                return val
+        for sep in ("=", ":"):
+            if sep in line:
+                key, val = line.split(sep, 1)
+                if any(tag in key.upper() for tag in ("TOKEN", "PAT")):
+                    val = val.strip().strip('"').strip("'")
+                    m = _JWT_RE.search(val)
+                    if m:
+                        return m.group(0)
+                    if val:
+                        return val
         m = _JWT_RE.fullmatch(line)
         if m:
             return line
