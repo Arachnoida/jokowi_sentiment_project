@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from pyspark.sql import functions as F
 
-from src.spark.session import get_spark, parquet_dir
+from src.spark.session import get_spark, hold_for_ui, parquet_dir
 from src.spark.udf import make_bert_text_udf, make_svm_text_udf
 
 
@@ -54,6 +54,7 @@ def main() -> None:
         .parquet(str(out))
     )
     print(f"Fitur Spark tersimpan -> {out}")
+    hold_for_ui(spark)
     spark.stop()
 
 

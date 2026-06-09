@@ -38,7 +38,7 @@ from src.modeling.train_svm_full14k import (
     evaluate,
     split_version,
 )
-from src.spark.session import get_spark, parquet_dir, reports_dir
+from src.spark.session import get_spark, hold_for_ui, parquet_dir, reports_dir
 
 TEXT, LAB, IDC = "svm", "label_id", "comment_id"
 # Grid native Spark (regParam menggantikan C; minDF menyamai min_df sklearn).
@@ -186,6 +186,7 @@ def main() -> None:
 
     print("\nTersimpan ke", rep)
     print(comp.to_string(index=False))
+    hold_for_ui(spark)
     spark.stop()
 
 

@@ -134,6 +134,33 @@ src/spark/
 → `python -m src.spark.train_svm_spark`. Artefak: `outputs/reports/svm_spark_*` +
 `svm_sklearn_vs_spark.csv`.
 
+### Spark Web UI & standalone cluster
+
+Dua level tampilan (lihat juga `session.py`, `cluster.sh`):
+
+| UI | URL | Isi | Cara |
+|----|-----|-----|------|
+| **Application UI** | `localhost:4040` | Jobs/Stages/**Executors**/SQL/DAG per-aplikasi | otomatis ON saat skrip jalan; cepat hilang saat selesai |
+| **Master UI** | `localhost:8080` | **Worker node** terdaftar, app aktif/selesai, resource | jalankan standalone cluster |
+
+- **Tahan UI :4040** agar sempat dibuka (job `local[*]` cuma beberapa detik):
+  `SPARK_HOLD=1 python -m src.spark.train_svm_spark` lalu buka `localhost:4040`,
+  tekan ENTER utk menutup. Matikan UI `SPARK_UI=0`, ganti port `SPARK_UI_PORT=...`.
+- **Standalone cluster (Master :8080 + Worker)** — `local[*]` tidak punya Worker
+  terpisah, jadi untuk screenshot "Worker node" skripsi jalankan cluster nyata:
+  ```bash
+  bash src/spark/cluster.sh start          # Master :8080 + Worker :8081 (loopback)
+  SPARK_MASTER=spark://127.0.0.1:7077 python -m src.spark.train_svm_spark
+  bash src/spark/cluster.sh status         # cek Worker UP
+  bash src/spark/cluster.sh stop
+  ```
+  Saat `SPARK_MASTER` diset, executor (JVM Worker terpisah) otomatis dapat
+  `PYSPARK_PYTHON`=venv + `PYTHONPATH`=akar proyek → UDF Sastrava bisa diimpor di
+  Worker (terverifikasi: `preprocess_spark` di cluster tetap 100% cocok). pip-pyspark
+  4.x tak punya `start-master.sh`, jadi `cluster.sh` meluncurkan Master/Worker via
+  `bin/spark-class` (cara yang sama di balik layar). Atur resource Worker via env
+  `WORKER_CORES`/`WORKER_MEM`. Log daemon di `logs/spark/` (gitignored).
+
 **Kesetaraan dijaga:** split train/val/test deterministik dihitung sekali (logika
 identik `train_svm_full14k.py`) lalu di-join ke Spark DataFrame → **test set identik**
 lintas sklearn/Spark/IndoBERT. Preprocessing Spark **terverifikasi 100% cocok** dengan
