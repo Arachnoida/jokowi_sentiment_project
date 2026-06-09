@@ -65,6 +65,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://192.168.1.50:8080/   # harus 200
 | Worker log: `Connection refused :7077` | firewall / Master belum jalan | buka port (lihat bawah) / cek Master ALIVE di `:8080` |
 | `Incompatible` / serialVersion / aneh saat connect | **versi Spark beda** antar mesin | samakan: semua `pip install "pyspark>=4.0,<4.1"` |
 | Worker **DEAD** di `:8080` | proses worker mati / di-`stop` | jalankan ulang `join_worker.sh`; jangan tutup terminalnya |
+| Banyak entri **DEAD** / `Address already in use :7077` / status `:8080` kacau | JVM Spark **orphan** dari run sebelumnya nyangkut | `bash src/spark/cluster.sh sweep` (sapu paksa semua master/worker), lalu `start` ulang |
 | Job jalan tapi **stuck/`TaskSchedulerImpl: Initial job has not accepted resources`** | resource kurang / worker tak nyambung benar | pastikan worker ALIVE & punya core; kurangi beban |
 | Executor remote error `Failed to connect to driver` | driver tak terjangkau worker | submit dgn `SPARK_DRIVER_HOST=<MASTER_IP>` |
 | Worker bind ke IP salah (`127.0.1.1`) | `SPARK_LOCAL_IP` belum diset | di mesin worker: `SPARK_LOCAL_IP=<IP_mesin_itu> bash join_worker.sh` |

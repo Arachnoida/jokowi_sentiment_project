@@ -106,10 +106,27 @@ status() {
   echo -n "Master UI :$MASTER_WEBUI -> "; curl -s -o /dev/null -w "HTTP %{http_code}\n" "http://localhost:$MASTER_WEBUI/" || echo "tak terjangkau"
 }
 
+sweep() {
+  # Sapu PAKSA semua JVM Master/Worker Spark yang nyangkut (orphan dari run lama
+  # yg bikin entri DEAD di :8080 / port 7077 bentrok). Pakai saat status kacau.
+  local pids killed=0
+  if command -v jps >/dev/null 2>&1; then
+    pids=$(jps 2>/dev/null | grep -iE "Master|Worker" | awk '{print $1}' || true)
+  else
+    pids=$(pgrep -f "org.apache.spark.deploy.(master|worker)" 2>/dev/null || true)
+  fi
+  for pid in $pids; do
+    kill -9 "$pid" 2>/dev/null && { echo "sweep: kill $pid"; killed=$((killed+1)); }
+  done
+  rm -f "$RUN"/*.pid
+  [ "$killed" -eq 0 ] && echo "sweep: tak ada JVM Spark nyangkut." || echo "sweep: $killed proses dibersihkan."
+}
+
 case "${1:-}" in
   start) start ;;
   stop) stop ;;
   restart) stop; sleep 2; start ;;
   status) status ;;
-  *) echo "Pakai: [WORKER_COUNT=n] bash src/spark/cluster.sh {start|stop|restart|status}"; exit 1 ;;
+  sweep) sweep ;;
+  *) echo "Pakai: [WORKER_COUNT=n] bash src/spark/cluster.sh {start|stop|restart|status|sweep}"; exit 1 ;;
 esac
