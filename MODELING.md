@@ -27,16 +27,17 @@ Membandingkan dua paradigma pada dataset & split yang **identik**:
 ## Alur kerja
 
 1. **Pelabelan** (sudah): label `claude-llm` di `raw_comments`, 3.000 ditandai balanced.
-2. **`notebooks/2_preprocessing/preprocessing_svm.ipynb`** → `processed_svm` (kolom `svm` + `split`).
-3. **`notebooks/2_preprocessing/preprocessing_indobert.ipynb`** → `processed_bert` (kolom `bert` + `split`).
-4. **`notebooks/3_modeling/train_svm.ipynb`** — baca `processed_svm`, TF-IDF→LinearSVC, tuning di
-   val (`PredefinedSplit`), refit train+val, evaluasi test. Lokal.
-5. **`notebooks/3_modeling/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
-   `indobert-base-p1` di Colab/GPU, evaluasi test set identik.
-6. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
+2. **Preprocessing** → `processed_svm` (kolom `svm`) & `processed_bert` (kolom `bert`).
+   Kini lewat `src/spark/preprocess_spark.py` (+ `src/modeling/_backfill_processed_{svm,bert}.py`
+   utk tulis Mongo) — **bukan notebook lagi** (diarsipkan, lihat `notebooks/README.md`).
+3. **Training SVM** — `src/modeling/train_svm_full14k.py` (sklearn, angka final) &
+   `src/spark/train_svm_spark.py` (Spark MLlib): TF-IDF→LinearSVC, tuning di val, eval test.
+4. **`notebooks/3_modeling/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
+   `indobert-base-p1` di Colab/GPU, evaluasi test set identik. (Tetap notebook — butuh GPU.)
+5. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
 
-Notebook modeling **self-contained** (tanpa `import src`) — metrik & confusion matrix
-dihitung inline. Helper `compare_models()` tersedia di `src/modeling/evaluate.py`.
+Helper `compare_models()` tersedia di `src/modeling/evaluate.py`. Jalur preprocessing &
+training SVM lihat bagian **"Jalur PySpark (Big Data)"** di bawah.
 
 ## Hasil
 

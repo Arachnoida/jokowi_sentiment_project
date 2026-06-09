@@ -80,19 +80,21 @@ Versi balanced disimpan juga sebagai CSV: `outputs/labeling/balanced_1000.csv` (
 Dikelompokkan per tahap dalam folder bernomor (file tanpa nomor); detail di
 [`notebooks/README.md`](notebooks/README.md).
 
+> **Catatan:** preprocessing & training SVM sudah dimigrasi ke skrip `.py`/PySpark
+> (`src/spark/`, `src/modeling/`); notebooknya diarsipkan. Lihat
+> [`MODELING.md`](MODELING.md) → "Jalur PySpark (Big Data)".
+
 | Notebook | Tahap | Baca → Tulis |
 |----------|-------|--------------|
 | `1_data_collection/ingestion.ipynb` | Collection | YouTube API → `raw_comments` |
 | `1_data_collection/export_labeling.ipynb` | bridge | `raw_comments` → Label Studio |
-| `2_preprocessing/preprocessing_svm.ipynb` | Preprocessing | `raw_comments` → `processed_svm` |
-| `2_preprocessing/preprocessing_indobert.ipynb` | Preprocessing | `raw_comments` → `processed_bert` |
-| `3_modeling/train_svm.ipynb` | Modeling (lokal) | `processed_svm` → model + metrik |
 | `3_modeling/indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` → model + metrik |
+| `3_modeling/indobertweet_improve_colab.ipynb` | Eksperimen (Colab) | `processed_bert` → IndoBERTweet |
+| `3_modeling/improve_svm.ipynb` | Eksperimen (lokal) | `processed_svm` → ensemble/CV |
 | `utils/` | utilitas | config / database_maintenance / reset_database |
-| `config` / `database_maintenance` / `reset_database` | utilitas | — |
 
-Notebook preprocessing & modeling **self-contained** (tanpa `import src`) → bisa
-dijalankan lokal maupun di Google Colab.
+Notebook tersisa **self-contained** (tanpa `import src`) → bisa dijalankan lokal maupun
+di Google Colab. Tahap preprocessing/SVM via `.py`: `python -m src.spark.<modul>`.
 
 ## Setup
 
