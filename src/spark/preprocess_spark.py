@@ -18,10 +18,6 @@ from pyspark.sql import functions as F
 from src.spark.session import get_spark, hold_for_ui, parquet_dir
 from src.spark.udf import make_bert_text_udf, make_svm_text_udf
 
-# Flag versi dibawa ke output agar training bisa memilih subset v1-v4 tanpa
-# kembali membaca Mongo/processed_svm.
-FLAGS = ["in_set6k", "in_balanced_set", "in_set10k", "in_balanced10k"]
-
 
 def main() -> None:
     spark = get_spark("preprocess-spark")
@@ -37,7 +33,6 @@ def main() -> None:
         svm_src.select(
             "comment_id",
             "label_id",
-            *FLAGS,
             F.col("text"),
             F.col("svm").alias("svm_stored"),
             make_svm_text_udf(F.col("text")).alias("svm_spark"),
@@ -59,7 +54,6 @@ def main() -> None:
         feats.select(
             "comment_id",
             "label_id",
-            *FLAGS,
             F.col("svm_spark").alias("svm"),
             F.col("bert_spark").alias("bert"),
         )

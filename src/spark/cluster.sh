@@ -45,6 +45,11 @@ MASTER_URL="spark://${MASTER_HOST}:${MASTER_PORT}"
 RUN="$ROOT/logs/spark"
 mkdir -p "$RUN"
 MPID="$RUN/master.pid"
+HPID="$RUN/history.pid"
+# Folder event log (samakan dgn spark.eventLog.dir di session.py) -> dibaca History Server.
+EVENTS="$ROOT/logs/spark-events"
+HISTORY_WEBUI=18080
+mkdir -p "$EVENTS"
 
 _alive() { [ -f "$1" ] && kill -0 "$(cat "$1")" 2>/dev/null; }
 
@@ -122,11 +127,29 @@ sweep() {
   [ "$killed" -eq 0 ] && echo "sweep: tak ada JVM Spark nyangkut." || echo "sweep: $killed proses dibersihkan."
 }
 
+history_start() {
+  # History Server membaca event log di disk -> riwayat aplikasi SELESAI tetap ada
+  # meski Master/device restart/shutdown. Independen dari Master (sengaja tak ikut stop).
+  if _alive "$HPID"; then echo "History Server sudah jalan (pid $(cat "$HPID")) -> http://localhost:$HISTORY_WEBUI"; return; fi
+  SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory=file://$EVENTS -Dspark.history.ui.port=$HISTORY_WEBUI" \
+    nohup "$SPARK_HOME/bin/spark-class" org.apache.spark.deploy.history.HistoryServer >"$RUN/history.log" 2>&1 &
+  echo $! >"$HPID"
+  sleep 4
+  echo "History Server start -> http://localhost:$HISTORY_WEBUI (membaca $EVENTS)"
+}
+
+history_stop() {
+  if _alive "$HPID"; then kill "$(cat "$HPID")" 2>/dev/null || true; echo "History Server dimatikan."; fi
+  rm -f "$HPID"
+}
+
 case "${1:-}" in
   start) start ;;
   stop) stop ;;
   restart) stop; sleep 2; start ;;
   status) status ;;
   sweep) sweep ;;
-  *) echo "Pakai: [WORKER_COUNT=n] bash src/spark/cluster.sh {start|stop|restart|status|sweep}"; exit 1 ;;
+  history) history_start ;;
+  history-stop) history_stop ;;
+  *) echo "Pakai: [WORKER_COUNT=n] bash src/spark/cluster.sh {start|stop|restart|status|sweep|history|history-stop}"; exit 1 ;;
 esac

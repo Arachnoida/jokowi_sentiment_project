@@ -26,10 +26,9 @@ from pymongo import MongoClient
 from src.spark.session import parquet_dir, project_root
 
 DB = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
-FLAGS = ["in_set6k", "in_balanced_set", "in_set10k", "in_balanced10k"]
 COLLECTIONS = {
-    "processed_svm": ["comment_id", "video_id", "text", "svm", "label", "label_id", *FLAGS],
-    "processed_bert": ["comment_id", "video_id", "text", "bert", "label", "label_id", *FLAGS],
+    "processed_svm": ["comment_id", "video_id", "text", "svm", "label", "label_id"],
+    "processed_bert": ["comment_id", "video_id", "text", "bert", "label", "label_id"],
 }
 
 
@@ -52,11 +51,7 @@ def export_collection(db, name: str, fields: list[str], out_dir) -> int:
     proj = {"_id": 0, **{f: 1 for f in fields}}
     docs = list(db[name].find({"label": {"$exists": True}}, proj))
     df = pd.DataFrame(docs)
-    # Normalisasi: flag boolean yang hilang -> False; teks/fitur kosong -> "".
-    for f in FLAGS:
-        if f not in df.columns:
-            df[f] = False
-        df[f] = df[f].fillna(False).astype(bool)
+    # Normalisasi: teks/fitur kosong -> "".
     for col in ("text", "svm", "bert"):
         if col in df.columns:
             df[col] = df[col].fillna("").astype(str)

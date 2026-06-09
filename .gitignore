@@ -15,3 +15,15 @@ data/spark_parquet/
 
 # Model binary (regenerate via notebook 06/07)
 outputs/models/
+
+# Output training IndoBERT (checkpoint, ~GB, ephemeral)
+outputs/indobert_out/
+
+# Snapshot/backup labeling yang regenerable
+outputs/labeling/_ls_export_p*.json
+outputs/labeling/testset_v5_export.json
+outputs/labeling/testset_v5_blind.json
+outputs/labeling/*.before*.csv
+
+# Event log Spark (dibaca History Server; regenerate per run)
+logs/spark-events/

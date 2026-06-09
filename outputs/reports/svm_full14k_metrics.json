@@ -1,235 +1,49 @@
 {
   "model": "SVM+TF-IDF",
-  "by_version": {
-    "v1 imbalanced 6k": {
-      "accuracy": 0.6433,
-      "macro_f1": 0.6015,
-      "weighted_f1": 0.6408,
-      "per_class": {
-        "Negatif": {
-          "f1": 0.7016,
-          "support": 262
-        },
-        "Netral": {
-          "f1": 0.4479,
-          "support": 100
-        },
-        "Positif": {
-          "f1": 0.6549,
-          "support": 238
-        }
+  "test": {
+    "accuracy": 0.6825,
+    "macro_f1": 0.6692,
+    "weighted_f1": 0.6834,
+    "per_class": {
+      "Negatif": {
+        "f1": 0.7074,
+        "support": 553
       },
-      "confusion_matrix": [
-        [
-          194,
-          24,
-          44
-        ],
-        [
-          33,
-          43,
-          24
-        ],
-        [
-          64,
-          25,
-          149
-        ]
-      ],
-      "n_train": 5398,
-      "n_test": 600,
-      "best_params": {
-        "clf__C": 0.1,
-        "tfidf__min_df": 1,
-        "tfidf__ngram_range": [
-          1,
-          1
-        ]
+      "Netral": {
+        "f1": 0.5877,
+        "support": 306
+      },
+      "Positif": {
+        "f1": 0.7125,
+        "support": 552
       }
     },
-    "v2 balanced 3k": {
-      "accuracy": 0.6933,
-      "macro_f1": 0.6944,
-      "weighted_f1": 0.6944,
-      "per_class": {
-        "Negatif": {
-          "f1": 0.7629,
-          "support": 100
-        },
-        "Netral": {
-          "f1": 0.6571,
-          "support": 100
-        },
-        "Positif": {
-          "f1": 0.6633,
-          "support": 100
-        }
-      },
-      "confusion_matrix": [
-        [
-          74,
-          17,
-          9
-        ],
-        [
-          9,
-          69,
-          22
-        ],
-        [
-          11,
-          24,
-          65
-        ]
+    "confusion_matrix": [
+      [
+        388,
+        69,
+        96
       ],
-      "n_train": 2698,
-      "n_test": 300,
-      "best_params": {
-        "clf__C": 0.1,
-        "tfidf__min_df": 2,
-        "tfidf__ngram_range": [
-          1,
-          2
-        ]
-      }
-    },
-    "v3 imbalanced 10k": {
-      "accuracy": 0.656,
-      "macro_f1": 0.6256,
-      "weighted_f1": 0.655,
-      "per_class": {
-        "Negatif": {
-          "f1": 0.7077,
-          "support": 410
-        },
-        "Netral": {
-          "f1": 0.4855,
-          "support": 194
-        },
-        "Positif": {
-          "f1": 0.6835,
-          "support": 396
-        }
-      },
-      "confusion_matrix": [
-        [
-          293,
-          42,
-          75
-        ],
-        [
-          51,
-          92,
-          51
-        ],
-        [
-          74,
-          51,
-          271
-        ]
+      [
+        65,
+        186,
+        55
       ],
-      "n_train": 8997,
-      "n_test": 1000,
-      "best_params": {
-        "clf__C": 0.1,
-        "tfidf__min_df": 2,
-        "tfidf__ngram_range": [
-          1,
-          2
-        ]
-      }
-    },
-    "v4 balanced 10k": {
-      "accuracy": 0.6506,
-      "macro_f1": 0.6511,
-      "weighted_f1": 0.6511,
-      "per_class": {
-        "Negatif": {
-          "f1": 0.6649,
-          "support": 193
-        },
-        "Netral": {
-          "f1": 0.6684,
-          "support": 194
-        },
-        "Positif": {
-          "f1": 0.62,
-          "support": 194
-        }
-      },
-      "confusion_matrix": [
-        [
-          124,
-          31,
-          38
-        ],
-        [
-          20,
-          130,
-          44
-        ],
-        [
-          36,
-          34,
-          124
-        ]
-      ],
-      "n_train": 5224,
-      "n_test": 581,
-      "best_params": {
-        "clf__C": 0.1,
-        "tfidf__min_df": 1,
-        "tfidf__ngram_range": [
-          1,
-          2
-        ]
-      }
-    },
-    "v5 full 14k": {
-      "accuracy": 0.6825,
-      "macro_f1": 0.6692,
-      "weighted_f1": 0.6834,
-      "per_class": {
-        "Negatif": {
-          "f1": 0.7074,
-          "support": 553
-        },
-        "Netral": {
-          "f1": 0.5877,
-          "support": 306
-        },
-        "Positif": {
-          "f1": 0.7125,
-          "support": 552
-        }
-      },
-      "confusion_matrix": [
-        [
-          388,
-          69,
-          96
-        ],
-        [
-          65,
-          186,
-          55
-        ],
-        [
-          91,
-          72,
-          389
-        ]
-      ],
-      "n_train": 12633,
-      "n_test": 1411,
-      "best_params": {
-        "clf__C": 0.1,
-        "tfidf__min_df": 3,
-        "tfidf__ngram_range": [
-          1,
-          2
-        ]
-      }
+      [
+        91,
+        72,
+        389
+      ]
+    ],
+    "n_train": 12633,
+    "n_test": 1411,
+    "best_params": {
+      "clf__C": 0.1,
+      "tfidf__min_df": 3,
+      "tfidf__ngram_range": [
+        1,
+        2
+      ]
     }
   }
 }

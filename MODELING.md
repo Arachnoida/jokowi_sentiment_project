@@ -36,7 +36,8 @@ Membandingkan dua paradigma pada dataset & split yang **identik**:
    `indobert-base-p1` di Colab/GPU, evaluasi test set identik. (Tetap notebook — butuh GPU.)
 5. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
 
-Helper `compare_models()` tersedia di `src/modeling/evaluate.py`. Jalur preprocessing &
+Perbandingan SVM vs IndoBERT dihasilkan otomatis oleh `src/modeling/train_svm_full14k.py`
+(membaca `outputs/reports/indobert_metrics.json` bila ada). Jalur preprocessing &
 training SVM lihat bagian **"Jalur PySpark (Big Data)"** di bawah.
 
 ## Hasil
@@ -102,9 +103,9 @@ metrik (8 konfigurasi × 5 metrik). Dihasilkan dari `svm_versions_metrics.json` 
 
 | Track | Tindakan | Hasil |
 |-------|----------|-------|
-| **B** Fitur+ensemble SVM | char n-gram + ComplementNB/LogReg + voting (`improve_svm.ipynb`) | Ensemble word+char terbaik, **+2–3%** (CV) |
-| **D** Cross-validation | 5-fold CV (`improve_svm.ipynb`) | **macro-F1 jujur ~0,59–0,62**; single-split 0,694 ternyata optimistik |
-| **C** IndoBERTweet | ganti model domain-medsos + weighted loss (`indobertweet_improve_colab.ipynb`) | siap dijalankan di Colab |
+| **B** Fitur+ensemble SVM | char n-gram + ComplementNB/LogReg + voting (`archive/notebooks/improve_svm.ipynb`) | Ensemble word+char terbaik, **+2–3%** (CV) |
+| **D** Cross-validation | 5-fold CV (`archive/notebooks/improve_svm.ipynb`) | **macro-F1 jujur ~0,59–0,62**; single-split 0,694 ternyata optimistik |
+| **C** IndoBERTweet | ganti model domain-medsos + weighted loss (`archive/notebooks/indobertweet_improve_colab.ipynb`) | siap dijalankan di Colab |
 | **A** Kualitas label | 3-pass LLM consensus voting pada 2.525 baris conf<0,6 (877 label dikoreksi) | **Tidak ada gain terukur** → label dikembalikan |
 
 **Temuan track A (penting & jujur):** relabel konsensus LLM mengoreksi 877 label dan

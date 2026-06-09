@@ -17,9 +17,7 @@ notebooks/
 │   ├── ingestion.ipynb               YouTube Data API → raw_comments
 │   └── export_labeling.ipynb         raw_comments → ekspor ke Label Studio
 ├── 3_modeling/
-│   ├── improve_svm.ipynb             eksperimen SVM (ensemble word+char, 5-fold CV)
-│   ├── indobert_finetune_colab.ipynb processed_bert → IndoBERT + metrik (Colab/GPU)
-│   └── indobertweet_improve_colab.ipynb  IndoBERTweet + weighted loss (Colab/GPU)
+│   └── indobert_finetune_colab.ipynb processed_bert → IndoBERT + metrik (Colab/GPU)
 └── utils/
     ├── config.ipynb                  cek koneksi & konfigurasi
     ├── database_maintenance.ipynb    operasi pemeliharaan koleksi
@@ -44,8 +42,6 @@ Cara jalan jalur Spark: lihat `../MODELING.md` → "Jalur PySpark (Big Data)".
 | 1. Data collection | `1_data_collection/ingestion.ipynb` | YouTube API → `raw_comments` |
 | 1. Labeling (bridge) | `1_data_collection/export_labeling.ipynb` | `raw_comments` → Label Studio |
 | 3. Modeling (Colab/GPU) | `3_modeling/indobert_finetune_colab.ipynb` | `processed_bert` → model + metrik |
-| 3. Eksperimen (Colab) | `3_modeling/indobertweet_improve_colab.ipynb` | `processed_bert` → IndoBERTweet |
-| 3. Eksperimen (lokal) | `3_modeling/improve_svm.ipynb` | `processed_svm` → ensemble/CV |
 
 IndoBERT tetap notebook karena fine-tune transformer butuh **GPU (Colab)** dan tak punya
 padanan Spark MLlib (lihat catatan di `../MODELING.md`).

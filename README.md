@@ -89,8 +89,6 @@ Dikelompokkan per tahap dalam folder bernomor (file tanpa nomor); detail di
 | `1_data_collection/ingestion.ipynb` | Collection | YouTube API → `raw_comments` |
 | `1_data_collection/export_labeling.ipynb` | bridge | `raw_comments` → Label Studio |
 | `3_modeling/indobert_finetune_colab.ipynb` | Modeling (Colab/GPU) | `processed_bert` → model + metrik |
-| `3_modeling/indobertweet_improve_colab.ipynb` | Eksperimen (Colab) | `processed_bert` → IndoBERTweet |
-| `3_modeling/improve_svm.ipynb` | Eksperimen (lokal) | `processed_svm` → ensemble/CV |
 | `utils/` | utilitas | config / database_maintenance / reset_database |
 
 Notebook tersisa **self-contained** (tanpa `import src`) → bisa dijalankan lokal maupun

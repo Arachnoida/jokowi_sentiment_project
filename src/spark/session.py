@@ -64,6 +64,12 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
     # executor (node remote cukup Spark+Java). Maka: Arrow ON hanya di local[*].
     arrow_enabled = "false" if is_cluster else "true"
 
+    # Event log -> dibaca History Server (:18080) agar riwayat aplikasi SELESAI
+    # tetap ada meski Master/device shutdown (UI Master :8080 hanya in-memory).
+    # Driver jalan client-mode di mesin ini -> tulis log ke filesystem lokal.
+    ev_dir = project_root() / "logs" / "spark-events"
+    ev_dir.mkdir(parents=True, exist_ok=True)
+
     builder = (
         SparkSession.builder.appName(app_name)
         .master(master)
@@ -71,6 +77,8 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
         .config("spark.ui.port", ui_port)
         .config("spark.sql.shuffle.partitions", shuffle_partitions)
         .config("spark.sql.execution.arrow.pyspark.enabled", arrow_enabled)
+        .config("spark.eventLog.enabled", "true")
+        .config("spark.eventLog.dir", f"file://{ev_dir}")
     )
 
     if not master.startswith("local"):
@@ -79,6 +87,10 @@ def get_spark(app_name: str, shuffle_partitions: str = DEFAULT_SHUFFLE_PARTITION
         venv_py = project_root() / ".venv" / "bin" / "python"
         os.environ.setdefault("PYSPARK_PYTHON", str(venv_py))
         os.environ.setdefault("PYSPARK_DRIVER_PYTHON", str(venv_py))
+        # Paksa SETIAP executor pakai interpreter venv (path identik di tiap node) —
+        # tanpa ini executor remote jatuh ke python sistem (mis. rocky python3.9
+        # ~/.local) yang tak punya numpy/Sastrawi -> MLlib & UDF gagal impor.
+        builder = builder.config("spark.executorEnv.PYSPARK_PYTHON", str(venv_py))
         builder = builder.config("spark.executorEnv.PYTHONPATH", str(project_root()))
         # Cluster ANTAR-MESIN: executor remote harus bisa menghubungi balik driver.
         # Set SPARK_DRIVER_HOST=<IP LAN mesin ini> saat submit (lihat join_worker.sh).

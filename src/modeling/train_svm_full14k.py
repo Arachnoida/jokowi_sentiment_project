@@ -1,15 +1,15 @@
-"""Latih & evaluasi SVM + TF-IDF pada dataset PENUH 14.107 komentar berlabel.
+"""Latih & evaluasi SVM + TF-IDF pada SATU dataset: 14.107 komentar berlabel (full 14k).
 
-Pipeline identik dengan notebook train_svm.ipynb (agar setara & adil):
-  - keanggotaan kanonik + label dari raw_comments; teks fitur `svm` dari processed_svm
+Pipeline identik dengan IndoBERT agar perbandingan adil:
+  - keanggotaan + label dari raw_comments (semua yang `label` ada); teks fitur `svm`
+    dari processed_svm
   - split deterministik 70/20/10 (urut comment_id, stratified, seed=42)
   - GridSearchCV 24 kombinasi (ngram x min_df x C) dgn PredefinedSplit di val (f1_macro)
   - refit train+val pakai param terbaik -> evaluasi test (test dibiarkan utuh)
   - metrik utama macro-F1; simpan JSON + confusion matrix PNG ke outputs/reports/
 
-Versi 'v5 full 14k' = SELURUH komentar berlabel (imbalanced). Untuk konteks, skrip juga
-melatih ulang keempat versi kanonik memakai processed_svm yang kini sudah lengkap,
-sehingga satu tabel memuat v1..v5 yang konsisten.
+Proyek memakai SATU dataset saja (full 14k, imbalanced) — versi-versi subset lama
+(6k/balanced/10k) sudah ditinggalkan.
 """
 import json
 import os
@@ -37,14 +37,6 @@ TEXT, LAB = "svm", "label_id"
 LABELS = ["Negatif", "Netral", "Positif"]
 LABEL2ID = {l: i for i, l in enumerate(LABELS)}
 DB = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
-VERSIONS = [
-    ("v1 imbalanced 6k", "in_set6k"),
-    ("v2 balanced 3k", "in_balanced_set"),
-    ("v3 imbalanced 10k", "in_set10k"),
-    ("v4 balanced 10k", "in_balanced10k"),
-    ("v5 full 14k", "in_full14k"),  # sintetis: semua komentar berlabel
-]
-FLAGS = [f for _, f in VERSIONS if f != "in_full14k"]
 GRID = {
     "tfidf__ngram_range": [(1, 1), (1, 2)],
     "tfidf__min_df": [1, 2, 3],
@@ -69,12 +61,9 @@ def _connect(tries: int = 6) -> MongoClient:
 
 def load_df(client: MongoClient) -> pd.DataFrame:
     db = client[DB]
-    proj = {"_id": 0, "comment_id": 1, "label": 1}
-    proj.update({f: 1 for f in FLAGS})
-    mem = pd.DataFrame(list(db["raw_comments"].find({"label": {"$exists": True}}, proj)))
-    for f in FLAGS:
-        mem[f] = mem[f].fillna(False)
-    mem["in_full14k"] = True  # versi sintetis: seluruh anggota berlabel
+    mem = pd.DataFrame(
+        list(db["raw_comments"].find({"label": {"$exists": True}}, {"_id": 0, "comment_id": 1, "label": 1}))
+    )
     mem["label_id"] = mem["label"].map(LABEL2ID)
     sv = pd.DataFrame(list(db["processed_svm"].find({}, {"_id": 0, "comment_id": 1, "svm": 1})))
     df = mem.merge(sv, on="comment_id", how="left")
@@ -119,8 +108,9 @@ def evaluate(yt, yp) -> dict:
     }
 
 
-def run_version(df: pd.DataFrame, flag: str) -> dict:
-    tr, va, te = split_version(df[df[flag]])
+def run(df: pd.DataFrame) -> dict:
+    """Latih GridSearch di train+val (PredefinedSplit), evaluasi pada test utuh."""
+    tr, va, te = split_version(df)
     tr, va = _nonempty(tr), _nonempty(va)  # buang teks kosong dari train/val saja
     X = pd.concat([tr[TEXT], va[TEXT]], ignore_index=True)
     y = pd.concat([tr[LAB], va[LAB]], ignore_index=True)
@@ -136,144 +126,85 @@ def run_version(df: pd.DataFrame, flag: str) -> dict:
     return m
 
 
-def main() -> None:
-    client = _connect()
-    df = load_df(client)
-    print(f"{len(df)} member berlabel | per versi:", {f: int(df[f].sum()) for f, in [(f,) for _, f in VERSIONS]})
-    print("svm kosong (drop dari train/val):", int((df["svm"].str.len() == 0).sum()))
-
-    results = {}
-    for name, flag in VERSIONS:
-        m = run_version(df, flag)
-        results[name] = m
-        line = " ".join(f"{l[:3]}={m['per_class'][l]['f1']:.2f}" for l in LABELS)
-        print(
-            f"[{name:<18}] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
-            f"macro-F1={m['macro_f1']:.3f} acc={m['accuracy']:.3f} | {line} | {m['best_params']}"
-        )
-
+def _repo_root() -> pathlib.Path:
     root = pathlib.Path.cwd()
     for p in [root, *root.parents]:
         if (p / "configs").exists() or (p / ".git").exists():
-            root = p
-            break
-    rep = root / "outputs" / "reports"
-    rep.mkdir(parents=True, exist_ok=True)
+            return p
+    return root
 
+
+def main() -> None:
+    client = _connect()
+    df = load_df(client)
+    print(f"{len(df)} komentar berlabel (full 14k) | svm kosong (drop dari train/val): "
+          f"{int((df['svm'].str.len() == 0).sum())}")
+
+    m = run(df)
+    line = " ".join(f"{l[:3]}={m['per_class'][l]['f1']:.2f}" for l in LABELS)
+    print(
+        f"[full 14k] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
+        f"macro-F1={m['macro_f1']:.3f} acc={m['accuracy']:.3f} | {line} | {m['best_params']}"
+    )
+
+    rep = _repo_root() / "outputs" / "reports"
+    rep.mkdir(parents=True, exist_ok=True)
     json.dump(
-        {"model": "SVM+TF-IDF", "by_version": results},
+        {"model": "SVM+TF-IDF", "test": m},
         open(rep / "svm_full14k_metrics.json", "w"),
         ensure_ascii=False,
         indent=2,
     )
-
-    rows = []
-    for name, _ in VERSIONS:
-        m = results[name]
-        rows.append(
-            {
-                "versi": name,
-                "n_train": m["n_train"],
-                "n_test": m["n_test"],
-                "macro_F1": m["macro_f1"],
-                "accuracy": m["accuracy"],
-                "weighted_F1": m["weighted_f1"],
-                **{f"F1_{l}": m["per_class"][l]["f1"] for l in LABELS},
-            }
-        )
-    comp = pd.DataFrame(rows)
-    comp.to_csv(rep / "svm_full14k_table.csv", index=False)
 
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    names = [n for n, _ in VERSIONS]
-    metrics = ["macro_F1"] + [f"F1_{l}" for l in LABELS]
-    x = np.arange(len(names))
-    w = 0.2
-    fig, ax = plt.subplots(figsize=(11, 4.5))
-    for k, met in enumerate(metrics):
-        ax.bar(x + k * w, [comp.loc[comp.versi == n, met].values[0] for n in names], w, label=met)
-    ax.set_xticks(x + w * 1.5, names, rotation=12)
-    ax.set_ylim(0, 1)
-    ax.set_ylabel("F1")
-    ax.legend(ncol=4, fontsize=8)
-    ax.set_title("SVM lintas versi dataset (termasuk v5 full 14k)")
-    ax.grid(axis="y", alpha=0.3)
+    cm = np.array(m["confusion_matrix"])
+    fig, ax = plt.subplots(figsize=(5, 4.3))
+    ax.imshow(cm, cmap="Blues")
+    ax.set_xticks(range(3), LABELS)
+    ax.set_yticks(range(3), LABELS)
+    ax.set_xlabel("Prediksi")
+    ax.set_ylabel("Aktual")
+    ax.set_title(f"SVM+TF-IDF — Test (macro-F1={m['macro_f1']:.3f})")
+    th = cm.max() / 2
+    for i in range(3):
+        for j in range(3):
+            ax.text(j, i, cm[i, j], ha="center", va="center",
+                    color="white" if cm[i, j] > th else "black")
     fig.tight_layout()
-    fig.savefig(rep / "svm_full14k_compare.png", dpi=120)
+    fig.savefig(rep / "svm_full14k_confusion.png", dpi=120)
 
-    fig2, axes = plt.subplots(1, len(VERSIONS), figsize=(4 * len(VERSIONS), 3.6))
-    for ax, (name, _) in zip(axes, VERSIONS):
-        cm = np.array(results[name]["confusion_matrix"])
-        ax.imshow(cm, cmap="Blues")
-        ax.set_xticks(range(3), [l[:3] for l in LABELS])
-        ax.set_yticks(range(3), [l[:3] for l in LABELS])
-        ax.set_title(f"{name}\nmacroF1={results[name]['macro_f1']:.3f}", fontsize=9)
-        th = cm.max() / 2
-        for i in range(3):
-            for j in range(3):
-                ax.text(
-                    j, i, cm[i, j], ha="center", va="center", fontsize=8,
-                    color="white" if cm[i, j] > th else "black",
-                )
-    fig2.supxlabel("Prediksi")
-    fig2.supylabel("Aktual")
-    fig2.tight_layout()
-    fig2.savefig(rep / "svm_full14k_confusion.png", dpi=120)
-
-    # --- Perbandingan SVM vs IndoBERT (jika metrik IndoBERT per versi tersedia) ---
-    SUF = {
-        "v1 imbalanced 6k": "is6",
-        "v2 balanced 3k": "ibs",
-        "v3 imbalanced 10k": "is10",
-        "v4 balanced 10k": "ib10",
-        "v5 full 14k": "if14",
-    }
-    cmp_rows = []
-    for name, _ in VERSIONS:
-        s = results[name]
-        f = rep / f"indobert_metrics_{SUF[name]}.json"
-        b = json.load(open(f))["test"] if f.exists() else None
-        cmp_rows.append(
-            {
-                "versi": name,
-                "SVM": s["macro_f1"],
-                "IndoBERT": round(b["macro_f1"], 4) if b else None,
-                "winner": "-" if not b else ("SVM" if s["macro_f1"] > b["macro_f1"] else "IndoBERT"),
-            }
-        )
-    cmp = pd.DataFrame(cmp_rows)
-    have = [r for r in cmp_rows if r["IndoBERT"] is not None]
-    if have:
-        names_h = [r["versi"] for r in have]
-        xh = np.arange(len(names_h))
-        wb = 0.38
-        fig3, ax3 = plt.subplots(figsize=(11, 4.5))
-        ax3.bar(xh - wb / 2, [r["SVM"] for r in have], wb, label="SVM+TF-IDF")
-        ax3.bar(xh + wb / 2, [r["IndoBERT"] for r in have], wb, label="IndoBERT")
-        ax3.set_xticks(xh, names_h, rotation=12)
-        ax3.set_ylim(0, 0.8)
-        ax3.set_ylabel("macro-F1 (test)")
-        ax3.legend()
-        ax3.set_title("SVM vs IndoBERT lintas versi (termasuk v5 full 14k)")
-        ax3.grid(axis="y", alpha=0.3)
-        for i, r in enumerate(have):
-            ax3.text(i - wb / 2, r["SVM"] + 0.01, f"{r['SVM']:.3f}", ha="center", fontsize=8)
-            ax3.text(i + wb / 2, r["IndoBERT"] + 0.01, f"{r['IndoBERT']:.3f}", ha="center", fontsize=8)
-        fig3.tight_layout()
-        fig3.savefig(rep / "svm_vs_indobert_full14k.png", dpi=120)
+    # --- Perbandingan SVM vs IndoBERT (jika metrik IndoBERT tersedia) ---
+    bfile = rep / "indobert_metrics.json"
+    if bfile.exists():
+        b = json.load(open(bfile))["test"]
+        winner = "SVM" if m["macro_f1"] > b["macro_f1"] else "IndoBERT"
+        cmp = pd.DataFrame([
+            {"model": "SVM+TF-IDF", "macro_F1": m["macro_f1"], "accuracy": m["accuracy"]},
+            {"model": "IndoBERT", "macro_F1": round(b["macro_f1"], 4), "accuracy": round(b["accuracy"], 4)},
+        ])
         cmp.to_csv(rep / "model_comparison_full14k.csv", index=False)
-        print("\nSVM vs IndoBERT:")
+        fig2, ax2 = plt.subplots(figsize=(5, 4.2))
+        ax2.bar(cmp["model"], cmp["macro_F1"], color=["#4C72B0", "#DD8452"], width=0.5)
+        ax2.set_ylim(0, max(0.8, cmp["macro_F1"].max() + 0.1))
+        ax2.set_ylabel("macro-F1 (test)")
+        ax2.set_title(f"SVM vs IndoBERT (full 14k) — menang: {winner}")
+        for i, v in enumerate(cmp["macro_F1"]):
+            ax2.text(i, v + 0.01, f"{v:.3f}", ha="center", fontsize=9)
+        ax2.grid(axis="y", alpha=0.3)
+        fig2.tight_layout()
+        fig2.savefig(rep / "svm_vs_indobert_full14k.png", dpi=120)
+        print("\nSVM vs IndoBERT (macro-F1):")
         print(cmp.to_string(index=False))
+        print(f"-> menang: {winner}")
     else:
-        print("\n(Metrik IndoBERT belum ada — jalankan notebook Colab utk tiap versi, "
-              "taruh indobert_metrics_{suf}.json di outputs/reports/, lalu jalankan ulang skrip ini.)")
+        print("\n(indobert_metrics.json belum ada — jalankan IndoBERT, taruh hasilnya di "
+              "outputs/reports/, lalu jalankan ulang skrip ini untuk tabel perbandingan.)")
 
     print("\nTersimpan ke", rep)
-    print(comp.to_string(index=False))
 
 
 if __name__ == "__main__":

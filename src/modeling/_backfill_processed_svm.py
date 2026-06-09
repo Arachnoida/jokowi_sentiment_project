@@ -21,7 +21,6 @@ from src.text_normalizer import preprocess_svm_python
 
 LABELS = ["Negatif", "Netral", "Positif"]
 LABEL2ID = {l: i for i, l in enumerate(LABELS)}
-FLAGS = ["in_set6k", "in_balanced_set", "in_set10k", "in_balanced10k"]
 DB = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
 
 
@@ -47,8 +46,6 @@ def main() -> None:
 
     have = {d["comment_id"] for d in ps.find({}, {"comment_id": 1, "_id": 0})}
     proj = {"_id": 0, "comment_id": 1, "video_id": 1, "text": 1, "label": 1}
-    for fl in FLAGS:
-        proj[fl] = 1
     labeled = list(rc.find({"label": {"$exists": True}}, proj))
     missing = [d for d in labeled if d["comment_id"] not in have]
     print(f"berlabel={len(labeled)} | sudah di processed_svm={len(have)} | backfill={len(missing)}")
@@ -66,8 +63,6 @@ def main() -> None:
         return stemmer.stem(pre) if pre else pre
 
     df = pd.DataFrame(missing)
-    for fl in FLAGS:
-        df[fl] = df[fl].fillna(False) if fl in df else False
     df["svm"] = df["text"].astype(str).map(make_text_svm)
     df["label_id"] = df["label"].map(LABEL2ID)
 
@@ -84,8 +79,6 @@ def main() -> None:
             "label": r["label"],
             "label_id": int(r["label_id"]),
         }
-        for fl in FLAGS:
-            doc[fl] = bool(r[fl])
         ops.append(UpdateOne({"comment_id": r["comment_id"]}, {"$set": doc}, upsert=True))
 
     ps.bulk_write(ops, ordered=False)
