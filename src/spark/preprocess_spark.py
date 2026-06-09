@@ -6,7 +6,9 @@ Mongo (kolom ``svm``/``bert``). Kalau match-rate ~100%, jalur Spark terbukti
 setara dengan jalur sklearn/Mongo sebelumnya.
 
 Input : data/spark_parquet/processed_{svm,bert}.parquet  (punya kolom `text`)
-Output : data/spark_parquet/features_spark.parquet        (fitur hasil Spark)
+Output : data/spark_parquet/features_spark.parquet
+         (fitur hasil Spark + flag versi -> dipakai langsung oleh train_svm_spark,
+          sehingga pipeline preprocessing->training SEPENUHNYA via Spark)
 Jalankan: python -m src.spark.preprocess_spark
 """
 from __future__ import annotations
@@ -15,6 +17,10 @@ from pyspark.sql import functions as F
 
 from src.spark.session import get_spark, hold_for_ui, parquet_dir
 from src.spark.udf import make_bert_text_udf, make_svm_text_udf
+
+# Flag versi dibawa ke output agar training bisa memilih subset v1-v4 tanpa
+# kembali membaca Mongo/processed_svm.
+FLAGS = ["in_set6k", "in_balanced_set", "in_set10k", "in_balanced10k"]
 
 
 def main() -> None:
@@ -31,6 +37,7 @@ def main() -> None:
         svm_src.select(
             "comment_id",
             "label_id",
+            *FLAGS,
             F.col("text"),
             F.col("svm").alias("svm_stored"),
             make_svm_text_udf(F.col("text")).alias("svm_spark"),
@@ -49,7 +56,13 @@ def main() -> None:
 
     out = pq / "features_spark.parquet"
     (
-        feats.select("comment_id", "label_id", "svm_spark", "bert_spark")
+        feats.select(
+            "comment_id",
+            "label_id",
+            *FLAGS,
+            F.col("svm_spark").alias("svm"),
+            F.col("bert_spark").alias("bert"),
+        )
         .write.mode("overwrite")
         .parquet(str(out))
     )

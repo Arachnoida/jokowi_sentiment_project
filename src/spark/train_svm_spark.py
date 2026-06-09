@@ -17,7 +17,9 @@ Beda yang melekat pada Spark MLlib (dicatat jujur untuk skripsi):
   - Multiclass: OneVsRest(LinearSVC) (Spark hanya punya SVM biner).
   - Regularisasi diparametri ``regParam`` (bukan ``C`` sklearn) -> grid beda.
 
-Prasyarat: jalankan ``python -m src.spark.export_mongo`` lebih dulu.
+Prasyarat: ``python -m src.spark.export_mongo`` lalu ``python -m src.spark.preprocess_spark``
+(skrip ini membaca ``features_spark.parquet`` hasil preprocess Spark -> pipeline
+preprocessing->training sepenuhnya via Spark).
 Jalankan  : python -m src.spark.train_svm_spark
 """
 from __future__ import annotations
@@ -136,7 +138,11 @@ def run_version(spark, feats, members_pdf: pd.DataFrame, flag: str) -> dict:
 def main() -> None:
     spark = get_spark("train-svm-spark")
     pq = parquet_dir()
-    src = spark.read.parquet(str(pq / "processed_svm.parquet"))
+    feat_path = pq / "features_spark.parquet"
+    if not feat_path.exists():
+        raise SystemExit("features_spark.parquet belum ada — jalankan dulu: "
+                         "python -m src.spark.preprocess_spark")
+    src = spark.read.parquet(str(feat_path))
     feats = src.select(IDC, F.col(TEXT), F.col(LAB).cast("int").alias(LAB)).cache()
 
     # Keanggotaan + flag versi (kecil) -> pandas untuk hitung split deterministik.

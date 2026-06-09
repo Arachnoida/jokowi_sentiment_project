@@ -1,0 +1,277 @@
+{
+  "n_total": 14107,
+  "class_distribution": {
+    "Negatif": 5531,
+    "Netral": 3060,
+    "Positif": 5516
+  },
+  "length": {
+    "avg_words": {
+      "raw": 15.3,
+      "svm": 11.61,
+      "bert": 15.19
+    },
+    "median_words": {
+      "raw": 11,
+      "svm": 8,
+      "bert": 11
+    },
+    "max_words": {
+      "raw": 689,
+      "svm": 540
+    }
+  },
+  "vocab": {
+    "vocab_size": 14844,
+    "top_terms": [
+      [
+        "tidak",
+        4760
+      ],
+      [
+        "jokowi",
+        2891
+      ],
+      [
+        "roy",
+        2786
+      ],
+      [
+        "orang",
+        2448
+      ],
+      [
+        "ijazah",
+        2173
+      ],
+      [
+        "kalau",
+        1931
+      ],
+      [
+        "palsu",
+        1462
+      ],
+      [
+        "benar",
+        1359
+      ],
+      [
+        "asli",
+        1314
+      ],
+      [
+        "rakyat",
+        1252
+      ],
+      [
+        "jadi",
+        1194
+      ],
+      [
+        "pak",
+        1157
+      ]
+    ]
+  },
+  "quality": {
+    "n_total": 14107,
+    "svm_empty": 73,
+    "svm_empty_pct": 0.52,
+    "svm_duplicate": 204,
+    "svm_duplicate_pct": 1.45
+  },
+  "leakage_v5": {
+    "id_overlap": 0,
+    "duplicate_text_across_splits": 61,
+    "rows_affected": 198
+  },
+  "discriminative_terms": {
+    "Negatif": [
+      [
+        "cela",
+        2.48,
+        6
+      ],
+      [
+        "haaa",
+        2.48,
+        6
+      ],
+      [
+        "kdrun",
+        2.48,
+        30
+      ],
+      [
+        "uh",
+        2.48,
+        6
+      ],
+      [
+        "cerewet",
+        2.48,
+        6
+      ],
+      [
+        "cocotnya",
+        2.48,
+        6
+      ],
+      [
+        "egois",
+        2.48,
+        6
+      ],
+      [
+        "link",
+        2.48,
+        12
+      ],
+      [
+        "kerok",
+        2.48,
+        6
+      ],
+      [
+        "kadrun",
+        2.48,
+        6
+      ],
+      [
+        "adudomba",
+        2.48,
+        12
+      ],
+      [
+        "watu",
+        2.48,
+        6
+      ]
+    ],
+    "Netral": [
+      [
+        "pantura",
+        6.4,
+        5
+      ],
+      [
+        "judol",
+        6.4,
+        5
+      ],
+      [
+        "keping",
+        6.4,
+        5
+      ],
+      [
+        "ajeg",
+        6.4,
+        5
+      ],
+      [
+        "kusir",
+        5.49,
+        6
+      ],
+      [
+        "perilaku",
+        5.34,
+        5
+      ],
+      [
+        "samar",
+        5.34,
+        5
+      ],
+      [
+        "berlian",
+        5.34,
+        5
+      ],
+      [
+        "banjir",
+        5.24,
+        9
+      ],
+      [
+        "paris",
+        5.24,
+        9
+      ],
+      [
+        "bandara",
+        5.12,
+        4
+      ],
+      [
+        "mefitnah",
+        5.12,
+        4
+      ]
+    ],
+    "Positif": [
+      [
+        "gembong",
+        2.27,
+        6
+      ],
+      [
+        "neo",
+        2.27,
+        5
+      ],
+      [
+        "photocopy",
+        2.27,
+        6
+      ],
+      [
+        "font",
+        2.27,
+        6
+      ],
+      [
+        "khozinuddin",
+        2.27,
+        5
+      ],
+      [
+        "karbon",
+        2.27,
+        5
+      ],
+      [
+        "kebukak",
+        2.27,
+        5
+      ],
+      [
+        "stnk",
+        2.27,
+        5
+      ],
+      [
+        "iming",
+        2.27,
+        6
+      ],
+      [
+        "subtansi",
+        2.27,
+        5
+      ],
+      [
+        "potocopy",
+        2.27,
+        5
+      ],
+      [
+        "asrul",
+        2.27,
+        8
+      ]
+    ]
+  }
+}

@@ -123,16 +123,30 @@ ML terdistribusi**, bukan karena volume menuntutnya (dicatat jujur).
 
 ```
 src/spark/
-├── session.py          # builder SparkSession (local[*], log diredam) + path helper
+├── session.py          # builder SparkSession (local[*]/cluster, UI, log diredam)
 ├── export_mongo.py     # one-time: Mongo -> Parquet (lepas dari konektor Mongo-Spark)
 ├── udf.py              # bungkus text_normalizer + Sastrawi jadi UDF Spark
-├── preprocess_spark.py # recompute fitur svm/bert dari teks mentah via UDF (distributed)
-└── train_svm_spark.py  # Spark ML: Tokenizer->CountVectorizer->IDF->OneVsRest(LinearSVC)
+├── preprocess_spark.py # teks mentah -> fitur svm/bert via UDF -> features_spark.parquet
+├── eda_spark.py        # EDA terdistribusi: distribusi/panjang/vocab/leakage/lift
+├── train_svm_spark.py  # Spark ML: Tokenizer->CountVectorizer->IDF->OneVsRest(LinearSVC)
+└── cluster.sh          # start/stop standalone cluster (Master :8080 + Worker)
 ```
 
-**Cara jalan:** `python -m src.spark.export_mongo` → `python -m src.spark.preprocess_spark`
-→ `python -m src.spark.train_svm_spark`. Artefak: `outputs/reports/svm_spark_*` +
-`svm_sklearn_vs_spark.csv`.
+**Cara jalan (pipeline self-contained, semua via Spark):**
+`python -m src.spark.export_mongo` → `python -m src.spark.preprocess_spark` →
+`python -m src.spark.eda_spark` → `python -m src.spark.train_svm_spark`.
+`preprocess_spark` menulis `features_spark.parquet` (fitur + flag versi) yang dibaca
+langsung oleh `train_svm_spark` → preprocessing→training **sepenuhnya Spark** (tak
+kembali ke Mongo). Artefak: `outputs/reports/{svm_spark_*, svm_sklearn_vs_spark.csv,
+eda_spark.json, eda_spark.png}`.
+
+**EDA terdistribusi (`eda_spark.py`)** menghitung via agregasi Spark (groupBy/explode/
+join): distribusi kelas (Neg 5531 / Net 3060 / Pos 5516), rata-rata kata (mentah 15,3 →
+svm 11,6 → bert 15,2), **vocab SVM 14.844**, svm kosong 0,52%, duplikat 1,45%, top term
+diskriminatif per kelas (skor lift), dan **cek leakage** split v5: `comment_id` antar
+split disjoint (0 overlap), tapi **61 teks identik** (198 baris, 1,4%) muncul lintas
+split — komentar pendek beda `comment_id` yang menyusut jadi token sama setelah cleaning
+agresif (mis. "mantap"); minor & dilaporkan apa adanya.
 
 ### Spark Web UI & standalone cluster
 
