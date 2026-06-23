@@ -24,6 +24,7 @@ LABEL2ID = {l: i for i, l in enumerate(LABELS)}
 DB = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
 
 
+# buka koneksi MongoDB Atlas (retry transien SSL/DNS), verifikasi via ping
 def _connect(tries: int = 6) -> MongoClient:
     load_dotenv()
     uri = os.environ["MONGO_URI"]
@@ -39,6 +40,7 @@ def _connect(tries: int = 6) -> MongoClient:
     raise RuntimeError(f"Gagal koneksi Mongo: {last}")
 
 
+# [JALUR B - SVM] tambal di 1 mesin (pandas): hanya comment_id yang BELUM ada di processed_svm
 def main() -> None:
     client = _connect()
     db = client[DB]
@@ -58,6 +60,7 @@ def main() -> None:
 
     stemmer = StemmerFactory().create_stemmer()
 
+    # sama persis dgn udf.make_svm_text: preprocess lalu stem string penuh
     def make_text_svm(text: str) -> str:
         pre = preprocess_svm_python(text or "")
         return stemmer.stem(pre) if pre else pre

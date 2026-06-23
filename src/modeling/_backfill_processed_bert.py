@@ -20,6 +20,7 @@ LABEL2ID = {l: i for i, l in enumerate(LABELS)}
 DB = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
 
 
+# buka koneksi MongoDB Atlas (retry transien SSL/DNS), verifikasi via ping
 def _connect(tries: int = 6) -> MongoClient:
     load_dotenv()
     uri = os.environ["MONGO_URI"]
@@ -35,6 +36,7 @@ def _connect(tries: int = 6) -> MongoClient:
     raise RuntimeError(f"Gagal koneksi Mongo: {last}")
 
 
+# [JALUR B - BERT] tambal di 1 mesin (pandas): hanya comment_id yang BELUM ada di processed_bert
 def main() -> None:
     client = _connect()
     db = client[DB]

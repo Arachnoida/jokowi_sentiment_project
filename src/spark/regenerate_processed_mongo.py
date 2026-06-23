@@ -22,6 +22,7 @@ Jalankan (cluster):
       .venv/bin/python -m src.spark.regenerate_processed_mongo
 Jalankan (lokal): python -m src.spark.regenerate_processed_mongo
 """
+
 from __future__ import annotations
 
 import os
@@ -48,17 +49,19 @@ def _connect(tries: int = 8) -> MongoClient:
     last = None
     for attempt in range(1, tries + 1):
         try:
-            c = MongoClient(uri, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=20000)
+            c = MongoClient(
+                uri, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=20000
+            )
             c.admin.command("ping")
             return c
-        except Exception as exc:  # noqa: BLE001 - retry transient SSL/DNS
+        except Exception as exc:
             last = exc
-            time.sleep(min(2 ** attempt, 15))
+            time.sleep(min(2**attempt, 15))
     raise RuntimeError(f"Gagal koneksi Mongo: {last}")
 
 
 def _write_clean(col, records: list[dict], feat: str) -> int:
-    """Replace_one upsert -> dokumen ter-overwrite ke schema bersih (drop field lama)."""
+    # Replace_one upsert -> dokumen ter-overwrite ke schema bersih (drop field lama)
     ops = []
     for r in records:
         doc = {
@@ -81,7 +84,7 @@ def main() -> None:
     client = _connect()
     db = client[DB]
 
-    # 1) Sumber kebenaran teks: raw_comments yang berlabel (driver-side read).
+    # 1) Sumber kebenaran teks: raw_comments yang berlabel.
     docs = list(
         db["raw_comments"].find(
             {"label": {"$exists": True}},
@@ -110,8 +113,12 @@ def main() -> None:
     # 3) Tulis dokumen BERSIH ke Mongo (schema seragam, tanpa flag).
     n_svm = _write_clean(db["processed_svm"], rows, "svm")
     n_bert = _write_clean(db["processed_bert"], rows, "bert")
-    print(f"processed_svm  ditulis: {n_svm} | total dok: {db['processed_svm'].count_documents({})}")
-    print(f"processed_bert ditulis: {n_bert} | total dok: {db['processed_bert'].count_documents({})}")
+    print(
+        f"processed_svm  ditulis: {n_svm} | total dok: {db['processed_svm'].count_documents({})}"
+    )
+    print(
+        f"processed_bert ditulis: {n_bert} | total dok: {db['processed_bert'].count_documents({})}"
+    )
 
     # 4) Ringkas field (verifikasi tak ada flag tersisa).
     for name in ("processed_svm", "processed_bert"):

@@ -20,6 +20,7 @@ from src.text_normalizer import clean_for_bert, preprocess_svm_python
 _STEMMER = None
 
 
+# bikin stemmer Sastrawi SEKALI per proses worker (lazy singleton), bukan tiap baris
 def _stemmer():
     global _STEMMER
     if _STEMMER is None:
@@ -29,16 +30,19 @@ def _stemmer():
     return _STEMMER
 
 
+# [JALUR A - SVM] preprocess_svm_python lalu STEM string penuh -> isi kolom 'svm'
 def make_svm_text(text: str | None) -> str:
     """Teks fitur jalur SVM: preprocess + stem Sastrawi pada string penuh."""
     pre = preprocess_svm_python(text or "")
     return _stemmer().stem(pre) if pre else pre
 
 
+# [JALUR A - BERT] clean_for_bert saja -> isi kolom 'bert'
 def make_bert_text(text: str | None) -> str:
     """Teks fitur jalur IndoBERT: cleaning minimal."""
     return clean_for_bert(text or "")
 
 
+# bungkus jadi Spark UDF -> dipakai sbg kolom di regenerate_processed_mongo.py / preprocess_spark.py
 make_svm_text_udf = udf(make_svm_text, StringType())
 make_bert_text_udf = udf(make_bert_text, StringType())
