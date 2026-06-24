@@ -89,10 +89,18 @@ cp outputs/labeling/labeling_dataset.backup_20260624.csv outputs/labeling/labeli
 
 ## 6. Sisa pekerjaan
 
-- [ ] IndoBERT Colab (kamu) → `indobert_metrics.json`.
-- [ ] Regen perbandingan 3 model + update laporan PDF (setelah IndoBERT).
-      **Metrik utama = AKURASI** (keputusan user 2026-06-24; macro-F1 dibuang dari
-      tabel/chart karena data timpang 70% Netral → akurasi yang dipakai).
+- [x] **(SELESAI 2026-06-24) IndoBERT Colab** → `outputs/reports/indobert_metrics.json`
+      (label baru, test set kanonik 1.411 identik SVM). Akurasi **0,8207**, macro-F1 0,698,
+      F1 Neg 0,480 / Net 0,886 / Pos 0,730.
+- [x] **(SELESAI 2026-06-24) Regen perbandingan 3 model** via `src/modeling/compare_models.py`
+      → `outputs/reports/model_comparison_full14k.csv` + `model_comparison_accuracy.png`.
+      **Metrik utama = AKURASI** (keputusan user; macro-F1 tetap dicatat di CSV tapi chart
+      pakai akurasi). Hasil akurasi: **IndoBERT 0,8207** > SVM sklearn 0,8115 > SVM Spark
+      0,7725 (IndoBERT menang tipis; SVM sklearn justru unggul F1 Negatif 0,502). Chart lama
+      `svm_vs_indobert_full14k.png` (2-model macro-F1, IndoBERT label LAMA) DIHAPUS — stale.
+- [ ] **Update laporan** (`laporan/BD II - 2305551076.docx/.pdf`, manual) dgn tabel+chart
+      perbandingan 3 model di atas. Dokumen di-maintain manual → tempel artefak dari
+      `outputs/reports/model_comparison_*`.
 - [x] **(SELESAI 2026-06-24) Fix over-stemming Sastrawi** `setuju→tuju`,
       `sependapat→dapat`. Kata `setuju/sependapat/sepaham/sepakat` didaftarkan sbg root
       word ke kamus stemmer di `src/spark/udf.py` (+`_backfill_processed_svm.py`), WAJIB
