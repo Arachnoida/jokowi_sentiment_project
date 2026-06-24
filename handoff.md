@@ -91,5 +91,14 @@ cp outputs/labeling/labeling_dataset.backup_20260624.csv outputs/labeling/labeli
 
 - [ ] IndoBERT Colab (kamu) → `indobert_metrics.json`.
 - [ ] Regen perbandingan 3 model + update laporan PDF (setelah IndoBERT).
-- [ ] Verifikasi LS predictions selesai (via API).
-- [ ] Commit & push perubahan (rubrik, skrip, label baru, metrik, handoff).
+      **Metrik utama = AKURASI** (keputusan user 2026-06-24; macro-F1 dibuang dari
+      tabel/chart karena data timpang 70% Netral → akurasi yang dipakai).
+- [ ] **(DITUNDA) Fix over-stemming Sastrawi** `setuju→tuju` (juga `sependapat→dapat`,
+      `sepaham`). Cara: tambah kata terlindungi ke kamus stemmer di `src/spark/udf.py`
+      via `stemmer.delegatedStemmer.dictionary.add(<kata>)`. Lalu **re-run** pipeline
+      preprocessing→SVM (regenerate_processed_mongo → export_mongo → preprocess_spark →
+      train_svm_full14k → train_svm_spark; ~12–20 mnt). Dampak KECIL: hanya 0,8% baris
+      (112/14107), tidak mengubah label, IndoBERT tak terpengaruh (kolom `bert` tanpa stem).
+      Lihat §5 untuk urutan perintah.
+- [x] LS predictions id=1: ter-push ~59% (terpotong timeout 90 mnt; kosmetik, Mongo = truth).
+- [x] Commit & push (commit `24791e6`, `8a56e67`, `116a887` di main).
