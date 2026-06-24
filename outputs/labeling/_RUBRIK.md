@@ -128,6 +128,15 @@ terbuka** (mis. "kalo mungkin palsu, UGM dirugikan", #11) yang → Netral.
 
 Aturan ini **dua arah** dan berlaku walau tokohnya jelas: hinaan/pujian telanjang
 ke pihak mana pun (pro maupun kontra) sama-sama Netral selama klaim tak disinggung.
+Termasuk serang **pembela/buzzer Jokowi** ("penjilat", "dibayar Jokowi", "mengalihkan
+isu") — itu serang-orang, bukan verdict klaim → **Netral**, sama seperti serang penuduh.
+
+**Sebut kata "ijazah" saja TIDAK cukup jadi sikap.** Kalau "ijazah" muncul hanya untuk
+*mendeskripsikan perilaku orang yang diserang* (mis. "dia **mengalihkan isu ijazah**",
+"**fitnah** tiap hari") tanpa verdict palsu/asli di teks → tetap serang-orang → **Netral**.
+Marker "**fitnah/penjilat/buzzer bayaran**" ikut aturan objek yang sama dengan "bohong":
+berpolaritas HANYA bila verdict klaim tampak (palsu/asli, atau "fitnah **soal ijazah**").
+"fitnah tanpa data" generik (objek tak disebut) = serang-orang → **Netral**.
 
 Contoh:
 - "Roy soryo orang stres" (hina orang, tak sentuh klaim) → **Netral**.
@@ -142,6 +151,9 @@ Contoh:
 - "Geng Roy, kalian yg harus MEMBUKTIKAN ijazah itu memang palsu!" (beban bukti ke penuduh + kata isu "palsu") → **Negatif**. (Bandingkan: "buktikan" ke Jokowi/"tunjukkan ijazahmu" → Positif; "buktikan" ke penuduh + kata isu → Negatif; bare "buktikan" + olok nama → Netral.)
 - "Mantan napi, koruptor, partai kalah pilpres, rame2 dukung Suryo 😂" (ad-hominem ke kubu penuduh, nol kata isu) → **Netral**.
 - "Roy Suryo cs punya dendam pribadi, balas dendam ke Jokowi" (spekulasi motif penuduh, nol kata isu, tanpa verdict) → **Netral**. Beda dgn "tuduhan ini fitnah/cari sensasi **soal ijazah**" (motif ditautkan ke isu + verdict) → **Negatif**.
+- "Sudah gila bener si [penuduh], berani fitnah tanpa data tiap hari, adzab dunia-akhirat" (serang penuduh; "fitnah" generik tanpa objek ijazah di teks) → **Netral**.
+- "Jangan dilayani, pintar bersilat lidah mengalihkan isu ijazah Jokowi, makin berbusa makin besar bayaran dari Jokowi, penjilat" (serang **pembela/buzzer Jokowi**; sebut "ijazah" tapi nol verdict palsu/asli) → **Netral**.
+- "Kalau benar asli, kenapa ijazah kebanggaan tidak berani ditunjukkan; jangan disalahkan kalau tidak percaya" (kondisional retoris menggiring curiga + nyatakan tidak percaya keaslian) → **Positif**.
 - "Laporin aja dia, pengacara siapa itu yg bicaranya meluap" (target/basis tak jelas) → **Netral**.
 - "Muak membahas ijazah Jokowi, buang anggaran, selesai 15 menit" (keluhan meta, tak ada predikat klaim) → **Netral**.
 - "Kalo mungkin itu palsu, UGM yg dirugikan, harusnya UGM menuntut" (hipotetis + argumen prosedural) → **Netral**.

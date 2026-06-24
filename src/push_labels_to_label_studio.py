@@ -214,7 +214,8 @@ def _result_payload(label: str) -> List[dict]:
 
 
 def push(source: Path, mode: str, dry_run: bool, token: Optional[str],
-         limit: Optional[int], skip_existing: bool) -> None:
+         limit: Optional[int], skip_existing: bool,
+         model_version: str = "claude-llm") -> None:
     base = Config.label_studio.URL.rstrip("/")
     pid = Config.label_studio.PROJECT_ID
     tok = _read_token(token)
@@ -258,7 +259,7 @@ def push(source: Path, mode: str, dry_run: bool, token: Optional[str],
         if mode == "predictions":
             path, body = "/api/predictions/", {
                 "task": tid, "result": _result_payload(lab),
-                "model_version": "claude-llm",
+                "model_version": model_version,
             }
         else:
             path, body = f"/api/tasks/{tid}/annotations/", {
@@ -298,12 +299,14 @@ def main() -> None:
     ap.add_argument("--no-skip-existing", dest="skip_existing", action="store_false",
                     default=True,
                     help="Jangan lewati task yg sudah punya prediction (default: dilewati).")
+    ap.add_argument("--model-version", default="claude-llm",
+                    help="model_version utk predictions (beri nilai baru agar beda dari prediksi lama).")
     dr = ap.add_mutually_exclusive_group()
     dr.add_argument("--dry-run", dest="dry_run", action="store_true", default=True)
     dr.add_argument("--no-dry-run", dest="dry_run", action="store_false")
     args = ap.parse_args()
     push(args.source, args.mode, args.dry_run, args.token, args.limit,
-         args.skip_existing)
+         args.skip_existing, args.model_version)
 
 
 if __name__ == "__main__":
