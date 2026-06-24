@@ -46,6 +46,7 @@ CONFIG_XML = ROOT / "configs" / "label_studio_sentiment.xml"
 EXCLUDE_BLINDS = [
     LBL / "testset_v5_blind.json",
     LBL / "team_labeling_3000_blind.json",
+    LBL / "team_boost_1000_blind.json",   # project 7 (boost lama) — hindari dobel
 ]
 MINORITY = ("Negatif", "Positif")
 BATCH = 500
@@ -118,22 +119,25 @@ def main() -> None:
     for lab in MINORITY:
         print(f"  {lab}: {len(by_class[lab])} tersedia")
 
-    short = [lab for lab in MINORITY if len(by_class[lab]) < per_class]
-    if short:
-        sys.exit(f"--n {args.n} butuh {per_class}/kelas, tapi kurang untuk: {short}. "
-                 "Turunkan --n.")
+    # CAP ke ketersediaan per kelas (kelas minoritas mungkin kurang dari per_class).
+    # Tidak error: ambil semampunya, agar bisa "ambil semua Negatif tersisa".
+    for lab in MINORITY:
+        if len(by_class[lab]) < per_class:
+            print(f"  CATATAN: {lab} cuma {len(by_class[lab])} < target {per_class}/kelas "
+                  "-> ambil semua yang tersedia.")
 
     # 2) Ambil per kelas: confidence desc (yield Neg/Pos genuin maksimal) atau acak.
     rng = random.Random(seed)
     sample = []
     for lab in MINORITY:
         items = by_class[lab]
+        take = min(per_class, len(items))
         if args.order == "confidence":
             # tie-break deterministik via comment_id agar reproducible
             items = sorted(items, key=lambda d: (-_conf(d), str(d["comment_id"])))
-            picked = items[:per_class]
+            picked = items[:take]
         else:
-            picked = rng.sample(items, per_class)
+            picked = rng.sample(items, take)
         sample.extend(picked)
         confs = [_conf(d) for d in picked if _conf(d) >= 0]
         rng_txt = f"conf {min(confs):.3f}–{max(confs):.3f}" if confs else "tanpa confidence"
