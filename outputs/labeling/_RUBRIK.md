@@ -42,6 +42,12 @@ panggung.", "Channel provokator pemecah belah."
   framing tuduhan.
 - Kalau ragu antara berpihak vs tidak, dan tidak ada sinyal sikap yang jelas →
   Netral.
+- **Arah ambigu (Pos vs Neg) tak bisa dipastikan dari teks** (mis. sarkasme dua-arah
+  yang menyentuh klaim) → **Netral**. Beda dari poin di atas: di sini JELAS ada sikap,
+  tapi ARAHNYA tak reprodusibel dari teks → tetap Netral demi konsistensi antar-pelabel
+  & sinyal yang bisa dipelajari model. Contoh: "Kita dipaksa percaya UGM seburuk itu
+  kualitasnya, ada skripsi tanpa tanda tangan" (sarkasme bisa dibaca bela-UGM=Negatif
+  ATAU tegaskan-anomali=Positif → arah tak pasti) → Netral.
 - Bahasa campur/typo/alay tetap dinilai dari maksudnya.
 
 ## Aturan keputusan: nilai DARI TEKS saja (text-only stance)

@@ -102,3 +102,27 @@ cp outputs/labeling/labeling_dataset.backup_20260624.csv outputs/labeling/labeli
       Lihat §5 untuk urutan perintah.
 - [x] LS predictions id=1: ter-push ~59% (terpotong timeout 90 mnt; kosmetik, Mongo = truth).
 - [x] Commit & push (commit `24791e6`, `8a56e67`, `116a887` di main).
+
+## 7. Roadmap pelabelan & training (target bertahap)
+
+Strategi: **mulai dari gold-set kecil yang BALANCED**, jangan tunggu pelabelan penuh.
+Tujuannya punya baseline berbasis **label MANUSIA** (bukan LLM) secepatnya.
+
+### Milestone 1 (PRIORITAS SEKARANG) — gold balanced ~300/kelas (~900 total)
+- Labeling manual sampai **±300 per kelas** (Positif/Negatif/Netral).
+  - Sudah terkumpul (project id=6, 230 task): Netral 188, Positif 32, Negatif 10.
+  - Sisa kira-kira: **Negatif +290, Positif +268, Netral +112**.
+  - Sumber: fokus **boost id=8 lalu id=7** untuk Pos/Neg; Netral mudah (dari id=6).
+  - Negatif = bottleneck (kandidat total ~1043 di id=7+id=8) tapi 300 sangat tercapai.
+- Lalu **train SVM + IndoBERT pada gold balanced ~900 ini** = eksperimen pertama
+  berbasis label manusia. Catatan: data kecil → hasil kasar/variansi tinggi, tapi ini
+  baseline "gold" yang jujur (bandingkan dengan model yang dilatih label LLM full 14k).
+
+### Milestone 2 — perbesar ke balanced 1000/1000/1000
+- Lanjut labeling sampai 1000/kelas (kalau Negatif cukup; **plafon Negatif = 1213**).
+  Kalau mentok, turunkan target Neg atau scrape data baru.
+
+### Milestone 3 — validasi & pelaporan
+- Hitung **Cohen's kappa manusia-vs-LLM** (kualitas korpus).
+- Evaluasi model (LLM-trained full 14k) terhadap **gold manusia** sebagai test jujur.
+- Regen perbandingan 3 model (akurasi) + update laporan PDF.
