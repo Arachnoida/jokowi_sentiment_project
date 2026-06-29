@@ -142,6 +142,10 @@ def _save_detail(rep, tag, te, yp, best, gs) -> None:
         "prediksi": [LABELS[i] for i in yp],
     })
     preds["benar"] = preds["label_asli"] == preds["prediksi"]
+    # Keyakinan = margin keputusan OvR (skor kelas-tertinggi − kelas-kedua).
+    sc = best.decision_function(te[TEXT])
+    top2 = np.sort(sc, axis=1)[:, -2:]
+    preds["keyakinan"] = np.round(top2[:, 1] - top2[:, 0], 4)
     preds.to_csv(rep / f"svm_{tag}_predictions.csv", index=False)
 
     # 2) Hasil grid search (24 kombinasi) diurut peringkat.

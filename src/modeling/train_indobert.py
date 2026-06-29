@@ -295,6 +295,10 @@ def main() -> None:
         "prediksi": [LABELS[i] for i in y_pred],
     })
     pred_df["benar"] = pred_df["label_asli"] == pred_df["prediksi"]
+    # Keyakinan = probabilitas softmax kelas terprediksi (0–1).
+    logits = np.asarray(pred.predictions, dtype=float)
+    e = np.exp(logits - logits.max(axis=1, keepdims=True))
+    pred_df["keyakinan"] = np.round((e / e.sum(axis=1, keepdims=True)).max(axis=1), 4)
     pred_df.to_csv(reports / f"indobert{suffix}_predictions.csv", index=False)
 
     mfile = reports / f"indobert{suffix}_metrics.json"
