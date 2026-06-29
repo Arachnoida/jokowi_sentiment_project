@@ -14,9 +14,9 @@
     <Text name="rubrik3" value="⚪ Netral = sikap tak jelas / bertanya / info saja"/>
   </View>
 
-  <!-- Sorotan: label LLM saat ini vs dugaan model (alasan baris ini perlu dicek). -->
+  <!-- Sorotan: label LLM saat ini vs dugaan model + confidence LLM (alasan dicek). -->
   <View className="ls-flag">
-    <Text name="flag" value="🏷️ Label LLM: $llm_label      🤖 Model menduga: $model_pred"/>
+    <Text name="flag" value="🏷️ Label LLM: $llm_label      🤖 Model menduga: $model_pred      📊 confidence: $confidence"/>
   </View>
 
   <View className="ls-konteks">

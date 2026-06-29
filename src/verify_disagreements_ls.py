@@ -42,19 +42,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 LBL = ROOT / "outputs" / "labeling"
 CONFIG_XML = ROOT / "configs" / "label_studio_verify.xml"
 ID2LABEL = {i: l for l, i in LABEL2ID.items()}
-TITLE = "Verifikasi balanced3k — model vs LLM"
+TITLES = {
+    "disagreement": "Verifikasi balanced3k — model vs LLM",
+    "lowconf": "Verifikasi balanced3k — confidence rendah",
+}
 BATCH = 500
-META_COLS = ["source_title", "like_count", "text"]
+# load_df sudah membawa kolom `text`; meta hanya menambah kolom yg belum ada.
+META_COLS = ["source_title", "like_count"]
 
 
-def compute_disagreements(subset_csv: str, folds: int, seed: int) -> pd.DataFrame:
-    """OOF SVM atas subset → DataFrame baris yang pred != label LLM (urut margin)."""
+def compute_oof(subset_csv: str, folds: int, seed: int) -> pd.DataFrame:
+    """OOF SVM atas subset → DataFrame penuh + kolom model_pred, llm_label, margin.
+
+    Tiap baris diprediksi model yang TIDAK melatihnya (StratifiedKFold) → sinyal jujur.
+    """
     client = _connect()
     df = load_df(client)
     ids = load_subset_ids(subset_csv)
     df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
 
-    # Meta untuk tampilan LS (text asli, judul, like) dari labeling_dataset.csv.
+    # Meta untuk tampilan LS (text asli, judul, like, confidence) dari labeling_dataset.csv.
     meta = pd.read_csv(LBL / "labeling_dataset.csv",
                        usecols=["comment_id", *META_COLS, "confidence"])
     df = df.merge(meta, on="comment_id", how="left")
@@ -65,19 +72,16 @@ def compute_disagreements(subset_csv: str, folds: int, seed: int) -> pd.DataFram
     scores = cross_val_predict(build(), X, y, cv=skf, n_jobs=-1, method="decision_function")
     # Margin = skor kelas-tertinggi − kelas-kedua (keyakinan relatif OvR).
     top2 = np.sort(scores, axis=1)[:, -2:]
-    margin = top2[:, 1] - top2[:, 0]
-
     df["model_pred"] = [ID2LABEL[i] for i in oof]
     df["llm_label"] = df["label"]
-    df["margin"] = np.round(margin, 4)
-    dis = df[oof != y].copy()
-    dis = dis.sort_values("margin", ascending=False).reset_index(drop=True)
-    return dis
+    df["margin"] = np.round(top2[:, 1] - top2[:, 0], 4)
+    df["setuju_llm"] = oof == y
+    return df
 
 
-def _build_tasks(dis: pd.DataFrame, model_version: str) -> list[dict]:
+def _build_tasks(rows: pd.DataFrame, model_version: str) -> list[dict]:
     tasks = []
-    for _, r in dis.iterrows():
+    for _, r in rows.iterrows():
         data = {
             "comment_id": r["comment_id"],
             "text": r.get("text") or "",
@@ -85,6 +89,7 @@ def _build_tasks(dis: pd.DataFrame, model_version: str) -> list[dict]:
             "like_count": int(r["like_count"]) if pd.notna(r.get("like_count")) else 0,
             "llm_label": r["llm_label"],
             "model_pred": r["model_pred"],
+            "confidence": float(r["confidence"]) if pd.notna(r.get("confidence")) else None,
         }
         tasks.append({
             "data": data,
@@ -106,39 +111,50 @@ def _find_project(c: LSClient, title: str):
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Verifikasi disagreement model vs LLM di Label Studio.")
+    ap = argparse.ArgumentParser(description="Verifikasi label balanced3k di Label Studio.")
+    ap.add_argument("--mode", choices=["disagreement", "lowconf"], default="disagreement",
+                    help="disagreement: model OOF != LLM | lowconf: confidence LLM rendah.")
     ap.add_argument("--subset", default=str(LBL / "balanced_3000.csv"))
     ap.add_argument("--folds", type=int, default=5)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--conf-max", type=float, default=0.80,
+                    help="(mode lowconf) ambang confidence; pilih baris <= nilai ini.")
     ap.add_argument("--limit", type=int, default=None,
-                    help="Batasi jumlah task (paling yakin dulu). Default: semua disagreement.")
+                    help="Batasi jumlah task (paling mencurigakan dulu).")
     ap.add_argument("--model-version", default="svm-oof-balanced3k")
     ap.add_argument("--commit", action="store_true", help="Benar-benar buat project LS + import.")
     args = ap.parse_args()
+    title = TITLES[args.mode]
 
-    dis = compute_disagreements(args.subset, args.folds, args.seed)
-    out_csv = LBL / "verify_disagreements_balanced3k.csv"
+    df = compute_oof(args.subset, args.folds, args.seed)
+    if args.mode == "lowconf":
+        rows = df[df["confidence"] <= args.conf_max].sort_values(
+            ["confidence", "margin"], ascending=[True, False]).reset_index(drop=True)
+        out_csv = LBL / "verify_lowconf_balanced3k.csv"
+        print(f"Confidence <= {args.conf_max}: {len(rows)} dari 3000. Distribusi kelas: "
+              f"{rows['llm_label'].value_counts().to_dict()}")
+    else:
+        rows = df[~df["setuju_llm"]].sort_values("margin", ascending=False).reset_index(drop=True)
+        out_csv = LBL / "verify_disagreements_balanced3k.csv"
+        print(f"Disagreement OOF (model vs LLM): {len(rows)} dari 3000.")
+        for (a, b), cnt in rows.groupby(["llm_label", "model_pred"]).size().sort_values(ascending=False).items():
+            print(f"    {a:<8} → {b:<8} {cnt}")
+
     cols = ["comment_id", "llm_label", "model_pred", "margin", "confidence", "text"]
-    dis[cols].to_csv(out_csv, index=False)
-
-    n = len(dis)
-    print(f"Disagreement OOF (model vs LLM): {n} dari 3000 ({n/3000:.1%})")
-    print("  arah (LLM→model):")
-    for (a, b), c in dis.groupby(["llm_label", "model_pred"]).size().sort_values(ascending=False).items():
-        print(f"    {a:<8} → {b:<8} {c}")
+    rows[cols].to_csv(out_csv, index=False)
     print(f"CSV: {out_csv}")
 
-    tasks = _build_tasks(dis if not args.limit else dis.head(args.limit), args.model_version)
+    tasks = _build_tasks(rows if not args.limit else rows.head(args.limit), args.model_version)
     if not args.commit:
-        print(f"\nDRY-RUN: {len(tasks)} task siap. Jalankan --commit untuk buat project '{TITLE}'.")
+        print(f"\nDRY-RUN: {len(tasks)} task siap. Jalankan --commit untuk buat project '{title}'.")
         return
 
     c = LSClient(Config.label_studio.URL, _read_token(None))
-    if _find_project(c, TITLE):
-        print(f"\nProject '{TITLE}' SUDAH ADA (idempotent). Hapus dulu bila ingin re-import.")
+    if _find_project(c, title):
+        print(f"\nProject '{title}' SUDAH ADA (idempotent). Hapus dulu bila ingin re-import.")
         return
     label_config = CONFIG_XML.read_text(encoding="utf-8")
-    r = c.request("POST", "/api/projects/", json={"title": TITLE, "label_config": label_config})
+    r = c.request("POST", "/api/projects/", json={"title": title, "label_config": label_config})
     if r.status_code not in (200, 201):
         sys.exit(f"ERROR buat project: HTTP {r.status_code} {r.text[:400]}")
     pid = r.json()["id"]
@@ -153,7 +169,7 @@ def main() -> None:
         total += r.json().get("task_count", len(batch))
         print(f"  batch {i // BATCH + 1}: total {total}")
     print(f"\nSELESAI: {total} task di project id={pid}.")
-    print(f"Buka {Config.label_studio.URL} → '{TITLE}' → Label All Tasks (hotkey 1/2/3).")
+    print(f"Buka {Config.label_studio.URL} → '{title}' → Label All Tasks (hotkey 1/2/3/4).")
 
 
 if __name__ == "__main__":
