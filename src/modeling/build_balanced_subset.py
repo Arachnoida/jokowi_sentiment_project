@@ -13,19 +13,41 @@ Jalankan: python -m src.modeling.build_balanced_subset
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 import pandas as pd
 
 LABELS = ["Negatif", "Netral", "Positif"]
+_WORD3 = re.compile(r"[A-Za-z]{3,}")
+
+
+def is_readable(text) -> bool:
+    """Kriteria 'readable' (tingkat SEDANG, keputusan user 2026-06-30):
+    buang komentar emoji/simbol murni & yang didominasi emoji.
+
+    Lolos jika: panjang ≥ 3, ada ≥ 1 kata beralfabet ≥ 3 huruf, dan mayoritas
+    karakter non-spasi adalah huruf (rasio ≥ 0.5). Kata tunggal bermakna
+    ('Mantap', 'HOAX') TETAP disimpan; '😂😂😂', '❤', 'Suwardi ❤😂🎉' dibuang.
+    """
+    t = str(text).strip()
+    if len(t) < 3 or not _WORD3.search(t):
+        return False
+    letters = sum(c.isalpha() for c in t)
+    nonspace = sum(not c.isspace() for c in t)
+    return bool(nonspace) and letters / nonspace >= 0.5
 
 
 def _repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-def build(src_csv: Path, per_class: int) -> pd.DataFrame:
+def build(src_csv: Path, per_class: int, readable: bool = True) -> pd.DataFrame:
     df = pd.read_csv(src_csv)
+    if readable:
+        before = len(df)
+        df = df[df["text"].apply(is_readable)].copy()
+        print(f"  filter readable: {before} -> {len(df)} (buang {before - len(df)})")
     parts = []
     for lab in LABELS:
         sub = df[df["label"] == lab].sort_values(
@@ -50,6 +72,10 @@ def main() -> None:
         "--out", default=None,
         help="CSV keluaran. Default outputs/labeling/balanced_<3*per_class>.csv.",
     )
+    ap.add_argument(
+        "--no-readable", dest="readable", action="store_false", default=True,
+        help="Jangan saring komentar tak-readable (reproduksi versi lama tanpa filter).",
+    )
     args = ap.parse_args()
 
     root = _repo_root()
@@ -57,7 +83,7 @@ def main() -> None:
     total = 3 * args.per_class
     out = Path(args.out) if args.out else root / "outputs" / "labeling" / f"balanced_{total}.csv"
 
-    df = build(src, args.per_class)
+    df = build(src, args.per_class, readable=args.readable)
     cols = [c for c in ["comment_id", "label", "confidence", "text"] if c in df.columns]
     df[cols].to_csv(out, index=False)
 

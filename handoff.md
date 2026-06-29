@@ -164,6 +164,13 @@ python -m src.spark.train_svm_spark     --subset outputs/labeling/balanced_3000.
 python -m src.modeling.compare_models --tag balanced3k                           # setelah 3 JSON ada
 ```
 
+**Update 2026-06-30 — filter READABLE:** `build_balanced_subset.py` kini menyaring
+komentar tak-readable (default on; `is_readable`, tingkat SEDANG: buang emoji/simbol
+murni & yg didominasi emoji, simpan kata tunggal bermakna). Pool 14107→14005 (buang 102).
+`balanced_3000.csv` di-rebuild: 62 baris tak-readable ditukar baris readable (top-up
+confidence), 2938 tetap, semua readable, 1000/kelas. Backup lama: `balanced_3000.prereadable.bak`.
+`--no-readable` utk reproduksi versi lama. SVM/IndoBERT WAJIB re-train pada dataset ini.
+
 **Hasil (test 300 = 100/kelas):**
 
 | Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
