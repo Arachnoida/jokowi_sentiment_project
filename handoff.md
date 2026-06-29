@@ -173,11 +173,20 @@ confidence), 2938 tetap, semua readable, 1000/kelas. Backup lama: `balanced_3000
 
 **Hasil (test 300 = 100/kelas):**
 
+**Angka FINAL (dataset READABLE, test 300=100/kelas):**
+
 | Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
 |---|---|---|---|---|---|
-| **IndoBERT** ★ | **0,8533** | 0,8525 | 0,79 | 0,91 | 0,86 |
-| SVM sklearn | 0,8333 | 0,8334 | 0,78 | 0,87 | 0,85 |
-| SVM Spark MLlib | 0,7933 | 0,7894 | 0,72 | 0,84 | 0,81 |
+| **IndoBERT** ★ | **0,8467** | 0,8469 | 0,79 | 0,885 | 0,865 |
+| SVM sklearn | 0,8333 | 0,8331 | 0,79 | 0,854 | 0,857 |
+| SVM Spark MLlib | 0,7667 | 0,7669 | 0,71 | 0,802 | 0,792 |
+
+> (Angka pra-readable: IndoBERT 0,8533 / SVM 0,8333 / Spark 0,7933 — tak comparable,
+> dataset beda.) **Fix over-stem 2026-06-30:** `diseting→ting`/`mentri→tri` ditambah ke
+> `_PROTECTED_ROOTS` (udf.py + _backfill_processed_svm.py). Sebagian (`dibantah→ban`,
+> `seandainya→anda`) TAK bisa diperbaiki via kamus = keterbatasan rule Sastrawi (dokumentasikan
+> di laporan). Impak kecil; fix berlaku saat regen processed_svm berikutnya (di-batch dgn
+> re-train pasca-verifikasi — hindari regen Mongo redundan). SVM di tabel ini masih fitur lama.
 
 > F1 Negatif melonjak vs full14k (sklearn 0,50 → **0,78**) karena kelas seimbang.
 > Akurasi balanced TIDAK comparable dgn akurasi full14k (0,81) yang ter-*inflate* Netral.

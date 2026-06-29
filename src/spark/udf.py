@@ -24,7 +24,13 @@ _STEMMER = None
 # makna: setuju->tuju, sependapat->dapat. Didaftarkan sebagai root word ke kamus
 # stemmer agar dikenali utuh. WAJIB ditambahkan SEBELUM stem pertama (CachedStemmer
 # meng-cache hasil per kata, jadi add() setelah stem tidak berefek).
-_PROTECTED_ROOTS = ("setuju", "sependapat", "sepaham", "sepakat")
+# Catatan: pendekatan kamus hanya memperbaiki sebagian over-stem (yg hasil strip-nya
+# bukan root valid). Kasus rule-based spt "dibantah->ban"/"seandainya->anda" TIDAK
+# bisa diperbaiki via dictionary.add → keterbatasan Sastrawi yg didokumentasikan.
+_PROTECTED_ROOTS = (
+    "setuju", "sependapat", "sepaham", "sepakat",  # sikap (se-)
+    "seting", "setting", "setel", "mentri",        # over-stem: diseting->ting, mentri->tri
+)
 
 
 # bikin stemmer Sastrawi SEKALI per proses worker (lazy singleton), bukan tiap baris

@@ -62,7 +62,8 @@ def main() -> None:
     # Lindungi kata "se-" bermuatan sikap dari over-stemming (setuju->tuju, dst.).
     # Harus sebelum stem pertama (CachedStemmer meng-cache). Samakan dgn src/spark/udf.py.
     _inner = getattr(stemmer, "delegatedStemmer", stemmer)
-    for _w in ("setuju", "sependapat", "sepaham", "sepakat"):
+    for _w in ("setuju", "sependapat", "sepaham", "sepakat",
+               "seting", "setting", "setel", "mentri"):
         _inner.dictionary.add(_w)
 
     # sama persis dgn udf.make_svm_text: preprocess lalu stem string penuh
