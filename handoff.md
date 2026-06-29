@@ -204,3 +204,45 @@ confidence), 2938 tetap, semua readable, 1000/kelas. Backup lama: `balanced_3000
       balanced 1000/kelas (prioritas gold lalu confidence; top-up otomatis) → re-train.
       `--patch-config` utk update label_config project yg sudah live.
 - [ ] **Update laporan PDF** dgn tabel + chart 3-model balanced3k.
+
+## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
+
+**Regen penuh `processed_svm` (14.107 baris, Spark) + re-train SVM** dengan fix preprocessing
+(ijasah→ijazah, slang +24, stemming `diseting→seting`/`mentri`). Dampak ke balanced3k:
+
+| Model | Sebelum | Sesudah | Δ |
+|---|---|---|---|
+| SVM sklearn | 0,8333 | **0,84** | +0,67pp |
+| SVM Spark | 0,7667 | **0,7767** | +1,0pp |
+| IndoBERT | 0,8467 | 0,8467 | — (jalur `bert` non-stemmed, tak diregen) |
+
+Naik kecil tapi konsisten (sifatnya konsolidasi fitur TF-IDF, bukan sinyal baru). Artefak
+ter-commit (`36b7478`). Peringkat tetap: **IndoBERT > SVM sklearn > SVM Spark**.
+
+**Diagnosis confusion (konsisten di KETIGA model):** error #1 = **Negatif → Positif (stance
+flip)** (SVM 13/100, BERT 15/100, Spark 23/100); **Negatif = kelas terlemah**. Neg & Pos
+tumpang-tindih kata (ijazah/palsu/asli) → pembeda cuma negasi + arah sikap.
+
+**Roadmap akurasi → `docs/roadmap_akurasi.md`** (commit `c0cb965`), berlapis per leverage:
+1. Kualitas label (tertinggi, SEDANG JALAN: verifikasi LS id=9/id=10 → rebuild → re-train).
+2. Preprocessing/fitur SVM (negation tagging, emoji→token, lexicon InSet, char n-gram).
+3. Model & tuning (sweep classifier; sweep IndoBERT LR/epoch/early-stop/large).
+4. Ensemble IndoBERT+SVM, k-fold, per-class threshold.
+
+**KEPUTUSAN AKHIR SESI:** **SVM Spark di-DROP dari fokus** (gap 0,7767 vs 0,84 itu soal
+implementasi HashingTF, bukan riset). **Fokus = SVM sklearn + IndoBERT.**
+
+**Menu pengembangan SVM sklearn (next session)** — dipisah biaya:
+- **Batch A (TANPA regen, cuma ubah `train_svm_full14k.py build()`, re-train ~1mnt):**
+  - A1 **Negation merge** `tidak palsu`→`tidak_palsu` sbg analyzer (kata negasi sudah tersimpan
+    di kolom `svm`, jadi tak perlu regen) — serang stance-flip #1. *Paling menjanjikan.*
+  - A2 FeatureUnion word + char n-gram (3–5). A3 sweep `LogisticRegression`/`ComplementNB`.
+  - A4 **Per-class threshold** via `decision_function` (angkat recall Negatif). A5 perluas grid
+    (`C` halus, `max_df`, `(1,3)`, `max_features`). A6 `CalibratedClassifierCV` (utk ensemble).
+  - Ukur via **OOF cross-val** (bukan single split), metrik utama **f1 Negatif**.
+- **Batch B (BUTUH regen processed_svm ~15mnt):** B1 emoji→token sentimen (kini dibuang di
+  `clean_for_svm`), B2 fitur lexicon InSet, B3 fix error stemmer Sastrawi (`dibantah→ban`).
+
+**Lanjutan yang masih nunggu user:** selesaikan verifikasi LS id=9 + id=10 →
+`python -m src.rebuild_balanced_from_verification --commit` → re-train ketiga model (label
+berubah memengaruhi semua). Catatan: Batch A bisa dikerjakan paralel TANPA nunggu verifikasi.
