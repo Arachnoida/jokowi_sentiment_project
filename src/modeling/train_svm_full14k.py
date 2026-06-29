@@ -11,6 +11,7 @@ Pipeline identik dengan IndoBERT agar perbandingan adil:
 Proyek memakai SATU dataset saja (full 14k, imbalanced) — versi-versi subset lama
 (6k/balanced/10k) sudah ditinggalkan.
 """
+import argparse
 import json
 import os
 import pathlib
@@ -31,6 +32,8 @@ from sklearn.metrics import (
 from sklearn.model_selection import GridSearchCV, PredefinedSplit, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
+
+from src.modeling.subset import load_subset_ids
 
 SEED = 42
 TEXT, LAB = "svm", "label_id"
@@ -135,15 +138,27 @@ def _repo_root() -> pathlib.Path:
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser(description="Latih SVM+TF-IDF (sklearn).")
+    ap.add_argument("--subset", default=None,
+                    help="CSV allowlist comment_id (mis. balanced_3000.csv). "
+                         "Default: semua baris berlabel (full 14k).")
+    ap.add_argument("--tag", default="full14k",
+                    help="Suffix artefak: svm_<tag>_metrics.json. Default full14k.")
+    args = ap.parse_args()
+    tag = args.tag
+
     client = _connect()
     df = load_df(client)
-    print(f"{len(df)} komentar berlabel (full 14k) | svm kosong (drop dari train/val): "
+    if args.subset:
+        ids = load_subset_ids(args.subset)
+        df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
+    print(f"{len(df)} komentar berlabel [{tag}] | svm kosong (drop dari train/val): "
           f"{int((df['svm'].str.len() == 0).sum())}")
 
     m = run(df)
     line = " ".join(f"{l[:3]}={m['per_class'][l]['f1']:.2f}" for l in LABELS)
     print(
-        f"[full 14k] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
+        f"[{tag}] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
         f"macro-F1={m['macro_f1']:.3f} acc={m['accuracy']:.3f} | {line} | {m['best_params']}"
     )
 
@@ -151,7 +166,7 @@ def main() -> None:
     rep.mkdir(parents=True, exist_ok=True)
     json.dump(
         {"model": "SVM+TF-IDF", "test": m},
-        open(rep / "svm_full14k_metrics.json", "w"),
+        open(rep / f"svm_{tag}_metrics.json", "w"),
         ensure_ascii=False,
         indent=2,
     )
@@ -175,11 +190,12 @@ def main() -> None:
             ax.text(j, i, cm[i, j], ha="center", va="center",
                     color="white" if cm[i, j] > th else "black")
     fig.tight_layout()
-    fig.savefig(rep / "svm_full14k_confusion.png", dpi=120)
+    fig.savefig(rep / f"svm_{tag}_confusion.png", dpi=120)
 
-    # --- Perbandingan SVM vs IndoBERT (jika metrik IndoBERT tersedia) ---
+    # --- Perbandingan SVM vs IndoBERT (legacy 2-model, hanya untuk full14k).
+    #     Perbandingan 3-model lengkap pakai src.modeling.compare_models --tag <tag>.
     bfile = rep / "indobert_metrics.json"
-    if bfile.exists():
+    if tag == "full14k" and bfile.exists():
         b = json.load(open(bfile))["test"]
         winner = "SVM" if m["macro_f1"] > b["macro_f1"] else "IndoBERT"
         cmp = pd.DataFrame([

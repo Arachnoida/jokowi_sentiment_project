@@ -70,8 +70,14 @@ def _connect(tries: int = 6) -> MongoClient:
     raise RuntimeError(f"Gagal koneksi Mongo: {last}")
 
 
-def load_splits(client: MongoClient):
-    """Baca SELURUH processed_bert (satu dataset full 14k) + split kanonik identik SVM."""
+def load_splits(client: MongoClient, subset_path: str | None = None, tag: str = "full14k"):
+    """Baca processed_bert + split kanonik identik SVM.
+
+    Default: SELURUH processed_bert (full 14k). Jika ``subset_path`` diberikan
+    (CSV ber-kolom comment_id, mis. balanced_3000.csv), data difilter ke baris itu
+    SEBELUM split -> split tetap identik dgn SVM yang pakai subset sama (urut
+    comment_id + seed=42 + stratified pada himpunan baris yang sama).
+    """
     db = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
     df = pd.DataFrame(
         list(
@@ -82,6 +88,9 @@ def load_splits(client: MongoClient):
     )
     if df.empty:
         raise RuntimeError("processed_bert kosong.")
+    if subset_path:
+        ids = set(pd.read_csv(subset_path, usecols=["comment_id"])["comment_id"].astype(str))
+        df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
     df["label_id"] = df["label"].map(LABEL2ID)
     # Split KANONIK: urut comment_id + seed=42 -> identik dgn train_svm versi ini.
     df = df.sort_values("comment_id").reset_index(drop=True)
@@ -91,7 +100,7 @@ def load_splits(client: MongoClient):
     df_train, df_val = train_test_split(
         tmp, test_size=0.20 / 0.90, stratify=tmp["label_id"], random_state=SEED
     )
-    print(f"full 14k | train={len(df_train)} val={len(df_val)} test={len(df_test)}")
+    print(f"[{tag}] n={len(df)} | train={len(df_train)} val={len(df_val)} test={len(df_test)}")
     return df_train, df_val, df_test
 
 
@@ -161,7 +170,17 @@ def main() -> None:
         "--model-out", default=None,
         help="Bila diisi, simpan model+tokenizer hasil fine-tune ke folder ini (besar ~500MB).",
     )
+    ap.add_argument(
+        "--subset", default=None,
+        help="CSV allowlist comment_id (mis. balanced_3000.csv). Default: full 14k.",
+    )
+    ap.add_argument(
+        "--tag", default="full14k",
+        help="Suffix artefak: indobert_<tag>_metrics.json. Default full14k.",
+    )
     args = ap.parse_args()
+    tag = args.tag
+    suffix = "" if tag == "full14k" else f"_{tag}"
 
     # Import berat ditunda agar --help cepat & error dep jelas.
     import torch
@@ -183,7 +202,7 @@ def main() -> None:
     set_seed(args.seed)
     client = _connect()
     print("Koneksi MongoDB OK.")
-    df_train, df_val, df_test = load_splits(client)
+    df_train, df_val, df_test = load_splits(client, subset_path=args.subset, tag=tag)
 
     tok = AutoTokenizer.from_pretrained(MODEL_NAME)
 
@@ -264,10 +283,10 @@ def main() -> None:
         pc = m_test["per_class"][l]
         print(f"    {l:<10} P={pc['precision']:.3f} R={pc['recall']:.3f} F1={pc['f1-score']:.3f}")
 
-    mfile = reports / "indobert_metrics.json"
-    cfile = reports / "indobert_test_confusion.png"
+    mfile = reports / f"indobert{suffix}_metrics.json"
+    cfile = reports / f"indobert{suffix}_test_confusion.png"
     json.dump(
-        {"model": "IndoBERT", "dataset": "full14k", "test": m_test},
+        {"model": "IndoBERT", "dataset": tag, "test": m_test},
         open(mfile, "w"),
         ensure_ascii=False,
         indent=2,

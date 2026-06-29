@@ -138,3 +138,45 @@ Tujuannya punya baseline berbasis **label MANUSIA** (bukan LLM) secepatnya.
 - Hitung **Cohen's kappa manusia-vs-LLM** (kualitas korpus).
 - Evaluasi model (LLM-trained full 14k) terhadap **gold manusia** sebagai test jujur.
 - Regen perbandingan 3 model (akurasi) + update laporan PDF.
+
+## 8. Eksperimen BALANCED 3000 (2026-06-29)
+
+Keputusan user: fokus dataset **balanced 1000/kelas (3000 total)**, di-*sample* dari
+label LLM **confidence tertinggi** per kelas (bukan label manusia — masih jalur LLM).
+Tujuan: ukur performa per-kelas yang jujur (test balanced 100/100/100 menghilangkan
+bias "Netral dominan").
+
+**Tooling baru (parametrik, default full14k tak berubah):**
+- `src/modeling/build_balanced_subset.py` → `outputs/labeling/balanced_3000.csv`
+  (top-1000/kelas by confidence; Neg conf 0.75–0.95, Net 0.90–1.0, Pos 0.85–0.99).
+- `src/modeling/subset.py` — helper `load_subset_ids`.
+- Trainer dapat `--subset <csv> --tag <tag>`: `train_svm_full14k`, `train_svm_spark`,
+  `train_indobert`, dan `compare_models --tag`. Subset = FILTER baris setelah load
+  (fitur sudah ada di processed_*/parquet → tak perlu regen). Artefak ber-suffix tag.
+
+**Reproduksi:**
+```bash
+python -m src.modeling.build_balanced_subset                                    # -> balanced_3000.csv
+python -m src.modeling.train_svm_full14k --subset outputs/labeling/balanced_3000.csv --tag balanced3k
+python -m src.spark.train_svm_spark     --subset outputs/labeling/balanced_3000.csv --tag balanced3k
+# IndoBERT (Colab, lihat outputs/reports/COLAB_indobert_balanced3k.md):
+#   python -m src.modeling.train_indobert --subset outputs/labeling/balanced_3000.csv --tag balanced3k
+python -m src.modeling.compare_models --tag balanced3k                           # setelah 3 JSON ada
+```
+
+**Hasil (test 300 = 100/kelas):**
+
+| Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
+|---|---|---|---|---|---|
+| SVM sklearn | **0,833** | 0,833 | 0,78 | 0,87 | 0,85 |
+| SVM Spark MLlib | 0,793 | 0,789 | 0,72 | 0,84 | 0,81 |
+| IndoBERT | _pending Colab_ | | | | |
+
+> F1 Negatif melonjak vs full14k (sklearn 0,50 → **0,78**) karena kelas seimbang.
+> Akurasi balanced (0,833) tidak bisa dibandingkan langsung dgn akurasi full14k (0,81)
+> yang ter-*inflate* Netral.
+
+- [ ] **IndoBERT balanced3k** (Colab) → `indobert_balanced3k_metrics.json`, lalu
+      `compare_models --tag balanced3k`.
+- [ ] **(opsional, jika akurasi dianggap kurang)** push prediksi model ke Label Studio
+      sbg pre-anotasi → user verifikasi manual mana yang salah (cek error label LLM).

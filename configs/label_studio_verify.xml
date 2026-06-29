@@ -1,0 +1,37 @@
+<View>
+  <Style>
+    .ls-konteks { color:#6b7280; font-size:13px; margin-bottom:.25em; }
+    .ls-flag { color:#b45309; font-size:14px; font-weight:600; margin:.4em 0; }
+    .ls-komentar { padding:1em; background:#f7f8fa; border-radius:8px;
+                   font-size:17px; line-height:1.6; }
+  </Style>
+
+  <Header value="VERIFIKASI: apakah label saat ini TEPAT? (model SVM menantang label ini)"/>
+
+  <View className="ls-konteks">
+    <Text name="rubrik1" value="🟢 Positif = percaya/mendukung tuduhan (ijazah palsu)"/>
+    <Text name="rubrik2" value="🔴 Negatif = menolak/membantah tuduhan (ijazah asli / fitnah)"/>
+    <Text name="rubrik3" value="⚪ Netral = sikap tak jelas / bertanya / info saja"/>
+  </View>
+
+  <!-- Sorotan: label LLM saat ini vs dugaan model (alasan baris ini perlu dicek). -->
+  <View className="ls-flag">
+    <Text name="flag" value="🏷️ Label LLM: $llm_label      🤖 Model menduga: $model_pred"/>
+  </View>
+
+  <View className="ls-konteks">
+    <Text name="source_title" value="📺 $source_title"/>
+    <Text name="like_count" value="👍 $like_count like"/>
+  </View>
+
+  <View className="ls-komentar">
+    <Text name="text" value="$text"/>
+  </View>
+
+  <!-- Pra-anotasi terisi = label LLM saat ini. Biarkan jika benar; ubah jika salah. -->
+  <Choices name="sentiment" toName="text" choice="single-radio" required="true" showInLine="true">
+    <Choice value="Positif" hotkey="1" background="#16a34a"/>
+    <Choice value="Negatif" hotkey="2" background="#dc2626"/>
+    <Choice value="Netral"  hotkey="3" background="#6b7280"/>
+  </Choices>
+</View>

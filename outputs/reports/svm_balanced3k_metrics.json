@@ -1,0 +1,49 @@
+{
+  "model": "SVM+TF-IDF",
+  "test": {
+    "accuracy": 0.8333,
+    "macro_f1": 0.8334,
+    "weighted_f1": 0.8334,
+    "per_class": {
+      "Negatif": {
+        "f1": 0.78,
+        "support": 100
+      },
+      "Netral": {
+        "f1": 0.866,
+        "support": 100
+      },
+      "Positif": {
+        "f1": 0.8544,
+        "support": 100
+      }
+    },
+    "confusion_matrix": [
+      [
+        78,
+        6,
+        16
+      ],
+      [
+        14,
+        84,
+        2
+      ],
+      [
+        8,
+        4,
+        88
+      ]
+    ],
+    "n_train": 2655,
+    "n_test": 300,
+    "best_params": {
+      "clf__C": 1.0,
+      "tfidf__min_df": 1,
+      "tfidf__ngram_range": [
+        1,
+        2
+      ]
+    }
+  }
+}

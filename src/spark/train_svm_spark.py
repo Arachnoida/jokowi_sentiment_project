@@ -27,6 +27,7 @@ Jalankan  : python -m src.spark.train_svm_spark
 """
 from __future__ import annotations
 
+import argparse
 import json
 import math
 
@@ -48,6 +49,7 @@ from pyspark.sql import functions as F
 from pyspark.sql.functions import udf
 from sklearn.metrics import f1_score
 
+from src.modeling.subset import load_subset_ids
 from src.modeling.train_svm_full14k import LABELS, evaluate, split_version
 from src.spark.session import get_spark, hold_for_ui, parquet_dir, reports_dir
 
@@ -171,6 +173,16 @@ def run(spark, feats, members_pdf: pd.DataFrame) -> dict:
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser(description="Latih SVM+TF-IDF (PySpark MLlib).")
+    ap.add_argument("--subset", default=None,
+                    help="CSV allowlist comment_id (mis. balanced_3000.csv). "
+                         "Default: semua baris di features_spark.parquet (full 14k).")
+    ap.add_argument("--tag", default="full14k",
+                    help="Suffix artefak. Default full14k -> svm_spark_metrics.json.")
+    args = ap.parse_args()
+    tag = args.tag
+    suffix = "" if tag == "full14k" else f"_{tag}"
+
     spark = get_spark("train-svm-spark")
     pq = parquet_dir()
     feat_path = pq / "features_spark.parquet"
@@ -178,6 +190,10 @@ def main() -> None:
         raise SystemExit("features_spark.parquet belum ada — jalankan dulu: "
                          "python -m src.spark.preprocess_spark")
     src = spark.read.parquet(str(feat_path))
+    if args.subset:
+        ids = load_subset_ids(args.subset)
+        allow = spark.createDataFrame([(i,) for i in ids], [IDC])
+        src = src.join(F.broadcast(allow), on=IDC, how="inner")
     feats = src.select(IDC, F.col(TEXT), F.col(LAB).cast("int").alias(LAB)).cache()
 
     # Keanggotaan (kecil) -> pandas untuk hitung split deterministik.
@@ -186,26 +202,26 @@ def main() -> None:
     m = run(spark, feats, members_pdf)
     line = " ".join(f"{l[:3]}={m['per_class'][l]['f1']:.2f}" for l in LABELS)
     print(
-        f"[full 14k] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
+        f"[{tag}] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
         f"macro-F1={m['macro_f1']:.3f} acc={m['accuracy']:.3f} | {line} | {m['best_params']}"
     )
 
     rep = reports_dir()
     json.dump(
         {"model": "SVM+TF-IDF (PySpark MLlib)", "test": m},
-        open(rep / "svm_spark_metrics.json", "w"),
+        open(rep / f"svm_spark{suffix}_metrics.json", "w"),
         ensure_ascii=False,
         indent=2,
     )
-    _confusion_plot(rep, m)
-    _cross_engine(rep, m)
+    _confusion_plot(rep, m, suffix)
+    _cross_engine(rep, m, tag)
 
     print("\nTersimpan ke", rep)
     hold_for_ui(spark)
     spark.stop()
 
 
-def _confusion_plot(rep, m) -> None:
+def _confusion_plot(rep, m, suffix="") -> None:
     import matplotlib
 
     matplotlib.use("Agg")
@@ -226,18 +242,19 @@ def _confusion_plot(rep, m) -> None:
             ax.text(j, i, cm[i, j], ha="center", va="center",
                     color="white" if cm[i, j] > th else "black")
     fig.tight_layout()
-    fig.savefig(rep / "svm_spark_confusion.png", dpi=120)
+    fig.savefig(rep / f"svm_spark{suffix}_confusion.png", dpi=120)
 
 
-def _cross_engine(rep, m) -> None:
+def _cross_engine(rep, m, tag="full14k") -> None:
     """Bandingkan macro-F1 SVM sklearn vs SVM Spark (jika hasil sklearn ada)."""
-    sk_file = rep / "svm_full14k_metrics.json"
+    suffix = "" if tag == "full14k" else f"_{tag}"
+    sk_file = rep / f"svm_{tag}_metrics.json"
     if not sk_file.exists():
-        print("\n(svm_full14k_metrics.json belum ada — lewati perbandingan sklearn vs Spark.)")
+        print(f"\n({sk_file.name} belum ada — lewati perbandingan sklearn vs Spark.)")
         return
     s = json.load(open(sk_file)).get("test", {}).get("macro_f1")
     if s is None:
-        print("\n(svm_full14k_metrics.json belum format single-dataset — jalankan "
+        print(f"\n({sk_file.name} belum format single-dataset — jalankan "
               "ulang train_svm_full14k.py utk perbandingan sklearn vs Spark.)")
         return
     p = m["macro_f1"]
@@ -246,7 +263,7 @@ def _cross_engine(rep, m) -> None:
         "SVM_spark": p,
         "selisih": round(p - s, 4),
     }])
-    df.to_csv(rep / "svm_sklearn_vs_spark.csv", index=False)
+    df.to_csv(rep / f"svm_sklearn_vs_spark{suffix}.csv", index=False)
     print("\nSVM sklearn vs Spark (macro-F1):")
     print(df.to_string(index=False))
 
