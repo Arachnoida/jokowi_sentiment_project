@@ -82,12 +82,13 @@ def load_splits(client: MongoClient, subset_path: str | None = None, tag: str = 
     df = pd.DataFrame(
         list(
             client[db]["processed_bert"].find(
-                {}, {"_id": 0, "comment_id": 1, "bert": 1, "label": 1}
+                {}, {"_id": 0, "comment_id": 1, "bert": 1, "text": 1, "label": 1}
             )
         )
     )
     if df.empty:
         raise RuntimeError("processed_bert kosong.")
+    df["text"] = df["text"].fillna("") if "text" in df.columns else df.get("bert", "")
     if subset_path:
         ids = set(pd.read_csv(subset_path, usecols=["comment_id"])["comment_id"].astype(str))
         df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
@@ -282,6 +283,19 @@ def main() -> None:
     for l in LABELS:
         pc = m_test["per_class"][l]
         print(f"    {l:<10} P={pc['precision']:.3f} R={pc['recall']:.3f} F1={pc['f1-score']:.3f}")
+
+    # --- Detail proses untuk notebook: history per-epoch + prediksi per-komentar ---
+    pd.DataFrame(trainer.state.log_history).to_csv(
+        reports / f"indobert{suffix}_history.csv", index=False
+    )
+    pred_df = pd.DataFrame({
+        "comment_id": df_test["comment_id"].to_numpy(),
+        "text": df_test["text"].to_numpy(),
+        "label_asli": df_test["label"].to_numpy(),
+        "prediksi": [LABELS[i] for i in y_pred],
+    })
+    pred_df["benar"] = pred_df["label_asli"] == pred_df["prediksi"]
+    pred_df.to_csv(reports / f"indobert{suffix}_predictions.csv", index=False)
 
     mfile = reports / f"indobert{suffix}_metrics.json"
     cfile = reports / f"indobert{suffix}_test_confusion.png"

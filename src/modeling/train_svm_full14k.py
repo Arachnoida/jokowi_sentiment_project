@@ -68,9 +68,12 @@ def load_df(client: MongoClient) -> pd.DataFrame:
         list(db["raw_comments"].find({"label": {"$exists": True}}, {"_id": 0, "comment_id": 1, "label": 1}))
     )
     mem["label_id"] = mem["label"].map(LABEL2ID)
-    sv = pd.DataFrame(list(db["processed_svm"].find({}, {"_id": 0, "comment_id": 1, "svm": 1})))
+    sv = pd.DataFrame(list(
+        db["processed_svm"].find({}, {"_id": 0, "comment_id": 1, "svm": 1, "text": 1})
+    ))
     df = mem.merge(sv, on="comment_id", how="left")
     df["svm"] = df["svm"].fillna("")
+    df["text"] = df["text"].fillna("")
     return df
 
 
@@ -126,7 +129,37 @@ def run(df: pd.DataFrame) -> dict:
     m["n_train"] = int(len(tr) + len(va))
     m["n_test"] = int(len(te))
     m["best_params"] = {k: (list(v) if isinstance(v, tuple) else v) for k, v in gs.best_params_.items()}
-    return m
+    return m, te, yp, best, gs
+
+
+def _save_detail(rep, tag, te, yp, best, gs) -> None:
+    """Simpan artefak proses untuk notebook: prediksi/komentar, grid, top fitur."""
+    # 1) Prediksi per-komentar (test) — teks + label asli + prediksi + benar/salah.
+    preds = pd.DataFrame({
+        "comment_id": te["comment_id"].to_numpy(),
+        "text": te["text"].to_numpy(),
+        "label_asli": [LABELS[i] for i in te[LAB].to_numpy()],
+        "prediksi": [LABELS[i] for i in yp],
+    })
+    preds["benar"] = preds["label_asli"] == preds["prediksi"]
+    preds.to_csv(rep / f"svm_{tag}_predictions.csv", index=False)
+
+    # 2) Hasil grid search (24 kombinasi) diurut peringkat.
+    gr = pd.DataFrame(gs.cv_results_)
+    keep = [c for c in gr.columns if c.startswith("param_")] + [
+        "mean_test_score", "std_test_score", "rank_test_score"]
+    gr[keep].sort_values("rank_test_score").to_csv(rep / f"svm_{tag}_grid.csv", index=False)
+
+    # 3) Top fitur diskriminatif per kelas (koefisien LinearSVC OvR).
+    tfidf, clf = best.named_steps["tfidf"], best.named_steps["clf"]
+    feats = np.array(tfidf.get_feature_names_out())
+    rows = []
+    for ci, lab in enumerate(LABELS):
+        coef = clf.coef_[ci]
+        for rank, idx in enumerate(coef.argsort()[::-1][:15], 1):
+            rows.append({"kelas": lab, "rank": rank, "fitur": feats[idx],
+                         "koef": round(float(coef[idx]), 3)})
+    pd.DataFrame(rows).to_csv(rep / f"svm_{tag}_top_features.csv", index=False)
 
 
 def _repo_root() -> pathlib.Path:
@@ -155,7 +188,7 @@ def main() -> None:
     print(f"{len(df)} komentar berlabel [{tag}] | svm kosong (drop dari train/val): "
           f"{int((df['svm'].str.len() == 0).sum())}")
 
-    m = run(df)
+    m, te, yp, best, gs = run(df)
     line = " ".join(f"{l[:3]}={m['per_class'][l]['f1']:.2f}" for l in LABELS)
     print(
         f"[{tag}] n_train={m['n_train']:<5} n_test={m['n_test']:<5} "
@@ -170,6 +203,7 @@ def main() -> None:
         ensure_ascii=False,
         indent=2,
     )
+    _save_detail(rep, tag, te, yp, best, gs)
 
     import matplotlib
 
