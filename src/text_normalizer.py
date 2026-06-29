@@ -114,6 +114,18 @@ SLANG_DICT = {
     "upload": "unggah",
     "konten": "konten",
     "channel": "saluran",
+    # Perluasan 2026-06-30 (audit frekuensi korpus): slang/singkatan content-bearing
+    # yang belum tercakup. "kaya"->seperti SENGAJA tidak ditambah (ambigu dgn "kaya"=rich).
+    "emang": "memang", "emg": "memang",
+    "kayak": "seperti", "kyk": "seperti",
+    "gitu": "begitu", "gtu": "begitu",
+    "gini": "begini", "bgini": "begini",
+    "gimana": "bagaimana", "gmn": "bagaimana",
+    "knp": "kenapa", "krna": "karena",
+    "bikin": "buat", "dpt": "dapat", "hrs": "harus", "blg": "bilang",
+    "doang": "saja", "sgt": "sangat",
+    "skrg": "sekarang", "skrng": "sekarang", "udh": "sudah",
+    "kriminil": "kriminal", "jgan": "jangan", "sbnrnya": "sebenarnya",
 }
 
 STOPWORDS_ID = {

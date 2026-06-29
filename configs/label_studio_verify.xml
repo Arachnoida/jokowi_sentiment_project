@@ -12,6 +12,7 @@
     <Text name="rubrik1" value="🟢 Positif = percaya/mendukung tuduhan (ijazah palsu)"/>
     <Text name="rubrik2" value="🔴 Negatif = menolak/membantah tuduhan (ijazah asli / fitnah)"/>
     <Text name="rubrik3" value="⚪ Netral = sikap tak jelas / bertanya / info saja"/>
+    <Text name="rubrik4" value="🗑️ Tidak terbaca = rusak/gibberish ATAU berbelit/tak bisa dipahami → DIBUANG dari dataset"/>
   </View>
 
   <!-- Sorotan: label LLM saat ini vs dugaan model + confidence LLM (alasan dicek). -->
