@@ -28,10 +28,13 @@
     <Text name="text" value="$text"/>
   </View>
 
-  <!-- Pra-anotasi terisi = label LLM saat ini. Biarkan jika benar; ubah jika salah. -->
+  <!-- Pra-anotasi terisi = label LLM saat ini. Biarkan jika benar; ubah jika salah.
+       "Tidak terbaca" = komentar rusak/gibberish total yang tak bisa dikodekan
+       (akan DIBUANG dari dataset + diganti komentar lain agar tetap 1000/kelas). -->
   <Choices name="sentiment" toName="text" choice="single-radio" required="true" showInLine="true">
     <Choice value="Positif" hotkey="1" background="#16a34a"/>
     <Choice value="Negatif" hotkey="2" background="#dc2626"/>
     <Choice value="Netral"  hotkey="3" background="#6b7280"/>
+    <Choice value="Tidak terbaca" hotkey="4" background="#a16207"/>
   </Choices>
 </View>

@@ -182,4 +182,9 @@ python -m src.modeling.compare_models --tag balanced3k                          
       (acc 0,8533). `compare_models --tag balanced3k` → `model_comparison_balanced3k.{csv,png}`.
 - [~] **Verifikasi disagreement** (LS project id=9, 551 task): user review manual mana
       label LLM yg salah → relabel → re-train. Lihat `verify_disagreements_balanced3k.csv`.
+      Opsi **"🗑️ Tidak terbaca"** (hotkey 4) ditambahkan ke project utk komentar gibberish.
+      Setelah verifikasi: `python -m src.rebuild_balanced_from_verification --commit` →
+      tarik anotasi, buang yg "tidak terbaca", terapkan koreksi (manusia=gold), rebuild
+      balanced 1000/kelas (prioritas gold lalu confidence; top-up otomatis) → re-train.
+      `--patch-config` utk update label_config project yg sudah live.
 - [ ] **Update laporan PDF** dgn tabel + chart 3-model balanced3k.
