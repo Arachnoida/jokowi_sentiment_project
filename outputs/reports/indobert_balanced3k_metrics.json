@@ -1,0 +1,51 @@
+{
+  "model": "IndoBERT",
+  "dataset": "balanced3k",
+  "test": {
+    "accuracy": 0.8533,
+    "macro_f1": 0.8525,
+    "weighted_f1": 0.8525,
+    "per_class": {
+      "Negatif": {
+        "precision": 0.8261,
+        "recall": 0.76,
+        "f1-score": 0.7917,
+        "support": 100
+      },
+      "Netral": {
+        "precision": 0.91,
+        "recall": 0.91,
+        "f1-score": 0.91,
+        "support": 100
+      },
+      "Positif": {
+        "precision": 0.8241,
+        "recall": 0.89,
+        "f1-score": 0.8558,
+        "support": 100
+      }
+    },
+    "confusion_matrix": [
+      [
+        76,
+        6,
+        18
+      ],
+      [
+        8,
+        91,
+        1
+      ],
+      [
+        8,
+        3,
+        89
+      ]
+    ],
+    "labels": [
+      "Negatif",
+      "Netral",
+      "Positif"
+    ]
+  }
+}

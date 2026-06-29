@@ -1,0 +1,4 @@
+model,accuracy,macro_f1,f1_negatif,f1_netral,f1_positif
+SVM sklearn,0.8333,0.8334,0.78,0.866,0.8544
+SVM Spark MLlib,0.7933,0.7894,0.7151,0.8436,0.8095
+IndoBERT,0.8533,0.8525,0.7917,0.91,0.8558

@@ -168,15 +168,18 @@ python -m src.modeling.compare_models --tag balanced3k                          
 
 | Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
 |---|---|---|---|---|---|
-| SVM sklearn | **0,833** | 0,833 | 0,78 | 0,87 | 0,85 |
-| SVM Spark MLlib | 0,793 | 0,789 | 0,72 | 0,84 | 0,81 |
-| IndoBERT | _pending Colab_ | | | | |
+| **IndoBERT** ★ | **0,8533** | 0,8525 | 0,79 | 0,91 | 0,86 |
+| SVM sklearn | 0,8333 | 0,8334 | 0,78 | 0,87 | 0,85 |
+| SVM Spark MLlib | 0,7933 | 0,7894 | 0,72 | 0,84 | 0,81 |
 
 > F1 Negatif melonjak vs full14k (sklearn 0,50 → **0,78**) karena kelas seimbang.
-> Akurasi balanced (0,833) tidak bisa dibandingkan langsung dgn akurasi full14k (0,81)
-> yang ter-*inflate* Netral.
+> Akurasi balanced TIDAK comparable dgn akurasi full14k (0,81) yang ter-*inflate* Netral.
+> Peringkat: **IndoBERT > SVM sklearn > SVM Spark**. Selisih IndoBERT vs SVM sklearn
+> MELEBAR di data balanced (+2pp; full14k cuma +0,9pp) — IndoBERT unggul di Netral (F1 0,91).
+> IndoBERT dijalankan di Colab GPU (T4) via notebook clone, ~4 mnt.
 
-- [ ] **IndoBERT balanced3k** (Colab) → `indobert_balanced3k_metrics.json`, lalu
-      `compare_models --tag balanced3k`.
-- [ ] **(opsional, jika akurasi dianggap kurang)** push prediksi model ke Label Studio
-      sbg pre-anotasi → user verifikasi manual mana yang salah (cek error label LLM).
+- [x] **(SELESAI 2026-06-30) IndoBERT balanced3k** (Colab T4) → `indobert_balanced3k_metrics.json`
+      (acc 0,8533). `compare_models --tag balanced3k` → `model_comparison_balanced3k.{csv,png}`.
+- [~] **Verifikasi disagreement** (LS project id=9, 551 task): user review manual mana
+      label LLM yg salah → relabel → re-train. Lihat `verify_disagreements_balanced3k.csv`.
+- [ ] **Update laporan PDF** dgn tabel + chart 3-model balanced3k.
