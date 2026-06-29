@@ -1,47 +1,47 @@
 {
   "model": "SVM+TF-IDF (PySpark MLlib)",
   "test": {
-    "accuracy": 0.7667,
-    "macro_f1": 0.7669,
-    "weighted_f1": 0.7669,
+    "accuracy": 0.7767,
+    "macro_f1": 0.7739,
+    "weighted_f1": 0.7739,
     "per_class": {
       "Negatif": {
-        "f1": 0.7065,
+        "f1": 0.7072,
         "support": 100
       },
       "Netral": {
-        "f1": 0.802,
+        "f1": 0.8218,
         "support": 100
       },
       "Positif": {
-        "f1": 0.7921,
+        "f1": 0.7926,
         "support": 100
       }
     },
     "confusion_matrix": [
       [
-        71,
-        12,
-        17
+        64,
+        13,
+        23
       ],
       [
-        16,
-        79,
-        5
+        9,
+        83,
+        8
       ],
       [
-        14,
+        8,
         6,
-        80
+        86
       ]
     ],
     "n_train": 2700,
     "n_test": 300,
     "best_params": {
-      "minDF": 2.0,
-      "regParam": 0.01,
+      "minDF": 1.0,
+      "regParam": 0.1,
       "ngram": "(1,2)"
     },
-    "val_macro_f1": 0.7766
+    "val_macro_f1": 0.7768
   }
 }
