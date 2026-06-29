@@ -126,6 +126,10 @@ SLANG_DICT = {
     "doang": "saja", "sgt": "sangat",
     "skrg": "sekarang", "skrng": "sekarang", "udh": "sudah",
     "kriminil": "kriminal", "jgan": "jangan", "sbnrnya": "sebenarnya",
+    # Audit kualitas preprocessed_svm 2026-06-30:
+    "jd": "jadi", "sm": "sama", "dn": "dan", "slalu": "selalu",
+    # Varian ejaan kata topik utama -> satukan fitur (ijasah 663x vs ijazah 2173x).
+    "ijasah": "ijazah", "ijzah": "ijazah", "izajah": "ijazah", "ijazh": "ijazah",
 }
 
 STOPWORDS_ID = {
