@@ -289,11 +289,25 @@ label valid, apa pun filosofi labelnya.
 - `compare_models` kini **skip model yg file metriknya tak ada** (Spark dilewati). Output
   `model_comparison_balanced3k.{csv,png}` = 2 model.
 
-**MENUNGGU USER (Colab) — Track C IndoBERTweet:** `notebooks/3_modeling/indobertweet_balanced3k_colab.ipynb`
-(self-contained, baca flag `in_balanced3k`, cuma MONGO_URI). Model `indolem/indobertweet-base-uncased`
-+ weighted loss, 6 epoch. Target: > 0,7733. Kirim `indobertweet_balanced3k_metrics.json` → bandingkan
-& putuskan apakah gantikan IndoBERT di tabel final. Bisa juga set MODEL_NAME ke indobert-base utk ukur
-efek weighted-loss saja.
+**Track C IndoBERTweet — SELESAI & MENANG.** `indolem/indobertweet-base-uncased` + weighted loss
+(6 epoch) via `notebooks/3_modeling/indobertweet_balanced3k_colab.ipynb`. **acc 0,79** — TEMBUS
+plafon ~0,77. Kunci: Netral F1 **0,820** (model domain-medsos paham bahasa alay/medsos).
+
+**TABEL FINAL balanced3k (test 100/kelas, label domain-aware):**
+
+| Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
+|---|---|---|---|---|---|
+| SVM sklearn (char+thr) | 0,7667 | 0,765 | 0,761 | 0,742 | **0,793** |
+| IndoBERT | 0,7733 | 0,774 | 0,785 | 0,773 | 0,764 |
+| **IndoBERTweet** ★ | **0,7900** | 0,789 | **0,796** | **0,820** | 0,751 |
+
+→ `model_comparison_balanced3k.{csv,png}` (compare_models kini sertakan IndoBERTweet bila JSON-nya ada).
+Peringkat final: **IndoBERTweet > IndoBERT > SVM.** Naik bertahap; IndoBERTweet menang krn domain-fit
+(Twitter Indonesia) menolong kelas Netral/Negatif yang butuh nuansa medsos.
+
+**SISA (opsional):** update laporan PDF dgn tabel+chart 3 model; ensemble; tambah data latih.
+
+
 
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
