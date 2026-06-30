@@ -50,6 +50,41 @@ panggung.", "Channel provokator pemecah belah."
   ATAU tegaskan-anomali=Positif → arah tak pasti) → Netral.
 - Bahasa campur/typo/alay tetap dinilai dari maksudnya.
 
+## REVISI 2026-06-30 — STANCE DOMAIN-AWARE (override text-only utk SERANGAN aktor dikenal)
+
+Korpus ini punya dua kubu **aktor yang tetap & dikenal**. Karena perannya pasti,
+**SERANGAN dan TUNTUTAN HUKUMAN** terhadap salah satu kubu MEMBAWA SIKAP terhadap
+tuduhan, walau teks tak menyebut kata isu (ijazah/palsu/fitnah). Aturan ini
+**MENGGANTI** bagian "text-only" di bawah KHUSUS untuk kasus serangan/tuntutan ke
+aktor dikenal (poin lain text-only tetap berlaku).
+
+**Kubu PENUDUH** (mendorong tuduhan): Roy Suryo (alias: "Roy", "RS", "Roi", "Roy
+Panci"/"panci", "RRT"), Rismon Sianipar ("Rismon"), dr. Tifa ("Tifa"), Rizal
+Fadhilah, serta sebutan generik "penuduh / yang menuduh".
+**Kubu JOKOWI/PEMBELA** (membantah tuduhan): Jokowi (alias: "Mulyono", "pria solo",
+"JKW"), UGM, Rektor UGM, dekan, serta pembela/buzzer Jokowi.
+
+Aturan (HANYA untuk serangan/tuntutan, BUKAN pujian):
+- **Menyerang** (hinaan, serang karakter/fisik/mental, tuduh motif buruk, "stres/
+  gila/sakit hati/dendam") ATAU **menuntut hukuman/penangkapan** (penjara/adili/
+  tangkap/tahan/bui/laporin/senang jadi tersangka) terhadap **PENUDUH** →
+  **Negatif** (menolak tuduhan dgn menyerang sumbernya).
+- Menyerang ATAU menuntut hukuman terhadap **JOKOWI / pembela Jokowi** →
+  **Positif** (konsisten dgn "adili Mulyono").
+- **TETAP Netral:** pujian/doa/sapaan telanjang ke siapa pun ("sehat selalu pak
+  Jokowi", "Mantap pak Roy 👍", "dukung ibu rektor"), dukungan tanpa serangan,
+  **arah/target ambigu**, atau **target tak teridentifikasi** ("laporin aja dia"
+  tanpa nama). Pujian TIDAK membawa sikap; hanya serangan & tuntutan-hukuman.
+
+Contoh yang BERUBAH karena revisi ini (menggantikan contoh [LAMA] di bawah):
+- "Roy Suryo orang stres" (serang mental penuduh) → **Negatif** (dulu Netral).
+- "Kabarin kalau Roy Suryo ditangkap" (tuntut/senang penuduh ditahan) → **Negatif**.
+- "Buktikan Roy Panci segera tangkap" (tuntut tangkap penuduh) → **Negatif**.
+- "Roy Suryo cs punya dendam pribadi" (tuduh motif buruk penuduh) → **Negatif**.
+- "Mantan napi, koruptor... rame2 dukung Suryo" (ad-hominem kubu penuduh) → **Negatif**.
+- "Mulyono akan sengsara/celaka/mampus" (kutuk/serang Jokowi) → **Positif** (dulu Netral).
+- "Mantap pak Roy 👍" (puji penuduh, bukan serangan) → **Netral** (tak berubah).
+
 ## Aturan keputusan: nilai DARI TEKS saja (text-only stance)
 Sikap dinilai **hanya dari sinyal yang ada di teks komentar**, bukan dari konteks
 luar yang tidak tampak di teks (judul video, siapa "ibu/bapak" yang dimaksud,

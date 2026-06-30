@@ -205,6 +205,63 @@ confidence), 2938 tetap, semua readable, 1000/kelas. Backup lama: `balanced_3000
       `--patch-config` utk update label_config project yg sudah live.
 - [ ] **Update laporan PDF** dgn tabel + chart 3-model balanced3k.
 
+## 10. Re-label LLM Opus + rubrik domain-aware (2026-07-01)
+
+**Keputusan user:** fokus dataset balanced 3000 (14k ditinggalkan), perbaiki dataset utk
+naikkan akurasi. Dijalankan dua pass re-label dgn **Claude Opus** (bukan Sonnet pass-1),
+blind, mengikuti `_RUBRIK.md`.
+
+**Temuan kunci — leher botol Negatif:** readable Negatif cuma 1.213; memaksa 1.000/kelas
+menyeret Negatif ke conf 0.75 (kotor). Re-label mengungkap Sonnet pass-1 **menggelembungkan
+Negatif**.
+
+**Pass-1 (1.056 suspect, rubrik lama):** 316 berubah (29,9%) — dominan **288 Negatif→Netral**
+(serang-orang/tuntut-penjara tanpa basis klaim) + 13 Neg→Pos. Pool Negatif bersih turun ke
+~905. SVM balanced (900/kelas, dedup): **0,84→0,767**. Penurunan = **pembongkaran inflasi**:
+0,84 lama mengukur label yg salah (pintasan leksikal Negatif=bahasa-serangan).
+
+**Rubrik REVISI 2026-06-30 (domain-aware, di `_RUBRIK.md`):** user pilih "Penuh + cerminan".
+Karena aktor korpus tetap & dikenal: **menyerang/menuntut-hukuman PENUDUH** (Roy Suryo/Rismon/
+Tifa/Rizal/RRT) walau tanpa kata isu → **Negatif**; menyerang/menuntut Jokowi/pembela →
+**Positif**; pujian/doa/sapaan telanjang + arah ambigu → tetap Netral.
+
+**Pass-2b (3.240 Netral-menyebut-aktor, rubrik baru):** 2.221 berubah (68,5%) → **1.936 Negatif**
++ 285 Positif. Pool Negatif melonjak 913→2.828 (2.396 Opus-verified) → balanced kembali ke
+**1.000/kelas**, Negatif & Netral 100% Opus-verified, Positif 455 verified (sisa pass-1 claim-based).
+
+**Dampak SVM (test 100/kelas):** 0,84(inflasi) → 0,767(pass-1 bersih, 900) → **0,730**(domain-aware, 1000).
+Confusion: Negatif terlemah (R=0,67), error tersebar Neg→Net 18 / Neg→Pos 15 / Net→Pos 19.
+**Sebab:** label makin VALID secara stance (siapa-diserang + serang-vs-puji) tapi makin SULIT utk
+bag-of-words → SVM TF-IDF mentok ~0,73. **Ini justru titik di mana IndoBERT (kontekstual)
+seharusnya unggul** — gap diperkirakan MELEBAR.
+
+**Tooling baru (reusable):**
+- `src/modeling/apply_relabel_rebuild.py` — terapkan koreksi + dedup + rebuild (dipakai pass-1).
+- `src/modeling/push_relabel_to_mongo.py` — push koreksi → master CSV + Mongo `raw_comments`
+  & `processed_bert` (label hidup di KEDUA koleksi: SVM baca raw, IndoBERT baca processed_bert).
+- `src/modeling/rebuild_balanced_from_master.py` — rebuild balanced dari master (verified-first,
+  dedup). `--per-class 1000`.
+- Catatan durable koreksi: `outputs/labeling/relabel_pass2_opus_20260630.csv` (pass-1),
+  `relabel_pass2b_domainaware_20260630.csv` (pass-2b). Backup balanced: `.prerelabel.bak`/`.prerebuild.bak`.
+
+**Batch A SVM (model-side, TANPA regen) — SELESAI 2026-07-01.** Harness baru
+`src/modeling/svm_batch_a.py` (eval test split kanonik + OOF 5-fold). Hasil balanced3k
+(test 100/kelas): base word(1,2)=0,713 → **+char n-gram(3-5)=0,743** → **+per-class
+threshold (bias decision_function)=0,767**. Negation-merge sendiri kecil (+0,7pp; char sudah
+serap). **SVM pulih 0,730→0,767** murni model-side. Eksperimen → `outputs/reports/svm_batch_a_balanced3k.csv`.
+char n-gram = lever utama; ceiling bag-of-words ~0,767.
+
+**KEPUTUSAN PENDING (user):** promosi char+threshold jadi SVM resmi → **TUNGGU IndoBERT dulu**,
+baru tentukan konfigurasi final SEMUA model bersama. Trainer kanonik `train_svm_full14k.py`
+BELUM diubah (masih word-only, svm_balanced3k_metrics.json=0,730).
+
+**WAJIB BERIKUTNYA (user, Colab) — ANGKA PENENTU:** jalankan **IndoBERT balanced3k** pada label
+baru. Notebook siap pakai: **`indobert_balanced3k_colab.ipynb`** (root repo) — upload + upload
+`outputs/labeling/balanced_3000.csv` + set MONGO_URI (processed_bert di Mongo SUDAH ter-update).
+Output `indobert_balanced3k_metrics.json` → kirim ke Claude. Lalu putuskan config final +
+`compare_models --tag balanced3k`. Hipotesis: IndoBERT (kontekstual) unggul jauh di task stance
+ini → dataset domain-aware = win.
+
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
 **Regen penuh `processed_svm` (14.107 baris, Spark) + re-train SVM** dengan fix preprocessing

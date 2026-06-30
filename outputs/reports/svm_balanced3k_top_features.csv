@@ -1,46 +1,46 @@
 kelas,rank,fitur,koef
-Negatif,1,fitnah,3.367
-Negatif,2,penjara,2.557
-Negatif,3,pak jokowi,2.485
-Negatif,4,benci,2.425
-Negatif,5,tuduh,2.377
-Negatif,6,cs,2.049
-Negatif,7,bilang,2.046
-Negatif,8,minta,2.032
-Negatif,9,pk jokowi,1.702
-Negatif,10,panci cs,1.667
-Negatif,11,kata,1.666
-Negatif,12,bui,1.561
-Negatif,13,percaya,1.559
-Negatif,14,hoax,1.465
-Negatif,15,gerombol,1.395
-Netral,1,gila,1.43
-Netral,2,jokowi hati,1.343
-Netral,3,panci,1.324
-Netral,4,andi,1.262
-Netral,5,gogon,1.239
-Netral,6,mulyono apa,1.161
-Netral,7,percaya polisi,1.146
-Netral,8,rismon tidak,1.136
-Netral,9,idola,1.127
-Netral,10,bu,1.124
-Netral,11,jokowi idola,1.112
-Netral,12,roy,1.057
-Netral,13,seru,1.008
-Netral,14,benar ungkap,0.962
-Netral,15,ibu,0.95
-Positif,1,palsu,4.832
-Positif,2,bohong,3.48
-Positif,3,ijazah,3.359
-Positif,4,jokowi,2.721
-Positif,5,mulyono,2.424
-Positif,6,kalau memang,1.705
-Positif,7,foto,1.684
-Positif,8,skripsi,1.663
-Positif,9,ijazah palsu,1.604
-Positif,10,jokowi harus,1.434
-Positif,11,tunjuk ijazah,1.423
-Positif,12,berani,1.394
-Positif,13,ijasahnya,1.384
-Positif,14,jujur,1.379
-Positif,15,memang ijazah,1.361
+Negatif,1,penjara,1.454
+Negatif,2,gila,1.027
+Negatif,3,orang,1.019
+Negatif,4,roy,1.016
+Negatif,5,fitnah,0.992
+Negatif,6,odgj,0.924
+Negatif,7,tangkap,0.848
+Negatif,8,benci,0.788
+Negatif,9,mau,0.704
+Negatif,10,minta,0.7
+Negatif,11,tidak,0.661
+Negatif,12,tunjuk,0.656
+Negatif,13,stres,0.637
+Negatif,14,mulut,0.629
+Negatif,15,tidak percaya,0.623
+Netral,1,rismon,1.341
+Netral,2,rrt,1.013
+Netral,3,aiman,0.876
+Netral,4,pak,0.817
+Netral,5,roy,0.74
+Netral,6,semangat,0.733
+Netral,7,bung,0.724
+Netral,8,panci,0.708
+Netral,9,sehat,0.678
+Netral,10,pak roy,0.674
+Netral,11,mas,0.608
+Netral,12,mantap,0.557
+Netral,13,acara,0.556
+Netral,14,mas roy,0.526
+Netral,15,maju,0.524
+Positif,1,palsu,2.246
+Positif,2,jokowi,1.592
+Positif,3,ijazah,1.58
+Positif,4,bohong,1.418
+Positif,5,mulyono,1.135
+Positif,6,termul,1.002
+Positif,7,ijazah palsu,0.972
+Positif,8,ugm,0.723
+Positif,9,foto,0.707
+Positif,10,yakin,0.64
+Positif,11,asli,0.639
+Positif,12,tunjuk ijazah,0.574
+Positif,13,ijazah asli,0.566
+Positif,14,jelas,0.551
+Positif,15,adil,0.514
