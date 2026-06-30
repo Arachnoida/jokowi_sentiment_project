@@ -217,11 +217,19 @@ def main():
     print(out.to_string(index=False))
 
     if args.write_official:
-        _write_official(args.tag, best_v, b, te, yp)
+        # Official = neg+char (word 1-2 + char_wb 3-5, LinearSVC), TANPA per-class threshold:
+        # paling stabil (test & OOF konsisten tinggi); threshold dari val kecil overfit, logreg
+        # menang OOF cuma karena noise (kalah di test). char n-gram = lever utama Batch A.
+        off_v = "neg+char"
+        pipe = make(off_v)
+        pipe.fit(prep_text(tr, off_v) + prep_text(va, off_v), list(tr["y"]) + list(va["y"]))
+        yp_off = pipe.predict(prep_text(te, off_v))
+        print(f"\nOfficial = {off_v} (stabil, tanpa threshold)")
+        _write_official(args.tag, off_v, te, yp_off)
 
 
-def _write_official(tag, best_v, bias, te, yp):
-    """Tulis svm_<tag>_metrics.json (format compare_models) utk varian terbaik (char+thr)."""
+def _write_official(tag, best_v, te, yp):
+    """Tulis svm_<tag>_metrics.json (format compare_models) utk varian stabil terbaik."""
     import json
     from pathlib import Path
     from sklearn.metrics import classification_report, confusion_matrix
@@ -239,7 +247,7 @@ def _write_official(tag, best_v, bias, te, yp):
         "confusion_matrix": confusion_matrix(yt, yp, labels=ids).tolist(),
         "n_test": int(len(yt)),
         "best_params": {"features": "word(1,2)+char_wb(3,5)", "clf": "LinearSVC(C=0.5,balanced)",
-                        "per_class_bias": [round(float(x), 2) for x in bias], "variant": f"{best_v}+thr"},
+                        "variant": best_v, "threshold": "none (stable)"},
     }
     rep_dir = Path("outputs/reports")
     json.dump({"model": "SVM+TF-IDF", "dataset": tag, "test": m},
@@ -261,7 +269,7 @@ def _write_official(tag, best_v, bias, te, yp):
     ax.imshow(cm, cmap="Blues")
     ax.set_xticks(range(3), LABELS); ax.set_yticks(range(3), LABELS)
     ax.set_xlabel("Prediksi"); ax.set_ylabel("Aktual")
-    ax.set_title(f"SVM (char+thr) — Test (acc={m['accuracy']:.3f})")
+    ax.set_title(f"SVM ({best_v}) — Test (acc={m['accuracy']:.3f})")
     th = cm.max() / 2
     for i in range(3):
         for j in range(3):

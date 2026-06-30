@@ -309,6 +309,22 @@ Peringkat final: **IndoBERTweet > IndoBERT > SVM.** Naik bertahap; IndoBERTweet 
 
 
 
+## 13. Loop improve v2 — audit OOF + re-label v3 (2026-07-01)
+
+Audit kualitas label v2 (keputusan user "terus improve"): OOF 5-fold SVM(char) di seluruh 3000 →
+769 disagreement (25,6%); ambil yg model PERCAYA-DIRI beda (margin>=0.6, 260) + konsensus 3 model
+di test (13) = 264 kandidat → re-adjudikasi Opus blind (`src/modeling/svm_batch_a.py` OOF; kandidat
+di scratchpad). **41 koreksi (16%)**: Positif→Netral 30 (mayoritas Positif non-verified/Sonnet),
+Netral→Negatif 11; 223 dikonfirmasi (model yg salah). NOL koreksi Negatif (sudah 100% Opus-verified).
+Push ke master+Mongo (durable `relabel_pass2_opus_v3audit_20260701.csv`), rebuild balanced, refresh
+flag `in_balanced3k`, re-train.
+
+**SVM (neg+char, stabil, TANPA threshold): 0,743 → 0,7533 (+1pp)** — fixing label MEMBANTU.
+**Per-class threshold DI-DROP dari official**: overfit val kecil (pra-v3 +2pp jadi 0,767, pasca-v3
+JUSTRU -3pp jadi 0,72). Official SVM kini = neg+char 0,7533 (svm_balanced3k_metrics.json).
+IndoBERT & IndoBERTweet **perlu re-run Colab** (label/membership berubah) — notebook sama, dataset
+auto-update (Mongo+balanced_3000.csv). Tabel 3-model final menunggu hasil itu.
+
 ## 12. DUA VERSI dataset disimpan — v1 (label lama) vs v2 (domain-aware) (2026-07-01)
 
 Keputusan user: simpan **dua-duanya** agar laporan bisa pakai angka tinggi v1 **dan** punya
