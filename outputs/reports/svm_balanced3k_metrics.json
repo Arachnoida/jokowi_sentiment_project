@@ -2,45 +2,45 @@
   "model": "SVM+TF-IDF",
   "dataset": "balanced3k",
   "test": {
-    "accuracy": 0.7533,
-    "macro_f1": 0.7528,
-    "weighted_f1": 0.7528,
+    "accuracy": 0.75,
+    "macro_f1": 0.7494,
+    "weighted_f1": 0.7494,
     "per_class": {
       "Negatif": {
-        "f1": 0.7576,
+        "f1": 0.7638,
         "support": 100
       },
       "Netral": {
-        "f1": 0.7107,
+        "f1": 0.7113,
         "support": 100
       },
       "Positif": {
-        "f1": 0.7902,
+        "f1": 0.7729,
         "support": 100
       }
     },
     "confusion_matrix": [
       [
-        75,
-        17,
-        8
+        76,
+        14,
+        10
       ],
       [
         14,
-        70,
-        16
+        69,
+        17
       ],
       [
         9,
-        10,
-        81
+        11,
+        80
       ]
     ],
     "n_test": 300,
     "best_params": {
       "features": "word(1,2)+char_wb(3,5)",
       "clf": "LinearSVC(C=0.5,balanced)",
-      "variant": "neg+char",
+      "variant": "domfeat+linsvc(word+char)",
       "threshold": "none (stable)"
     }
   }
