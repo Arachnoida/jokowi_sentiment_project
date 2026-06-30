@@ -86,16 +86,28 @@ def _connect(tries=6) -> MongoClient:
 
 
 def load(client, subset):
+    """Fitur `svm` dari processed_svm (label-independent). Label: dari subset CSV bila ada
+    kolom `label` (mendukung v1/v2 tanpa sentuh Mongo), selain itu dari raw_comments."""
     db = client[DB]
-    mem = pd.DataFrame(list(db["raw_comments"].find({"label": {"$exists": True}},
-                                                    {"_id": 0, "comment_id": 1, "label": 1})))
+    sub = pd.read_csv(subset)
+    sub["comment_id"] = sub["comment_id"].astype(str)
     sv = pd.DataFrame(list(db["processed_svm"].find({}, {"_id": 0, "comment_id": 1, "svm": 1, "text": 1})))
-    df = mem.merge(sv, on="comment_id", how="left")
+    sv["comment_id"] = sv["comment_id"].astype(str)
+    if "label" in sub.columns:
+        df = sub[["comment_id", "label"]].merge(sv, on="comment_id", how="left")
+        src = "subset CSV"
+    else:
+        mem = pd.DataFrame(list(db["raw_comments"].find({"label": {"$exists": True}},
+                                                        {"_id": 0, "comment_id": 1, "label": 1})))
+        mem["comment_id"] = mem["comment_id"].astype(str)
+        df = mem.merge(sv, on="comment_id", how="inner")
+        df = df[df["comment_id"].isin(set(sub["comment_id"]))]
+        src = "raw_comments"
     df["svm"] = df["svm"].fillna("")
     df["text"] = df["text"].fillna("")
     df["y"] = df["label"].map(L2I)
-    ids = set(pd.read_csv(subset, usecols=["comment_id"])["comment_id"].astype(str))
-    return df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
+    print(f"  label dari: {src}")
+    return df.reset_index(drop=True)
 
 
 def split(df):
