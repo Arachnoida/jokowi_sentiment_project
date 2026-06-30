@@ -205,6 +205,197 @@ confidence), 2938 tetap, semua readable, 1000/kelas. Backup lama: `balanced_3000
       `--patch-config` utk update label_config project yg sudah live.
 - [ ] **Update laporan PDF** dgn tabel + chart 3-model balanced3k.
 
+## 10. Re-label LLM Opus + rubrik domain-aware (2026-07-01)
+
+**Keputusan user:** fokus dataset balanced 3000 (14k ditinggalkan), perbaiki dataset utk
+naikkan akurasi. Dijalankan dua pass re-label dgn **Claude Opus** (bukan Sonnet pass-1),
+blind, mengikuti `_RUBRIK.md`.
+
+**Temuan kunci — leher botol Negatif:** readable Negatif cuma 1.213; memaksa 1.000/kelas
+menyeret Negatif ke conf 0.75 (kotor). Re-label mengungkap Sonnet pass-1 **menggelembungkan
+Negatif**.
+
+**Pass-1 (1.056 suspect, rubrik lama):** 316 berubah (29,9%) — dominan **288 Negatif→Netral**
+(serang-orang/tuntut-penjara tanpa basis klaim) + 13 Neg→Pos. Pool Negatif bersih turun ke
+~905. SVM balanced (900/kelas, dedup): **0,84→0,767**. Penurunan = **pembongkaran inflasi**:
+0,84 lama mengukur label yg salah (pintasan leksikal Negatif=bahasa-serangan).
+
+**Rubrik REVISI 2026-06-30 (domain-aware, di `_RUBRIK.md`):** user pilih "Penuh + cerminan".
+Karena aktor korpus tetap & dikenal: **menyerang/menuntut-hukuman PENUDUH** (Roy Suryo/Rismon/
+Tifa/Rizal/RRT) walau tanpa kata isu → **Negatif**; menyerang/menuntut Jokowi/pembela →
+**Positif**; pujian/doa/sapaan telanjang + arah ambigu → tetap Netral.
+
+**Pass-2b (3.240 Netral-menyebut-aktor, rubrik baru):** 2.221 berubah (68,5%) → **1.936 Negatif**
++ 285 Positif. Pool Negatif melonjak 913→2.828 (2.396 Opus-verified) → balanced kembali ke
+**1.000/kelas**, Negatif & Netral 100% Opus-verified, Positif 455 verified (sisa pass-1 claim-based).
+
+**Dampak SVM (test 100/kelas):** 0,84(inflasi) → 0,767(pass-1 bersih, 900) → **0,730**(domain-aware, 1000).
+Confusion: Negatif terlemah (R=0,67), error tersebar Neg→Net 18 / Neg→Pos 15 / Net→Pos 19.
+**Sebab:** label makin VALID secara stance (siapa-diserang + serang-vs-puji) tapi makin SULIT utk
+bag-of-words → SVM TF-IDF mentok ~0,73. **Ini justru titik di mana IndoBERT (kontekstual)
+seharusnya unggul** — gap diperkirakan MELEBAR.
+
+**Tooling baru (reusable):**
+- `src/modeling/apply_relabel_rebuild.py` — terapkan koreksi + dedup + rebuild (dipakai pass-1).
+- `src/modeling/push_relabel_to_mongo.py` — push koreksi → master CSV + Mongo `raw_comments`
+  & `processed_bert` (label hidup di KEDUA koleksi: SVM baca raw, IndoBERT baca processed_bert).
+- `src/modeling/rebuild_balanced_from_master.py` — rebuild balanced dari master (verified-first,
+  dedup). `--per-class 1000`.
+- Catatan durable koreksi: `outputs/labeling/relabel_pass2_opus_20260630.csv` (pass-1),
+  `relabel_pass2b_domainaware_20260630.csv` (pass-2b). Backup balanced: `.prerelabel.bak`/`.prerebuild.bak`.
+
+**Batch A SVM (model-side, TANPA regen) — SELESAI 2026-07-01.** Harness baru
+`src/modeling/svm_batch_a.py` (eval test split kanonik + OOF 5-fold). Hasil balanced3k
+(test 100/kelas): base word(1,2)=0,713 → **+char n-gram(3-5)=0,743** → **+per-class
+threshold (bias decision_function)=0,767**. Negation-merge sendiri kecil (+0,7pp; char sudah
+serap). **SVM pulih 0,730→0,767** murni model-side. Eksperimen → `outputs/reports/svm_batch_a_balanced3k.csv`.
+char n-gram = lever utama; ceiling bag-of-words ~0,767.
+
+**KEPUTUSAN PENDING (user):** promosi char+threshold jadi SVM resmi → **TUNGGU IndoBERT dulu**,
+baru tentukan konfigurasi final SEMUA model bersama. Trainer kanonik `train_svm_full14k.py`
+BELUM diubah (masih word-only, svm_balanced3k_metrics.json=0,730).
+
+**WAJIB BERIKUTNYA (user, Colab) — ANGKA PENENTU:** jalankan **IndoBERT balanced3k** pada label
+baru. Notebook **self-contained** (gaya indobert_finetune_colab_variant): **`indobert_balanced3k_colab.ipynb`**
+(root repo) — TANPA upload CSV / clone, baca `processed_bert` via flag **`in_balanced3k=True`**,
+cuma butuh MONGO_URI. Flag diset oleh `python -m src.modeling.push_subset_ids` (sudah dijalankan;
+3000 doc ter-flag). Output `indobert_balanced3k_metrics.json` → kirim ke Claude. Lalu putuskan
+config final + `compare_models --tag balanced3k`. Hipotesis: IndoBERT (kontekstual) unggul jauh di
+task stance ini → dataset domain-aware = win.
+
+## 11. Hasil final domain-aware + IndoBERTweet (2026-07-01)
+
+**IndoBERT balanced3k (label domain-aware, Colab) SELESAI:** acc **0,7733**, macro-F1 0,774
+(F1 Neg 0,785 / Net 0,773 / Pos 0,764). Notebook dipakai: `notebooks/3_modeling/indobert_finetune_colab.ipynb`
+(clone via PAT + `train_indobert --tag balanced3k --subset`).
+
+**HIPOTESIS GUGUR:** IndoBERT TIDAK unggul jauh. Perbandingan final (2 model, Spark di-drop):
+
+| Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
+|---|---|---|---|---|---|
+| SVM (char+thr, Batch A) | 0,7667 | 0,765 | 0,761 | 0,742 | **0,793** |
+| **IndoBERT** ★ | **0,7733** | 0,774 | **0,785** | **0,773** | 0,764 |
+
+IndoBERT menang **cuma +0,66pp**. Sebab: aturan "serang penuduh→Negatif" butuh world-knowledge
+(Roy Suryo=penuduh) yang TAK ada di teks → bahkan IndoBERT (2100 train) cuma belajar sebagian →
+**kedua model mentok ~0,77**. **0,84 lama = fatamorgana** (label salah). Plafon jujur ~0,77 utk
+label valid, apa pun filosofi labelnya.
+
+**KEPUTUSAN (user): keep domain-aware + coba IndoBERTweet.**
+- **SVM Batch A DIPROMOSIKAN jadi resmi.** `svm_balanced3k_metrics.json` kini = char+thr (0,7667),
+  diproduksi `src/modeling/svm_batch_a.py --write-official` (BUKAN train_svm_full14k yg masih
+  word-only/baseline; trainer kanonik TIDAK diubah agar full14k aman). Varian: FeatureUnion
+  word(1,2)+char_wb(3,5) + LinearSVC(C=0.5,balanced) + bias per-kelas [0.3,0,0.4] (tuned val).
+- `compare_models` kini **skip model yg file metriknya tak ada** (Spark dilewati). Output
+  `model_comparison_balanced3k.{csv,png}` = 2 model.
+
+**Track C IndoBERTweet — SELESAI & MENANG.** `indolem/indobertweet-base-uncased` + weighted loss
+(6 epoch) via `notebooks/3_modeling/indobertweet_balanced3k_colab.ipynb`. **acc 0,79** — TEMBUS
+plafon ~0,77. Kunci: Netral F1 **0,820** (model domain-medsos paham bahasa alay/medsos).
+
+**TABEL FINAL balanced3k (test 100/kelas, label domain-aware):**
+
+| Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
+|---|---|---|---|---|---|
+| SVM sklearn (char+thr) | 0,7667 | 0,765 | 0,761 | 0,742 | **0,793** |
+| IndoBERT | 0,7733 | 0,774 | 0,785 | 0,773 | 0,764 |
+| **IndoBERTweet** ★ | **0,7900** | 0,789 | **0,796** | **0,820** | 0,751 |
+
+→ `model_comparison_balanced3k.{csv,png}` (compare_models kini sertakan IndoBERTweet bila JSON-nya ada).
+Peringkat final: **IndoBERTweet > IndoBERT > SVM.** Naik bertahap; IndoBERTweet menang krn domain-fit
+(Twitter Indonesia) menolong kelas Netral/Negatif yang butuh nuansa medsos.
+
+**SISA (opsional):** update laporan PDF dgn tabel+chart 3 model; ensemble; tambah data latih.
+
+
+
+## 14. Fokus v1 + audit label v1 (2026-07-01, lanjut)
+
+User pindah fokus ke **v1** (label Sonnet asli, angka tinggi). Rubrik `_RUBRIK.md` dikembalikan
+ke **text-only asli** (blok REVISI domain-aware DIHAPUS krn bertabrakan dgn contoh lama → bikin
+labeling tak konsisten). SVM feature-tricks (char/domain) TIDAK menembus baseline v1 (word+grid 0,84)
+— wajar, dirancang utk label v2.
+
+**Audit label v1** (loop OOF word-only 3-fold CPU-ringan → 147 disagreement margin>=0.6 → Opus
+re-adjudikasi rubrik asli text-only): **47 koreksi** (Negatif→Netral 36 dominan). Hasil:
+
+| | v1 pristine | **v1 AUDITED** |
+|---|---|---|
+| SVM | 0,84 | **0,8567** |
+| IndoBERT | 0,8467 | **0,8633** |
+
+Audit menaikkan KEDUA model ~+1,7pp (label lebih bersih). Tabel: `v1_pristine_vs_audited.csv`.
+IndoBERT v1audited Netral F1 0,916.
+
+**Ronde audit KEDUA (tak dipakai):** OOF fresh → 82 kandidat BARU → Opus → 29 koreksi (Neg→Net 22 lagi).
+Hasil SVM JUSTRU TURUN 0,8567→0,85 (overcorrection: Negatif menyusut ke 936, makin imbalanced). **Di-revert
+ke r1.** Diminishing returns terkonfirmasi — audit ronde-1 sudah menangkap mayoritas error. Catatan koreksi
+r2 disimpan: `v1_audit2_corrections_20260701.csv` (tidak diterapkan). KEPUTUSAN: v1audited final = ronde-1.
+
+**IndoBERTweet v1audited (Track C) — SELESAI & TERTINGGI:** 0,8733 (macro-F1 0,8721; Neg 0,825/Net 0,898/Pos 0,893).
+
+**TABEL FINAL v1audited (test 100/kelas, label Sonnet+audit ronde-1):**
+
+| Model | Akurasi | macro-F1 |
+|---|---|---|
+| SVM (word+grid) | 0,8567 | 0,856 |
+| IndoBERT | 0,8633 | 0,862 |
+| **IndoBERTweet** ★ | **0,8733** | 0,872 |
+
+Peringkat: IndoBERTweet > IndoBERT > SVM (konsisten dgn v2). Artefak: `model_comparison_v1audited.{csv,png}`,
+`indobertweet_v1audited_*`. Ini hasil balanced TERBAIK proyek (0,8733 pada label valid).
+Notebook: `notebooks/3_modeling/indobertweet_v1audited_colab.ipynb`.
+
+**File v1:** `balanced_3000_v1sonnet.csv` (PRISTINE 1000/kelas, +`.PRISTINE.bak`+git) ;
+`balanced_3000_v1audited.csv` (47 koreksi, 961/1042/997) ; `v1_audit_corrections_20260701.csv`.
+Mongo TIDAK disentuh (label override dari subset CSV: `train_indobert`/`svm_batch_b` baca kolom
+`label` dari CSV bila ada). Notebook `indobert_finetune_colab.ipynb` set ke v1audited.
+
+## 13. Loop improve v2 — audit OOF + re-label v3 (2026-07-01)
+
+Audit kualitas label v2 (keputusan user "terus improve"): OOF 5-fold SVM(char) di seluruh 3000 →
+769 disagreement (25,6%); ambil yg model PERCAYA-DIRI beda (margin>=0.6, 260) + konsensus 3 model
+di test (13) = 264 kandidat → re-adjudikasi Opus blind (`src/modeling/svm_batch_a.py` OOF; kandidat
+di scratchpad). **41 koreksi (16%)**: Positif→Netral 30 (mayoritas Positif non-verified/Sonnet),
+Netral→Negatif 11; 223 dikonfirmasi (model yg salah). NOL koreksi Negatif (sudah 100% Opus-verified).
+Push ke master+Mongo (durable `relabel_pass2_opus_v3audit_20260701.csv`), rebuild balanced, refresh
+flag `in_balanced3k`, re-train.
+
+**SVM (neg+char, stabil, TANPA threshold): 0,743 → 0,7533 (+1pp)** — fixing label MEMBANTU.
+**Per-class threshold DI-DROP dari official**: overfit val kecil (pra-v3 +2pp jadi 0,767, pasca-v3
+JUSTRU -3pp jadi 0,72). Official SVM kini = neg+char 0,7533 (svm_balanced3k_metrics.json).
+IndoBERT & IndoBERTweet **perlu re-run Colab** (label/membership berubah) — notebook sama, dataset
+auto-update (Mongo+balanced_3000.csv). Tabel 3-model final menunggu hasil itu.
+
+## 12. DUA VERSI dataset disimpan — v1 (label lama) vs v2 (domain-aware) (2026-07-01)
+
+Keputusan user: simpan **dua-duanya** agar laporan bisa pakai angka tinggi v1 **dan** punya
+analisis jujur v2. **Tidak ada re-train** — artefak v1 dipulihkan dari git `6462568`.
+
+| Versi | Model | Akurasi | macro-F1 | Catatan |
+|---|---|---|---|---|
+| **v1** (Sonnet, label lama) | SVM sklearn | **0,84** | 0,840 | ⚠️ label sebagian salah (288 Neg→Net) |
+| v1 | SVM Spark | 0,7767 | 0,774 | |
+| v1 | **IndoBERT** | **0,8467** | 0,847 | ⚠️ angka ter-inflasi label keliru |
+| **v2** (domain-aware, valid) | SVM sklearn (char+thr) | 0,7667 | 0,765 | label valid (Opus) |
+| v2 | IndoBERT | 0,7733 | 0,774 | |
+| v2 | **IndoBERTweet** ★ | **0,79** | 0,789 | terbaik di label valid |
+
+**⚠️ CAVEAT (penting utk laporan):** angka v1 lebih tinggi karena diuji pada **label lama yang
+sebagian KELIRU** (288 komentar serang-orang salah ditandai Negatif; terverifikasi Opus). Jadi v1
+sebagian mengukur "meniru label salah". v2 = label valid (stance domain-aware), plafon jujur ~0,77–0,79.
+Disarankan: kalau pakai v1 di laporan, sebut keterbatasannya; v2 lebih defensibel secara ilmiah.
+
+**Artefak:**
+- v1: `outputs/reports/*_balanced3k_v1sonnet_*` (metrics/confusion/predictions) + dataset
+  `outputs/labeling/balanced_3000_v1sonnet.csv`. Mongo TIDAK diubah (tetap label v2 domain-aware).
+- v2: `*_balanced3k_*` (default, aktif di Mongo).
+- Gabungan: `model_comparison_balanced3k_v1_vs_v2.{csv,png}`.
+
+**Revert PENUH ke v1 (bila perlu):** restore label lama ke Mongo dari git
+`git show 6462568:outputs/labeling/labeling_dataset.csv` → push_relabel (atau push manual) +
+`cp balanced_3000_v1sonnet.csv balanced_3000.csv`. Saat ini Mongo = v2 (label valid).
+
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
 **Regen penuh `processed_svm` (14.107 baris, Spark) + re-train SVM** dengan fix preprocessing

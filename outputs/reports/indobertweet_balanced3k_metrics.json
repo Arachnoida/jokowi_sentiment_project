@@ -1,0 +1,51 @@
+{
+  "model": "indolem/indobertweet-base-uncased",
+  "dataset": "balanced3k",
+  "test": {
+    "accuracy": 0.79,
+    "macro_f1": 0.789,
+    "weighted_f1": 0.789,
+    "per_class": {
+      "Negatif": {
+        "precision": 0.7736,
+        "recall": 0.82,
+        "f1-score": 0.7961,
+        "support": 100
+      },
+      "Netral": {
+        "precision": 0.8,
+        "recall": 0.84,
+        "f1-score": 0.8195,
+        "support": 100
+      },
+      "Positif": {
+        "precision": 0.7978,
+        "recall": 0.71,
+        "f1-score": 0.7513,
+        "support": 100
+      }
+    },
+    "confusion_matrix": [
+      [
+        82,
+        8,
+        10
+      ],
+      [
+        8,
+        84,
+        8
+      ],
+      [
+        16,
+        13,
+        71
+      ]
+    ],
+    "labels": [
+      "Negatif",
+      "Netral",
+      "Positif"
+    ]
+  }
+}

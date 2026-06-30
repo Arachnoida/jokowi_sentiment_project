@@ -33,6 +33,7 @@ def sources_for(tag: str):
         ("SVM sklearn", f"svm_{tag}_metrics.json"),
         ("SVM Spark MLlib", f"svm_spark{suffix}_metrics.json"),
         ("IndoBERT", f"indobert{suffix}_metrics.json"),
+        ("IndoBERTweet", f"indobertweet{suffix}_metrics.json"),
     )
 
 
@@ -61,7 +62,11 @@ def main() -> None:
 
     rows = []
     for name, fname in sources_for(tag):
-        t = _load(fname)
+        # Spark di-DROP dari fokus (2026-06-30): lewati bila file metriknya tak ada.
+        if not (REP / fname).exists():
+            print(f"  (lewati {name}: {fname} tak ada)")
+            continue
+        t = json.load(open(REP / fname))["test"]
         rows.append(
             {
                 "model": name,
@@ -70,6 +75,8 @@ def main() -> None:
                 **{f"f1_{lab.lower()}": round(_f1(t["per_class"], lab), 4) for lab in LABELS},
             }
         )
+    if not rows:
+        raise SystemExit("Tak ada metrik model yang bisa dibaca utk tag ini.")
 
     df = pd.DataFrame(rows)
     # full14k mempertahankan nama lama (model_comparison_full14k.csv / _accuracy.png).
@@ -84,7 +91,8 @@ def main() -> None:
 
     # --- chart AKURASI (metrik utama) ---
     best_i = int(df["accuracy"].idxmax())
-    colors = ["#4C72B0", "#55A868", "#DD8452"]
+    palette = ["#4C72B0", "#55A868", "#DD8452", "#C44E52", "#8172B3"]
+    colors = [palette[i % len(palette)] for i in range(len(df))]
     fig, ax = plt.subplots(figsize=(6.5, 4.2))
     bars = ax.bar(df["model"], df["accuracy"], color=colors, width=0.55)
     ax.set_ylim(0, min(1.0, df["accuracy"].max() + 0.12))
