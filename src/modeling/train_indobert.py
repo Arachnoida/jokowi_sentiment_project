@@ -90,8 +90,16 @@ def load_splits(client: MongoClient, subset_path: str | None = None, tag: str = 
         raise RuntimeError("processed_bert kosong.")
     df["text"] = df["text"].fillna("") if "text" in df.columns else df.get("bert", "")
     if subset_path:
-        ids = set(pd.read_csv(subset_path, usecols=["comment_id"])["comment_id"].astype(str))
+        sub = pd.read_csv(subset_path)
+        sub["comment_id"] = sub["comment_id"].astype(str)
+        ids = set(sub["comment_id"])
         df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
+        if "label" in sub.columns:
+            # Override label dari subset CSV (mendukung v1/v1audited tanpa ubah Mongo).
+            # Teks fitur `bert` tetap dari processed_bert (label-independent).
+            lab = dict(zip(sub["comment_id"], sub["label"]))
+            df["label"] = df["comment_id"].astype(str).map(lab)
+            print(f"[{tag}] label dari subset CSV (override processed_bert)")
     df["label_id"] = df["label"].map(LABEL2ID)
     # Split KANONIK: urut comment_id + seed=42 -> identik dgn train_svm versi ini.
     df = df.sort_values("comment_id").reset_index(drop=True)
