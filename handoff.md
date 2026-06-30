@@ -327,6 +327,11 @@ re-adjudikasi rubrik asli text-only): **47 koreksi** (Negatif→Netral 36 domina
 Audit menaikkan KEDUA model ~+1,7pp (label lebih bersih). Tabel: `v1_pristine_vs_audited.csv`.
 IndoBERT v1audited Netral F1 0,916.
 
+**Ronde audit KEDUA (tak dipakai):** OOF fresh → 82 kandidat BARU → Opus → 29 koreksi (Neg→Net 22 lagi).
+Hasil SVM JUSTRU TURUN 0,8567→0,85 (overcorrection: Negatif menyusut ke 936, makin imbalanced). **Di-revert
+ke r1.** Diminishing returns terkonfirmasi — audit ronde-1 sudah menangkap mayoritas error. Catatan koreksi
+r2 disimpan: `v1_audit2_corrections_20260701.csv` (tidak diterapkan). KEPUTUSAN: v1audited final = ronde-1.
+
 **File v1:** `balanced_3000_v1sonnet.csv` (PRISTINE 1000/kelas, +`.PRISTINE.bak`+git) ;
 `balanced_3000_v1audited.csv` (47 koreksi, 961/1042/997) ; `v1_audit_corrections_20260701.csv`.
 Mongo TIDAK disentuh (label override dari subset CSV: `train_indobert`/`svm_batch_b` baca kolom
