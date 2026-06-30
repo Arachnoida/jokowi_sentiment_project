@@ -163,6 +163,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subset", default="outputs/labeling/balanced_3000.csv")
     ap.add_argument("--tag", default="balanced3k")
+    ap.add_argument("--write-official", action="store_true",
+                    help="Tulis svm_<tag>_metrics.json resmi dari varian char+thr (utk compare_models).")
     args = ap.parse_args()
 
     df = load(_connect(), args.subset)
@@ -213,6 +215,60 @@ def main():
     out.to_csv(p, index=False)
     print(f"\nTersimpan: {p}")
     print(out.to_string(index=False))
+
+    if args.write_official:
+        _write_official(args.tag, best_v, b, te, yp)
+
+
+def _write_official(tag, best_v, bias, te, yp):
+    """Tulis svm_<tag>_metrics.json (format compare_models) utk varian terbaik (char+thr)."""
+    import json
+    from pathlib import Path
+    from sklearn.metrics import classification_report, confusion_matrix
+
+    yt = list(te["y"])
+    ids = [0, 1, 2]
+    rep = classification_report(yt, yp, labels=ids, target_names=LABELS,
+                                output_dict=True, zero_division=0)
+    m = {
+        "accuracy": round(accuracy_score(yt, yp), 4),
+        "macro_f1": round(f1_score(yt, yp, average="macro", zero_division=0), 4),
+        "weighted_f1": round(f1_score(yt, yp, average="weighted", zero_division=0), 4),
+        "per_class": {l: {"f1": round(rep[l]["f1-score"], 4), "support": int(rep[l]["support"])}
+                      for l in LABELS},
+        "confusion_matrix": confusion_matrix(yt, yp, labels=ids).tolist(),
+        "n_test": int(len(yt)),
+        "best_params": {"features": "word(1,2)+char_wb(3,5)", "clf": "LinearSVC(C=0.5,balanced)",
+                        "per_class_bias": [round(float(x), 2) for x in bias], "variant": f"{best_v}+thr"},
+    }
+    rep_dir = Path("outputs/reports")
+    json.dump({"model": "SVM+TF-IDF", "dataset": tag, "test": m},
+              open(rep_dir / f"svm_{tag}_metrics.json", "w"), ensure_ascii=False, indent=2)
+    # predictions
+    pd.DataFrame({
+        "comment_id": te["comment_id"].to_numpy(),
+        "text": te["svm"].to_numpy(),
+        "label_asli": [LABELS[i] for i in yt],
+        "prediksi": [LABELS[i] for i in yp],
+    }).assign(benar=lambda d: d["label_asli"] == d["prediksi"]).to_csv(
+        rep_dir / f"svm_{tag}_predictions.csv", index=False)
+    # confusion png
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    cm = np.array(m["confusion_matrix"])
+    fig, ax = plt.subplots(figsize=(5, 4.3))
+    ax.imshow(cm, cmap="Blues")
+    ax.set_xticks(range(3), LABELS); ax.set_yticks(range(3), LABELS)
+    ax.set_xlabel("Prediksi"); ax.set_ylabel("Aktual")
+    ax.set_title(f"SVM (char+thr) — Test (acc={m['accuracy']:.3f})")
+    th = cm.max() / 2
+    for i in range(3):
+        for j in range(3):
+            ax.text(j, i, cm[i, j], ha="center", va="center",
+                    color="white" if cm[i, j] > th else "black")
+    fig.tight_layout(); fig.savefig(rep_dir / f"svm_{tag}_confusion.png", dpi=120)
+    print(f"OFFICIAL ditulis: svm_{tag}_metrics.json (acc={m['accuracy']}) + predictions + confusion png")
 
 
 if __name__ == "__main__":

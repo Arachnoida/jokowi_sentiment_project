@@ -61,7 +61,11 @@ def main() -> None:
 
     rows = []
     for name, fname in sources_for(tag):
-        t = _load(fname)
+        # Spark di-DROP dari fokus (2026-06-30): lewati bila file metriknya tak ada.
+        if not (REP / fname).exists():
+            print(f"  (lewati {name}: {fname} tak ada)")
+            continue
+        t = json.load(open(REP / fname))["test"]
         rows.append(
             {
                 "model": name,
@@ -70,6 +74,8 @@ def main() -> None:
                 **{f"f1_{lab.lower()}": round(_f1(t["per_class"], lab), 4) for lab in LABELS},
             }
         )
+    if not rows:
+        raise SystemExit("Tak ada metrik model yang bisa dibaca utk tag ini.")
 
     df = pd.DataFrame(rows)
     # full14k mempertahankan nama lama (model_comparison_full14k.csv / _accuracy.png).

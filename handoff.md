@@ -263,6 +263,38 @@ cuma butuh MONGO_URI. Flag diset oleh `python -m src.modeling.push_subset_ids` (
 config final + `compare_models --tag balanced3k`. Hipotesis: IndoBERT (kontekstual) unggul jauh di
 task stance ini → dataset domain-aware = win.
 
+## 11. Hasil final domain-aware + IndoBERTweet (2026-07-01)
+
+**IndoBERT balanced3k (label domain-aware, Colab) SELESAI:** acc **0,7733**, macro-F1 0,774
+(F1 Neg 0,785 / Net 0,773 / Pos 0,764). Notebook dipakai: `notebooks/3_modeling/indobert_finetune_colab.ipynb`
+(clone via PAT + `train_indobert --tag balanced3k --subset`).
+
+**HIPOTESIS GUGUR:** IndoBERT TIDAK unggul jauh. Perbandingan final (2 model, Spark di-drop):
+
+| Model | Akurasi | macro-F1 | F1 Neg | F1 Net | F1 Pos |
+|---|---|---|---|---|---|
+| SVM (char+thr, Batch A) | 0,7667 | 0,765 | 0,761 | 0,742 | **0,793** |
+| **IndoBERT** ★ | **0,7733** | 0,774 | **0,785** | **0,773** | 0,764 |
+
+IndoBERT menang **cuma +0,66pp**. Sebab: aturan "serang penuduh→Negatif" butuh world-knowledge
+(Roy Suryo=penuduh) yang TAK ada di teks → bahkan IndoBERT (2100 train) cuma belajar sebagian →
+**kedua model mentok ~0,77**. **0,84 lama = fatamorgana** (label salah). Plafon jujur ~0,77 utk
+label valid, apa pun filosofi labelnya.
+
+**KEPUTUSAN (user): keep domain-aware + coba IndoBERTweet.**
+- **SVM Batch A DIPROMOSIKAN jadi resmi.** `svm_balanced3k_metrics.json` kini = char+thr (0,7667),
+  diproduksi `src/modeling/svm_batch_a.py --write-official` (BUKAN train_svm_full14k yg masih
+  word-only/baseline; trainer kanonik TIDAK diubah agar full14k aman). Varian: FeatureUnion
+  word(1,2)+char_wb(3,5) + LinearSVC(C=0.5,balanced) + bias per-kelas [0.3,0,0.4] (tuned val).
+- `compare_models` kini **skip model yg file metriknya tak ada** (Spark dilewati). Output
+  `model_comparison_balanced3k.{csv,png}` = 2 model.
+
+**MENUNGGU USER (Colab) — Track C IndoBERTweet:** `notebooks/3_modeling/indobertweet_balanced3k_colab.ipynb`
+(self-contained, baca flag `in_balanced3k`, cuma MONGO_URI). Model `indolem/indobertweet-base-uncased`
++ weighted loss, 6 epoch. Target: > 0,7733. Kirim `indobertweet_balanced3k_metrics.json` → bandingkan
+& putuskan apakah gantikan IndoBERT di tabel final. Bisa juga set MODEL_NAME ke indobert-base utk ukur
+efek weighted-loss saja.
+
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
 **Regen penuh `processed_svm` (14.107 baris, Spark) + re-train SVM** dengan fix preprocessing

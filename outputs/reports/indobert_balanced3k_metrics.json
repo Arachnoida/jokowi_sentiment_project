@@ -2,44 +2,44 @@
   "model": "IndoBERT",
   "dataset": "balanced3k",
   "test": {
-    "accuracy": 0.8467,
-    "macro_f1": 0.8469,
-    "weighted_f1": 0.8469,
+    "accuracy": 0.7733,
+    "macro_f1": 0.774,
+    "weighted_f1": 0.774,
     "per_class": {
       "Negatif": {
-        "precision": 0.79,
-        "recall": 0.79,
-        "f1-score": 0.79,
+        "precision": 0.8488,
+        "recall": 0.73,
+        "f1-score": 0.7849,
         "support": 100
       },
       "Netral": {
-        "precision": 0.9239,
-        "recall": 0.85,
-        "f1-score": 0.8854,
+        "precision": 0.8202,
+        "recall": 0.73,
+        "f1-score": 0.7725,
         "support": 100
       },
       "Positif": {
-        "precision": 0.8333,
-        "recall": 0.9,
-        "f1-score": 0.8654,
+        "precision": 0.688,
+        "recall": 0.86,
+        "f1-score": 0.7644,
         "support": 100
       }
     },
     "confusion_matrix": [
       [
-        79,
+        73,
+        8,
+        19
+      ],
+      [
+        7,
+        73,
+        20
+      ],
+      [
         6,
-        15
-      ],
-      [
-        12,
-        85,
-        3
-      ],
-      [
-        9,
-        1,
-        90
+        8,
+        86
       ]
     ],
     "labels": [
