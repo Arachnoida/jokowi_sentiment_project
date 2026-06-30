@@ -309,6 +309,35 @@ Peringkat final: **IndoBERTweet > IndoBERT > SVM.** Naik bertahap; IndoBERTweet 
 
 
 
+## 12. DUA VERSI dataset disimpan — v1 (label lama) vs v2 (domain-aware) (2026-07-01)
+
+Keputusan user: simpan **dua-duanya** agar laporan bisa pakai angka tinggi v1 **dan** punya
+analisis jujur v2. **Tidak ada re-train** — artefak v1 dipulihkan dari git `6462568`.
+
+| Versi | Model | Akurasi | macro-F1 | Catatan |
+|---|---|---|---|---|
+| **v1** (Sonnet, label lama) | SVM sklearn | **0,84** | 0,840 | ⚠️ label sebagian salah (288 Neg→Net) |
+| v1 | SVM Spark | 0,7767 | 0,774 | |
+| v1 | **IndoBERT** | **0,8467** | 0,847 | ⚠️ angka ter-inflasi label keliru |
+| **v2** (domain-aware, valid) | SVM sklearn (char+thr) | 0,7667 | 0,765 | label valid (Opus) |
+| v2 | IndoBERT | 0,7733 | 0,774 | |
+| v2 | **IndoBERTweet** ★ | **0,79** | 0,789 | terbaik di label valid |
+
+**⚠️ CAVEAT (penting utk laporan):** angka v1 lebih tinggi karena diuji pada **label lama yang
+sebagian KELIRU** (288 komentar serang-orang salah ditandai Negatif; terverifikasi Opus). Jadi v1
+sebagian mengukur "meniru label salah". v2 = label valid (stance domain-aware), plafon jujur ~0,77–0,79.
+Disarankan: kalau pakai v1 di laporan, sebut keterbatasannya; v2 lebih defensibel secara ilmiah.
+
+**Artefak:**
+- v1: `outputs/reports/*_balanced3k_v1sonnet_*` (metrics/confusion/predictions) + dataset
+  `outputs/labeling/balanced_3000_v1sonnet.csv`. Mongo TIDAK diubah (tetap label v2 domain-aware).
+- v2: `*_balanced3k_*` (default, aktif di Mongo).
+- Gabungan: `model_comparison_balanced3k_v1_vs_v2.{csv,png}`.
+
+**Revert PENUH ke v1 (bila perlu):** restore label lama ke Mongo dari git
+`git show 6462568:outputs/labeling/labeling_dataset.csv` → push_relabel (atau push manual) +
+`cp balanced_3000_v1sonnet.csv balanced_3000.csv`. Saat ini Mongo = v2 (label valid).
+
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
 **Regen penuh `processed_svm` (14.107 baris, Spark) + re-train SVM** dengan fix preprocessing
