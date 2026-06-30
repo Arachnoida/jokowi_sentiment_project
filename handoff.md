@@ -309,6 +309,29 @@ Peringkat final: **IndoBERTweet > IndoBERT > SVM.** Naik bertahap; IndoBERTweet 
 
 
 
+## 14. Fokus v1 + audit label v1 (2026-07-01, lanjut)
+
+User pindah fokus ke **v1** (label Sonnet asli, angka tinggi). Rubrik `_RUBRIK.md` dikembalikan
+ke **text-only asli** (blok REVISI domain-aware DIHAPUS krn bertabrakan dgn contoh lama → bikin
+labeling tak konsisten). SVM feature-tricks (char/domain) TIDAK menembus baseline v1 (word+grid 0,84)
+— wajar, dirancang utk label v2.
+
+**Audit label v1** (loop OOF word-only 3-fold CPU-ringan → 147 disagreement margin>=0.6 → Opus
+re-adjudikasi rubrik asli text-only): **47 koreksi** (Negatif→Netral 36 dominan). Hasil:
+
+| | v1 pristine | **v1 AUDITED** |
+|---|---|---|
+| SVM | 0,84 | **0,8567** |
+| IndoBERT | 0,8467 | **0,8633** |
+
+Audit menaikkan KEDUA model ~+1,7pp (label lebih bersih). Tabel: `v1_pristine_vs_audited.csv`.
+IndoBERT v1audited Netral F1 0,916.
+
+**File v1:** `balanced_3000_v1sonnet.csv` (PRISTINE 1000/kelas, +`.PRISTINE.bak`+git) ;
+`balanced_3000_v1audited.csv` (47 koreksi, 961/1042/997) ; `v1_audit_corrections_20260701.csv`.
+Mongo TIDAK disentuh (label override dari subset CSV: `train_indobert`/`svm_batch_b` baca kolom
+`label` dari CSV bila ada). Notebook `indobert_finetune_colab.ipynb` set ke v1audited.
+
 ## 13. Loop improve v2 — audit OOF + re-label v3 (2026-07-01)
 
 Audit kualitas label v2 (keputusan user "terus improve"): OOF 5-fold SVM(char) di seluruh 3000 →

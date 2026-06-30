@@ -1,0 +1,5 @@
+versi,model,akurasi,macro_f1,F1_Negatif,F1_Netral,F1_Positif
+v1 pristine (Sonnet),SVM,0.84,0.8397,0.802,0.842,0.875
+v1 pristine (Sonnet),IndoBERT,0.8467,0.8469,0.79,0.885,0.865
+v1 AUDITED,SVM,0.8567,0.8556,0.815,0.887,0.865
+v1 AUDITED,IndoBERT,0.8633,0.8615,0.811,0.916,0.857
