@@ -1,0 +1,7 @@
+﻿dataset,source_path,label,count
+full14k,class_distribution,Negatif,5531
+full14k,class_distribution,Netral,3060
+full14k,class_distribution,Positif,5516
+balanced3k,outputs/labeling/balanced_3000.csv,Negatif,1000
+balanced3k,outputs/labeling/balanced_3000.csv,Netral,1000
+balanced3k,outputs/labeling/balanced_3000.csv,Positif,1000

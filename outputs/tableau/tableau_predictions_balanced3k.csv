@@ -1,0 +1,823 @@
+﻿dataset,model,comment_id,text,actual_label,predicted_label,is_correct,error_status,error_pair,confidence
+balanced3k,SVM sklearn,UgzBXm-PIhFWH5N7RkF4AaABAg,"Gak ada yg salah mul termul, denger kata ""nasehat"" aja kok udah tepuk tangan sambil melet2. Emg gitu kan prosedurnya, kocak bngt kalian 😂
+Biasakan tonton full, cermati kata2/nasehat dari para hakim.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.5378
+balanced3k,SVM sklearn,Ugydj1LyfMKu0T5s2C94AaABAg,"Roy ,refli Harun ,BPK jendral dan banyak LG yg dukung rrt ,semua it hasil karena d berhentikn sama p Jokowi ,jdi model g trima d berhentikan tp d beri amanah mlh ngawur terpaksa d pecat tp g trima dia 2 in akhirnya iri hati lalu bepikir fitnah  supaya p Joko w keliatan jahn dta masyarakat",Negatif,Negatif,True,Benar,Negatif → Negatif,1.7098
+balanced3k,SVM sklearn,UgxuF2_J9U-54_jNzCd4AaABAg,WKWKWKWK,Netral,Netral,True,Benar,Netral → Netral,0.8168
+balanced3k,SVM sklearn,Ugy1xW12Kr8DVH0Q1h54AaABAg,Pada intinya jokodok ijazahnya asli pasti sdh ditunjukkan dr dl krn mbulet muter muter muter berarti jokodok TDK punya ijazah UGM,Positif,Positif,True,Benar,Positif → Positif,1.2371
+balanced3k,SVM sklearn,UgxZLnEWSbWp3LFp5-V4AaABAg,Pak Jokowi tunjukkan ijazahnya Msalah ijazah,Positif,Positif,True,Benar,Positif → Positif,0.9205
+balanced3k,SVM sklearn,Ugw2ujPwi1inVJvNMMt4AaABAg,"Kl semua minta maaf, ijasah palsu itu tidak akan terbongkar sampai yg punya ijasah MATI",Positif,Positif,True,Benar,Positif → Positif,2.0556
+balanced3k,SVM sklearn,UgwZG4h-A_7es3ipnjJ4AaABAg,Semakin yakin ijazahnya jokowi palsu,Positif,Positif,True,Benar,Positif → Positif,2.9643
+balanced3k,SVM sklearn,UgxnHUYFbOGs4UAjT054AaABAg,Mantap bpk Saldi Isra,Netral,Negatif,False,Salah,Netral → Negatif,0.0421
+balanced3k,SVM sklearn,UgxNGzcUqTMPK0-YNwV4AaABAg,Pak Jokowi Yang Terbaik ❤ Sehat Selalu Bapak Jokowi Tetap JAYA Selamanya ♥️,Netral,Negatif,False,Salah,Netral → Negatif,1.799
+balanced3k,SVM sklearn,UgxbvsNWBSVxN8SoLVJ4AaABAg,Josua kacauhhuhhhhhhhhh.😊😊😊😊😊😊,Netral,Netral,True,Benar,Netral → Netral,1.0873
+balanced3k,SVM sklearn,UgwFEBvLG9iN_5ezSbJ4AaABAg,mantap Bu ajari mereka beretika,Netral,Netral,True,Benar,Netral → Netral,1.9271
+balanced3k,SVM sklearn,Ugy9L1nDPcbAmBDTByJ4AaABAg,"gak akan sanggup spt nya ini untuk lanjut gugatan, terlalu kabur tuntutannya spt penyataan ymh prof saldi, 14 hari itu singkat, mending kabur sekalian langka seribu mempersiapkan sidang pengadilan dari pada loncat loncat sana sini. di KIP sdh di kasih dokumen salinan ijazah oleh KPU pun bikin makin pusing jg bonatua krn ternyata ada salinan aslinya.bisa jadi yg duluan mundur malah bonatua krn dia bukan ahli hukum atau penasehat roy cs. semua akan indah pada waktunya, makin di cari makin nyata kebenaran itu.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.0004
+balanced3k,SVM sklearn,Ugyq5YHTdzvvTDbN7Dh4AaABAg,Hedeeh.,Netral,Netral,True,Benar,Netral → Netral,0.8974
+balanced3k,SVM sklearn,UgwTbinEVVesSz0aIVF4AaABAg,Sepertinya jokowi emang gak punya ijazah,Positif,Positif,True,Benar,Positif → Positif,1.9695
+balanced3k,SVM sklearn,Ugx1YBPt9mCh6iA7Ujt4AaABAg,Sy mau muntah liat muka si aswannn ini,Netral,Netral,True,Benar,Netral → Netral,0.5536
+balanced3k,SVM sklearn,UgwwPTJiQ93pE-B9mzh4AaABAg,Emang itu tifa &ak masuk akal pinter pinter bodoh suka bikin onar.. Bikin fitnah.. Dokter dokteran,Negatif,Negatif,True,Benar,Negatif → Negatif,0.8088
+balanced3k,SVM sklearn,UgwFMS1B7mK2c8XylpB4AaABAg,Gk jauh induk n ternak nya...pembohong besar,Positif,Positif,True,Benar,Positif → Positif,1.0558
+balanced3k,SVM sklearn,UgzK8-9bGLYhU-Fkzjt4AaABAg,"SEBENAR BENARNYA INI BUKAN TENTANG IJASAH S1 JOKOWI !!
+
+Ini hanya masalah kekuatiran kalah pilpres lalu takut akan pengaruh jokowi di pilpres 2029 dst 😅😅
+
+Isu ijasah adalah kelanjutan dari isu isu apapun sebelumnya, pki, occrp dll yang sudah gagal.
+Kemarin dilanjut isu whoose tapi gagal.
+Isu pemakzulan terus diupayakan .
+Rencana isu ikn gagal , karena ikn ternyata diminati masyarakat.
+Terus akan ada isu isu pada jokowi selamanya.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.0276
+balanced3k,SVM sklearn,Ugzo5EZYhT82aNT5J794AaABAg,Palsu 1000 persen,Positif,Positif,True,Benar,Positif → Positif,1.5435
+balanced3k,SVM sklearn,UgwnNpRKqBrLK_TLJiB4AaABAg,"tapi ingat bahwa Mencaci maki, mungucapkan ujaran² kebencian, mencemarkan nama baik itu juga melanggar hukum bos ?? jadi yg diproses adalah bukan karna Roy menanyakan ijazah tapi mencaci maki & berujar kebencian juga mencemarkan nama baik",Negatif,Negatif,True,Benar,Negatif → Negatif,2.4904
+balanced3k,SVM sklearn,Ugz7IwVSDaEr6CT3ZWZ4AaABAg,"Katanya 99.9% yakin ijazah Jokowi itu palsu. Seharusnya kalian2 justru  mendorong agar kasus ini selesai secara tuntas di pengadilan.  Kok sekarang malah ngemis2 minta kasus di stop ???
+
+Dasar manusia2 koplak ngga punya harga diri..!!  Setelah menghina dan memfitnah orang tanpa bukti, seenaknya saja minta kasus di stop...😂😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,2.0621
+balanced3k,SVM sklearn,Ugz0STG-EKdQPBPBy0h4AaABAg,Mantap hebat Hakimnya 👍,Netral,Netral,True,Benar,Netral → Netral,1.5758
+balanced3k,SVM sklearn,Ugw5UlCUwO10FisW6854AaABAg,"saya setuju dengan pak Jokowi nggak nunjukin ijasah emang mereka"" siapa kecuali klu lapor  dan di tanya penyidik tentang keaslian ijasahnya baru tunjukin orang tak punya hak untuk paksa liat dokumen pribadi orang lain klu tau orang lain pakai arsip ilegal tinggal lapor",Negatif,Positif,False,Salah,Negatif → Positif,0.9385
+balanced3k,SVM sklearn,UgyrHOX1EjLLKusec3t4AaABAg,Roy panci kelihatan stres bgt,Netral,Netral,True,Benar,Netral → Netral,2.0506
+balanced3k,SVM sklearn,UgwVJIiKwRMR8-xvRMV4AaABAg,kan ijazah nya sdh ditunjukan om hotman ko masih tanya ...,Negatif,Positif,False,Salah,Negatif → Positif,0.638
+balanced3k,SVM sklearn,UgxsQaJBHB4XgYwIIxB4AaABAg,Yakin palsu,Positif,Positif,True,Benar,Positif → Positif,3.199
+balanced3k,SVM sklearn,Ugz4kMt_BgVtSRKRjx54AaABAg,"Terlihat jelas jokowi penipu,hukum harus ditegakan,mau hukum lewat keadilan,rimba atau akhirat,pilih jok?",Positif,Positif,True,Benar,Positif → Positif,0.3171
+balanced3k,SVM sklearn,UgwfBm6QLj1eBjj5Urt4AaABAg,"Percuma juga d tunjukkan ijazahnya,, lah wong ngeyel alias pembenci mana percaya. Sikat aja deh pak polisi..!!",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9625
+balanced3k,SVM sklearn,UgwaWjPrv4_GXVwTiCh4AaABAg,"Jujurlah, Pratikno dan Prof. OVA disandra untuk mensahihkan keaslian ijazah S1Jokowi. Alur Kuliah Jokowi terdaftar sampai 4 SMS, SMT ke-5 tidak daftar ulang di akademik fak. kehutanan UGM. Jadi Jokowi memimiliki kemampuan akademik hanya Sarjana Muda, tetapi S1 (Gelar Drs. dan Ir.) digunakan untuk Jabatan Walikota, Gubernur, dan Presiden RI Dua Periode. Perolehan ijazah S1 dipertanyakan proses akademiknya di institusi mana? Hadirnya RRT riset analisis pembuktian hipotesis diperoleh hasil 99,9 % Ijazah ini Palsu bukan produk UGM ttp di Biro Jasa lainnya. Kesimpulannya, Jabatan Publik Jokowi dan Gibran DISKUALIFIKASI YURIDIS FORMAL JABATAN PUBLIKNYA.",Positif,Positif,True,Benar,Positif → Positif,1.6732
+balanced3k,SVM sklearn,UgwZZJlTEfeKXTGYAH54AaABAg,"Apanya sih yg hebat dari Roy Suryo ini,lagu indonesia Raya aja ngak hafal dia pas jadi mentri ngaco aja 😂😂😂",Netral,Negatif,False,Salah,Netral → Negatif,0.1818
+balanced3k,SVM sklearn,UgxF21nHnfmnVLbWXLp4AaABAg,"PENEGAKAN HUKUM TIDAK ADA TAWAR MENAWAR !!! JIKA IJAZAH ITU PALSU,MAKA JOKOWI HARUS SEGERA DI PENJARA!!;",Positif,Positif,True,Benar,Positif → Positif,1.4639
+balanced3k,SVM sklearn,Ugx7ud2l0ehzXjr0w-94AaABAg,"Kalau bener bener palsu terus mau apalagi, wong gak mau menunjukan, apalagi mau di sidang malah ngumpet gak mau nongol.",Positif,Positif,True,Benar,Positif → Positif,0.8123
+balanced3k,SVM sklearn,Ugx4IDGn5SCHzrRSNWR4AaABAg,Betul❤❤❤,Netral,Netral,True,Benar,Netral → Netral,1.7453
+balanced3k,SVM sklearn,Ugx1bUCI1PCPC2VzHK94AaABAg,Beri Contoh lah Kpd Mahasiswa nya Secara Profesional krn Mahasiswa  ini Calon2 Utk Pejabat Publik n Sbg. Dosen . 🙏,Netral,Positif,False,Salah,Netral → Positif,0.1536
+balanced3k,SVM sklearn,Ugx9caZQUPsKl4pYysJ4AaABAg,"Sandi tdk pernah menyatakan ijazah Pak Jokowi palsu, sedangkan TIRORIS terlalu maju, langsung menyatakan ijazah Pak Jokowi palsu, sehingga hrs menerima konsekwensi dr ppernyataannya..😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.8676
+balanced3k,SVM sklearn,Ugxph41iAb0uRsUvI6t4AaABAg,Selamat bekerja,Netral,Netral,True,Benar,Netral → Netral,0.287
+balanced3k,SVM sklearn,Ugx5B6v7tCLDNJnT7nN4AaABAg,Roy fanci tifah rismon kandangin ajah. Sama. Buaya,Netral,Netral,True,Benar,Netral → Netral,0.4239
+balanced3k,SVM sklearn,Ugy63O8CwVFhIyJ2k1h4AaABAg,Tunjukan saja ijazah nya ke publik wahai pak jokowi,Positif,Positif,True,Benar,Positif → Positif,1.2891
+balanced3k,SVM sklearn,UgxC3Qu3bn3UEz7tRhN4AaABAg,"REVOLUSI SEGERA SERET JOKOWI SEKELUARGA KEPENGADILAN,KAMI SUDAH MUAK SEMUA INI",Positif,Positif,True,Benar,Positif → Positif,0.8963
+balanced3k,SVM sklearn,Ugwv_UBAuU-r2PlU5rd4AaABAg,Roy Suryo semakin gila,Netral,Netral,True,Benar,Netral → Netral,1.8519
+balanced3k,SVM sklearn,Ugz3clqoSaXCA9AVle14AaABAg,"Tuh kan sudah ditunjukkan yg asli masih ngebacot teruss 😂😂
+Selama ini koar2 minta ditunjukkan ..akhirnya dituruti ditunjukkan ..eeh masih cari² kesalahan orang tapi lupa kelakuan busuknya sendiri 😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,2.8873
+balanced3k,SVM sklearn,UgyYsCabR6MQyiLe18d4AaABAg,Si Andi Azwan ini sdh Gila Ya,Netral,Netral,True,Benar,Netral → Netral,2.9664
+balanced3k,SVM sklearn,Ugx1KvCtmjrC60uA4214AaABAg,Kasian rakyat harus mengonsumsi pemberitaan  fitnah Roy cs yg menuduh tidak bisa membuktikan sungguh konyol pendukung Roy cs,Negatif,Negatif,True,Benar,Negatif → Negatif,3.1935
+balanced3k,SVM sklearn,UgwjvDxPsGuwIp5Nr7J4AaABAg,"1:38:54 wkwkwkwk aiman ngamoook, lempar aja pak pake gelas white coffenya😭😭😭😭",Netral,Netral,True,Benar,Netral → Netral,0.9841
+balanced3k,SVM sklearn,UgwMm9v4qU70xMQ09cJ4AaABAg,Gedabrus semua.tidak.malu.urat.sudah putus,Positif,Netral,False,Salah,Positif → Netral,1.8407
+balanced3k,SVM sklearn,Ugxzy7b1eOkT0-1ze3h4AaABAg,"Terus cari undang undang untuk membenarkan diri Jokowi udah sekacau ini dari berapa tahun Maslah ijazah blum beres,data pribadi data pribadi tai,lu itu di pilih oleh rakyat, enak banget si Jokowi jadi persiden ga pake ijazah,kita aja yang kerja harus pake ijazah, ingat di dunia ini tidak ada yang abadi",Positif,Positif,True,Benar,Positif → Positif,0.3274
+balanced3k,SVM sklearn,UgwLrjPF27eWo_6dOsl4AaABAg,Sbetulnya ini akibat kecurangan di republik ini ada pejabat negara ber ijasah  palsu,Positif,Positif,True,Benar,Positif → Positif,2.4488
+balanced3k,SVM sklearn,UgyWuKc8kjjtZ901HiN4AaABAg,"Yg nuduh Residivis, Kuasa hukum nya jg resedivis.. kalo masyarakatnya yg percaya, keder gw",Negatif,Negatif,True,Benar,Negatif → Negatif,1.3447
+balanced3k,SVM sklearn,UgyBBgDYA5psSwIy_2F4AaABAg,"Ijazah asli karena ada legalisir. Yg primer untuk apa lagi, jika pihak terkait sudah menjelaskan asli",Negatif,Negatif,True,Benar,Negatif → Negatif,0.049
+balanced3k,SVM sklearn,UgwzFXHqTdKwDghKx-54AaABAg,Sdah sngt jelas di nomor ijazah sangt beda dgn ijazah asli.,Positif,Positif,True,Benar,Positif → Positif,1.0041
+balanced3k,SVM sklearn,UgyzcXChY96s2Itqcl94AaABAg,"Menurit saya sudah benar bahwa masalah ini dibawa ke pengadilan. Tak usah diperdebatkan.  Yang lain cuma  bikin ruwet saja.. 
+Ditunjukkan tak akan menyelesaikan masalah. Karena sudah terlanjur dinyatakan di depan umum dengan rekayasa IT dan fitnah.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.2997
+balanced3k,SVM sklearn,UgxV_Dw0p1dTDMnFXax4AaABAg,Suryo dah strees loh.,Netral,Netral,True,Benar,Netral → Netral,0.9943
+balanced3k,SVM sklearn,UgwYdXVSv-B7h_J31n54AaABAg,"Salfok sm presenternya, pol cantiknya.. 😊",Netral,Netral,True,Benar,Netral → Netral,1.1341
+balanced3k,SVM sklearn,Ugydl18fMNW_wex27RF4AaABAg,Cuma melihat😂😂,Netral,Netral,True,Benar,Netral → Netral,0.0121
+balanced3k,SVM sklearn,UgzmRL3XZlujI4wL0qB4AaABAg,"Mana ada yang percaya dg ijazah jokowi, semua orang yakin 100% ijazah jokowi palsu... Media jangan maen plintir berita!!! Jangan menyesatkan!!!",Positif,Positif,True,Benar,Positif → Positif,1.8158
+balanced3k,SVM sklearn,Ugwuhy63CAxE9AMIY6F4AaABAg,PAK PRABOWO TOLONG BERIKAN KEPASTIAN HUKUM DI ERA KEPEMIMPINAN BAPAK.,Netral,Negatif,False,Salah,Netral → Negatif,0.4689
+balanced3k,SVM sklearn,Ugz8dVfbPzoR_Idik8x4AaABAg,Semoga kebenaran terungkap rakyat yakin ijash palsu  100persen palsu,Positif,Positif,True,Benar,Positif → Positif,1.4637
+balanced3k,SVM sklearn,UgwJpJEs_2TBFE7q5FZ4AaABAg,"Orang iri ya kayak gini,gila",Netral,Netral,True,Benar,Netral → Netral,2.4143
+balanced3k,SVM sklearn,UgxG4ovqI3DKwYkPGed4AaABAg,Wkwkwk..mantab buk..tabok roy panci..😂,Netral,Netral,True,Benar,Netral → Netral,2.3259
+balanced3k,SVM sklearn,UgyBaShhaB7XsE3Dxfl4AaABAg,"Terus pak jokowi , jgn terpancing gol tukang fitnah . Jgn sampai si bohir paling besarnya ketangkap.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.5536
+balanced3k,SVM sklearn,UgzJ_2GjAR4qAjN4o5J4AaABAg,Jangan jangan lembar pengujian skripsi dihilangkan seseorang untuk menguatkan tuduhan palsunya,Negatif,Positif,False,Salah,Negatif → Positif,0.7794
+balanced3k,SVM sklearn,UgxvNSqe9T_8UsmTQ7d4AaABAg,"Niatnya mau ngancurin Jokowi, Yg mau di hancurin santai² aja eh yg mau ngancurin ternyata malah udah berantakan sendiri 😂",Negatif,Negatif,True,Benar,Negatif → Negatif,1.5633
+balanced3k,SVM sklearn,UgwcwHGOlThX4fhPdfJ4AaABAg,Prof gayus???????,Netral,Netral,True,Benar,Netral → Netral,0.7339
+balanced3k,SVM sklearn,UgxeeUZJm9Gmd1pfUM14AaABAg,"wah saya ini asli Jogja , terus terang saja UGM ini kan lebih bagus   coba Poto ijazah kan jelas beda kok masih muter2 terus to ?",Positif,Positif,True,Benar,Positif → Positif,1.7187
+balanced3k,SVM sklearn,UgzkiEEPVgau-tKocH94AaABAg,"Banyak pembenci bpk Jokowi karena merasa mempunyai derajat yg lebih tinggi. 
+Mereka tidak habis pikir dan tidak bisa terima... mengapa Jokowi bisa membawa naik bangsa indo ke level lebih tinggi ?
+Mengapa bukan mereka yg melakukan / mendapatkan kehormatan itu ? Mengapa Jokowi yg jadi pahlawan dan dicintai mayoritas anak bangsa ?
+Mengapa....????
+
+Mereka lupa :
+- mereka tdk punya akar kerendahan hati,
+- mereka tidak punya semangat kerja keras yg disertai kejujuran dan ketulusan,
+- mereka lebih suka mengambil/menerima daripada memberi.
+
+Mayoritas rakyat indo mempunyai mata hati nurani, menyimak dan melihat secara terang benderang :
+
+Bpk Jokowi adalah Berlian !
+Sementara mereka adalah karat besi yg tak berguna
+
+Salam jujur dan tetap berjuang bpk Joko Widodo 🙏",Negatif,Negatif,True,Benar,Negatif → Negatif,0.0139
+balanced3k,SVM sklearn,UgyA9nyXIO-CDJffB3B4AaABAg,"Tahun kebangkitan ilmuwan ulama cerdik cendekiawan akademisi Indonesia, 2026. Kita bangsa Indonesia bersatu mewujudkan keadilan sosial bagi seluruh rakyat Indonesia NKRI Nusantara. 
+
+Kami warga masyarakat mengawal dukungan dan doa untuk membela kejujuran dan keadilan. Mulai dari ijazah palsu Jokowi yang digunakan untuk melamar kerja presiden pejabat publik. Dan sebelum gubernur DKI walikota Solo.
+Semoga Allah Subhanahuwata'ala tahun 2026 mengijinkan kemenangan kejujuran dan keadilan melawan Pembohonga dan kejahatan. Aamiin yaa Rabbal 'alamiin 🤲🏻🙏🏻",Positif,Positif,True,Benar,Positif → Positif,0.5242
+balanced3k,SVM sklearn,UgxPfRc8XCYmZbS-2ed4AaABAg,Udah Roysuryo ngalah saja karna anda yg mulai kerusuhan yg tanpa berdasar ini...karna hasutan semata.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.3654
+balanced3k,SVM sklearn,UgwwYBCyEN2oMZjom254AaABAg,"Heh sur,  sy dlu jg waktu bikin skripsi (dlu jg disebutnya skripsi),  sy jg sllu brtanya pd Asdos sy  ktika mau diajukn k Dosen pmbimbing skripsi sy (krn sy mrasa gbs/takut salah & dimarahi dos pembimbing),  kbetuln Asdos sy orgnya ramah & mau ngajari!  
+Jd MUNGKIN  begitu  jg dg p Jokowi.  Emg msalah??! & trbukti stiap Bab yg sy Ajukn pd  Dos pembimbing sllu di ACC,  paling hnya da  yg hrs ditambah ato dikurangi sdikit sj. 
+& Akhirnya sy bs mnyelesaikn skripsi sy hya dlm waktu (klo g salah 5x pertemuan sj).  Alhamdulillah.  
+& Skrg klo ditanya sypun Akn mngatakn : ""Berkat Asdos sy tu,  skripsi sy bs slesai dg cepat!""",Negatif,Positif,False,Salah,Negatif → Positif,0.3171
+balanced3k,SVM sklearn,Ugxx5SUmkFcYJghGoaR4AaABAg,"Sangat setuju Bu,",Netral,Netral,True,Benar,Netral → Netral,2.709
+balanced3k,SVM sklearn,Ugxa7fsa7OssjQyd3B94AaABAg,"Ijazah ini memang bohong, ruwet dan terbelit2. Kesannya terus menutupi kebohongan2 yg ada. Aneh sekali kasus ini. Orang bodoh saja paham mainan ini.. 😂😂. Polisi sebagai APH konyol sekali.",Positif,Positif,True,Benar,Positif → Positif,1.4926
+balanced3k,SVM sklearn,Ugyeb0_DNYB-hM_6jVl4AaABAg,Benar bu,Netral,Netral,True,Benar,Netral → Netral,1.3787
+balanced3k,SVM sklearn,UgwRzMDAFV5qhiogMP94AaABAg,Sudah di bilang sejak awal..orng kalo dh benci ..mau di vonis hakim juga GK bakalan percaya..nanti kalo pas sidang pasti bilang jaksa suruhan .hakim di beli..sudah lahh .lenyapkan saja,Negatif,Negatif,True,Benar,Negatif → Negatif,2.0657
+balanced3k,SVM sklearn,UgybOzr_xARvG5A6Doh4AaABAg,"Rakyat sudah paham,niat si Roy CS itu bukan untuk mencari kebenaran atau keaslian ijazah ini ada unsur politik dan ingin menghancurkan kredibilitas pak Jokowi dan keluarga dengan freming kebencian,fitnah orang orang ODGJ.",Negatif,Negatif,True,Benar,Negatif → Negatif,3.884
+balanced3k,SVM sklearn,UgyLyfi8BEIRzL_e1Ed4AaABAg,Haduh.....sederhana saja ko....yg diteliti roi objeknya fotocopy...apakah itu sudah benar?,Negatif,Negatif,True,Benar,Negatif → Negatif,0.074
+balanced3k,SVM sklearn,UgyIf9QJJKSdFT3h-eN4AaABAg,Dulu dua orang di penjara Gus nur dan Bambang Tri kasus ijazah nya Jokowi.....sekarang ada 8 orang yg di ancam mendekam di penjara......,Negatif,Negatif,True,Benar,Negatif → Negatif,0.218
+balanced3k,SVM sklearn,UgxIux2704e2yuXw4il4AaABAg,"Sabbe satta bhavantu sukitata, semoga semua mahkluk berbahagia.",Netral,Netral,True,Benar,Netral → Netral,0.2077
+balanced3k,SVM sklearn,Ugw1d1aaCVnxax2d0kx4AaABAg,"""nanti ditunjukan di pengadilan"". krna sementara masih dalam proses editing dan loby2 entah ke siapa, agar terlihat asli",Positif,Negatif,False,Salah,Positif → Negatif,0.4888
+balanced3k,SVM sklearn,Ugx4UXTfSoZou8MbQk14AaABAg,Buktinya ijazah asli GK pernah ditunjukkan aslinya,Positif,Positif,True,Benar,Positif → Positif,1.4664
+balanced3k,SVM sklearn,UgxNmM5-wGSCdSHBxFR4AaABAg,"Kenapa para rektor tidak berani bertemu..dgn Roy Suryo cs..
+Tidak berani menampilkan data..
+
+Palsu....palsu..palsu",Positif,Positif,True,Benar,Positif → Positif,2.1336
+balanced3k,SVM sklearn,Ugy6iBaHwKH1BCkNuAx4AaABAg,"Hakim MK sangat keren, kelihatan banget kualitas orang nya, sangat top.",Netral,Netral,True,Benar,Netral → Netral,0.7194
+balanced3k,SVM sklearn,Ugxe7MJi_DmanWCW1wN4AaABAg,pembenci jokowi itu  kebenaranpun akan menjadi salahh itulah kebencian dn kedengkian....,Negatif,Negatif,True,Benar,Negatif → Negatif,2.0338
+balanced3k,SVM sklearn,UgxmPgMeoQlFSMfhGB14AaABAg,"Apakah ini tanda2 di akhir jaman, banyak sekali orang pintar tp keblinger. Menyerang orang yg pernah memperjuangkan indonesia selama 10 th. Dan oknum2nya hanya itu2 sj, jangan pernah ibu pertiwi menangis lg. Kebaikan dan kebenaran akan mencari jlnnya sendiri. Tindak tegas oknum2 orang yg sok2an itu.
+Inilah judulnya  wong pinter tp keblinger. Tunggu sj hasil sidang b3sok !",Negatif,Negatif,True,Benar,Negatif → Negatif,1.468
+balanced3k,SVM sklearn,UgytHgwJtM6eo7761w14AaABAg,mentri pecatan kagol. stresssss..,Netral,Netral,True,Benar,Netral → Netral,0.2714
+balanced3k,SVM sklearn,UgyVYUJvJlgSjBmNgAF4AaABAg,Mantap mbak diana,Netral,Netral,True,Benar,Netral → Netral,1.9866
+balanced3k,SVM sklearn,Ugyjecq6QvLwDSCZsct4AaABAg,Ijazah palsu itu yang buat pembenci Pak jokowi karena mau bales dendam tak bisa diajak kerja sama,Negatif,Negatif,True,Benar,Negatif → Negatif,1.3738
+balanced3k,SVM sklearn,UgxytPikt3szHWJbPKp4AaABAg,"Semangat Roy cs, siapkan pembelaan2 kalian dipersidangan kedepannya, siapkan stok obat migrain yg banyak, jangan sampai sakit ya
+Jangan lupa sarapan kalau pagi biar kuat menghadapi kenyataan",Negatif,Negatif,True,Benar,Negatif → Negatif,0.086
+balanced3k,SVM sklearn,UgzJQ9HymLxaXcuzrxJ4AaABAg,"Menurut keyakinan saya ijazahnya palsu, kamu tidak percaya lagi dengan ugm",Positif,Positif,True,Benar,Positif → Positif,0.2804
+balanced3k,SVM sklearn,UgxzKnwLNuD2oyfpWNd4AaABAg,Pancingan RH kepada hakim yang mulia untuk Tiroris ngomong di tolak dengan elegam oleh pak hakim. Permulaan yang bagus untuk menutup langkah mereka. Ini bukan acara Rakyat Bersuara Aiman pak RH.,Negatif,Netral,False,Salah,Negatif → Netral,0.5709
+balanced3k,SVM sklearn,Ugxut52Q_QuP5q5JEF54AaABAg,lihat muka tompel langsung skip .... kabuuur .. 😂,Netral,Netral,True,Benar,Netral → Netral,0.8713
+balanced3k,SVM sklearn,UgwyDEoscRG8k12_tdF4AaABAg,Deny prof cengeng  belum pembuktian sdh bilang kraminilisasi,Negatif,Negatif,True,Benar,Negatif → Negatif,0.7791
+balanced3k,SVM sklearn,UgwSiV-nBXfdgcMCy414AaABAg,Ijazahnya S1 tp transkip nilai nya bkn s1,Positif,Positif,True,Benar,Positif → Positif,1.0796
+balanced3k,SVM sklearn,Ugzmu05qhi-KZIbLlal4AaABAg,"Saya jangan kan tamat UGM, saya SD aja gak tamat, Tapi bisa berfikir logika, kalau emang ijazah nya asli, kenapa tidak di tunjukkan? Kenapa banyak alasan? Kalau pun sudah ada ijazah nya, itupun ijazah palsu karna udh di sogok uangnya kalian.. Kalau cuman ngomong, burung BEO pun bisa ngomong, Kami mau bukti bukan cuman kata kata kaliannn..",Positif,Positif,True,Benar,Positif → Positif,1.4524
+balanced3k,SVM sklearn,Ugy8qWwdSoVr7QvbJCB4AaABAg,"Astaghfirullah....sabar nggih bapak Jokowi, semoga panjenengan senantiasa dilindungi oleh Alloh SWT, aamiin....🤲🤲🤲",Negatif,Netral,False,Salah,Negatif → Netral,0.1178
+balanced3k,SVM sklearn,UgyrC-qRfg1U4PXfotV4AaABAg,HOAX,Negatif,Negatif,True,Benar,Negatif → Negatif,1.6034
+balanced3k,SVM sklearn,UgxegQhqfZVAaqrW_nF4AaABAg,"10 ciri"" orng sox pinter tapi aslinya sangat bodoh. 
+1 tdk mw mendengar orng lain
+2 menghindari keitik 
+3 mengnkn jargon atau istlh sulit
+4 membuat kliem berlebihan 
+5 enggan mengakui kslahannya
+6 mremehkan pndapat orng lain 
+7 mnghndri pertnyaan org lain 
+8 trllu prcya diri dlm hal yg tdk di kuasai. 
+9 suka mengoreksi tnpa dasar 
+10 di tanya ke mana jawabx kmn 
+itu ke bodohan roy panci",Netral,Netral,True,Benar,Netral → Netral,0.4616
+balanced3k,SVM sklearn,UgyA2AIkqsc0wd0L4e54AaABAg,Klo ijazah gw palsu gw jg takut nunjukin....palagi klo nunjukin ke RRT yg notabene ahli nya ahli😅😅😅,Positif,Positif,True,Benar,Positif → Positif,2.5796
+balanced3k,SVM sklearn,UgzVMnjP2tRhyTBBS154AaABAg,Palsu tunjukan dong jangan asumsi congor,Positif,Positif,True,Benar,Positif → Positif,1.412
+balanced3k,SVM sklearn,UgyzqEOIG13o8teqYER4AaABAg,Selama hidup saya tidak pernah liat dokter sepedti dr tifa gaya preman 😂,Netral,Netral,True,Benar,Netral → Netral,1.3222
+balanced3k,SVM sklearn,UgwKvEOBq7BV-5UwLwB4AaABAg,"apa salahnya menunjukkan ijazah asliiiiiii sih kalo ada, nglamar kerja swasta aja terkadang diminta menunjukkan ijazah asli..nah ini dia pernah memimpin indonesia 10 th, dan masih menjabat sebagai pejabat publik...lha kok ditanyakan ijazah aslinya mbulet koyo entut 😂😂😂",Positif,Positif,True,Benar,Positif → Positif,0.6459
+balanced3k,SVM sklearn,UgxaCrEhj579A_5jwF14AaABAg,memalukan.. menghinakan diri sendiri dgn menjadi termul,Netral,Netral,True,Benar,Netral → Netral,0.4166
+balanced3k,SVM sklearn,Ugw6eta6yt0e7wNZvAx4AaABAg,Ya si Suryo. Tukang gaduh,Netral,Negatif,False,Salah,Netral → Negatif,0.8854
+balanced3k,SVM sklearn,Ugz8H2KQOMD1gIHRUgx4AaABAg,Memang busuk komplotan mrka. Sdh dtunjukkan masih sj ngotot.,Negatif,Netral,False,Salah,Negatif → Netral,0.1182
+balanced3k,SVM sklearn,UgxbugkZBVCgORA7aZZ4AaABAg,Banyak cakap tunjukin aja ijazahnya,Positif,Positif,True,Benar,Positif → Positif,1.1025
+balanced3k,SVM sklearn,Ugz-d4Jyl9wk4ekS9s14AaABAg,Benar jga walaupun d tunjukan pasti ad aja alasanya😂,Negatif,Negatif,True,Benar,Negatif → Negatif,0.1491
+balanced3k,SVM sklearn,UgyzMI7nK1CjuepWKR54AaABAg,Ijazah Jokowi palsu. No debat !!,Positif,Positif,True,Benar,Positif → Positif,2.3852
+balanced3k,SVM sklearn,Ugxc0c0yu3LgUAalI6l4AaABAg,"Buat bapa irjen pol aryanto anda sebagai penasihat ahli kapolri 
+
+Meski kami rakyat biasa tapi dari stetmen anda kami menyimpulkan bahwa anda perpihak pada satu sisi itu sangat miris menurut kami
+
+Padahal anda sendiri yg bilng masalah ini simple tidak harus jadi 2 kubu klo memng simple knapa dari dulu jokowi tidak menunjukan ijasahnya !
+
+Anda sebagai penasihat ahli kapolri harusnya anda itu penjadi penengah dalam membuat stetmen tapi kami menilai di sini anda menyudutkan sudut lain",Positif,Negatif,False,Salah,Positif → Negatif,0.3502
+balanced3k,SVM sklearn,Ugzt2cCa639YtqlTLMF4AaABAg,Haqqul yaqin palsu,Positif,Positif,True,Benar,Positif → Positif,1.866
+balanced3k,SVM sklearn,UgzO7TqrCdA_0XMV1L94AaABAg,"Setelah lama di perdebatkan ijszah Jokowi, rakyat sdhnmuak bahwa maksudnya mau merongrong Jokowi / Gibran tapi beliau semakin terangkat dan jelas masyarakat menilai",Negatif,Positif,False,Salah,Negatif → Positif,0.4267
+balanced3k,SVM sklearn,Ugw9K8nOTumHo7icWQh4AaABAg,"Fotonya sdh jelas² berbeda ko antara foto pak Jokowi di ijazah dsn pak Jokowi secara fisik, lalu aslinya dimana",Positif,Positif,True,Benar,Positif → Positif,0.6053
+balanced3k,SVM sklearn,UgwRk7l-rENYNLUhHSp4AaABAg,Menurut saya mulutnya Roy Suryo itu kurang etis gak mencerminkan org berpendidikan.,Netral,Netral,True,Benar,Netral → Netral,0.9512
+balanced3k,SVM sklearn,UgydfU7b8kntAL70kZ54AaABAg,Semoga segera diadili dan dieksekusi masuk penjara.... Semua rakyat punya hak sama... RRT rakyat biasa tidak ada istimewanya.. Jangan terlalu dimanjakan... Cepat diadili supaya rakyat tidak tambah dibuat kacau,Negatif,Negatif,True,Benar,Negatif → Negatif,0.8162
+balanced3k,SVM sklearn,UgzLvlckOsHIyw3uGG14AaABAg,Cair cair,Netral,Netral,True,Benar,Netral → Netral,0.8974
+balanced3k,SVM sklearn,UgyeGPHrijm_ZL_SgEp4AaABAg,Walau sdh di kasi tau ttp saja dikatakan palsu .,Negatif,Negatif,True,Benar,Negatif → Negatif,0.2274
+balanced3k,SVM sklearn,UgwO9AYGgMYhQOd56Rt4AaABAg,intinya RRT harus masuk bui biar nggak ada yg buat gaduh,Negatif,Negatif,True,Benar,Negatif → Negatif,2.0668
+balanced3k,SVM sklearn,UgxHYaNkZZWgycnMBvd4AaABAg,"Mantap UGM,  pernyataan Rektor & jajarannya sudah SANGAT JELAS menyampaikan bahwa Bpk. JOKOWI adalah lulusan dari Fakultas Kehutanan UGM pd tahun 1985.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.2796
+balanced3k,SVM sklearn,Ugy-hT40Diy02qKHO494AaABAg,"Dilihat mata waras klo foto nya seperti itu jelas palsu, kecuali matanya katarak",Positif,Positif,True,Benar,Positif → Positif,2.2678
+balanced3k,SVM sklearn,UgyzSWcdDNm4XNJaYxp4AaABAg,Terima kasih UGM atas penjelasan nya..... Joos,Negatif,Negatif,True,Benar,Negatif → Negatif,0.6914
+balanced3k,SVM sklearn,UgxlFCaJr61KKHSyDKd4AaABAg,"Buat tim pak Jokowi kasus ini harus di lanjut supaya kami rakyat kecil mengetahui siapa  yang benar ,soalnya ini pencemaran nama baik bapak presiden supaya gak terulang kembali Ok",Negatif,Negatif,True,Benar,Negatif → Negatif,2.2804
+balanced3k,SVM sklearn,Ugxozn3w_iKTqQT2gx54AaABAg,Kerudung ijo mantap!!!,Netral,Netral,True,Benar,Netral → Netral,1.8155
+balanced3k,SVM sklearn,UgxTwkfP6r-xYMYeiBt4AaABAg,Kasian pembawa acaranya..kayanya udh muak bgt sama si Andi Azwan wkwkwk,Netral,Netral,True,Benar,Netral → Netral,2.8473
+balanced3k,SVM sklearn,UgxoglTXksq7Rpbj6hZ4AaABAg,Sehat selalu PK Jokowi ❤,Negatif,Negatif,True,Benar,Negatif → Negatif,1.6712
+balanced3k,SVM sklearn,Ugwbk0FDN7br3lxq2wl4AaABAg,Kami juga ingin tau ijazah asli atau palsu  perasaan kami Rrt  menang dilihat dari stempel dan photo yg di ijazah bukan photo jokowi,Positif,Positif,True,Benar,Positif → Positif,2.3289
+balanced3k,SVM sklearn,UgwysAcQHMqxyucAvDJ4AaABAg,SDH jelas palsu...sehingga ketakutan luar biasa,Positif,Positif,True,Benar,Positif → Positif,2.1582
+balanced3k,SVM sklearn,Ugyxyvv7Y_oDZa3aSmJ4AaABAg,Andi aswan sudah gila parah😂😂,Netral,Netral,True,Benar,Netral → Netral,1.8225
+balanced3k,SVM sklearn,Ugww-r5M88MUYoGVqEx4AaABAg,"Tunjukan dulu ijajahmu...., apa susahnya...!",Positif,Negatif,False,Salah,Positif → Negatif,0.4294
+balanced3k,SVM sklearn,UgzRRQfxD6qbnyCqP8R4AaABAg,"Sebenarnya gak usah ada saksi ahli, sebab foto yang ada di ijasah sangat jelas bukanlah foto jokowi",Positif,Positif,True,Benar,Positif → Positif,2.2435
+balanced3k,SVM sklearn,UgycpW1eduP5DdFMLpR4AaABAg,Roy suryo mmg ODGJ😂😂😂,Netral,Netral,True,Benar,Netral → Netral,1.8194
+balanced3k,SVM sklearn,UgyB_tIZPY1j7x-OP0N4AaABAg,Mas yacub tenang dan bagus penyampaian...,Netral,Netral,True,Benar,Netral → Netral,0.9574
+balanced3k,SVM sklearn,Ugzhb_L8OxpN_fumxY94AaABAg,Betul Pa Refly .... Palsu palsu palsu palsu.,Positif,Positif,True,Benar,Positif → Positif,1.6412
+balanced3k,SVM sklearn,UgwWhl5HRAUKqw2a-M94AaABAg,Kalo udah palsu biar kemanapun tetap palsu engga bakal jadi asli emang manusia ini senang mengadu domba orang jangan sok pintar sok kuasa sok tau  sok pintar jaksahara adili Jokowi biarpiun di bungkus dengan kain Emas  kalo palsu ya pasu manusianyah ajah engga datang berarti engga mau tanggung jawab ini pikiran sayah orang yang engga seolah camkan inih,Positif,Positif,True,Benar,Positif → Positif,0.3421
+balanced3k,SVM sklearn,UgyAbOUJ7phGLlg05gx4AaABAg,"Klau Roy sama tifa ngaku Ahli Knapa slalu mnggiring opini? Stau sya klau Orng Ahli tuh netral dan temuan nya berguna untuk Negara, bukan bikin gaduh sana sini😂😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.8466
+balanced3k,SVM sklearn,UgwMyx-3xqZpKmQUUMl4AaABAg,Bentar lagi roy rismon tifa dan lawyer nya bakal tua di penjara,Negatif,Negatif,True,Benar,Negatif → Negatif,1.7824
+balanced3k,SVM sklearn,UgwWABjhIO1yYwTxLql4AaABAg,Panci cs peneliti abal2 jangan belagak hebat sadar kalian,Netral,Negatif,False,Salah,Netral → Negatif,2.3282
+balanced3k,SVM sklearn,Ugy9S_-X8szd67XBxmt4AaABAg,"Roy Suryo pasti kalahhh,,
+Menang jokowi donggg,,",Negatif,Negatif,True,Benar,Negatif → Negatif,0.5501
+balanced3k,SVM sklearn,UgwmiJ876zmVQVaWLkN4AaABAg,"Kalau memang Ijazahnya Pak Jokowi benar benar Asli ,tapi para penuduh palsu masih ngeyel , 
+Negara tidak boleh kalah
+Hukumanya para penuduh diperberat saja",Negatif,Negatif,True,Benar,Negatif → Negatif,0.3345
+balanced3k,SVM sklearn,Ugw-Z9UfItwLrgqCnSB4AaABAg,"ANDI AZWAN INI SUDAH SERING BERBOHONG DEMI MEMBELA IJAZAH PALSU, TAPI DIPANGGIL JUGA KE TV",Positif,Positif,True,Benar,Positif → Positif,2.4764
+balanced3k,SVM sklearn,UgyIPtgFYOiUSymFg1d4AaABAg,Omonganya kayak orang gak jelas,Netral,Netral,True,Benar,Netral → Netral,1.0325
+balanced3k,SVM sklearn,UgzSHxQpsvCkJljO32Z4AaABAg,Mantap,Netral,Netral,True,Benar,Netral → Netral,2.0607
+balanced3k,SVM sklearn,Ugxyq5Qlu_YAaAxNhW94AaABAg,Bosen yg di bahas ijazah palsu terus,Netral,Positif,False,Salah,Netral → Positif,0.6585
+balanced3k,SVM sklearn,Ugy0FLbgEY4l9RYMPNN4AaABAg,Mboseni,Netral,Netral,True,Benar,Netral → Netral,0.8974
+balanced3k,SVM sklearn,UgxjzN01EN_FWw6TWQx4AaABAg,guk..gukk..gukkk...gukkkkk...!!!!,Netral,Netral,True,Benar,Netral → Netral,0.8974
+balanced3k,SVM sklearn,Ugx1Z9CFT2XZ_do2vfl4AaABAg,Acara sampah sampah,Netral,Netral,True,Benar,Netral → Netral,1.642
+balanced3k,SVM sklearn,UgxWaL0jcE0OpHI6Ph94AaABAg,Kemapa dan siapa tuduh palsu 99.999 persen buktikan meliaran persen   buktikan,Negatif,Negatif,True,Benar,Negatif → Negatif,1.0231
+balanced3k,SVM sklearn,Ugze5Kqk0_QCZ7Q5ipF4AaABAg,"U pihak ugm ati2 Allah maha tau , 
+Masyarakat SDH pd cerdas  tau mana keterangan bohong dan yg bener",Positif,Positif,True,Benar,Positif → Positif,1.1182
+balanced3k,SVM sklearn,UgwfxN0QAno-cIPRMLp4AaABAg,Rektor kok pembohong 😂😂😂,Positif,Positif,True,Benar,Positif → Positif,2.7212
+balanced3k,SVM sklearn,Ugz5Rf-nOVIKZhe_o7R4AaABAg,Yang tidak mau membuka itu bareskrim maunya hanya menyita ijazah biar tidak bisa naik ke Pengadilan lha itu karena ditunjukkan tapi tidak  boleh dipegang dan diiraba berarti takut ketahuan berati ijazah palsu jokowidodo.,Positif,Positif,True,Benar,Positif → Positif,1.6227
+balanced3k,SVM sklearn,UgxfV7plXVXUO15vgLt4AaABAg,"SAYA SUDAH TIDAK LAGI IRI DENGAN KAMPUS INI LAGI. 
+KALAU MAU JUJUR2AN, SEBNERNYA ANAK SD JUGA TAU KALO UGM INI BERDUSTAAA",Positif,Positif,True,Benar,Positif → Positif,0.8598
+balanced3k,SVM sklearn,UgxRqK-FA5GaU7-s08V4AaABAg,Orang yg banyak ngomong kays tong yaring bunyinya,Netral,Netral,True,Benar,Netral → Netral,0.8892
+balanced3k,SVM sklearn,UgzJmkIHfJjdd3CuKv54AaABAg,"Jokowi tidak akan memperlihatkan ijasahnya karena palsu, seandainya asli sudah pasti diperlihatkan",Positif,Positif,True,Benar,Positif → Positif,2.6849
+balanced3k,SVM sklearn,Ugw0yOMggu15S2mL7Hd4AaABAg,Kalo memiliki mata dan otak maka melihat foto di ijazah aja sdh sngat tau ytu bukan wajah jkwi dn itu sangat jelas mencolok perbedaannya😅,Positif,Positif,True,Benar,Positif → Positif,2.2822
+balanced3k,SVM sklearn,UgyTplergknRFNmk1jZ4AaABAg,Scan ijazahnnya ternyata masih PALSU 😂,Positif,Positif,True,Benar,Positif → Positif,3.4143
+balanced3k,SVM sklearn,UgwKVPy-5PpPb6IR5Zp4AaABAg,"Kmrin2 minta di tunjukin, skrng nyari alibi lain😂😂😂, kacau2",Negatif,Negatif,True,Benar,Negatif → Negatif,1.4297
+balanced3k,SVM sklearn,UgzJPDH9zlYQt-9ZL1F4AaABAg,Bnyak omong Lo Roy panci,Netral,Netral,True,Benar,Netral → Netral,1.2126
+balanced3k,SVM sklearn,Ugw-SpHY133lU03_BFZ4AaABAg,mantaap...kalok SDH JD tersangka maka SDH bingung bicaranya khozinudin.dasar itu bekerja demi uang maka kalok bicara GK akan pernah salah mintak selalu benar,Negatif,Negatif,True,Benar,Negatif → Negatif,0.5315
+balanced3k,SVM sklearn,Ugwj25A5wiSMADvvbrh4AaABAg,Roy panci mati kutu😅,Netral,Netral,True,Benar,Netral → Netral,2.0723
+balanced3k,SVM sklearn,UgxDWYw3vfJPaf4Hqh14AaABAg,"waktu pak jokowi belum nunjukin ijazah nya alasan roy cs karena tidak nunjukin.
+ehh.... giliran sudah di tunjukin, malah alasan lain...
+itu menunjukan kalau masalah nya itu bukan ijazah, tapi KEBENCIAN yg mendalam.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.7639
+balanced3k,SVM sklearn,UgxwZu5GR5tM6BUdwhB4AaABAg,marah marah aja si tompel panik😂,Netral,Netral,True,Benar,Netral → Netral,1.0022
+balanced3k,SVM sklearn,Ugx_VMaoOBMsYyT1oqp4AaABAg,Kemaren2 kau mau lihat ijazah pak jokowi sekarang lain lagi ceritanya ini pengacara produk yaman,Negatif,Negatif,True,Benar,Negatif → Negatif,1.7165
+balanced3k,SVM sklearn,Ugx9M1nrxHA2ZYV7Fkt4AaABAg,"IJAZAH  KALAU  ASLI  PASTI  DITUNJUKAN
+APALAGI   KATANYA  LULUSAN   U G M  :
+Universitas  Geng   Mulyono",Positif,Positif,True,Benar,Positif → Positif,2.097
+balanced3k,SVM sklearn,Ugy0_x-9pHyeyKytZAd4AaABAg,"Ijazah palsu
+..",Positif,Positif,True,Benar,Positif → Positif,6.8399
+balanced3k,SVM sklearn,UgynqYo1_IVopZt6jil4AaABAg,Termol kebanyakan makan nasi bungkus❤❤❤,Netral,Netral,True,Benar,Netral → Netral,1.0701
+balanced3k,SVM sklearn,UgwlTpP07RP73i6xxN94AaABAg,"""lebih baik gua goreng polemik ijazah palsu gua  daripada kecium kasus korupsi gua""  😂😂😂😂",Negatif,Positif,False,Salah,Negatif → Positif,1.3151
+balanced3k,SVM sklearn,Ugwss9rbfuW59VrDCcN4AaABAg,Pengacara AHMAD  KHOSINUDDIN' DI LAPOR OLEH *DHL* KE POLDA METRO JAYA'  INI KELIHATAN KARENA AHMAD KHOSINUDDIN' PENGACARA YG PALING BERANI MELAWAN DAN MENEGAKKAN KEADILAN TERKAIT IJAZAH PALSU ' LALU SEKARANG DI LAPORKAN ...OLEH ORANG YG PERNAH DATABG KE SOLO KE RUMAH MANTAN PRESIDEN KE -7' HA.......HA......HA.......SIAPA ITU ORANG YANG MEMBELAH BAMBANG TRI DAN GUS NUR DI PENGADILAN DSHULU......LALU SEKARANG BERDAMAI ...HA......HA......HA....DASAR 😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢TIDAK PUNYA MALU......😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢,Positif,Positif,True,Benar,Positif → Positif,0.4636
+balanced3k,SVM sklearn,Ugwe8V_kZxZToLhDmOJ4AaABAg,Lebih baik menyeeah saja pak Roy,Negatif,Netral,False,Salah,Negatif → Netral,0.582
+balanced3k,SVM sklearn,UgzMURgLpqFT-TXtwd14AaABAg,"Cuma di negara Konoha soal ijazah bertahun tahun ,kalau orang berfikir waras dan tidak ODGJ pasti sudah selesai dalam waktu 5 menit , sy yakin ijazah si Jokowi palsu karena pikiran sy masih waras",Positif,Positif,True,Benar,Positif → Positif,0.5781
+balanced3k,SVM sklearn,UgwHzINeMDcYB_ztVf54AaABAg,"Luarbiasa nih PH Azam, ijazah aslinya sdh ditunjukin, sekarang malah nuntut harus ada ijazah pembandingnya. Entah tuntutan apalagi yg nanti bakal dipersoalkan kalau teman2 kuliahnya menunjukan ijazah pembandingnya 😅",Negatif,Negatif,True,Benar,Negatif → Negatif,1.458
+balanced3k,SVM sklearn,UgwvP_hfxAgGRhrQ53V4AaABAg,Pak mk jos jis,Netral,Negatif,False,Salah,Netral → Negatif,0.7417
+balanced3k,SVM sklearn,Ugx2EoLXbHd0Rhd6fJN4AaABAg,"Roy panci, rizmon kalian dulu kau edit ijasah pk Jokowi pakai ijasah hari Mulyono skr berubah ijasah pakai editmu milik dumatno 😅😅😅 telematika mu berubah ubah koplak 😅😅😅😅",Negatif,Negatif,True,Benar,Negatif → Negatif,1.6938
+balanced3k,SVM sklearn,Ugwm0Sqo3_HPO0xbw1R4AaABAg,KACAU UGM!!!!  Dokumen yang ditampilkan bareskrim yang di klaim ijazah jokowi asli dan bagian skripsi jokowi itu pake font Time News Roman yang melampaui zamannya. Logika macam apa yang bisa membenarkan masalah ini.,Positif,Positif,True,Benar,Positif → Positif,0.9981
+balanced3k,SVM sklearn,UgyZmwl2EUyYSpr-rnR4AaABAg,Mantaap buu,Netral,Netral,True,Benar,Netral → Netral,0.8974
+balanced3k,SVM sklearn,Ugw2nVp7xh5_zBsWMHZ4AaABAg,"Dr awal dikatakan ditunjukan pun tdk akn berakhir. Emang itu proyek mereka ko'. Klu ini berakhir, berarti mata pencaharian mereka tertutup dong",Negatif,Negatif,True,Benar,Negatif → Negatif,1.0244
+balanced3k,SVM sklearn,Ugw7AqUtGHlgQsOx1Qx4AaABAg,Modar sekarang Andi kelihatan bohong nya,Netral,Positif,False,Salah,Netral → Positif,1.277
+balanced3k,SVM sklearn,UgxivWiQqYA6Pip38G14AaABAg,Betul Mbah,Netral,Netral,True,Benar,Netral → Netral,1.8961
+balanced3k,SVM sklearn,UgwQJT2V0nFSf9lozc94AaABAg,"Ugm berbohong demi Jokowi. Semoga dari tahun ketahun makin sepi mahasiswa yg pengen kuliah di ugm. Kampus PEMBOHONG, Sama kayak Jokowi. PEMBOHONG",Positif,Positif,True,Benar,Positif → Positif,2.2031
+balanced3k,SVM sklearn,UgwZ7mTPaFyuFLwz6QB4AaABAg,"pengacara jokowi terlalu byk bohong,,masyarakat skrg udah pintar dn tau menilai mana yg betul dn mana yg salah,,akhirilah semua kebohongan ini untuk anak bangsa yg baik dn jujur kedepan",Positif,Positif,True,Benar,Positif → Positif,1.6844
+balanced3k,SVM sklearn,UgzNRm2KntQKyNl2bzR4AaABAg,"Aslipun gak bakalan percaya, krna hatinya sudah diaelimuti kebencian.",Negatif,Negatif,True,Benar,Negatif → Negatif,2.3465
+balanced3k,SVM sklearn,Ugzc23vv7fI1J81cKzZ4AaABAg,Sekelas Prof hukum Konstitunsi kok mengajukan bahan seperti mahasiswa magang 😂😂😂,Negatif,Negatif,True,Benar,Negatif → Negatif,0.6582
+balanced3k,SVM sklearn,Ugxghx5KnDz_cdI2x7p4AaABAg,"Kenapa kasus ijasah palsu di hentikan , klo sampe kasus ijasah palsu di hentikan hukum di ndonesia lemah bagi politik elit, klo bagi masyarakat kecil hukum nya di tegak kan , supaya tau mana yg di jolimi atau yg bohong , di mata rakyat indonesia baru tau ada mantan presiden di olok oloki sampai di tempat kuburan di sebut"" ,sy sebagai rakyat kecil merasa  mantan presiden di hina dan di olok oloki , presiden kita presiden indonesia sudah banyak pengabdian nya dan tidak korupsi , masa di hina begitu saja, apa hukum untuk orang orang elit kebal !?",Negatif,Positif,False,Salah,Negatif → Positif,0.7725
+balanced3k,SVM sklearn,UgyB4EOk1CtwjtEKjWl4AaABAg,Hukum roy cs,Negatif,Negatif,True,Benar,Negatif → Negatif,1.9992
+balanced3k,SVM sklearn,Ugx1W8b6GjUSXNRYm6d4AaABAg,"Dah mau ngeles lagi ni suryo,gnti ugm yg di serang",Negatif,Negatif,True,Benar,Negatif → Negatif,1.7714
+balanced3k,SVM sklearn,UgySYzHjNOK9xjBLvY14AaABAg,Gua kalo sebagai orang UGM pasti gua tuntut nih Roy udah mencemarkan dan menghina UGM.,Negatif,Negatif,True,Benar,Negatif → Negatif,1.0956
+balanced3k,SVM sklearn,Ugx8E0JBrETkZJ5gTuF4AaABAg,PenjArakan saja roi Suryo cs.,Negatif,Negatif,True,Benar,Negatif → Negatif,1.9594
+balanced3k,SVM sklearn,UgzboPiuXG4fKaVjPIp4AaABAg,"Logika akal sehat,,,jika ugm mengataka apa yg sbenarnya/se jln dgn apa yg d ktakan bung Roy brarti UGM ikut kna masalah,,cuma ini posisi keadaan udah bermasalah yg salah pun akan membela sendiri dgn ksalahan lain,,,ketika sudah berbohong akan menutupinya dgn kbohongan lainny.itu emg sudah penyakit org tukang bohong.",Positif,Positif,True,Benar,Positif → Positif,0.7292
+balanced3k,SVM sklearn,UgxDFiR3JzQ5ga25NYp4AaABAg,Negara akan runtuh jika Negara sudah berpihak pada kejahatan mafia pemalsuan ijazah bukan berpihak kepada kebenaran dan keadilan.,Positif,Positif,True,Benar,Positif → Positif,1.2035
+balanced3k,SVM sklearn,Ugw5Car52XDhOFUqdgx4AaABAg,He He He pembimbing skripsinya Pak KASMOJO apa tak bohong ini Pak JOKOWI MERASA TERHINA KLO IJAZAHNYA ASLI BOLEH PENJARAKAN PENUDUHNYA jangan seperti Bambang Tri dan Gus Nur sampai minta jaksa untuk menunjukkan ijazahnya dan siap mencium kaki jaksa BAMBANG TRI DAN GUS NUR TETAP DIPENJARA lelucon ijazah palsu ???,Positif,Positif,True,Benar,Positif → Positif,1.0098
+balanced3k,SVM sklearn,Ugy28Wq6nP_CF06K-QR4AaABAg,Ini yang saya salut dengan bapak Ketua MK 👍,Netral,Negatif,False,Salah,Netral → Negatif,0.9507
+balanced3k,SVM sklearn,UgxOKYQsOOP07OPo7wl4AaABAg,Betul kata bapa yg satu berani gak Suryo cs itu mau terima hukuman mati bila ijazah asli di tunjukkan,Negatif,Negatif,True,Benar,Negatif → Negatif,0.2625
+balanced3k,SVM sklearn,Ugwfy9yI_HofsCZkoIt4AaABAg,Sekarang alasannya Jokowi sudah rakyat biasa....😂😂....dulu lagi menjabat.... tidak juga d tunjukan... Bambang Tri dan Gus nur....sudah jadi korban.... katanya mau d tunjukan d pengadilan.....tapi bohong...... itulah pki.... suka berbohong dan memutar balikkan fakta..... Sehat selalu RRT.... kalian aset Bangsa...... semangat terus.....❤❤❤❤❤❤,Positif,Positif,True,Benar,Positif → Positif,0.3629
+balanced3k,SVM sklearn,UgwePWfKRKYZDMPnHLN4AaABAg,sudahlah .. kalau sudah salah tidak usah ngeyel to RS dan gerombolannya ..,Negatif,Negatif,True,Benar,Negatif → Negatif,1.1001
+balanced3k,SVM sklearn,UgzK4TRPm8Vqx7nmQPt4AaABAg,"Mulai menit  12.00, Roy suryo mulai nggiring soal SMA nya JKW, dan akhirnya kicep ketika analisanya di skak mat langsung terkait perubahan nama SMA  tsb  memang sdh tahun sblmnya memang sdh direncanakan, krn di papan nama SMA nya pun tertulis nama SMA Double. Dari situ terlihat sbenarnya ilmu telematika si roy itu cuma COCOKOLOGI... ilmu gathuk... kocakkk kocak...",Negatif,Negatif,True,Benar,Negatif → Negatif,0.2642
+balanced3k,SVM sklearn,UgwzjFgikTjvafu87ul4AaABAg,"Nah hayoo...
+Semua yg di bilang termul scan ijazah ASLI 
+Ternyata mudah dipatahkan sm Kang Mas Roy
+Salut untuk team RRT👏👏👏👏👏👏",Positif,Positif,True,Benar,Positif → Positif,0.8124
+balanced3k,SVM sklearn,UgwkqxMCVbM2Kk8UNbl4AaABAg,"Orang orang licik isinya. Gembar gembor ijazah palsu, buat mempengaruhi suara pilpres. Sampai ketitik Manantang untuk di laporkan. Setelah sapai sini datang ke MK. Licik banget kan. Maunya fitnah tapi gak mau kena pasal. 😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.5025
+balanced3k,SVM sklearn,UgxrQ6sODySr5ctdcDp4AaABAg,Andi aswan ini ga punya etika kasihan,Netral,Netral,True,Benar,Netral → Netral,1.4448
+balanced3k,SVM sklearn,UgxnqqjF7PdWyVgMjst4AaABAg,Sumbang yg banyakan no bang orang Sumatra lagi pada susah,Netral,Negatif,False,Salah,Netral → Negatif,0.2494
+balanced3k,SVM sklearn,Ugz7drvaSD2j_95vMxp4AaABAg,"Sakit apa ya mereka itu,kalau sakit berobatlah di beri kepintaran ko tidak bisa membuat contoh yang baik pada masyarakat,,jangan anggap orang diam itu seenaknya kau injak2 seperti itu,yang kau serang itu sudah banyak bermanfaat bagi orang banyak dan bangsa,ko masih di musuhi dan kau rendahkan seperti itu...miris sih lihatnya",Negatif,Negatif,True,Benar,Negatif → Negatif,0.6507
+balanced3k,SVM sklearn,UgwfJmosz6Q_yYBaXFN4AaABAg,"Sudah begini masih juga berbohong ..!  Luar biasa ya ? Orang bodoh saja tau kalau foto di ijazah itu bukan foto nya Jokowi , kebohongan masih di bela..",Positif,Positif,True,Benar,Positif → Positif,3.2666
+balanced3k,SVM sklearn,UgxI3i6luEL-0vaOhuN4AaABAg,"BIASA ROY PANCI MENTAL.P.RADEN
+SEMUA HARUS NURUT APA KATA DIA...
+DEMI UANG BOHIR.
+KALAU PALSU YA HARUS PALSU...
+UDAH NYOLONG DATA DIAN SANDI...SECARA DIAM DIAM
+FOTO IJAZAH DARI DIAN SANDI LOH ""JAJARAN GENJANG""
+KOK SAAT TERSEBAR DI MEDSOS JADI PRESISI,NO IJAZAHNYA DI TUTUP UNTUK ALIBI "" IJAZAH PALSU""
+INILAH YG DI SEBUT MALING TERIAK MALING
+ATAU MANIPULASI DATA
+LIHAT DARI GAYA BICARA ( GESTURE TUBUH ) BANYAK BOHONGNYA ...JANGAN TERGODA PENAMPILAN ROY PANCI 😊",Negatif,Positif,False,Salah,Negatif → Positif,1.4764
+balanced3k,SVM sklearn,UgzskOQanu6zRR8LohV4AaABAg,UGM sudah menyataka ijasah pak jokowi itu asli. Dan benar pak jokowi itu alumni ugm. Kenapa tukang nyinyir masih gak percaya. Mudah2an  Roy cs cepat masuk penjara,Negatif,Negatif,True,Benar,Negatif → Negatif,4.0451
+balanced3k,SVM sklearn,UgxsZkVRxxVAkrlVVJl4AaABAg,"Sebetulnya permasalahan ijazah sudah selesai karena:
+1. Sudah ada yang ditetapkan tersangka
+2. Ada buku Jokowi's white paper
+Jadi sudah selesai, kenapa stasiun TV swasta masih mengadakan acara seperti ini yang bisa membuat terpecah belah?",Negatif,Positif,False,Salah,Negatif → Positif,0.4202
+balanced3k,SVM sklearn,UgxO6KEb5hhwu2jqRfp4AaABAg,"Udah jelas palsu, kalau asli gak akan takut nunjukin 
+Bantu report hoax youtuber nusantara",Positif,Positif,True,Benar,Positif → Positif,1.326
+balanced3k,SVM sklearn,UgxmLYhKgDsb5aU24sd4AaABAg,Sya jamin MK tolak pengujian UU ini karena jls hakim tau ni buat alesan hindari jrrwtan hukum dri kasus nya yg srdang berjalan mana mau Mk tabrak hukum jga .lawak roy panci cs 😂,Negatif,Negatif,True,Benar,Negatif → Negatif,1.7147
+balanced3k,SVM sklearn,UgwXoSA1zo18yXtfZXl4AaABAg,Tujuan dr tuduhan ijasah Jokowi n Gibran itu js bukan mencari kebenaran tp memang arahnya ke politik untuk menghabisi nama besar Jokowi n pilpres 2029...,Negatif,Negatif,True,Benar,Negatif → Negatif,2.1063
+balanced3k,SVM sklearn,UgxL9MD-kLlCDC1f57J4AaABAg,Jahatnya si Jokowi karena ijazah palsunya sampai tega membiarkan rakyat disuguhi kerecokan yang tak bermutu ... 😮,Positif,Positif,True,Benar,Positif → Positif,2.1074
+balanced3k,SVM sklearn,UgwHKexwK2F78h8Z7f94AaABAg,Tumben gak nyerocos gak mutus omonganx lawan..taux cengar cengir,Netral,Netral,True,Benar,Netral → Netral,0.7215
+balanced3k,SVM sklearn,UgyvwyLdaFKdGWleBKh4AaABAg,"kalau terbukti palsu ijazahnya, ancaman pidananya apa? semoga hakim lebih tegas 3x lipat hukumannya!",Positif,Positif,True,Benar,Positif → Positif,1.0903
+balanced3k,SVM sklearn,UgwjPjQaVKoze8mgDa54AaABAg,Luar biasa ibu diana,Netral,Netral,True,Benar,Netral → Netral,2.497
+balanced3k,SVM sklearn,Ugw5SgzL0L386Q-7_mt4AaABAg,"Menunjukan ijasah , tapi tak boleh di foto.
+Mungkin takut klo ijasahnya di uji / di teliti oleh para pakar atau ahli dari masyarakat negeri ini.
+Faham to luuur, knapa gk boleh di foto ijasahnya jokowi.",Positif,Positif,True,Benar,Positif → Positif,2.4103
+balanced3k,SVM sklearn,Ugy1Pr9MRirQTAbn1pN4AaABAg,Semangat bang roy cs,Netral,Netral,True,Benar,Netral → Netral,1.2809
+balanced3k,SVM sklearn,UgwXqknqMCfXPBD0QdR4AaABAg,GOGON BLOON 😂😂😂,Netral,Netral,True,Benar,Netral → Netral,2.0632
+balanced3k,SVM sklearn,UgywiPmAl7su9rYLslR4AaABAg,Acara berat sebelah,Netral,Netral,True,Benar,Netral → Netral,0.4186
+balanced3k,SVM sklearn,UgwyoB6Ap2aKbcXl0ix4AaABAg,"Semakin percaya sama UGM
+Percaya ijazahnya pasti palsu 🙏",Positif,Positif,True,Benar,Positif → Positif,1.4064
+balanced3k,SVM sklearn,Ugwi8ouqY2UOS2b6QKZ4AaABAg,Mulyono akan sengsara beserta termulnya,Netral,Positif,False,Salah,Netral → Positif,0.7707
+balanced3k,SVM sklearn,Ugw1sFiVCFKwwYLDoVd4AaABAg,roy suryo jalma edan kitusalah kieusalah jadibeleugug,Netral,Netral,True,Benar,Netral → Netral,1.4873
+balanced3k,SVM sklearn,UgwX16uKHs6bizFE1PN4AaABAg,Dari pada ribut atau repot pakai saja jasa tukang santet. Siapa yang tipu binasalah dia,Netral,Negatif,False,Salah,Netral → Negatif,0.2075
+balanced3k,SVM sklearn,Ugwt871q00gXtCNI8rp4AaABAg,"Habisss para termul di sikat roy suryo malam ne, andi azwan emosi  datanya ketahuan palsu heheeee",Positif,Netral,False,Salah,Positif → Netral,0.2113
+balanced3k,SVM sklearn,UgxSxQDvdv74qMTFrXB4AaABAg,Kenapa negara kita ini membebaskan orang begini menjelek2 bahkan menghina mantan presiden bahkan wakil presiden pun tdk dia hormati selaku wakil presiden. Jika negara terus diam membiarkan orang begini saya jamin negara lain pun tdk akan segan dgn negara kita.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.6166
+balanced3k,SVM sklearn,UgztBhd_iEqTpIgjNiJ4AaABAg,"50: 50
+Aneh lah UGM saja mengakui kok
+Harusnya udah selesai begitu UGM Mengakuinya.. Tdk ada yg harus di penjara. Tp roy suryo ngotot ingin masuk penjara.. Ya hendaknya di kabulkan",Negatif,Negatif,True,Benar,Negatif → Negatif,2.3621
+balanced3k,SVM sklearn,UgxEAt06RYsoGedXRUp4AaABAg,😂 para termul,Netral,Netral,True,Benar,Netral → Netral,1.0572
+balanced3k,SVM sklearn,UgyV2-VhnfrZyzGEBgx4AaABAg,LOGIKANYA JIKA JOKOWI BENAR LULUSAN S1 UGM. PASTINYA BERSAMA REKTOR UGM AKAN BERANI TUNJUKKAN IJASAH & DATA-2 AKADEMIK JOKOWI KE PUBLIK & MEDIA. SEHINGGA TIDAK PERLU ZDOLIMI RAKYATNYA..! ?,Positif,Positif,True,Benar,Positif → Positif,2.8649
+balanced3k,SVM sklearn,Ugx3sAWLDyrGp5u21_p4AaABAg,Jokowi takut kalau dilanjutkan karena ijazahnya jokowi palsu 11 Rb.triliun % perlihatkan dulu ijazahnya kalau mau di stop,Positif,Positif,True,Benar,Positif → Positif,2.1539
+balanced3k,SVM sklearn,Ugx8c06Uh6lAr14o0th4AaABAg,""" adu kambing "" itu apa ya ??",Netral,Netral,True,Benar,Netral → Netral,0.2482
+balanced3k,SVM sklearn,UgyJ4CL7o3GOHQb0VCZ4AaABAg,"Kebanyakan mkn duit , sudah malu ya sama akademisi seluruh indonesia mengecam perbuatan Pratikno, Ova & semua petinggi2 kampus yg melindungi si jokoowii , Lah  sdh sangat jelas semua yg dipaparkan maestro Telematika IT Mas  Roy , abang  Rismon , ibu dokter cantik Tifa...2000% valid penelitian ROY SURYO RISMONSIANIPAR & Dokter TIFA T.",Positif,Netral,False,Salah,Positif → Netral,0.7559
+balanced3k,SVM sklearn,UgyrqzAvYIBSH-e3i4l4AaABAg,"Hrsnya mudah, kl benar asli tinggal tunjukkan dan di teliti tim independen!
+Tak perlu drama berjilid2!",Positif,Positif,True,Benar,Positif → Positif,1.5628
+balanced3k,SVM sklearn,UgxMnBjZppmGybVHsut4AaABAg,Mantap buk,Netral,Netral,True,Benar,Netral → Netral,1.949
+balanced3k,SVM sklearn,UgwRemDjE6mE4vmvjrt4AaABAg,"Refly Harun harakiri dalam perkara ini ke MK. Cermati Ketua Panel YM Saldi Isra yg menggarisbawahi agar Refly menjelaskan siapa RRT dst. Rismon kesehariannya bukan dosen, bukan peneliti, bahkan titel Dr dari Yamaguchi itu bodong (siap meledak jadi perkara besar bagi Rismon), Roy juga bukan peneliti, dr Tifa juga bukan peneliti. Dari aspek ini kedudukan hukum ketiga prinsipalnya ini dan apa yg akan dielaborasi Refly dalam versi perbaikan akan jadi maju kena mundur kena, terutama bagi ketiga prinsipal. Karena apa yg disampaikan secara tertulis dalam sidang MK, akan jadi temuan. Fokus ke titel Doktornya Rismon, kaitannya dg Yamaguchi University, dst.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.9074
+balanced3k,SVM sklearn,UgyTSpdQyl9psjwz9MV4AaABAg,Mantap❤❤❤❤❤,Netral,Netral,True,Benar,Netral → Netral,2.0607
+balanced3k,SVM sklearn,UgyWd4MM5s5yy2nYlhZ4AaABAg,"ROY cs tidak bisa menunjukkan ijasah yg dimaksud PALSU, selama ini cuma omong kosong atau FIKSI belaka, jokowi sudah tunjukkan ijazahnya dan giliran ROY cs harus tunjukkan inasah palsu yg dipegu tp cuma omong kosong, seperti menuduh HOTMAN kirupsi tapi tidak punya bukti apapun, hanya halusinasi yg dibangun jd cerita fiksi",Negatif,Negatif,True,Benar,Negatif → Negatif,0.3942
+balanced3k,SVM sklearn,UgxnzGLtKYZ7j0bVk9J4AaABAg,Berarti roy panci dan rismon asli orgil?,Netral,Negatif,False,Salah,Netral → Negatif,0.1557
+balanced3k,SVM sklearn,UgwyRgFJyjZTv1LOp3V4AaABAg,"Hanya melindungi Ijasah palsu  Sampek berlarut larut
+Intinya Ijasah asli ngak ada ngak punya palsu palsu palsu",Positif,Positif,True,Benar,Positif → Positif,2.4997
+balanced3k,SVM sklearn,Ugx2yF6T9PlDVxTTqIJ4AaABAg,Gpp PALSU PASTI LULUSAN UGM👍,Positif,Positif,True,Benar,Positif → Positif,1.5408
+balanced3k,SVM sklearn,UgwbsSXgFidBoMD4-0V4AaABAg,Rakyat udah dibohobgi jokowi.udah jelas poto ijasah  jokowi itu bkn poto jokowi dn entah poto siapa.kenapa para termul dan parcok mati2an mengatakan itu ijasah asli.jika nanti dlm sidanf ternyata Roy cs kalah dan hakim memutuskan bahwa ijasah jokowi itu asli berarti para penegak hukum ini matanya udah tertutup amplop.hukum di indonesia ini sejak rezim jokowi sudah rusak dan sepertinya lembaga2 hukum dan lainya udah tunduk dibawah ketiak jokowi.,Positif,Positif,True,Benar,Positif → Positif,0.2734
+balanced3k,SVM sklearn,UgxDeFvq5mGMLdR6FQZ4AaABAg,Roy  Suryo  ini kesurupan apa ya,Netral,Netral,True,Benar,Netral → Netral,1.1361
+balanced3k,SVM sklearn,Ugx9o3BCaiNCIvXPdAZ4AaABAg,"Komentar ibu tadi katanya prof. Menurut saya beliau bukan ahli hukum. Jadi menurut saya Ijazah Bpk. Jokowi tdk perlu menunjukan Ijazahnya kepada mereka yg menuduh, pembuktiannya adalah lewat Pengadilan.",Negatif,Positif,False,Salah,Negatif → Positif,0.2446
+balanced3k,SVM sklearn,Ugw1XoQAmx2R_qONwpJ4AaABAg,Mntab bu,Netral,Netral,True,Benar,Netral → Netral,2.5242
+balanced3k,SVM sklearn,Ugw-Z2FNtAd4BXzqEQd4AaABAg,Hakim MK nya keren.,Netral,Netral,True,Benar,Netral → Netral,1.5508
+balanced3k,SVM sklearn,UgwLTf_yIz-OU29ficZ4AaABAg,"Coba telusuri dulu mereka2 ini kelulusan tahun berapa di UGM. Apakah mereka ini sudah dosen waktu Jokowi kuliah, siapa yang tua Jokowi atau mereka yang berani memberikan keterangan yang mana Jokowi lulusan UGM. Seolah2 mereka ini dosennya Jokowi. Terlalu pintar ngarang cerita padahal mereka belum kuliah.
+Tidak mungkin yang muda membimbing yang tua dan belum kuliah, semuanya ini keterangan palsu/bohong. Kalau sudah begini dosen jadi bagai mana anak2 bimbingannya. Jadi kacau negara ini",Positif,Positif,True,Benar,Positif → Positif,1.7906
+balanced3k,SVM sklearn,UgyaJ158OcKX4B8kFzF4AaABAg,"Itu pernyataan penting,yg jelas yg mengeluarkan menyatakan asli,Krn begitu selesai pendidikan lsg d berikan kpd yg bersangkutan",Negatif,Negatif,True,Benar,Negatif → Negatif,1.6281
+balanced3k,SVM sklearn,Ugw3QEb7P2RU0A2HJeB4AaABAg,hati roy cs cuci dg rinso biar tak ada kebencian dihatinya.apapun yg dilakukan pak jokowi cs tak ada benarnya.,Netral,Negatif,False,Salah,Netral → Negatif,2.9806
+balanced3k,SVM sklearn,UgwvzCI9QS8Bb5-sGvJ4AaABAg,Iya kalau memang asli..apa susah nya di perlihatkan ijazah nya..knpa harus di sembunyikan yg bikin pemirsa tidak percaya pd pihak tertentu..NETIZEN bisa menilai..mana yg benar.mana yg di sembunyikan..smga Allah memberikan hidayah,Positif,Positif,True,Benar,Positif → Positif,1.3954
+balanced3k,SVM sklearn,UgyMk7bpQ0ov9jfvRWV4AaABAg,"Sdh pk  harun,, anda jgn berdebat dgn orang2 yg gk punya logika.",Netral,Negatif,False,Salah,Netral → Negatif,0.4705
+balanced3k,SVM sklearn,Ugw_TliCj1xKHqarccN4AaABAg,Pak Arianto kalau mau jujur tunjukan ijasah asli Jokowi kalau memang ada kalau tidak di tunjukan kami masyarakat biasa bilang palsu Arianto,Positif,Positif,True,Benar,Positif → Positif,1.0881
+balanced3k,SVM sklearn,UgxKzgi6LZwclDoy_KZ4AaABAg,panci seumur hidup tetap dikenang tentang panci..mknya mkan uang yg halal ci panci.,Netral,Netral,True,Benar,Netral → Netral,1.3902
+balanced3k,SVM sklearn,UgyvcgTHy9zbIO52urN4AaABAg,"IJAZAH PALSU ITU HASIL PRILAKU SESATTT , ORANG2 YG MEMBELA IJAZAH PALSU BERARTI . . . ORANG2 YG "" SESATTT "" & GAK PUNYA MALU  DG DALIH , ALASAN APAPUN BERKELOK KELOK DALAM PERMAINAN DI BALIK KATA. . . .👹👹👹",Positif,Positif,True,Benar,Positif → Positif,0.636
+balanced3k,SVM sklearn,UgwruwJ1-wI7clwubJd4AaABAg,"Hore betul tunjukan ijazah mu pk Jokowi ? Jngn mngadu domba rakyat Indonesia , brrti klau tdak nnjukan ijazahnya berrti g punya yng asli  alias ..........palsu .",Positif,Positif,True,Benar,Positif → Positif,0.8765
+balanced3k,SVM sklearn,Ugx_WlKAvZV2L5oRvfB4AaABAg,"PANCI ODGJ kabur diundang diskusi dan yg ngundang mantan pasien RSJ ,belum sembuh juga lagi....😂😂😂",Netral,Netral,True,Benar,Netral → Netral,1.8378
+balanced3k,SVM sklearn,UgzQLVRlYkPVz2nYdOV4AaABAg,"mending lihat info terkini mengenai gempa yg terjadi tiap hari
+",Netral,Netral,True,Benar,Netral → Netral,0.487
+balanced3k,SVM sklearn,Ugykvlqj5O3WjQm9OUN4AaABAg,Bravo's bu diana murni sehat selalu,Netral,Netral,True,Benar,Netral → Netral,2.3792
+balanced3k,SVM sklearn,UgxzFwpZqJsxYZCQ5zJ4AaABAg,Lha lak ora percoyo 😂😂tho😂😂😂😂😂😂😂😂,Negatif,Netral,False,Salah,Negatif → Netral,0.3913
+balanced3k,SVM sklearn,UgxMvk-PzDyKX71U82N4AaABAg,Seha slalu pak jokowi,Netral,Negatif,False,Salah,Netral → Negatif,1.4817
+balanced3k,SVM sklearn,Ugy5mCrVgkkC9EGl4KV4AaABAg,Netral ya pak hakim,Netral,Netral,True,Benar,Netral → Netral,1.1726
+balanced3k,SVM sklearn,Ugxnq7r7ea5bxvijYvR4AaABAg,Ijazahnya itu Aspal...klo asli tulen..ngapain repot byar pengacara mahal2...,Positif,Positif,True,Benar,Positif → Positif,2.2602
+balanced3k,SVM sklearn,Ugwqf9F_bGQFMW-0i2F4AaABAg,Andi Ando Ando.,Netral,Netral,True,Benar,Netral → Netral,2.5152
+balanced3k,SVM sklearn,UgzfTCfg0peqAA5yZy94AaABAg,kabarin kalau roy suryo ditangkap,Netral,Netral,True,Benar,Netral → Netral,0.5072
+balanced3k,SVM sklearn,UgypclW9P2loh5zfmHJ4AaABAg,Udah jelas fotonya aja tdk sama dg orangnya berarti kan PALSU,Positif,Positif,True,Benar,Positif → Positif,1.5902
+balanced3k,SVM sklearn,UgxT55xvRffHdvcbzNV4AaABAg,Ha ha ha sekarang UGM  adalah universitas yg top dan universitas yg kompeten di hina hina dinsalah salahkan  ha ha ha ha. Sy harap UGM MENUTUT OMON OMON RAY PANCI DENGAN SEBERAT2 NYA,Negatif,Negatif,True,Benar,Negatif → Negatif,1.2646
+balanced3k,SVM sklearn,UgxF_tJRNm-yoyUeAuZ4AaABAg,Disini saya yakin pak  yokowi  ijazah pasti  asli yang  sering membuat  berita bohong dan merusak nama orang harus tanggung jawab kalau buktinya bohong harus di penjahah lima tahun.,Negatif,Positif,False,Salah,Negatif → Positif,0.7459
+balanced3k,SVM sklearn,Ugx1gN0_4f-6zMMw-BZ4AaABAg,Ibu Diana ini Cerdas sehat selalu ya bu 🥰,Netral,Netral,True,Benar,Netral → Netral,2.6285
+balanced3k,SVM sklearn,UgyxRkwZuK-K_j5D7WR4AaABAg,Pencemaran nama baik menghasut tidak berniat baik itu yang dilakukan RRT pa hakim,Negatif,Negatif,True,Benar,Negatif → Negatif,1.5376
+balanced3k,SVM sklearn,UgxtGb_r36BisyGSh2R4AaABAg,"Pak Jokowi tidak berubah, ketika menjadi walikota Solo 2x pilkada, Gub DKI 1x pilkada, Presiden RI 2 periode.
+Beliau konsisten memperjuangkan rakyat Indonesia dalam berbagai rintangan dan cukup berhasil.
+Tapi masyarakat yg melihatnya yg berubah, ketika di Solo, masyarakat dan lawan politiknya adalah kelas kota madya, di Jakarta, masyarakat dan lawan politiknya kelas propinsi. Ketika Presiden, masyarakat dan lawan politiknya adalah kelas nasional dan internasional.
+Sebenarnya pak Jokowi tidak sempurna dan ada kelemahan. Tapi lawan pak Jokowi tidak lebih baik dari pak Jokowi. 
+Kelihatan dari cara mereka bersaing, bukan menunjukkan prestasi utk berpacu dengan pak Jokowi, tapi dengan cara fitnah yg merusak akal. Bahkan mereka membawa nama Islam, padahal berbuat fitnah dan saksi palsu itu dosa besar.
+Pantas kalau Allah tidak bersama mereka, Allah tidak membantu mereka,  karena Allah adalah pembela orang yg bertaqwa, bukan membela orang Islam.",Negatif,Negatif,True,Benar,Negatif → Negatif,1.4107
+balanced3k,SVM sklearn,UgyTv9bnwG2Kdmaq9Y54AaABAg,Si aswan ini kalau ada film warkop bagusnya dia perankan karakter om dono...,Netral,Netral,True,Benar,Netral → Netral,0.5402
+balanced3k,SVM sklearn,Ugyxj48ZzUMTME8Q6v14AaABAg,Setres,Netral,Netral,True,Benar,Netral → Netral,1.781
+balanced3k,SVM sklearn,UgwSjqi-NOE-XAwCjMh4AaABAg,Terimakasih wawasan dari Mbah Sujewo Tedjo,Netral,Netral,True,Benar,Netral → Netral,1.8137
+balanced3k,SVM sklearn,Ugw5ZTDyhWyxkjFq4854AaABAg,"sudah di tunjukkan Ijazah asli pun masih GAK PERCAYA..
+MEMANG BUKAN CARI KEBENARAN TAPI CARI MASALAH",Negatif,Negatif,True,Benar,Negatif → Negatif,0.3352
+balanced3k,SVM sklearn,UgwEsTUILPRUhiQ_bmJ4AaABAg,Ealahhh...ternyata ini smua cuma sandiwara kadrun balas dendam ke pak jokowi to....🤣😁🤣😁,Negatif,Negatif,True,Benar,Negatif → Negatif,1.6945
+balanced3k,SVM sklearn,Ugx1zHaShnZX0lyr65F4AaABAg,STOP DRAMA MURAHAN KASUS IZASAH PALSU PRESIDEN KE ( 7 ) JOKWI INI XAN PARA PENGGUGAT GA BAKAL KUAT JOKOWI SUDAH TERLALU PINTAR TU MENG ANTISIPASI HAL YG MUTAHAL MAHAL INI. LEBIH BAIK BEKERJA TUK MBENAHI NKRI YG MAKIN KUSUT KAYA BULU KUSUT JEMBLUTT,Negatif,Positif,False,Salah,Negatif → Positif,0.1302
+balanced3k,SVM sklearn,Ugz7fftYlsA4p5Csg0p4AaABAg,Aswan ini gak tau malu ya,Netral,Netral,True,Benar,Netral → Netral,1.239
+balanced3k,SVM sklearn,UgwNX4zVV9UVjjR1KJF4AaABAg,"Astaga....gak berani tunjukan dan dibuktikan coba serahkan buat RRT utk mereka teliti keaslian atau kepalsuan ijazah itu,kan gitu...namun harus berakhir di pengadilan TUN",Positif,Positif,True,Benar,Positif → Positif,1.3955
+balanced3k,SVM sklearn,UgxtOKH3B70HfH9zIlZ4AaABAg,Rismon dan Roy Suryo meneliti..  apakah mereka punya kompetensi untuk meneliti..sehingga bisa meyakinin ijasah yg diteliti itu palsu..karena kalau tanpa kompetensi setiap orang boleh menyimpulkan dan menyebarkannya keruang publik maka akan menimbulkan kegaduhan yg hasil penelitiannya masih dipertanyakan kebenarannya.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.4221
+balanced3k,SVM sklearn,Ugx6oVp8vrdIxJnEQsV4AaABAg,Ketiga orang ini bohong semus jawabannya tdk masuk akal . Maaf sekelas ugm aja bisa bohong apalagi yg dibawahnya naudzubillah . Sugguh memalukan .,Positif,Positif,True,Benar,Positif → Positif,1.224
+balanced3k,SVM sklearn,UgxwUVkOKTOufcI_Dr14AaABAg,Sudah di tunjuk masih di debat lagi. Berati pemerintah sekarang senang menderita diatas rakyat.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.1975
+balanced3k,SVM sklearn,UgxSP6uATFUZdE6LGSt4AaABAg,"Tetap di sngkal,pihak ugm sdh mnjelaskan gk d prcaya.aplgi phk polda...barisan org stresss",Negatif,Negatif,True,Benar,Negatif → Negatif,0.5017
+balanced3k,SVM sklearn,UgzZSTbVrETF4TDqcI14AaABAg,Rakyat sudah tahu  ijazah jokowi palsu...kalau memang asli...!! Di pengadilan...!!,Positif,Positif,True,Benar,Positif → Positif,3.3056
+balanced3k,SVM sklearn,UgwqGEFkO-QytKIwx3F4AaABAg,"Penjelasan yg terang benderang.
+Sangat mencerahkan bagi yg punya hati bersih dan akal sehat.
+Sangat meresahkan bagi yg sakit hati dan sesat fikir.",Negatif,Netral,False,Salah,Negatif → Netral,0.5927
+balanced3k,SVM sklearn,UgyikDQFAgR5x5-ND2V4AaABAg,Mantaaapp hakim MK!!!!,Netral,Netral,True,Benar,Netral → Netral,0.004
+balanced3k,SVM sklearn,UgyfwFr9lSXPU6Mer0l4AaABAg,Panci mantan napi msh di percaya aja 😂😂😂😂😂😂,Netral,Negatif,False,Salah,Netral → Negatif,0.3718
+balanced3k,SVM sklearn,UgzEhdhMpLOs3FOu9tB4AaABAg,"Politiknya terlalu jahat,kasihan pak Jokowi,rakyat tetap mendukung pak jokowi",Negatif,Negatif,True,Benar,Negatif → Negatif,1.5846
+balanced3k,SVM sklearn,UgwXMldinZ8o63L82Lt4AaABAg,"Menit 26:33 detik detik pengalihan bahasan biar ga klihatan menipu nya, nanya ijazah pas di tampilkan di layar malah muka berubah pura pura begok😂😂😂",Positif,Netral,False,Salah,Positif → Netral,0.1546
+balanced3k,SVM sklearn,UgxjJYAZ0UFzFqt7f2R4AaABAg,Apa ngak malu ya anak dan istrinya Andi.. melihat kelakuannya😊,Netral,Netral,True,Benar,Netral → Netral,1.2753
+balanced3k,SVM sklearn,Ugw9ZSgr7uMASu67WHh4AaABAg,"😂😂Roy Suryo ko percaya pasti ada aja yg kurang ini itu,,
+Lh dulu minta nya nunjukin😂,",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9306
+balanced3k,SVM sklearn,UgwS4c8LvcQg9Ew_BCN4AaABAg,"Punya duit palsu dikejar2
+Punya SIM STNK palsu dikejar2.
+Giliran punya ijazah palsu, malah dilindungi dan ga boleh diliat.",Positif,Positif,True,Benar,Positif → Positif,2.8954
+balanced3k,SVM sklearn,Ugxjq_I8I-2SPYdZDQ94AaABAg,Harus di tuntaskan kasus ijazah palsu nya👍👍,Positif,Positif,True,Benar,Positif → Positif,2.0639
+balanced3k,SVM sklearn,Ugwh_g1kjam27zBIqpl4AaABAg,Omong kosong ini..kasmojo sndiri bilang bukan pembimbing PK jokowi😂😂,Positif,Negatif,False,Salah,Positif → Negatif,1.858
+balanced3k,SVM sklearn,UgzwgfECOYxRb7Gqx-54AaABAg,Roy Suryo Cs mengangkat kasus Ijazah Palsu hanya untuk mencari Panggung,Negatif,Negatif,True,Benar,Negatif → Negatif,0.2767
+balanced3k,SVM sklearn,Ugyii2Tp0DEfuwuiVVh4AaABAg,Lanjut terus Jokowi harus di adili,Positif,Positif,True,Benar,Positif → Positif,0.9695
+balanced3k,SVM sklearn,UgyaSVqPnTqgcZldcJ14AaABAg,"Pak Jokowi..Pak Jokowi
+**Bapak President RI,* *Bapak ktnya Negarawan..*
+*""Sudah banyak korban terkait-kait : Manusia, Waktu, Tenaga, Pikiran, Dana baik perorangan maupun Uang Negara bahkan Rakyat terpecah belah dalam pro&kontra.
+**Segeralah tunjukkan ijazah Bapak..!!!*
+*Bapak sbg Pejabat publik : Walikota,Gubernur dan President tidak bisa berlindung dalam rahasia pribadi..!!!*",Positif,Negatif,False,Salah,Positif → Negatif,0.8759
+balanced3k,SVM sklearn,UgwSImkB6E6xzfVmGo14AaABAg,Biar kapok  12th  pejara roy cumak bikin gadoh pemerimtahan    kalau  ug m mengatakan asli   ya sudan yg menilai masyarakat  bawah    topel2 pengacara begok mbacot  aja,Negatif,Negatif,True,Benar,Negatif → Negatif,0.4823
+balanced3k,SVM sklearn,UgzUfJh96zuj2Sphz254AaABAg,"Seberulnya ijazah jokowi dihentikan saja.Bagaimanapun dia tidak akan nunjukkan ijazah aslinya,memang tidak punya. Ijazah asli itu aturannya dari dulu sampai sekarang dari tingkat SD Sampai perguruan tinggi TIDAK BOLEH PAKAI KACAMATA. Lha kok masih ngeyel Jokowi punya ijazah asli.
+Sudah jelas ijazah yg dimiliki jkw itu PALSU.
+PARA TERMUL MEMANG BERUSAHA MENUTUPI JANGAN SAMPAI BOROKNYA TERBONGKAR,KAN MEMALUKAN SEKALI.
+RAKYAT SDH CERDAS TDK BISA DITIPU LAGI.",Positif,Positif,True,Benar,Positif → Positif,2.2022
+balanced3k,SVM sklearn,UgxxMCKgVRzYgXrDYpt4AaABAg,Ngaku negara hebat ngurusi ijazah palsu keluarga pembohong doang kok gak mampu.malu maluin saja.,Positif,Positif,True,Benar,Positif → Positif,1.5376
+balanced3k,SVM sklearn,UgwvvNgxxbFiFEEnlSt4AaABAg,TIDAK ADA KERJAAN   SUDAH  AKHIR  ZAMAN,Netral,Negatif,False,Salah,Netral → Negatif,0.7665
+balanced3k,SVM sklearn,UgwQjwE026_2c5liSkt4AaABAg,"Ijazah pak jokowi asli,orang2 stres yg bilang palsu aluas orang2 pengacau dan perusak",Negatif,Negatif,True,Benar,Negatif → Negatif,3.832
+balanced3k,SVM sklearn,UgzSrgzHypoNp3Moqi94AaABAg,dikit lagi tiba saatnya pak Jokowi permalukan orang2 yg bilang ijazahnya palsu,Negatif,Negatif,True,Benar,Negatif → Negatif,0.0695
+balanced3k,SVM sklearn,UgwTs7-bD4BUfNiNbvt4AaABAg,"gara-gara mas joko, UGM yg terkenal sebagai kampus paling top nasional jadi seakan2 kualitasnya seperti kampus ruko...    dari perdbatan dan bukti2 yang bersliweran simple sebenrnya apakah mas joko pernah ngampus di UGM? Pernah    apakah mas joko lulus? ga ada bukti...  apakah lulus S1? kemungkinan besar bukan, kalaupun masuk UGM hanya D3",Positif,Positif,True,Benar,Positif → Positif,0.074
+balanced3k,SVM sklearn,UgwPPo3xa2pj11E8lwZ4AaABAg,Orang ini jago ngotot rata2 memang Termul begitu. Karena sudah kena suap.,Netral,Netral,True,Benar,Netral → Netral,0.3626
+balanced3k,SVM sklearn,UgwHsrvXtxgnIIpp3_h4AaABAg,"Om Gogon malu""in golongan,beda jauh levelnya Gogon vs refli Harun.🙏🙏🙏",Netral,Netral,True,Benar,Netral → Netral,0.4918
+balanced3k,SVM sklearn,UgwnCqpMoraAzASzdxZ4AaABAg,"Ya wajar kalo pihak Roy cs masih menduga-duga, karena saat gelar perkara mereka hanya boleh melihat tapi tidak boleh menganalisa dan menyentuh. Padahal saat itu waktu yang tepat antara kedua belah pihak untuk menelaah ijazah asli jokowi yang sudah di depan mata secara leluasa. Dari hasil analisa mereka nantinya bisa ditentukan oleh mereka mau lanjut ke pengadilan atau tidak.
+Jika seperti ini patut diduga masih ada sesuatu yang disembunyikan oleh kubu jokowi. Sebaiknya lanjut ke pengadilan",Positif,Positif,True,Benar,Positif → Positif,0.1169
+balanced3k,SVM sklearn,UgwJRz4JLrn5po1irtd4AaABAg,Itu palsu gogon😅😂,Positif,Positif,True,Benar,Positif → Positif,0.7834
+balanced3k,SVM sklearn,UgyyCiN8JiBf2ebDXqh4AaABAg,"Mending di kuliaih, dari pada membela kebohongan.",Negatif,Positif,False,Salah,Negatif → Positif,1.3645
+balanced3k,SVM sklearn,UgxtAGSUZS3zMWnBo_V4AaABAg,Ibu kerudung hijau keren,Netral,Netral,True,Benar,Netral → Netral,2.1653
+balanced3k,SVM sklearn,UgwQ66VKse05Zc3u1zh4AaABAg,TOMPEL TOMPEL TOPLES TOPLES TOMPE TOPLES TOMBLO,Netral,Netral,True,Benar,Netral → Netral,2.1351
+balanced3k,SVM sklearn,Ugy9NIfZq9uPpOSm7314AaABAg,"jika memang p Jokowi masih belum berani menunjukan ke publik ijazah aslinya , jangan heran klo rakyat masih menganggap bahwa Ijazah jokowi itu palsu
+اللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ، وَأَرِنَا الْبَاطِلَ بَاطِلًا وَارْزُقْنَا اجْتِنَابَهُ، وَلَا تَجْعَلْهُ مُلْتَبِسًا عَلَيْنَا فَنَضِلَّ، وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",Positif,Positif,True,Benar,Positif → Positif,2.068
+balanced3k,IndoBERT,UgzBXm-PIhFWH5N7RkF4AaABAg,"Gak ada yg salah mul termul, denger kata ""nasehat"" aja kok udah tepuk tangan sambil melet2. Emg gitu kan prosedurnya, kocak bngt kalian 😂
+Biasakan tonton full, cermati kata2/nasehat dari para hakim.",Negatif,Netral,False,Salah,Negatif → Netral,0.5045
+balanced3k,IndoBERT,Ugydj1LyfMKu0T5s2C94AaABAg,"Roy ,refli Harun ,BPK jendral dan banyak LG yg dukung rrt ,semua it hasil karena d berhentikn sama p Jokowi ,jdi model g trima d berhentikan tp d beri amanah mlh ngawur terpaksa d pecat tp g trima dia 2 in akhirnya iri hati lalu bepikir fitnah  supaya p Joko w keliatan jahn dta masyarakat",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9972
+balanced3k,IndoBERT,UgxuF2_J9U-54_jNzCd4AaABAg,WKWKWKWK,Netral,Netral,True,Benar,Netral → Netral,0.9981
+balanced3k,IndoBERT,Ugy1xW12Kr8DVH0Q1h54AaABAg,Pada intinya jokodok ijazahnya asli pasti sdh ditunjukkan dr dl krn mbulet muter muter muter berarti jokodok TDK punya ijazah UGM,Positif,Positif,True,Benar,Positif → Positif,0.9875
+balanced3k,IndoBERT,UgxZLnEWSbWp3LFp5-V4AaABAg,Pak Jokowi tunjukkan ijazahnya Msalah ijazah,Positif,Positif,True,Benar,Positif → Positif,0.9875
+balanced3k,IndoBERT,Ugw2ujPwi1inVJvNMMt4AaABAg,"Kl semua minta maaf, ijasah palsu itu tidak akan terbongkar sampai yg punya ijasah MATI",Positif,Positif,True,Benar,Positif → Positif,0.8437
+balanced3k,IndoBERT,UgwZG4h-A_7es3ipnjJ4AaABAg,Semakin yakin ijazahnya jokowi palsu,Positif,Positif,True,Benar,Positif → Positif,0.9956
+balanced3k,IndoBERT,UgxnHUYFbOGs4UAjT054AaABAg,Mantap bpk Saldi Isra,Netral,Netral,True,Benar,Netral → Netral,0.9972
+balanced3k,IndoBERT,UgxNGzcUqTMPK0-YNwV4AaABAg,Pak Jokowi Yang Terbaik ❤ Sehat Selalu Bapak Jokowi Tetap JAYA Selamanya ♥️,Netral,Negatif,False,Salah,Netral → Negatif,0.9894
+balanced3k,IndoBERT,UgxbvsNWBSVxN8SoLVJ4AaABAg,Josua kacauhhuhhhhhhhhh.😊😊😊😊😊😊,Netral,Netral,True,Benar,Netral → Netral,0.9982
+balanced3k,IndoBERT,UgwFEBvLG9iN_5ezSbJ4AaABAg,mantap Bu ajari mereka beretika,Netral,Netral,True,Benar,Netral → Netral,0.9879
+balanced3k,IndoBERT,Ugy9L1nDPcbAmBDTByJ4AaABAg,"gak akan sanggup spt nya ini untuk lanjut gugatan, terlalu kabur tuntutannya spt penyataan ymh prof saldi, 14 hari itu singkat, mending kabur sekalian langka seribu mempersiapkan sidang pengadilan dari pada loncat loncat sana sini. di KIP sdh di kasih dokumen salinan ijazah oleh KPU pun bikin makin pusing jg bonatua krn ternyata ada salinan aslinya.bisa jadi yg duluan mundur malah bonatua krn dia bukan ahli hukum atau penasehat roy cs. semua akan indah pada waktunya, makin di cari makin nyata kebenaran itu.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9033
+balanced3k,IndoBERT,Ugyq5YHTdzvvTDbN7Dh4AaABAg,Hedeeh.,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgwTbinEVVesSz0aIVF4AaABAg,Sepertinya jokowi emang gak punya ijazah,Positif,Positif,True,Benar,Positif → Positif,0.9912
+balanced3k,IndoBERT,Ugx1YBPt9mCh6iA7Ujt4AaABAg,Sy mau muntah liat muka si aswannn ini,Netral,Netral,True,Benar,Netral → Netral,0.998
+balanced3k,IndoBERT,UgwwPTJiQ93pE-B9mzh4AaABAg,Emang itu tifa &ak masuk akal pinter pinter bodoh suka bikin onar.. Bikin fitnah.. Dokter dokteran,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9766
+balanced3k,IndoBERT,UgwFMS1B7mK2c8XylpB4AaABAg,Gk jauh induk n ternak nya...pembohong besar,Positif,Positif,True,Benar,Positif → Positif,0.9198
+balanced3k,IndoBERT,UgzK8-9bGLYhU-Fkzjt4AaABAg,"SEBENAR BENARNYA INI BUKAN TENTANG IJASAH S1 JOKOWI !!
+
+Ini hanya masalah kekuatiran kalah pilpres lalu takut akan pengaruh jokowi di pilpres 2029 dst 😅😅
+
+Isu ijasah adalah kelanjutan dari isu isu apapun sebelumnya, pki, occrp dll yang sudah gagal.
+Kemarin dilanjut isu whoose tapi gagal.
+Isu pemakzulan terus diupayakan .
+Rencana isu ikn gagal , karena ikn ternyata diminati masyarakat.
+Terus akan ada isu isu pada jokowi selamanya.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9851
+balanced3k,IndoBERT,Ugzo5EZYhT82aNT5J794AaABAg,Palsu 1000 persen,Positif,Positif,True,Benar,Positif → Positif,0.9929
+balanced3k,IndoBERT,UgwnNpRKqBrLK_TLJiB4AaABAg,"tapi ingat bahwa Mencaci maki, mungucapkan ujaran² kebencian, mencemarkan nama baik itu juga melanggar hukum bos ?? jadi yg diproses adalah bukan karna Roy menanyakan ijazah tapi mencaci maki & berujar kebencian juga mencemarkan nama baik",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9935
+balanced3k,IndoBERT,Ugz7IwVSDaEr6CT3ZWZ4AaABAg,"Katanya 99.9% yakin ijazah Jokowi itu palsu. Seharusnya kalian2 justru  mendorong agar kasus ini selesai secara tuntas di pengadilan.  Kok sekarang malah ngemis2 minta kasus di stop ???
+
+Dasar manusia2 koplak ngga punya harga diri..!!  Setelah menghina dan memfitnah orang tanpa bukti, seenaknya saja minta kasus di stop...😂😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9891
+balanced3k,IndoBERT,Ugz0STG-EKdQPBPBy0h4AaABAg,Mantap hebat Hakimnya 👍,Netral,Netral,True,Benar,Netral → Netral,0.9971
+balanced3k,IndoBERT,Ugw5UlCUwO10FisW6854AaABAg,"saya setuju dengan pak Jokowi nggak nunjukin ijasah emang mereka"" siapa kecuali klu lapor  dan di tanya penyidik tentang keaslian ijasahnya baru tunjukin orang tak punya hak untuk paksa liat dokumen pribadi orang lain klu tau orang lain pakai arsip ilegal tinggal lapor",Negatif,Positif,False,Salah,Negatif → Positif,0.8363
+balanced3k,IndoBERT,UgyrHOX1EjLLKusec3t4AaABAg,Roy panci kelihatan stres bgt,Netral,Netral,True,Benar,Netral → Netral,0.9981
+balanced3k,IndoBERT,UgwVJIiKwRMR8-xvRMV4AaABAg,kan ijazah nya sdh ditunjukan om hotman ko masih tanya ...,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9744
+balanced3k,IndoBERT,UgxsQaJBHB4XgYwIIxB4AaABAg,Yakin palsu,Positif,Positif,True,Benar,Positif → Positif,0.9952
+balanced3k,IndoBERT,Ugz4kMt_BgVtSRKRjx54AaABAg,"Terlihat jelas jokowi penipu,hukum harus ditegakan,mau hukum lewat keadilan,rimba atau akhirat,pilih jok?",Positif,Positif,True,Benar,Positif → Positif,0.9586
+balanced3k,IndoBERT,UgwfBm6QLj1eBjj5Urt4AaABAg,"Percuma juga d tunjukkan ijazahnya,, lah wong ngeyel alias pembenci mana percaya. Sikat aja deh pak polisi..!!",Negatif,Positif,False,Salah,Negatif → Positif,0.7291
+balanced3k,IndoBERT,UgwaWjPrv4_GXVwTiCh4AaABAg,"Jujurlah, Pratikno dan Prof. OVA disandra untuk mensahihkan keaslian ijazah S1Jokowi. Alur Kuliah Jokowi terdaftar sampai 4 SMS, SMT ke-5 tidak daftar ulang di akademik fak. kehutanan UGM. Jadi Jokowi memimiliki kemampuan akademik hanya Sarjana Muda, tetapi S1 (Gelar Drs. dan Ir.) digunakan untuk Jabatan Walikota, Gubernur, dan Presiden RI Dua Periode. Perolehan ijazah S1 dipertanyakan proses akademiknya di institusi mana? Hadirnya RRT riset analisis pembuktian hipotesis diperoleh hasil 99,9 % Ijazah ini Palsu bukan produk UGM ttp di Biro Jasa lainnya. Kesimpulannya, Jabatan Publik Jokowi dan Gibran DISKUALIFIKASI YURIDIS FORMAL JABATAN PUBLIKNYA.",Positif,Positif,True,Benar,Positif → Positif,0.993
+balanced3k,IndoBERT,UgwZZJlTEfeKXTGYAH54AaABAg,"Apanya sih yg hebat dari Roy Suryo ini,lagu indonesia Raya aja ngak hafal dia pas jadi mentri ngaco aja 😂😂😂",Netral,Netral,True,Benar,Netral → Netral,0.9952
+balanced3k,IndoBERT,UgxF21nHnfmnVLbWXLp4AaABAg,"PENEGAKAN HUKUM TIDAK ADA TAWAR MENAWAR !!! JIKA IJAZAH ITU PALSU,MAKA JOKOWI HARUS SEGERA DI PENJARA!!;",Positif,Positif,True,Benar,Positif → Positif,0.9956
+balanced3k,IndoBERT,Ugx7ud2l0ehzXjr0w-94AaABAg,"Kalau bener bener palsu terus mau apalagi, wong gak mau menunjukan, apalagi mau di sidang malah ngumpet gak mau nongol.",Positif,Positif,True,Benar,Positif → Positif,0.9956
+balanced3k,IndoBERT,Ugx4IDGn5SCHzrRSNWR4AaABAg,Betul❤❤❤,Netral,Netral,True,Benar,Netral → Netral,0.998
+balanced3k,IndoBERT,Ugx1bUCI1PCPC2VzHK94AaABAg,Beri Contoh lah Kpd Mahasiswa nya Secara Profesional krn Mahasiswa  ini Calon2 Utk Pejabat Publik n Sbg. Dosen . 🙏,Netral,Positif,False,Salah,Netral → Positif,0.778
+balanced3k,IndoBERT,Ugx9caZQUPsKl4pYysJ4AaABAg,"Sandi tdk pernah menyatakan ijazah Pak Jokowi palsu, sedangkan TIRORIS terlalu maju, langsung menyatakan ijazah Pak Jokowi palsu, sehingga hrs menerima konsekwensi dr ppernyataannya..😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9935
+balanced3k,IndoBERT,Ugxph41iAb0uRsUvI6t4AaABAg,Selamat bekerja,Netral,Netral,True,Benar,Netral → Netral,0.9975
+balanced3k,IndoBERT,Ugx5B6v7tCLDNJnT7nN4AaABAg,Roy fanci tifah rismon kandangin ajah. Sama. Buaya,Netral,Netral,True,Benar,Netral → Netral,0.9808
+balanced3k,IndoBERT,Ugy63O8CwVFhIyJ2k1h4AaABAg,Tunjukan saja ijazah nya ke publik wahai pak jokowi,Positif,Positif,True,Benar,Positif → Positif,0.9936
+balanced3k,IndoBERT,UgxC3Qu3bn3UEz7tRhN4AaABAg,"REVOLUSI SEGERA SERET JOKOWI SEKELUARGA KEPENGADILAN,KAMI SUDAH MUAK SEMUA INI",Positif,Negatif,False,Salah,Positif → Negatif,0.9927
+balanced3k,IndoBERT,Ugwv_UBAuU-r2PlU5rd4AaABAg,Roy Suryo semakin gila,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,Ugz3clqoSaXCA9AVle14AaABAg,"Tuh kan sudah ditunjukkan yg asli masih ngebacot teruss 😂😂
+Selama ini koar2 minta ditunjukkan ..akhirnya dituruti ditunjukkan ..eeh masih cari² kesalahan orang tapi lupa kelakuan busuknya sendiri 😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9962
+balanced3k,IndoBERT,UgyYsCabR6MQyiLe18d4AaABAg,Si Andi Azwan ini sdh Gila Ya,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,Ugx1KvCtmjrC60uA4214AaABAg,Kasian rakyat harus mengonsumsi pemberitaan  fitnah Roy cs yg menuduh tidak bisa membuktikan sungguh konyol pendukung Roy cs,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9954
+balanced3k,IndoBERT,UgwjvDxPsGuwIp5Nr7J4AaABAg,"1:38:54 wkwkwkwk aiman ngamoook, lempar aja pak pake gelas white coffenya😭😭😭😭",Netral,Netral,True,Benar,Netral → Netral,0.9962
+balanced3k,IndoBERT,UgwMm9v4qU70xMQ09cJ4AaABAg,Gedabrus semua.tidak.malu.urat.sudah putus,Positif,Netral,False,Salah,Positif → Netral,0.9981
+balanced3k,IndoBERT,Ugxzy7b1eOkT0-1ze3h4AaABAg,"Terus cari undang undang untuk membenarkan diri Jokowi udah sekacau ini dari berapa tahun Maslah ijazah blum beres,data pribadi data pribadi tai,lu itu di pilih oleh rakyat, enak banget si Jokowi jadi persiden ga pake ijazah,kita aja yang kerja harus pake ijazah, ingat di dunia ini tidak ada yang abadi",Positif,Positif,True,Benar,Positif → Positif,0.8781
+balanced3k,IndoBERT,UgwLrjPF27eWo_6dOsl4AaABAg,Sbetulnya ini akibat kecurangan di republik ini ada pejabat negara ber ijasah  palsu,Positif,Positif,True,Benar,Positif → Positif,0.9941
+balanced3k,IndoBERT,UgyWuKc8kjjtZ901HiN4AaABAg,"Yg nuduh Residivis, Kuasa hukum nya jg resedivis.. kalo masyarakatnya yg percaya, keder gw",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9949
+balanced3k,IndoBERT,UgyBBgDYA5psSwIy_2F4AaABAg,"Ijazah asli karena ada legalisir. Yg primer untuk apa lagi, jika pihak terkait sudah menjelaskan asli",Negatif,Negatif,True,Benar,Negatif → Negatif,0.931
+balanced3k,IndoBERT,UgwzFXHqTdKwDghKx-54AaABAg,Sdah sngt jelas di nomor ijazah sangt beda dgn ijazah asli.,Positif,Positif,True,Benar,Positif → Positif,0.9932
+balanced3k,IndoBERT,UgyzcXChY96s2Itqcl94AaABAg,"Menurit saya sudah benar bahwa masalah ini dibawa ke pengadilan. Tak usah diperdebatkan.  Yang lain cuma  bikin ruwet saja.. 
+Ditunjukkan tak akan menyelesaikan masalah. Karena sudah terlanjur dinyatakan di depan umum dengan rekayasa IT dan fitnah.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9921
+balanced3k,IndoBERT,UgxV_Dw0p1dTDMnFXax4AaABAg,Suryo dah strees loh.,Netral,Netral,True,Benar,Netral → Netral,0.986
+balanced3k,IndoBERT,UgwYdXVSv-B7h_J31n54AaABAg,"Salfok sm presenternya, pol cantiknya.. 😊",Netral,Netral,True,Benar,Netral → Netral,0.9854
+balanced3k,IndoBERT,Ugydl18fMNW_wex27RF4AaABAg,Cuma melihat😂😂,Netral,Netral,True,Benar,Netral → Netral,0.9951
+balanced3k,IndoBERT,UgzmRL3XZlujI4wL0qB4AaABAg,"Mana ada yang percaya dg ijazah jokowi, semua orang yakin 100% ijazah jokowi palsu... Media jangan maen plintir berita!!! Jangan menyesatkan!!!",Positif,Positif,True,Benar,Positif → Positif,0.7109
+balanced3k,IndoBERT,Ugwuhy63CAxE9AMIY6F4AaABAg,PAK PRABOWO TOLONG BERIKAN KEPASTIAN HUKUM DI ERA KEPEMIMPINAN BAPAK.,Netral,Negatif,False,Salah,Netral → Negatif,0.9273
+balanced3k,IndoBERT,Ugz8dVfbPzoR_Idik8x4AaABAg,Semoga kebenaran terungkap rakyat yakin ijash palsu  100persen palsu,Positif,Positif,True,Benar,Positif → Positif,0.9941
+balanced3k,IndoBERT,UgwJpJEs_2TBFE7q5FZ4AaABAg,"Orang iri ya kayak gini,gila",Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgxG4ovqI3DKwYkPGed4AaABAg,Wkwkwk..mantab buk..tabok roy panci..😂,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgyBaShhaB7XsE3Dxfl4AaABAg,"Terus pak jokowi , jgn terpancing gol tukang fitnah . Jgn sampai si bohir paling besarnya ketangkap.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9959
+balanced3k,IndoBERT,UgzJ_2GjAR4qAjN4o5J4AaABAg,Jangan jangan lembar pengujian skripsi dihilangkan seseorang untuk menguatkan tuduhan palsunya,Negatif,Positif,False,Salah,Negatif → Positif,0.9627
+balanced3k,IndoBERT,UgxvNSqe9T_8UsmTQ7d4AaABAg,"Niatnya mau ngancurin Jokowi, Yg mau di hancurin santai² aja eh yg mau ngancurin ternyata malah udah berantakan sendiri 😂",Negatif,Positif,False,Salah,Negatif → Positif,0.7078
+balanced3k,IndoBERT,UgwcwHGOlThX4fhPdfJ4AaABAg,Prof gayus???????,Netral,Netral,True,Benar,Netral → Netral,0.9972
+balanced3k,IndoBERT,UgxeeUZJm9Gmd1pfUM14AaABAg,"wah saya ini asli Jogja , terus terang saja UGM ini kan lebih bagus   coba Poto ijazah kan jelas beda kok masih muter2 terus to ?",Positif,Positif,True,Benar,Positif → Positif,0.9936
+balanced3k,IndoBERT,UgzkiEEPVgau-tKocH94AaABAg,"Banyak pembenci bpk Jokowi karena merasa mempunyai derajat yg lebih tinggi. 
+Mereka tidak habis pikir dan tidak bisa terima... mengapa Jokowi bisa membawa naik bangsa indo ke level lebih tinggi ?
+Mengapa bukan mereka yg melakukan / mendapatkan kehormatan itu ? Mengapa Jokowi yg jadi pahlawan dan dicintai mayoritas anak bangsa ?
+Mengapa....????
+
+Mereka lupa :
+- mereka tdk punya akar kerendahan hati,
+- mereka tidak punya semangat kerja keras yg disertai kejujuran dan ketulusan,
+- mereka lebih suka mengambil/menerima daripada memberi.
+
+Mayoritas rakyat indo mempunyai mata hati nurani, menyimak dan melihat secara terang benderang :
+
+Bpk Jokowi adalah Berlian !
+Sementara mereka adalah karat besi yg tak berguna
+
+Salam jujur dan tetap berjuang bpk Joko Widodo 🙏",Negatif,Negatif,True,Benar,Negatif → Negatif,0.991
+balanced3k,IndoBERT,UgyA9nyXIO-CDJffB3B4AaABAg,"Tahun kebangkitan ilmuwan ulama cerdik cendekiawan akademisi Indonesia, 2026. Kita bangsa Indonesia bersatu mewujudkan keadilan sosial bagi seluruh rakyat Indonesia NKRI Nusantara. 
+
+Kami warga masyarakat mengawal dukungan dan doa untuk membela kejujuran dan keadilan. Mulai dari ijazah palsu Jokowi yang digunakan untuk melamar kerja presiden pejabat publik. Dan sebelum gubernur DKI walikota Solo.
+Semoga Allah Subhanahuwata'ala tahun 2026 mengijinkan kemenangan kejujuran dan keadilan melawan Pembohonga dan kejahatan. Aamiin yaa Rabbal 'alamiin 🤲🏻🙏🏻",Positif,Positif,True,Benar,Positif → Positif,0.9912
+balanced3k,IndoBERT,UgxPfRc8XCYmZbS-2ed4AaABAg,Udah Roysuryo ngalah saja karna anda yg mulai kerusuhan yg tanpa berdasar ini...karna hasutan semata.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9041
+balanced3k,IndoBERT,UgwwYBCyEN2oMZjom254AaABAg,"Heh sur,  sy dlu jg waktu bikin skripsi (dlu jg disebutnya skripsi),  sy jg sllu brtanya pd Asdos sy  ktika mau diajukn k Dosen pmbimbing skripsi sy (krn sy mrasa gbs/takut salah & dimarahi dos pembimbing),  kbetuln Asdos sy orgnya ramah & mau ngajari!  
+Jd MUNGKIN  begitu  jg dg p Jokowi.  Emg msalah??! & trbukti stiap Bab yg sy Ajukn pd  Dos pembimbing sllu di ACC,  paling hnya da  yg hrs ditambah ato dikurangi sdikit sj. 
+& Akhirnya sy bs mnyelesaikn skripsi sy hya dlm waktu (klo g salah 5x pertemuan sj).  Alhamdulillah.  
+& Skrg klo ditanya sypun Akn mngatakn : ""Berkat Asdos sy tu,  skripsi sy bs slesai dg cepat!""",Negatif,Negatif,True,Benar,Negatif → Negatif,0.7783
+balanced3k,IndoBERT,Ugxx5SUmkFcYJghGoaR4AaABAg,"Sangat setuju Bu,",Netral,Netral,True,Benar,Netral → Netral,0.9942
+balanced3k,IndoBERT,Ugxa7fsa7OssjQyd3B94AaABAg,"Ijazah ini memang bohong, ruwet dan terbelit2. Kesannya terus menutupi kebohongan2 yg ada. Aneh sekali kasus ini. Orang bodoh saja paham mainan ini.. 😂😂. Polisi sebagai APH konyol sekali.",Positif,Positif,True,Benar,Positif → Positif,0.9942
+balanced3k,IndoBERT,Ugyeb0_DNYB-hM_6jVl4AaABAg,Benar bu,Netral,Netral,True,Benar,Netral → Netral,0.9535
+balanced3k,IndoBERT,UgwRzMDAFV5qhiogMP94AaABAg,Sudah di bilang sejak awal..orng kalo dh benci ..mau di vonis hakim juga GK bakalan percaya..nanti kalo pas sidang pasti bilang jaksa suruhan .hakim di beli..sudah lahh .lenyapkan saja,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9965
+balanced3k,IndoBERT,UgybOzr_xARvG5A6Doh4AaABAg,"Rakyat sudah paham,niat si Roy CS itu bukan untuk mencari kebenaran atau keaslian ijazah ini ada unsur politik dan ingin menghancurkan kredibilitas pak Jokowi dan keluarga dengan freming kebencian,fitnah orang orang ODGJ.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9915
+balanced3k,IndoBERT,UgyLyfi8BEIRzL_e1Ed4AaABAg,Haduh.....sederhana saja ko....yg diteliti roi objeknya fotocopy...apakah itu sudah benar?,Negatif,Positif,False,Salah,Negatif → Positif,0.7217
+balanced3k,IndoBERT,UgyIf9QJJKSdFT3h-eN4AaABAg,Dulu dua orang di penjara Gus nur dan Bambang Tri kasus ijazah nya Jokowi.....sekarang ada 8 orang yg di ancam mendekam di penjara......,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9018
+balanced3k,IndoBERT,UgxIux2704e2yuXw4il4AaABAg,"Sabbe satta bhavantu sukitata, semoga semua mahkluk berbahagia.",Netral,Netral,True,Benar,Netral → Netral,0.9909
+balanced3k,IndoBERT,Ugw1d1aaCVnxax2d0kx4AaABAg,"""nanti ditunjukan di pengadilan"". krna sementara masih dalam proses editing dan loby2 entah ke siapa, agar terlihat asli",Positif,Positif,True,Benar,Positif → Positif,0.9648
+balanced3k,IndoBERT,Ugx4UXTfSoZou8MbQk14AaABAg,Buktinya ijazah asli GK pernah ditunjukkan aslinya,Positif,Negatif,False,Salah,Positif → Negatif,0.8231
+balanced3k,IndoBERT,UgxNmM5-wGSCdSHBxFR4AaABAg,"Kenapa para rektor tidak berani bertemu..dgn Roy Suryo cs..
+Tidak berani menampilkan data..
+
+Palsu....palsu..palsu",Positif,Positif,True,Benar,Positif → Positif,0.9595
+balanced3k,IndoBERT,Ugy6iBaHwKH1BCkNuAx4AaABAg,"Hakim MK sangat keren, kelihatan banget kualitas orang nya, sangat top.",Netral,Netral,True,Benar,Netral → Netral,0.9001
+balanced3k,IndoBERT,Ugxe7MJi_DmanWCW1wN4AaABAg,pembenci jokowi itu  kebenaranpun akan menjadi salahh itulah kebencian dn kedengkian....,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9913
+balanced3k,IndoBERT,UgxmPgMeoQlFSMfhGB14AaABAg,"Apakah ini tanda2 di akhir jaman, banyak sekali orang pintar tp keblinger. Menyerang orang yg pernah memperjuangkan indonesia selama 10 th. Dan oknum2nya hanya itu2 sj, jangan pernah ibu pertiwi menangis lg. Kebaikan dan kebenaran akan mencari jlnnya sendiri. Tindak tegas oknum2 orang yg sok2an itu.
+Inilah judulnya  wong pinter tp keblinger. Tunggu sj hasil sidang b3sok !",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9923
+balanced3k,IndoBERT,UgytHgwJtM6eo7761w14AaABAg,mentri pecatan kagol. stresssss..,Netral,Netral,True,Benar,Netral → Netral,0.9938
+balanced3k,IndoBERT,UgyVYUJvJlgSjBmNgAF4AaABAg,Mantap mbak diana,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,Ugyjecq6QvLwDSCZsct4AaABAg,Ijazah palsu itu yang buat pembenci Pak jokowi karena mau bales dendam tak bisa diajak kerja sama,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9645
+balanced3k,IndoBERT,UgxytPikt3szHWJbPKp4AaABAg,"Semangat Roy cs, siapkan pembelaan2 kalian dipersidangan kedepannya, siapkan stok obat migrain yg banyak, jangan sampai sakit ya
+Jangan lupa sarapan kalau pagi biar kuat menghadapi kenyataan",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9939
+balanced3k,IndoBERT,UgzJQ9HymLxaXcuzrxJ4AaABAg,"Menurut keyakinan saya ijazahnya palsu, kamu tidak percaya lagi dengan ugm",Positif,Positif,True,Benar,Positif → Positif,0.9944
+balanced3k,IndoBERT,UgxzKnwLNuD2oyfpWNd4AaABAg,Pancingan RH kepada hakim yang mulia untuk Tiroris ngomong di tolak dengan elegam oleh pak hakim. Permulaan yang bagus untuk menutup langkah mereka. Ini bukan acara Rakyat Bersuara Aiman pak RH.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9772
+balanced3k,IndoBERT,Ugxut52Q_QuP5q5JEF54AaABAg,lihat muka tompel langsung skip .... kabuuur .. 😂,Netral,Netral,True,Benar,Netral → Netral,0.9947
+balanced3k,IndoBERT,UgwyDEoscRG8k12_tdF4AaABAg,Deny prof cengeng  belum pembuktian sdh bilang kraminilisasi,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9958
+balanced3k,IndoBERT,UgwSiV-nBXfdgcMCy414AaABAg,Ijazahnya S1 tp transkip nilai nya bkn s1,Positif,Positif,True,Benar,Positif → Positif,0.984
+balanced3k,IndoBERT,Ugzmu05qhi-KZIbLlal4AaABAg,"Saya jangan kan tamat UGM, saya SD aja gak tamat, Tapi bisa berfikir logika, kalau emang ijazah nya asli, kenapa tidak di tunjukkan? Kenapa banyak alasan? Kalau pun sudah ada ijazah nya, itupun ijazah palsu karna udh di sogok uangnya kalian.. Kalau cuman ngomong, burung BEO pun bisa ngomong, Kami mau bukti bukan cuman kata kata kaliannn..",Positif,Positif,True,Benar,Positif → Positif,0.9134
+balanced3k,IndoBERT,Ugy8qWwdSoVr7QvbJCB4AaABAg,"Astaghfirullah....sabar nggih bapak Jokowi, semoga panjenengan senantiasa dilindungi oleh Alloh SWT, aamiin....🤲🤲🤲",Negatif,Negatif,True,Benar,Negatif → Negatif,0.8126
+balanced3k,IndoBERT,UgyrC-qRfg1U4PXfotV4AaABAg,HOAX,Negatif,Positif,False,Salah,Negatif → Positif,0.6279
+balanced3k,IndoBERT,UgxegQhqfZVAaqrW_nF4AaABAg,"10 ciri"" orng sox pinter tapi aslinya sangat bodoh. 
+1 tdk mw mendengar orng lain
+2 menghindari keitik 
+3 mengnkn jargon atau istlh sulit
+4 membuat kliem berlebihan 
+5 enggan mengakui kslahannya
+6 mremehkan pndapat orng lain 
+7 mnghndri pertnyaan org lain 
+8 trllu prcya diri dlm hal yg tdk di kuasai. 
+9 suka mengoreksi tnpa dasar 
+10 di tanya ke mana jawabx kmn 
+itu ke bodohan roy panci",Netral,Negatif,False,Salah,Netral → Negatif,0.9909
+balanced3k,IndoBERT,UgyA2AIkqsc0wd0L4e54AaABAg,Klo ijazah gw palsu gw jg takut nunjukin....palagi klo nunjukin ke RRT yg notabene ahli nya ahli😅😅😅,Positif,Positif,True,Benar,Positif → Positif,0.9832
+balanced3k,IndoBERT,UgzVMnjP2tRhyTBBS154AaABAg,Palsu tunjukan dong jangan asumsi congor,Positif,Positif,True,Benar,Positif → Positif,0.9928
+balanced3k,IndoBERT,UgyzqEOIG13o8teqYER4AaABAg,Selama hidup saya tidak pernah liat dokter sepedti dr tifa gaya preman 😂,Netral,Netral,True,Benar,Netral → Netral,0.8577
+balanced3k,IndoBERT,UgwKvEOBq7BV-5UwLwB4AaABAg,"apa salahnya menunjukkan ijazah asliiiiiii sih kalo ada, nglamar kerja swasta aja terkadang diminta menunjukkan ijazah asli..nah ini dia pernah memimpin indonesia 10 th, dan masih menjabat sebagai pejabat publik...lha kok ditanyakan ijazah aslinya mbulet koyo entut 😂😂😂",Positif,Positif,True,Benar,Positif → Positif,0.9893
+balanced3k,IndoBERT,UgxaCrEhj579A_5jwF14AaABAg,memalukan.. menghinakan diri sendiri dgn menjadi termul,Netral,Netral,True,Benar,Netral → Netral,0.9934
+balanced3k,IndoBERT,Ugw6eta6yt0e7wNZvAx4AaABAg,Ya si Suryo. Tukang gaduh,Netral,Netral,True,Benar,Netral → Netral,0.9972
+balanced3k,IndoBERT,Ugz8H2KQOMD1gIHRUgx4AaABAg,Memang busuk komplotan mrka. Sdh dtunjukkan masih sj ngotot.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9186
+balanced3k,IndoBERT,UgxbugkZBVCgORA7aZZ4AaABAg,Banyak cakap tunjukin aja ijazahnya,Positif,Positif,True,Benar,Positif → Positif,0.9888
+balanced3k,IndoBERT,Ugz-d4Jyl9wk4ekS9s14AaABAg,Benar jga walaupun d tunjukan pasti ad aja alasanya😂,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9746
+balanced3k,IndoBERT,UgyzMI7nK1CjuepWKR54AaABAg,Ijazah Jokowi palsu. No debat !!,Positif,Positif,True,Benar,Positif → Positif,0.9865
+balanced3k,IndoBERT,Ugxc0c0yu3LgUAalI6l4AaABAg,"Buat bapa irjen pol aryanto anda sebagai penasihat ahli kapolri 
+
+Meski kami rakyat biasa tapi dari stetmen anda kami menyimpulkan bahwa anda perpihak pada satu sisi itu sangat miris menurut kami
+
+Padahal anda sendiri yg bilng masalah ini simple tidak harus jadi 2 kubu klo memng simple knapa dari dulu jokowi tidak menunjukan ijasahnya !
+
+Anda sebagai penasihat ahli kapolri harusnya anda itu penjadi penengah dalam membuat stetmen tapi kami menilai di sini anda menyudutkan sudut lain",Positif,Negatif,False,Salah,Positif → Negatif,0.7098
+balanced3k,IndoBERT,Ugzt2cCa639YtqlTLMF4AaABAg,Haqqul yaqin palsu,Positif,Positif,True,Benar,Positif → Positif,0.9908
+balanced3k,IndoBERT,UgzO7TqrCdA_0XMV1L94AaABAg,"Setelah lama di perdebatkan ijszah Jokowi, rakyat sdhnmuak bahwa maksudnya mau merongrong Jokowi / Gibran tapi beliau semakin terangkat dan jelas masyarakat menilai",Negatif,Negatif,True,Benar,Negatif → Negatif,0.658
+balanced3k,IndoBERT,Ugw9K8nOTumHo7icWQh4AaABAg,"Fotonya sdh jelas² berbeda ko antara foto pak Jokowi di ijazah dsn pak Jokowi secara fisik, lalu aslinya dimana",Positif,Positif,True,Benar,Positif → Positif,0.9873
+balanced3k,IndoBERT,UgwRk7l-rENYNLUhHSp4AaABAg,Menurut saya mulutnya Roy Suryo itu kurang etis gak mencerminkan org berpendidikan.,Netral,Netral,True,Benar,Netral → Netral,0.9924
+balanced3k,IndoBERT,UgydfU7b8kntAL70kZ54AaABAg,Semoga segera diadili dan dieksekusi masuk penjara.... Semua rakyat punya hak sama... RRT rakyat biasa tidak ada istimewanya.. Jangan terlalu dimanjakan... Cepat diadili supaya rakyat tidak tambah dibuat kacau,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9815
+balanced3k,IndoBERT,UgzLvlckOsHIyw3uGG14AaABAg,Cair cair,Netral,Netral,True,Benar,Netral → Netral,0.9976
+balanced3k,IndoBERT,UgyeGPHrijm_ZL_SgEp4AaABAg,Walau sdh di kasi tau ttp saja dikatakan palsu .,Negatif,Negatif,True,Benar,Negatif → Negatif,0.8927
+balanced3k,IndoBERT,UgwO9AYGgMYhQOd56Rt4AaABAg,intinya RRT harus masuk bui biar nggak ada yg buat gaduh,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9551
+balanced3k,IndoBERT,UgxHYaNkZZWgycnMBvd4AaABAg,"Mantap UGM,  pernyataan Rektor & jajarannya sudah SANGAT JELAS menyampaikan bahwa Bpk. JOKOWI adalah lulusan dari Fakultas Kehutanan UGM pd tahun 1985.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9212
+balanced3k,IndoBERT,Ugy-hT40Diy02qKHO494AaABAg,"Dilihat mata waras klo foto nya seperti itu jelas palsu, kecuali matanya katarak",Positif,Positif,True,Benar,Positif → Positif,0.995
+balanced3k,IndoBERT,UgyzSWcdDNm4XNJaYxp4AaABAg,Terima kasih UGM atas penjelasan nya..... Joos,Negatif,Netral,False,Salah,Negatif → Netral,0.644
+balanced3k,IndoBERT,UgxlFCaJr61KKHSyDKd4AaABAg,"Buat tim pak Jokowi kasus ini harus di lanjut supaya kami rakyat kecil mengetahui siapa  yang benar ,soalnya ini pencemaran nama baik bapak presiden supaya gak terulang kembali Ok",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9966
+balanced3k,IndoBERT,Ugxozn3w_iKTqQT2gx54AaABAg,Kerudung ijo mantap!!!,Netral,Netral,True,Benar,Netral → Netral,0.9948
+balanced3k,IndoBERT,UgxTwkfP6r-xYMYeiBt4AaABAg,Kasian pembawa acaranya..kayanya udh muak bgt sama si Andi Azwan wkwkwk,Netral,Netral,True,Benar,Netral → Netral,0.9982
+balanced3k,IndoBERT,UgxoglTXksq7Rpbj6hZ4AaABAg,Sehat selalu PK Jokowi ❤,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9926
+balanced3k,IndoBERT,Ugwbk0FDN7br3lxq2wl4AaABAg,Kami juga ingin tau ijazah asli atau palsu  perasaan kami Rrt  menang dilihat dari stempel dan photo yg di ijazah bukan photo jokowi,Positif,Positif,True,Benar,Positif → Positif,0.9571
+balanced3k,IndoBERT,UgwysAcQHMqxyucAvDJ4AaABAg,SDH jelas palsu...sehingga ketakutan luar biasa,Positif,Positif,True,Benar,Positif → Positif,0.9664
+balanced3k,IndoBERT,Ugyxyvv7Y_oDZa3aSmJ4AaABAg,Andi aswan sudah gila parah😂😂,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,Ugww-r5M88MUYoGVqEx4AaABAg,"Tunjukan dulu ijajahmu...., apa susahnya...!",Positif,Positif,True,Benar,Positif → Positif,0.9902
+balanced3k,IndoBERT,UgzRRQfxD6qbnyCqP8R4AaABAg,"Sebenarnya gak usah ada saksi ahli, sebab foto yang ada di ijasah sangat jelas bukanlah foto jokowi",Positif,Positif,True,Benar,Positif → Positif,0.9947
+balanced3k,IndoBERT,UgycpW1eduP5DdFMLpR4AaABAg,Roy suryo mmg ODGJ😂😂😂,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgyB_tIZPY1j7x-OP0N4AaABAg,Mas yacub tenang dan bagus penyampaian...,Netral,Netral,True,Benar,Netral → Netral,0.998
+balanced3k,IndoBERT,Ugzhb_L8OxpN_fumxY94AaABAg,Betul Pa Refly .... Palsu palsu palsu palsu.,Positif,Positif,True,Benar,Positif → Positif,0.9866
+balanced3k,IndoBERT,UgwWhl5HRAUKqw2a-M94AaABAg,Kalo udah palsu biar kemanapun tetap palsu engga bakal jadi asli emang manusia ini senang mengadu domba orang jangan sok pintar sok kuasa sok tau  sok pintar jaksahara adili Jokowi biarpiun di bungkus dengan kain Emas  kalo palsu ya pasu manusianyah ajah engga datang berarti engga mau tanggung jawab ini pikiran sayah orang yang engga seolah camkan inih,Positif,Positif,True,Benar,Positif → Positif,0.9783
+balanced3k,IndoBERT,UgyAbOUJ7phGLlg05gx4AaABAg,"Klau Roy sama tifa ngaku Ahli Knapa slalu mnggiring opini? Stau sya klau Orng Ahli tuh netral dan temuan nya berguna untuk Negara, bukan bikin gaduh sana sini😂😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9933
+balanced3k,IndoBERT,UgwMyx-3xqZpKmQUUMl4AaABAg,Bentar lagi roy rismon tifa dan lawyer nya bakal tua di penjara,Negatif,Negatif,True,Benar,Negatif → Negatif,0.8401
+balanced3k,IndoBERT,UgwWABjhIO1yYwTxLql4AaABAg,Panci cs peneliti abal2 jangan belagak hebat sadar kalian,Netral,Negatif,False,Salah,Netral → Negatif,0.9933
+balanced3k,IndoBERT,Ugy9S_-X8szd67XBxmt4AaABAg,"Roy Suryo pasti kalahhh,,
+Menang jokowi donggg,,",Negatif,Negatif,True,Benar,Negatif → Negatif,0.8674
+balanced3k,IndoBERT,UgwmiJ876zmVQVaWLkN4AaABAg,"Kalau memang Ijazahnya Pak Jokowi benar benar Asli ,tapi para penuduh palsu masih ngeyel , 
+Negara tidak boleh kalah
+Hukumanya para penuduh diperberat saja",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9888
+balanced3k,IndoBERT,Ugw-Z9UfItwLrgqCnSB4AaABAg,"ANDI AZWAN INI SUDAH SERING BERBOHONG DEMI MEMBELA IJAZAH PALSU, TAPI DIPANGGIL JUGA KE TV",Positif,Positif,True,Benar,Positif → Positif,0.9899
+balanced3k,IndoBERT,UgyIPtgFYOiUSymFg1d4AaABAg,Omonganya kayak orang gak jelas,Netral,Netral,True,Benar,Netral → Netral,0.9977
+balanced3k,IndoBERT,UgzSHxQpsvCkJljO32Z4AaABAg,Mantap,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,Ugxyq5Qlu_YAaAxNhW94AaABAg,Bosen yg di bahas ijazah palsu terus,Netral,Positif,False,Salah,Netral → Positif,0.9822
+balanced3k,IndoBERT,Ugy0FLbgEY4l9RYMPNN4AaABAg,Mboseni,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgxjzN01EN_FWw6TWQx4AaABAg,guk..gukk..gukkk...gukkkkk...!!!!,Netral,Netral,True,Benar,Netral → Netral,0.9974
+balanced3k,IndoBERT,Ugx1Z9CFT2XZ_do2vfl4AaABAg,Acara sampah sampah,Netral,Netral,True,Benar,Netral → Netral,0.9982
+balanced3k,IndoBERT,UgxWaL0jcE0OpHI6Ph94AaABAg,Kemapa dan siapa tuduh palsu 99.999 persen buktikan meliaran persen   buktikan,Negatif,Positif,False,Salah,Negatif → Positif,0.931
+balanced3k,IndoBERT,Ugze5Kqk0_QCZ7Q5ipF4AaABAg,"U pihak ugm ati2 Allah maha tau , 
+Masyarakat SDH pd cerdas  tau mana keterangan bohong dan yg bener",Positif,Positif,True,Benar,Positif → Positif,0.9638
+balanced3k,IndoBERT,UgwfxN0QAno-cIPRMLp4AaABAg,Rektor kok pembohong 😂😂😂,Positif,Positif,True,Benar,Positif → Positif,0.9944
+balanced3k,IndoBERT,Ugz5Rf-nOVIKZhe_o7R4AaABAg,Yang tidak mau membuka itu bareskrim maunya hanya menyita ijazah biar tidak bisa naik ke Pengadilan lha itu karena ditunjukkan tapi tidak  boleh dipegang dan diiraba berarti takut ketahuan berati ijazah palsu jokowidodo.,Positif,Positif,True,Benar,Positif → Positif,0.9945
+balanced3k,IndoBERT,UgxfV7plXVXUO15vgLt4AaABAg,"SAYA SUDAH TIDAK LAGI IRI DENGAN KAMPUS INI LAGI. 
+KALAU MAU JUJUR2AN, SEBNERNYA ANAK SD JUGA TAU KALO UGM INI BERDUSTAAA",Positif,Positif,True,Benar,Positif → Positif,0.7098
+balanced3k,IndoBERT,UgxRqK-FA5GaU7-s08V4AaABAg,Orang yg banyak ngomong kays tong yaring bunyinya,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgzJmkIHfJjdd3CuKv54AaABAg,"Jokowi tidak akan memperlihatkan ijasahnya karena palsu, seandainya asli sudah pasti diperlihatkan",Positif,Positif,True,Benar,Positif → Positif,0.9948
+balanced3k,IndoBERT,Ugw0yOMggu15S2mL7Hd4AaABAg,Kalo memiliki mata dan otak maka melihat foto di ijazah aja sdh sngat tau ytu bukan wajah jkwi dn itu sangat jelas mencolok perbedaannya😅,Positif,Positif,True,Benar,Positif → Positif,0.9916
+balanced3k,IndoBERT,UgyTplergknRFNmk1jZ4AaABAg,Scan ijazahnnya ternyata masih PALSU 😂,Positif,Positif,True,Benar,Positif → Positif,0.9947
+balanced3k,IndoBERT,UgwKVPy-5PpPb6IR5Zp4AaABAg,"Kmrin2 minta di tunjukin, skrng nyari alibi lain😂😂😂, kacau2",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9968
+balanced3k,IndoBERT,UgzJPDH9zlYQt-9ZL1F4AaABAg,Bnyak omong Lo Roy panci,Netral,Netral,True,Benar,Netral → Netral,0.9981
+balanced3k,IndoBERT,Ugw-SpHY133lU03_BFZ4AaABAg,mantaap...kalok SDH JD tersangka maka SDH bingung bicaranya khozinudin.dasar itu bekerja demi uang maka kalok bicara GK akan pernah salah mintak selalu benar,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9926
+balanced3k,IndoBERT,Ugwj25A5wiSMADvvbrh4AaABAg,Roy panci mati kutu😅,Netral,Netral,True,Benar,Netral → Netral,0.9985
+balanced3k,IndoBERT,UgxDWYw3vfJPaf4Hqh14AaABAg,"waktu pak jokowi belum nunjukin ijazah nya alasan roy cs karena tidak nunjukin.
+ehh.... giliran sudah di tunjukin, malah alasan lain...
+itu menunjukan kalau masalah nya itu bukan ijazah, tapi KEBENCIAN yg mendalam.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9964
+balanced3k,IndoBERT,UgxwZu5GR5tM6BUdwhB4AaABAg,marah marah aja si tompel panik😂,Netral,Netral,True,Benar,Netral → Netral,0.997
+balanced3k,IndoBERT,Ugx_VMaoOBMsYyT1oqp4AaABAg,Kemaren2 kau mau lihat ijazah pak jokowi sekarang lain lagi ceritanya ini pengacara produk yaman,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9964
+balanced3k,IndoBERT,Ugx9M1nrxHA2ZYV7Fkt4AaABAg,"IJAZAH  KALAU  ASLI  PASTI  DITUNJUKAN
+APALAGI   KATANYA  LULUSAN   U G M  :
+Universitas  Geng   Mulyono",Positif,Positif,True,Benar,Positif → Positif,0.989
+balanced3k,IndoBERT,Ugy0_x-9pHyeyKytZAd4AaABAg,"Ijazah palsu
+..",Positif,Positif,True,Benar,Positif → Positif,0.9855
+balanced3k,IndoBERT,UgynqYo1_IVopZt6jil4AaABAg,Termol kebanyakan makan nasi bungkus❤❤❤,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgwlTpP07RP73i6xxN94AaABAg,"""lebih baik gua goreng polemik ijazah palsu gua  daripada kecium kasus korupsi gua""  😂😂😂😂",Negatif,Positif,False,Salah,Negatif → Positif,0.9873
+balanced3k,IndoBERT,Ugwss9rbfuW59VrDCcN4AaABAg,Pengacara AHMAD  KHOSINUDDIN' DI LAPOR OLEH *DHL* KE POLDA METRO JAYA'  INI KELIHATAN KARENA AHMAD KHOSINUDDIN' PENGACARA YG PALING BERANI MELAWAN DAN MENEGAKKAN KEADILAN TERKAIT IJAZAH PALSU ' LALU SEKARANG DI LAPORKAN ...OLEH ORANG YG PERNAH DATABG KE SOLO KE RUMAH MANTAN PRESIDEN KE -7' HA.......HA......HA.......SIAPA ITU ORANG YANG MEMBELAH BAMBANG TRI DAN GUS NUR DI PENGADILAN DSHULU......LALU SEKARANG BERDAMAI ...HA......HA......HA....DASAR 😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢TIDAK PUNYA MALU......😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢😢,Positif,Positif,True,Benar,Positif → Positif,0.7955
+balanced3k,IndoBERT,Ugwe8V_kZxZToLhDmOJ4AaABAg,Lebih baik menyeeah saja pak Roy,Negatif,Netral,False,Salah,Negatif → Netral,0.9962
+balanced3k,IndoBERT,UgzMURgLpqFT-TXtwd14AaABAg,"Cuma di negara Konoha soal ijazah bertahun tahun ,kalau orang berfikir waras dan tidak ODGJ pasti sudah selesai dalam waktu 5 menit , sy yakin ijazah si Jokowi palsu karena pikiran sy masih waras",Positif,Positif,True,Benar,Positif → Positif,0.9914
+balanced3k,IndoBERT,UgwHzINeMDcYB_ztVf54AaABAg,"Luarbiasa nih PH Azam, ijazah aslinya sdh ditunjukin, sekarang malah nuntut harus ada ijazah pembandingnya. Entah tuntutan apalagi yg nanti bakal dipersoalkan kalau teman2 kuliahnya menunjukan ijazah pembandingnya 😅",Negatif,Positif,False,Salah,Negatif → Positif,0.6172
+balanced3k,IndoBERT,UgwvP_hfxAgGRhrQ53V4AaABAg,Pak mk jos jis,Netral,Netral,True,Benar,Netral → Netral,0.9961
+balanced3k,IndoBERT,Ugx2EoLXbHd0Rhd6fJN4AaABAg,"Roy panci, rizmon kalian dulu kau edit ijasah pk Jokowi pakai ijasah hari Mulyono skr berubah ijasah pakai editmu milik dumatno 😅😅😅 telematika mu berubah ubah koplak 😅😅😅😅",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9962
+balanced3k,IndoBERT,Ugwm0Sqo3_HPO0xbw1R4AaABAg,KACAU UGM!!!!  Dokumen yang ditampilkan bareskrim yang di klaim ijazah jokowi asli dan bagian skripsi jokowi itu pake font Time News Roman yang melampaui zamannya. Logika macam apa yang bisa membenarkan masalah ini.,Positif,Positif,True,Benar,Positif → Positif,0.9699
+balanced3k,IndoBERT,UgyZmwl2EUyYSpr-rnR4AaABAg,Mantaap buu,Netral,Netral,True,Benar,Netral → Netral,0.9982
+balanced3k,IndoBERT,Ugw2nVp7xh5_zBsWMHZ4AaABAg,"Dr awal dikatakan ditunjukan pun tdk akn berakhir. Emang itu proyek mereka ko'. Klu ini berakhir, berarti mata pencaharian mereka tertutup dong",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9853
+balanced3k,IndoBERT,Ugw7AqUtGHlgQsOx1Qx4AaABAg,Modar sekarang Andi kelihatan bohong nya,Netral,Positif,False,Salah,Netral → Positif,0.9685
+balanced3k,IndoBERT,UgxivWiQqYA6Pip38G14AaABAg,Betul Mbah,Netral,Netral,True,Benar,Netral → Netral,0.998
+balanced3k,IndoBERT,UgwQJT2V0nFSf9lozc94AaABAg,"Ugm berbohong demi Jokowi. Semoga dari tahun ketahun makin sepi mahasiswa yg pengen kuliah di ugm. Kampus PEMBOHONG, Sama kayak Jokowi. PEMBOHONG",Positif,Positif,True,Benar,Positif → Positif,0.9958
+balanced3k,IndoBERT,UgwZ7mTPaFyuFLwz6QB4AaABAg,"pengacara jokowi terlalu byk bohong,,masyarakat skrg udah pintar dn tau menilai mana yg betul dn mana yg salah,,akhirilah semua kebohongan ini untuk anak bangsa yg baik dn jujur kedepan",Positif,Positif,True,Benar,Positif → Positif,0.9945
+balanced3k,IndoBERT,UgzNRm2KntQKyNl2bzR4AaABAg,"Aslipun gak bakalan percaya, krna hatinya sudah diaelimuti kebencian.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9946
+balanced3k,IndoBERT,Ugzc23vv7fI1J81cKzZ4AaABAg,Sekelas Prof hukum Konstitunsi kok mengajukan bahan seperti mahasiswa magang 😂😂😂,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9394
+balanced3k,IndoBERT,Ugxghx5KnDz_cdI2x7p4AaABAg,"Kenapa kasus ijasah palsu di hentikan , klo sampe kasus ijasah palsu di hentikan hukum di ndonesia lemah bagi politik elit, klo bagi masyarakat kecil hukum nya di tegak kan , supaya tau mana yg di jolimi atau yg bohong , di mata rakyat indonesia baru tau ada mantan presiden di olok oloki sampai di tempat kuburan di sebut"" ,sy sebagai rakyat kecil merasa  mantan presiden di hina dan di olok oloki , presiden kita presiden indonesia sudah banyak pengabdian nya dan tidak korupsi , masa di hina begitu saja, apa hukum untuk orang orang elit kebal !?",Negatif,Positif,False,Salah,Negatif → Positif,0.7182
+balanced3k,IndoBERT,UgyB4EOk1CtwjtEKjWl4AaABAg,Hukum roy cs,Negatif,Negatif,True,Benar,Negatif → Negatif,0.7165
+balanced3k,IndoBERT,Ugx1W8b6GjUSXNRYm6d4AaABAg,"Dah mau ngeles lagi ni suryo,gnti ugm yg di serang",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9806
+balanced3k,IndoBERT,UgySYzHjNOK9xjBLvY14AaABAg,Gua kalo sebagai orang UGM pasti gua tuntut nih Roy udah mencemarkan dan menghina UGM.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9962
+balanced3k,IndoBERT,Ugx8E0JBrETkZJ5gTuF4AaABAg,PenjArakan saja roi Suryo cs.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9829
+balanced3k,IndoBERT,UgzboPiuXG4fKaVjPIp4AaABAg,"Logika akal sehat,,,jika ugm mengataka apa yg sbenarnya/se jln dgn apa yg d ktakan bung Roy brarti UGM ikut kna masalah,,cuma ini posisi keadaan udah bermasalah yg salah pun akan membela sendiri dgn ksalahan lain,,,ketika sudah berbohong akan menutupinya dgn kbohongan lainny.itu emg sudah penyakit org tukang bohong.",Positif,Positif,True,Benar,Positif → Positif,0.639
+balanced3k,IndoBERT,UgxDFiR3JzQ5ga25NYp4AaABAg,Negara akan runtuh jika Negara sudah berpihak pada kejahatan mafia pemalsuan ijazah bukan berpihak kepada kebenaran dan keadilan.,Positif,Positif,True,Benar,Positif → Positif,0.9871
+balanced3k,IndoBERT,Ugw5Car52XDhOFUqdgx4AaABAg,He He He pembimbing skripsinya Pak KASMOJO apa tak bohong ini Pak JOKOWI MERASA TERHINA KLO IJAZAHNYA ASLI BOLEH PENJARAKAN PENUDUHNYA jangan seperti Bambang Tri dan Gus Nur sampai minta jaksa untuk menunjukkan ijazahnya dan siap mencium kaki jaksa BAMBANG TRI DAN GUS NUR TETAP DIPENJARA lelucon ijazah palsu ???,Positif,Positif,True,Benar,Positif → Positif,0.7255
+balanced3k,IndoBERT,Ugy28Wq6nP_CF06K-QR4AaABAg,Ini yang saya salut dengan bapak Ketua MK 👍,Netral,Netral,True,Benar,Netral → Netral,0.5205
+balanced3k,IndoBERT,UgxOKYQsOOP07OPo7wl4AaABAg,Betul kata bapa yg satu berani gak Suryo cs itu mau terima hukuman mati bila ijazah asli di tunjukkan,Negatif,Negatif,True,Benar,Negatif → Negatif,0.797
+balanced3k,IndoBERT,Ugwfy9yI_HofsCZkoIt4AaABAg,Sekarang alasannya Jokowi sudah rakyat biasa....😂😂....dulu lagi menjabat.... tidak juga d tunjukan... Bambang Tri dan Gus nur....sudah jadi korban.... katanya mau d tunjukan d pengadilan.....tapi bohong...... itulah pki.... suka berbohong dan memutar balikkan fakta..... Sehat selalu RRT.... kalian aset Bangsa...... semangat terus.....❤❤❤❤❤❤,Positif,Positif,True,Benar,Positif → Positif,0.9572
+balanced3k,IndoBERT,UgwePWfKRKYZDMPnHLN4AaABAg,sudahlah .. kalau sudah salah tidak usah ngeyel to RS dan gerombolannya ..,Negatif,Netral,False,Salah,Negatif → Netral,0.8548
+balanced3k,IndoBERT,UgzK4TRPm8Vqx7nmQPt4AaABAg,"Mulai menit  12.00, Roy suryo mulai nggiring soal SMA nya JKW, dan akhirnya kicep ketika analisanya di skak mat langsung terkait perubahan nama SMA  tsb  memang sdh tahun sblmnya memang sdh direncanakan, krn di papan nama SMA nya pun tertulis nama SMA Double. Dari situ terlihat sbenarnya ilmu telematika si roy itu cuma COCOKOLOGI... ilmu gathuk... kocakkk kocak...",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9677
+balanced3k,IndoBERT,UgwzjFgikTjvafu87ul4AaABAg,"Nah hayoo...
+Semua yg di bilang termul scan ijazah ASLI 
+Ternyata mudah dipatahkan sm Kang Mas Roy
+Salut untuk team RRT👏👏👏👏👏👏",Positif,Negatif,False,Salah,Positif → Negatif,0.9301
+balanced3k,IndoBERT,UgwkqxMCVbM2Kk8UNbl4AaABAg,"Orang orang licik isinya. Gembar gembor ijazah palsu, buat mempengaruhi suara pilpres. Sampai ketitik Manantang untuk di laporkan. Setelah sapai sini datang ke MK. Licik banget kan. Maunya fitnah tapi gak mau kena pasal. 😂😂",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9933
+balanced3k,IndoBERT,UgxrQ6sODySr5ctdcDp4AaABAg,Andi aswan ini ga punya etika kasihan,Netral,Netral,True,Benar,Netral → Netral,0.9972
+balanced3k,IndoBERT,UgxnqqjF7PdWyVgMjst4AaABAg,Sumbang yg banyakan no bang orang Sumatra lagi pada susah,Netral,Netral,True,Benar,Netral → Netral,0.9343
+balanced3k,IndoBERT,Ugz7drvaSD2j_95vMxp4AaABAg,"Sakit apa ya mereka itu,kalau sakit berobatlah di beri kepintaran ko tidak bisa membuat contoh yang baik pada masyarakat,,jangan anggap orang diam itu seenaknya kau injak2 seperti itu,yang kau serang itu sudah banyak bermanfaat bagi orang banyak dan bangsa,ko masih di musuhi dan kau rendahkan seperti itu...miris sih lihatnya",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9842
+balanced3k,IndoBERT,UgwfJmosz6Q_yYBaXFN4AaABAg,"Sudah begini masih juga berbohong ..!  Luar biasa ya ? Orang bodoh saja tau kalau foto di ijazah itu bukan foto nya Jokowi , kebohongan masih di bela..",Positif,Positif,True,Benar,Positif → Positif,0.9963
+balanced3k,IndoBERT,UgxI3i6luEL-0vaOhuN4AaABAg,"BIASA ROY PANCI MENTAL.P.RADEN
+SEMUA HARUS NURUT APA KATA DIA...
+DEMI UANG BOHIR.
+KALAU PALSU YA HARUS PALSU...
+UDAH NYOLONG DATA DIAN SANDI...SECARA DIAM DIAM
+FOTO IJAZAH DARI DIAN SANDI LOH ""JAJARAN GENJANG""
+KOK SAAT TERSEBAR DI MEDSOS JADI PRESISI,NO IJAZAHNYA DI TUTUP UNTUK ALIBI "" IJAZAH PALSU""
+INILAH YG DI SEBUT MALING TERIAK MALING
+ATAU MANIPULASI DATA
+LIHAT DARI GAYA BICARA ( GESTURE TUBUH ) BANYAK BOHONGNYA ...JANGAN TERGODA PENAMPILAN ROY PANCI 😊",Negatif,Negatif,True,Benar,Negatif → Negatif,0.8666
+balanced3k,IndoBERT,UgzskOQanu6zRR8LohV4AaABAg,UGM sudah menyataka ijasah pak jokowi itu asli. Dan benar pak jokowi itu alumni ugm. Kenapa tukang nyinyir masih gak percaya. Mudah2an  Roy cs cepat masuk penjara,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9965
+balanced3k,IndoBERT,UgxsZkVRxxVAkrlVVJl4AaABAg,"Sebetulnya permasalahan ijazah sudah selesai karena:
+1. Sudah ada yang ditetapkan tersangka
+2. Ada buku Jokowi's white paper
+Jadi sudah selesai, kenapa stasiun TV swasta masih mengadakan acara seperti ini yang bisa membuat terpecah belah?",Negatif,Negatif,True,Benar,Negatif → Negatif,0.5183
+balanced3k,IndoBERT,UgxO6KEb5hhwu2jqRfp4AaABAg,"Udah jelas palsu, kalau asli gak akan takut nunjukin 
+Bantu report hoax youtuber nusantara",Positif,Positif,True,Benar,Positif → Positif,0.9341
+balanced3k,IndoBERT,UgxmLYhKgDsb5aU24sd4AaABAg,Sya jamin MK tolak pengujian UU ini karena jls hakim tau ni buat alesan hindari jrrwtan hukum dri kasus nya yg srdang berjalan mana mau Mk tabrak hukum jga .lawak roy panci cs 😂,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9973
+balanced3k,IndoBERT,UgwXoSA1zo18yXtfZXl4AaABAg,Tujuan dr tuduhan ijasah Jokowi n Gibran itu js bukan mencari kebenaran tp memang arahnya ke politik untuk menghabisi nama besar Jokowi n pilpres 2029...,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9606
+balanced3k,IndoBERT,UgxL9MD-kLlCDC1f57J4AaABAg,Jahatnya si Jokowi karena ijazah palsunya sampai tega membiarkan rakyat disuguhi kerecokan yang tak bermutu ... 😮,Positif,Positif,True,Benar,Positif → Positif,0.9839
+balanced3k,IndoBERT,UgwHKexwK2F78h8Z7f94AaABAg,Tumben gak nyerocos gak mutus omonganx lawan..taux cengar cengir,Netral,Netral,True,Benar,Netral → Netral,0.9489
+balanced3k,IndoBERT,UgyvwyLdaFKdGWleBKh4AaABAg,"kalau terbukti palsu ijazahnya, ancaman pidananya apa? semoga hakim lebih tegas 3x lipat hukumannya!",Positif,Positif,True,Benar,Positif → Positif,0.9935
+balanced3k,IndoBERT,UgwjPjQaVKoze8mgDa54AaABAg,Luar biasa ibu diana,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,Ugw5SgzL0L386Q-7_mt4AaABAg,"Menunjukan ijasah , tapi tak boleh di foto.
+Mungkin takut klo ijasahnya di uji / di teliti oleh para pakar atau ahli dari masyarakat negeri ini.
+Faham to luuur, knapa gk boleh di foto ijasahnya jokowi.",Positif,Positif,True,Benar,Positif → Positif,0.9952
+balanced3k,IndoBERT,Ugy1Pr9MRirQTAbn1pN4AaABAg,Semangat bang roy cs,Netral,Netral,True,Benar,Netral → Netral,0.9961
+balanced3k,IndoBERT,UgwXqknqMCfXPBD0QdR4AaABAg,GOGON BLOON 😂😂😂,Netral,Netral,True,Benar,Netral → Netral,0.9985
+balanced3k,IndoBERT,UgywiPmAl7su9rYLslR4AaABAg,Acara berat sebelah,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgwyoB6Ap2aKbcXl0ix4AaABAg,"Semakin percaya sama UGM
+Percaya ijazahnya pasti palsu 🙏",Positif,Positif,True,Benar,Positif → Positif,0.9941
+balanced3k,IndoBERT,Ugwi8ouqY2UOS2b6QKZ4AaABAg,Mulyono akan sengsara beserta termulnya,Netral,Netral,True,Benar,Netral → Netral,0.8919
+balanced3k,IndoBERT,Ugw1sFiVCFKwwYLDoVd4AaABAg,roy suryo jalma edan kitusalah kieusalah jadibeleugug,Netral,Netral,True,Benar,Netral → Netral,0.9888
+balanced3k,IndoBERT,UgwX16uKHs6bizFE1PN4AaABAg,Dari pada ribut atau repot pakai saja jasa tukang santet. Siapa yang tipu binasalah dia,Netral,Negatif,False,Salah,Netral → Negatif,0.9394
+balanced3k,IndoBERT,Ugwt871q00gXtCNI8rp4AaABAg,"Habisss para termul di sikat roy suryo malam ne, andi azwan emosi  datanya ketahuan palsu heheeee",Positif,Negatif,False,Salah,Positif → Negatif,0.6013
+balanced3k,IndoBERT,UgxSxQDvdv74qMTFrXB4AaABAg,Kenapa negara kita ini membebaskan orang begini menjelek2 bahkan menghina mantan presiden bahkan wakil presiden pun tdk dia hormati selaku wakil presiden. Jika negara terus diam membiarkan orang begini saya jamin negara lain pun tdk akan segan dgn negara kita.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9789
+balanced3k,IndoBERT,UgztBhd_iEqTpIgjNiJ4AaABAg,"50: 50
+Aneh lah UGM saja mengakui kok
+Harusnya udah selesai begitu UGM Mengakuinya.. Tdk ada yg harus di penjara. Tp roy suryo ngotot ingin masuk penjara.. Ya hendaknya di kabulkan",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9728
+balanced3k,IndoBERT,UgxEAt06RYsoGedXRUp4AaABAg,😂 para termul,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgyV2-VhnfrZyzGEBgx4AaABAg,LOGIKANYA JIKA JOKOWI BENAR LULUSAN S1 UGM. PASTINYA BERSAMA REKTOR UGM AKAN BERANI TUNJUKKAN IJASAH & DATA-2 AKADEMIK JOKOWI KE PUBLIK & MEDIA. SEHINGGA TIDAK PERLU ZDOLIMI RAKYATNYA..! ?,Positif,Positif,True,Benar,Positif → Positif,0.9932
+balanced3k,IndoBERT,Ugx3sAWLDyrGp5u21_p4AaABAg,Jokowi takut kalau dilanjutkan karena ijazahnya jokowi palsu 11 Rb.triliun % perlihatkan dulu ijazahnya kalau mau di stop,Positif,Positif,True,Benar,Positif → Positif,0.9949
+balanced3k,IndoBERT,Ugx8c06Uh6lAr14o0th4AaABAg,""" adu kambing "" itu apa ya ??",Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgyJ4CL7o3GOHQb0VCZ4AaABAg,"Kebanyakan mkn duit , sudah malu ya sama akademisi seluruh indonesia mengecam perbuatan Pratikno, Ova & semua petinggi2 kampus yg melindungi si jokoowii , Lah  sdh sangat jelas semua yg dipaparkan maestro Telematika IT Mas  Roy , abang  Rismon , ibu dokter cantik Tifa...2000% valid penelitian ROY SURYO RISMONSIANIPAR & Dokter TIFA T.",Positif,Negatif,False,Salah,Positif → Negatif,0.6295
+balanced3k,IndoBERT,UgyrqzAvYIBSH-e3i4l4AaABAg,"Hrsnya mudah, kl benar asli tinggal tunjukkan dan di teliti tim independen!
+Tak perlu drama berjilid2!",Positif,Positif,True,Benar,Positif → Positif,0.991
+balanced3k,IndoBERT,UgxMnBjZppmGybVHsut4AaABAg,Mantap buk,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgwRemDjE6mE4vmvjrt4AaABAg,"Refly Harun harakiri dalam perkara ini ke MK. Cermati Ketua Panel YM Saldi Isra yg menggarisbawahi agar Refly menjelaskan siapa RRT dst. Rismon kesehariannya bukan dosen, bukan peneliti, bahkan titel Dr dari Yamaguchi itu bodong (siap meledak jadi perkara besar bagi Rismon), Roy juga bukan peneliti, dr Tifa juga bukan peneliti. Dari aspek ini kedudukan hukum ketiga prinsipalnya ini dan apa yg akan dielaborasi Refly dalam versi perbaikan akan jadi maju kena mundur kena, terutama bagi ketiga prinsipal. Karena apa yg disampaikan secara tertulis dalam sidang MK, akan jadi temuan. Fokus ke titel Doktornya Rismon, kaitannya dg Yamaguchi University, dst.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9862
+balanced3k,IndoBERT,UgyTSpdQyl9psjwz9MV4AaABAg,Mantap❤❤❤❤❤,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgyWd4MM5s5yy2nYlhZ4AaABAg,"ROY cs tidak bisa menunjukkan ijasah yg dimaksud PALSU, selama ini cuma omong kosong atau FIKSI belaka, jokowi sudah tunjukkan ijazahnya dan giliran ROY cs harus tunjukkan inasah palsu yg dipegu tp cuma omong kosong, seperti menuduh HOTMAN kirupsi tapi tidak punya bukti apapun, hanya halusinasi yg dibangun jd cerita fiksi",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9932
+balanced3k,IndoBERT,UgxnzGLtKYZ7j0bVk9J4AaABAg,Berarti roy panci dan rismon asli orgil?,Netral,Negatif,False,Salah,Netral → Negatif,0.9419
+balanced3k,IndoBERT,UgwyRgFJyjZTv1LOp3V4AaABAg,"Hanya melindungi Ijasah palsu  Sampek berlarut larut
+Intinya Ijasah asli ngak ada ngak punya palsu palsu palsu",Positif,Positif,True,Benar,Positif → Positif,0.983
+balanced3k,IndoBERT,Ugx2yF6T9PlDVxTTqIJ4AaABAg,Gpp PALSU PASTI LULUSAN UGM👍,Positif,Positif,True,Benar,Positif → Positif,0.9943
+balanced3k,IndoBERT,UgwbsSXgFidBoMD4-0V4AaABAg,Rakyat udah dibohobgi jokowi.udah jelas poto ijasah  jokowi itu bkn poto jokowi dn entah poto siapa.kenapa para termul dan parcok mati2an mengatakan itu ijasah asli.jika nanti dlm sidanf ternyata Roy cs kalah dan hakim memutuskan bahwa ijasah jokowi itu asli berarti para penegak hukum ini matanya udah tertutup amplop.hukum di indonesia ini sejak rezim jokowi sudah rusak dan sepertinya lembaga2 hukum dan lainya udah tunduk dibawah ketiak jokowi.,Positif,Negatif,False,Salah,Positif → Negatif,0.9862
+balanced3k,IndoBERT,UgxDeFvq5mGMLdR6FQZ4AaABAg,Roy  Suryo  ini kesurupan apa ya,Netral,Netral,True,Benar,Netral → Netral,0.9976
+balanced3k,IndoBERT,Ugx9o3BCaiNCIvXPdAZ4AaABAg,"Komentar ibu tadi katanya prof. Menurut saya beliau bukan ahli hukum. Jadi menurut saya Ijazah Bpk. Jokowi tdk perlu menunjukan Ijazahnya kepada mereka yg menuduh, pembuktiannya adalah lewat Pengadilan.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.991
+balanced3k,IndoBERT,Ugw1XoQAmx2R_qONwpJ4AaABAg,Mntab bu,Netral,Netral,True,Benar,Netral → Netral,0.998
+balanced3k,IndoBERT,Ugw-Z2FNtAd4BXzqEQd4AaABAg,Hakim MK nya keren.,Netral,Netral,True,Benar,Netral → Netral,0.9947
+balanced3k,IndoBERT,UgwLTf_yIz-OU29ficZ4AaABAg,"Coba telusuri dulu mereka2 ini kelulusan tahun berapa di UGM. Apakah mereka ini sudah dosen waktu Jokowi kuliah, siapa yang tua Jokowi atau mereka yang berani memberikan keterangan yang mana Jokowi lulusan UGM. Seolah2 mereka ini dosennya Jokowi. Terlalu pintar ngarang cerita padahal mereka belum kuliah.
+Tidak mungkin yang muda membimbing yang tua dan belum kuliah, semuanya ini keterangan palsu/bohong. Kalau sudah begini dosen jadi bagai mana anak2 bimbingannya. Jadi kacau negara ini",Positif,Negatif,False,Salah,Positif → Negatif,0.824
+balanced3k,IndoBERT,UgyaJ158OcKX4B8kFzF4AaABAg,"Itu pernyataan penting,yg jelas yg mengeluarkan menyatakan asli,Krn begitu selesai pendidikan lsg d berikan kpd yg bersangkutan",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9136
+balanced3k,IndoBERT,Ugw3QEb7P2RU0A2HJeB4AaABAg,hati roy cs cuci dg rinso biar tak ada kebencian dihatinya.apapun yg dilakukan pak jokowi cs tak ada benarnya.,Netral,Negatif,False,Salah,Netral → Negatif,0.9903
+balanced3k,IndoBERT,UgwvzCI9QS8Bb5-sGvJ4AaABAg,Iya kalau memang asli..apa susah nya di perlihatkan ijazah nya..knpa harus di sembunyikan yg bikin pemirsa tidak percaya pd pihak tertentu..NETIZEN bisa menilai..mana yg benar.mana yg di sembunyikan..smga Allah memberikan hidayah,Positif,Positif,True,Benar,Positif → Positif,0.9883
+balanced3k,IndoBERT,UgyMk7bpQ0ov9jfvRWV4AaABAg,"Sdh pk  harun,, anda jgn berdebat dgn orang2 yg gk punya logika.",Netral,Netral,True,Benar,Netral → Netral,0.8113
+balanced3k,IndoBERT,Ugw_TliCj1xKHqarccN4AaABAg,Pak Arianto kalau mau jujur tunjukan ijasah asli Jokowi kalau memang ada kalau tidak di tunjukan kami masyarakat biasa bilang palsu Arianto,Positif,Positif,True,Benar,Positif → Positif,0.9267
+balanced3k,IndoBERT,UgxKzgi6LZwclDoy_KZ4AaABAg,panci seumur hidup tetap dikenang tentang panci..mknya mkan uang yg halal ci panci.,Netral,Netral,True,Benar,Netral → Netral,0.9936
+balanced3k,IndoBERT,UgyvcgTHy9zbIO52urN4AaABAg,"IJAZAH PALSU ITU HASIL PRILAKU SESATTT , ORANG2 YG MEMBELA IJAZAH PALSU BERARTI . . . ORANG2 YG "" SESATTT "" & GAK PUNYA MALU  DG DALIH , ALASAN APAPUN BERKELOK KELOK DALAM PERMAINAN DI BALIK KATA. . . .👹👹👹",Positif,Positif,True,Benar,Positif → Positif,0.6752
+balanced3k,IndoBERT,UgwruwJ1-wI7clwubJd4AaABAg,"Hore betul tunjukan ijazah mu pk Jokowi ? Jngn mngadu domba rakyat Indonesia , brrti klau tdak nnjukan ijazahnya berrti g punya yng asli  alias ..........palsu .",Positif,Positif,True,Benar,Positif → Positif,0.6518
+balanced3k,IndoBERT,Ugx_WlKAvZV2L5oRvfB4AaABAg,"PANCI ODGJ kabur diundang diskusi dan yg ngundang mantan pasien RSJ ,belum sembuh juga lagi....😂😂😂",Netral,Negatif,False,Salah,Netral → Negatif,0.7887
+balanced3k,IndoBERT,UgzQLVRlYkPVz2nYdOV4AaABAg,"mending lihat info terkini mengenai gempa yg terjadi tiap hari
+",Netral,Netral,True,Benar,Netral → Netral,0.9814
+balanced3k,IndoBERT,Ugykvlqj5O3WjQm9OUN4AaABAg,Bravo's bu diana murni sehat selalu,Netral,Netral,True,Benar,Netral → Netral,0.9961
+balanced3k,IndoBERT,UgxzFwpZqJsxYZCQ5zJ4AaABAg,Lha lak ora percoyo 😂😂tho😂😂😂😂😂😂😂😂,Negatif,Netral,False,Salah,Negatif → Netral,0.9974
+balanced3k,IndoBERT,UgxMvk-PzDyKX71U82N4AaABAg,Seha slalu pak jokowi,Netral,Negatif,False,Salah,Netral → Negatif,0.9846
+balanced3k,IndoBERT,Ugy5mCrVgkkC9EGl4KV4AaABAg,Netral ya pak hakim,Netral,Netral,True,Benar,Netral → Netral,0.986
+balanced3k,IndoBERT,Ugxnq7r7ea5bxvijYvR4AaABAg,Ijazahnya itu Aspal...klo asli tulen..ngapain repot byar pengacara mahal2...,Positif,Positif,True,Benar,Positif → Positif,0.9634
+balanced3k,IndoBERT,Ugwqf9F_bGQFMW-0i2F4AaABAg,Andi Ando Ando.,Netral,Netral,True,Benar,Netral → Netral,0.9984
+balanced3k,IndoBERT,UgzfTCfg0peqAA5yZy94AaABAg,kabarin kalau roy suryo ditangkap,Netral,Negatif,False,Salah,Netral → Negatif,0.9778
+balanced3k,IndoBERT,UgypclW9P2loh5zfmHJ4AaABAg,Udah jelas fotonya aja tdk sama dg orangnya berarti kan PALSU,Positif,Positif,True,Benar,Positif → Positif,0.9958
+balanced3k,IndoBERT,UgxT55xvRffHdvcbzNV4AaABAg,Ha ha ha sekarang UGM  adalah universitas yg top dan universitas yg kompeten di hina hina dinsalah salahkan  ha ha ha ha. Sy harap UGM MENUTUT OMON OMON RAY PANCI DENGAN SEBERAT2 NYA,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9242
+balanced3k,IndoBERT,UgxF_tJRNm-yoyUeAuZ4AaABAg,Disini saya yakin pak  yokowi  ijazah pasti  asli yang  sering membuat  berita bohong dan merusak nama orang harus tanggung jawab kalau buktinya bohong harus di penjahah lima tahun.,Negatif,Positif,False,Salah,Negatif → Positif,0.6811
+balanced3k,IndoBERT,Ugx1gN0_4f-6zMMw-BZ4AaABAg,Ibu Diana ini Cerdas sehat selalu ya bu 🥰,Netral,Netral,True,Benar,Netral → Netral,0.9975
+balanced3k,IndoBERT,UgyxRkwZuK-K_j5D7WR4AaABAg,Pencemaran nama baik menghasut tidak berniat baik itu yang dilakukan RRT pa hakim,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9476
+balanced3k,IndoBERT,UgxtGb_r36BisyGSh2R4AaABAg,"Pak Jokowi tidak berubah, ketika menjadi walikota Solo 2x pilkada, Gub DKI 1x pilkada, Presiden RI 2 periode.
+Beliau konsisten memperjuangkan rakyat Indonesia dalam berbagai rintangan dan cukup berhasil.
+Tapi masyarakat yg melihatnya yg berubah, ketika di Solo, masyarakat dan lawan politiknya adalah kelas kota madya, di Jakarta, masyarakat dan lawan politiknya kelas propinsi. Ketika Presiden, masyarakat dan lawan politiknya adalah kelas nasional dan internasional.
+Sebenarnya pak Jokowi tidak sempurna dan ada kelemahan. Tapi lawan pak Jokowi tidak lebih baik dari pak Jokowi. 
+Kelihatan dari cara mereka bersaing, bukan menunjukkan prestasi utk berpacu dengan pak Jokowi, tapi dengan cara fitnah yg merusak akal. Bahkan mereka membawa nama Islam, padahal berbuat fitnah dan saksi palsu itu dosa besar.
+Pantas kalau Allah tidak bersama mereka, Allah tidak membantu mereka,  karena Allah adalah pembela orang yg bertaqwa, bukan membela orang Islam.",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9938
+balanced3k,IndoBERT,UgyTv9bnwG2Kdmaq9Y54AaABAg,Si aswan ini kalau ada film warkop bagusnya dia perankan karakter om dono...,Netral,Netral,True,Benar,Netral → Netral,0.9973
+balanced3k,IndoBERT,Ugyxj48ZzUMTME8Q6v14AaABAg,Setres,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgwSjqi-NOE-XAwCjMh4AaABAg,Terimakasih wawasan dari Mbah Sujewo Tedjo,Netral,Netral,True,Benar,Netral → Netral,0.9935
+balanced3k,IndoBERT,Ugw5ZTDyhWyxkjFq4854AaABAg,"sudah di tunjukkan Ijazah asli pun masih GAK PERCAYA..
+MEMANG BUKAN CARI KEBENARAN TAPI CARI MASALAH",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9823
+balanced3k,IndoBERT,UgwEsTUILPRUhiQ_bmJ4AaABAg,Ealahhh...ternyata ini smua cuma sandiwara kadrun balas dendam ke pak jokowi to....🤣😁🤣😁,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9559
+balanced3k,IndoBERT,Ugx1zHaShnZX0lyr65F4AaABAg,STOP DRAMA MURAHAN KASUS IZASAH PALSU PRESIDEN KE ( 7 ) JOKWI INI XAN PARA PENGGUGAT GA BAKAL KUAT JOKOWI SUDAH TERLALU PINTAR TU MENG ANTISIPASI HAL YG MUTAHAL MAHAL INI. LEBIH BAIK BEKERJA TUK MBENAHI NKRI YG MAKIN KUSUT KAYA BULU KUSUT JEMBLUTT,Negatif,Positif,False,Salah,Negatif → Positif,0.9416
+balanced3k,IndoBERT,Ugz7fftYlsA4p5Csg0p4AaABAg,Aswan ini gak tau malu ya,Netral,Netral,True,Benar,Netral → Netral,0.9977
+balanced3k,IndoBERT,UgwNX4zVV9UVjjR1KJF4AaABAg,"Astaga....gak berani tunjukan dan dibuktikan coba serahkan buat RRT utk mereka teliti keaslian atau kepalsuan ijazah itu,kan gitu...namun harus berakhir di pengadilan TUN",Positif,Positif,True,Benar,Positif → Positif,0.9955
+balanced3k,IndoBERT,UgxtOKH3B70HfH9zIlZ4AaABAg,Rismon dan Roy Suryo meneliti..  apakah mereka punya kompetensi untuk meneliti..sehingga bisa meyakinin ijasah yg diteliti itu palsu..karena kalau tanpa kompetensi setiap orang boleh menyimpulkan dan menyebarkannya keruang publik maka akan menimbulkan kegaduhan yg hasil penelitiannya masih dipertanyakan kebenarannya.,Negatif,Positif,False,Salah,Negatif → Positif,0.8585
+balanced3k,IndoBERT,Ugx6oVp8vrdIxJnEQsV4AaABAg,Ketiga orang ini bohong semus jawabannya tdk masuk akal . Maaf sekelas ugm aja bisa bohong apalagi yg dibawahnya naudzubillah . Sugguh memalukan .,Positif,Positif,True,Benar,Positif → Positif,0.9929
+balanced3k,IndoBERT,UgxwUVkOKTOufcI_Dr14AaABAg,Sudah di tunjuk masih di debat lagi. Berati pemerintah sekarang senang menderita diatas rakyat.,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9953
+balanced3k,IndoBERT,UgxSP6uATFUZdE6LGSt4AaABAg,"Tetap di sngkal,pihak ugm sdh mnjelaskan gk d prcaya.aplgi phk polda...barisan org stresss",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9952
+balanced3k,IndoBERT,UgzZSTbVrETF4TDqcI14AaABAg,Rakyat sudah tahu  ijazah jokowi palsu...kalau memang asli...!! Di pengadilan...!!,Positif,Positif,True,Benar,Positif → Positif,0.9959
+balanced3k,IndoBERT,UgwqGEFkO-QytKIwx3F4AaABAg,"Penjelasan yg terang benderang.
+Sangat mencerahkan bagi yg punya hati bersih dan akal sehat.
+Sangat meresahkan bagi yg sakit hati dan sesat fikir.",Negatif,Netral,False,Salah,Negatif → Netral,0.9698
+balanced3k,IndoBERT,UgyikDQFAgR5x5-ND2V4AaABAg,Mantaaapp hakim MK!!!!,Netral,Negatif,False,Salah,Netral → Negatif,0.9841
+balanced3k,IndoBERT,UgyfwFr9lSXPU6Mer0l4AaABAg,Panci mantan napi msh di percaya aja 😂😂😂😂😂😂,Netral,Negatif,False,Salah,Netral → Negatif,0.9942
+balanced3k,IndoBERT,UgzEhdhMpLOs3FOu9tB4AaABAg,"Politiknya terlalu jahat,kasihan pak Jokowi,rakyat tetap mendukung pak jokowi",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9857
+balanced3k,IndoBERT,UgwXMldinZ8o63L82Lt4AaABAg,"Menit 26:33 detik detik pengalihan bahasan biar ga klihatan menipu nya, nanya ijazah pas di tampilkan di layar malah muka berubah pura pura begok😂😂😂",Positif,Positif,True,Benar,Positif → Positif,0.9664
+balanced3k,IndoBERT,UgxjJYAZ0UFzFqt7f2R4AaABAg,Apa ngak malu ya anak dan istrinya Andi.. melihat kelakuannya😊,Netral,Netral,True,Benar,Netral → Netral,0.997
+balanced3k,IndoBERT,Ugw9ZSgr7uMASu67WHh4AaABAg,"😂😂Roy Suryo ko percaya pasti ada aja yg kurang ini itu,,
+Lh dulu minta nya nunjukin😂,",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9964
+balanced3k,IndoBERT,UgwS4c8LvcQg9Ew_BCN4AaABAg,"Punya duit palsu dikejar2
+Punya SIM STNK palsu dikejar2.
+Giliran punya ijazah palsu, malah dilindungi dan ga boleh diliat.",Positif,Positif,True,Benar,Positif → Positif,0.9908
+balanced3k,IndoBERT,Ugxjq_I8I-2SPYdZDQ94AaABAg,Harus di tuntaskan kasus ijazah palsu nya👍👍,Positif,Positif,True,Benar,Positif → Positif,0.9947
+balanced3k,IndoBERT,Ugwh_g1kjam27zBIqpl4AaABAg,Omong kosong ini..kasmojo sndiri bilang bukan pembimbing PK jokowi😂😂,Positif,Negatif,False,Salah,Positif → Negatif,0.995
+balanced3k,IndoBERT,UgzwgfECOYxRb7Gqx-54AaABAg,Roy Suryo Cs mengangkat kasus Ijazah Palsu hanya untuk mencari Panggung,Negatif,Positif,False,Salah,Negatif → Positif,0.8929
+balanced3k,IndoBERT,Ugyii2Tp0DEfuwuiVVh4AaABAg,Lanjut terus Jokowi harus di adili,Positif,Positif,True,Benar,Positif → Positif,0.9813
+balanced3k,IndoBERT,UgyaSVqPnTqgcZldcJ14AaABAg,"Pak Jokowi..Pak Jokowi
+**Bapak President RI,* *Bapak ktnya Negarawan..*
+*""Sudah banyak korban terkait-kait : Manusia, Waktu, Tenaga, Pikiran, Dana baik perorangan maupun Uang Negara bahkan Rakyat terpecah belah dalam pro&kontra.
+**Segeralah tunjukkan ijazah Bapak..!!!*
+*Bapak sbg Pejabat publik : Walikota,Gubernur dan President tidak bisa berlindung dalam rahasia pribadi..!!!*",Positif,Positif,True,Benar,Positif → Positif,0.9661
+balanced3k,IndoBERT,UgwSImkB6E6xzfVmGo14AaABAg,Biar kapok  12th  pejara roy cumak bikin gadoh pemerimtahan    kalau  ug m mengatakan asli   ya sudan yg menilai masyarakat  bawah    topel2 pengacara begok mbacot  aja,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9971
+balanced3k,IndoBERT,UgzUfJh96zuj2Sphz254AaABAg,"Seberulnya ijazah jokowi dihentikan saja.Bagaimanapun dia tidak akan nunjukkan ijazah aslinya,memang tidak punya. Ijazah asli itu aturannya dari dulu sampai sekarang dari tingkat SD Sampai perguruan tinggi TIDAK BOLEH PAKAI KACAMATA. Lha kok masih ngeyel Jokowi punya ijazah asli.
+Sudah jelas ijazah yg dimiliki jkw itu PALSU.
+PARA TERMUL MEMANG BERUSAHA MENUTUPI JANGAN SAMPAI BOROKNYA TERBONGKAR,KAN MEMALUKAN SEKALI.
+RAKYAT SDH CERDAS TDK BISA DITIPU LAGI.",Positif,Positif,True,Benar,Positif → Positif,0.9952
+balanced3k,IndoBERT,UgxxMCKgVRzYgXrDYpt4AaABAg,Ngaku negara hebat ngurusi ijazah palsu keluarga pembohong doang kok gak mampu.malu maluin saja.,Positif,Positif,True,Benar,Positif → Positif,0.9944
+balanced3k,IndoBERT,UgwvvNgxxbFiFEEnlSt4AaABAg,TIDAK ADA KERJAAN   SUDAH  AKHIR  ZAMAN,Netral,Netral,True,Benar,Netral → Netral,0.9969
+balanced3k,IndoBERT,UgwQjwE026_2c5liSkt4AaABAg,"Ijazah pak jokowi asli,orang2 stres yg bilang palsu aluas orang2 pengacau dan perusak",Negatif,Negatif,True,Benar,Negatif → Negatif,0.9957
+balanced3k,IndoBERT,UgzSrgzHypoNp3Moqi94AaABAg,dikit lagi tiba saatnya pak Jokowi permalukan orang2 yg bilang ijazahnya palsu,Negatif,Negatif,True,Benar,Negatif → Negatif,0.9903
+balanced3k,IndoBERT,UgwTs7-bD4BUfNiNbvt4AaABAg,"gara-gara mas joko, UGM yg terkenal sebagai kampus paling top nasional jadi seakan2 kualitasnya seperti kampus ruko...    dari perdbatan dan bukti2 yang bersliweran simple sebenrnya apakah mas joko pernah ngampus di UGM? Pernah    apakah mas joko lulus? ga ada bukti...  apakah lulus S1? kemungkinan besar bukan, kalaupun masuk UGM hanya D3",Positif,Positif,True,Benar,Positif → Positif,0.9622
+balanced3k,IndoBERT,UgwPPo3xa2pj11E8lwZ4AaABAg,Orang ini jago ngotot rata2 memang Termul begitu. Karena sudah kena suap.,Netral,Netral,True,Benar,Netral → Netral,0.9015
+balanced3k,IndoBERT,UgwHsrvXtxgnIIpp3_h4AaABAg,"Om Gogon malu""in golongan,beda jauh levelnya Gogon vs refli Harun.🙏🙏🙏",Netral,Netral,True,Benar,Netral → Netral,0.9786
+balanced3k,IndoBERT,UgwnCqpMoraAzASzdxZ4AaABAg,"Ya wajar kalo pihak Roy cs masih menduga-duga, karena saat gelar perkara mereka hanya boleh melihat tapi tidak boleh menganalisa dan menyentuh. Padahal saat itu waktu yang tepat antara kedua belah pihak untuk menelaah ijazah asli jokowi yang sudah di depan mata secara leluasa. Dari hasil analisa mereka nantinya bisa ditentukan oleh mereka mau lanjut ke pengadilan atau tidak.
+Jika seperti ini patut diduga masih ada sesuatu yang disembunyikan oleh kubu jokowi. Sebaiknya lanjut ke pengadilan",Positif,Positif,True,Benar,Positif → Positif,0.6666
+balanced3k,IndoBERT,UgwJRz4JLrn5po1irtd4AaABAg,Itu palsu gogon😅😂,Positif,Positif,True,Benar,Positif → Positif,0.9948
+balanced3k,IndoBERT,UgyyCiN8JiBf2ebDXqh4AaABAg,"Mending di kuliaih, dari pada membela kebohongan.",Negatif,Positif,False,Salah,Negatif → Positif,0.9863
+balanced3k,IndoBERT,UgxtAGSUZS3zMWnBo_V4AaABAg,Ibu kerudung hijau keren,Netral,Netral,True,Benar,Netral → Netral,0.9983
+balanced3k,IndoBERT,UgwQ66VKse05Zc3u1zh4AaABAg,TOMPEL TOMPEL TOPLES TOPLES TOMPE TOPLES TOMBLO,Netral,Netral,True,Benar,Netral → Netral,0.9973
+balanced3k,IndoBERT,Ugy9NIfZq9uPpOSm7314AaABAg,"jika memang p Jokowi masih belum berani menunjukan ke publik ijazah aslinya , jangan heran klo rakyat masih menganggap bahwa Ijazah jokowi itu palsu
+اللَّهُمَّ أَرِنَا الْحَقَّ حَقًّا وَارْزُقْنَا اتِّبَاعَهُ، وَأَرِنَا الْبَاطِلَ بَاطِلًا وَارْزُقْنَا اجْتِنَابَهُ، وَلَا تَجْعَلْهُ مُلْتَبِسًا عَلَيْنَا فَنَضِلَّ، وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",Positif,Positif,True,Benar,Positif → Positif,0.9868

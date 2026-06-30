@@ -1,0 +1,9 @@
+﻿file_name,rows,columns,column_names
+tableau_class_distribution.csv,6,4,"dataset, source_path, label, count"
+tableau_confusion_matrix.csv,54,6,"dataset, model, actual_label, predicted_label, count, is_diagonal"
+tableau_eda_summary.csv,153,3,"metric_path, value, value_type"
+tableau_model_comparison.csv,6,7,"dataset, model, accuracy, macro_f1, f1_negatif, f1_netral, f1_positif"
+tableau_per_class_metrics.csv,18,12,"dataset, model, label, precision, recall, f1_score, support, accuracy, macro_f1, weighted_f1, n_train, n_test"
+tableau_predictions_balanced3k.csv,600,10,"dataset, model, comment_id, text, actual_label, predicted_label, is_correct, error_status, error_pair, confidence"
+tableau_top_features.csv,45,6,"dataset, model, label, feature, weight, rank"
+tableau_top_terms.csv,12,4,"source_path, rank, term, count"

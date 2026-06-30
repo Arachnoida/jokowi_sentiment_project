@@ -1,0 +1,19 @@
+﻿dataset,model,label,precision,recall,f1_score,support,accuracy,macro_f1,weighted_f1,n_train,n_test
+balanced3k,SVM sklearn,Negatif,,,0.802,100,0.84,0.8397,0.8397,2700.0,300.0
+balanced3k,SVM sklearn,Netral,,,0.8421,100,0.84,0.8397,0.8397,2700.0,300.0
+balanced3k,SVM sklearn,Positif,,,0.875,100,0.84,0.8397,0.8397,2700.0,300.0
+balanced3k,SVM Spark MLlib,Negatif,,,0.7072,100,0.7767,0.7739,0.7739,2700.0,300.0
+balanced3k,SVM Spark MLlib,Netral,,,0.8218,100,0.7767,0.7739,0.7739,2700.0,300.0
+balanced3k,SVM Spark MLlib,Positif,,,0.7926,100,0.7767,0.7739,0.7739,2700.0,300.0
+balanced3k,IndoBERT,Negatif,0.79,0.79,0.79,100,0.8467,0.8469,0.8469,,
+balanced3k,IndoBERT,Netral,0.9239,0.85,0.8854,100,0.8467,0.8469,0.8469,,
+balanced3k,IndoBERT,Positif,0.8333,0.9,0.8654,100,0.8467,0.8469,0.8469,,
+full14k,SVM sklearn,Negatif,,,0.5022,121,0.8115,0.6963,0.8116,12630.0,1411.0
+full14k,SVM sklearn,Netral,,,0.8819,989,0.8115,0.6963,0.8116,12630.0,1411.0
+full14k,SVM sklearn,Positif,,,0.7049,301,0.8115,0.6963,0.8116,12630.0,1411.0
+full14k,SVM Spark MLlib,Negatif,,,0.4427,121,0.7725,0.6504,0.776,12630.0,1411.0
+full14k,SVM Spark MLlib,Netral,,,0.8538,989,0.7725,0.6504,0.776,12630.0,1411.0
+full14k,SVM Spark MLlib,Positif,,,0.6547,301,0.7725,0.6504,0.776,12630.0,1411.0
+full14k,IndoBERT,Negatif,0.53,0.438,0.4796,121,0.8207,0.6984,0.8177,,
+full14k,IndoBERT,Netral,0.8771,0.8948,0.8859,989,0.8207,0.6984,0.8177,,
+full14k,IndoBERT,Positif,0.7285,0.7309,0.7297,301,0.8207,0.6984,0.8177,,

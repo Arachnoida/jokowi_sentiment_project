@@ -1,0 +1,55 @@
+﻿dataset,model,actual_label,predicted_label,count,is_diagonal
+balanced3k,SVM sklearn,Negatif,Negatif,81,True
+balanced3k,SVM sklearn,Negatif,Netral,6,False
+balanced3k,SVM sklearn,Negatif,Positif,13,False
+balanced3k,SVM sklearn,Netral,Negatif,16,False
+balanced3k,SVM sklearn,Netral,Netral,80,True
+balanced3k,SVM sklearn,Netral,Positif,4,False
+balanced3k,SVM sklearn,Positif,Negatif,5,False
+balanced3k,SVM sklearn,Positif,Netral,4,False
+balanced3k,SVM sklearn,Positif,Positif,91,True
+balanced3k,SVM Spark MLlib,Negatif,Negatif,64,True
+balanced3k,SVM Spark MLlib,Negatif,Netral,13,False
+balanced3k,SVM Spark MLlib,Negatif,Positif,23,False
+balanced3k,SVM Spark MLlib,Netral,Negatif,9,False
+balanced3k,SVM Spark MLlib,Netral,Netral,83,True
+balanced3k,SVM Spark MLlib,Netral,Positif,8,False
+balanced3k,SVM Spark MLlib,Positif,Negatif,8,False
+balanced3k,SVM Spark MLlib,Positif,Netral,6,False
+balanced3k,SVM Spark MLlib,Positif,Positif,86,True
+balanced3k,IndoBERT,Negatif,Negatif,79,True
+balanced3k,IndoBERT,Negatif,Netral,6,False
+balanced3k,IndoBERT,Negatif,Positif,15,False
+balanced3k,IndoBERT,Netral,Negatif,12,False
+balanced3k,IndoBERT,Netral,Netral,85,True
+balanced3k,IndoBERT,Netral,Positif,3,False
+balanced3k,IndoBERT,Positif,Negatif,9,False
+balanced3k,IndoBERT,Positif,Netral,1,False
+balanced3k,IndoBERT,Positif,Positif,90,True
+full14k,SVM sklearn,Negatif,Negatif,58,True
+full14k,SVM sklearn,Negatif,Netral,40,False
+full14k,SVM sklearn,Negatif,Positif,23,False
+full14k,SVM sklearn,Netral,Negatif,41,False
+full14k,SVM sklearn,Netral,Netral,866,True
+full14k,SVM sklearn,Netral,Positif,82,False
+full14k,SVM sklearn,Positif,Negatif,11,False
+full14k,SVM sklearn,Positif,Netral,69,False
+full14k,SVM sklearn,Positif,Positif,221,True
+full14k,SVM Spark MLlib,Negatif,Negatif,58,True
+full14k,SVM Spark MLlib,Negatif,Netral,46,False
+full14k,SVM Spark MLlib,Negatif,Positif,17,False
+full14k,SVM Spark MLlib,Netral,Negatif,64,False
+full14k,SVM Spark MLlib,Netral,Netral,832,True
+full14k,SVM Spark MLlib,Netral,Positif,93,False
+full14k,SVM Spark MLlib,Positif,Negatif,19,False
+full14k,SVM Spark MLlib,Positif,Netral,82,False
+full14k,SVM Spark MLlib,Positif,Positif,200,True
+full14k,IndoBERT,Negatif,Negatif,53,True
+full14k,IndoBERT,Negatif,Netral,52,False
+full14k,IndoBERT,Negatif,Positif,16,False
+full14k,IndoBERT,Netral,Negatif,38,False
+full14k,IndoBERT,Netral,Netral,885,True
+full14k,IndoBERT,Netral,Positif,66,False
+full14k,IndoBERT,Positif,Negatif,9,False
+full14k,IndoBERT,Positif,Netral,72,False
+full14k,IndoBERT,Positif,Positif,220,True
