@@ -1,0 +1,4 @@
+model,akurasi,macro_f1,F1_Negatif,F1_Netral,F1_Positif
+SVM (word+grid),0.8567,0.8556,0.815,0.887,0.865
+IndoBERT,0.8633,0.8615,0.811,0.916,0.857
+IndoBERTweet,0.8733,0.8721,0.825,0.898,0.893

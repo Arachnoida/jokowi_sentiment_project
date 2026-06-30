@@ -332,6 +332,20 @@ Hasil SVM JUSTRU TURUN 0,8567→0,85 (overcorrection: Negatif menyusut ke 936, m
 ke r1.** Diminishing returns terkonfirmasi — audit ronde-1 sudah menangkap mayoritas error. Catatan koreksi
 r2 disimpan: `v1_audit2_corrections_20260701.csv` (tidak diterapkan). KEPUTUSAN: v1audited final = ronde-1.
 
+**IndoBERTweet v1audited (Track C) — SELESAI & TERTINGGI:** 0,8733 (macro-F1 0,8721; Neg 0,825/Net 0,898/Pos 0,893).
+
+**TABEL FINAL v1audited (test 100/kelas, label Sonnet+audit ronde-1):**
+
+| Model | Akurasi | macro-F1 |
+|---|---|---|
+| SVM (word+grid) | 0,8567 | 0,856 |
+| IndoBERT | 0,8633 | 0,862 |
+| **IndoBERTweet** ★ | **0,8733** | 0,872 |
+
+Peringkat: IndoBERTweet > IndoBERT > SVM (konsisten dgn v2). Artefak: `model_comparison_v1audited.{csv,png}`,
+`indobertweet_v1audited_*`. Ini hasil balanced TERBAIK proyek (0,8733 pada label valid).
+Notebook: `notebooks/3_modeling/indobertweet_v1audited_colab.ipynb`.
+
 **File v1:** `balanced_3000_v1sonnet.csv` (PRISTINE 1000/kelas, +`.PRISTINE.bak`+git) ;
 `balanced_3000_v1audited.csv` (47 koreksi, 961/1042/997) ; `v1_audit_corrections_20260701.csv`.
 Mongo TIDAK disentuh (label override dari subset CSV: `train_indobert`/`svm_batch_b` baca kolom
