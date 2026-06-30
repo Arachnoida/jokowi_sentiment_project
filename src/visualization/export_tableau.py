@@ -6,6 +6,7 @@ import logging
 from pathlib import Path
 from typing import Any, Iterable
 
+from joblib import logger
 import pandas as pd
 
 
@@ -163,6 +164,33 @@ def export_model_comparison(
     logger.info("Exported tableau_model_comparison.csv (%s rows)", len(combined))
     return combined
 
+def derive_precision_recall_from_confusion(
+    matrix: list[list[int]],
+    labels: list[str],
+) -> dict[str, dict[str, float | None]]:
+    """
+    Menghitung precision dan recall per kelas dari confusion matrix.
+
+    Asumsi:
+    - Baris = actual label
+    - Kolom = predicted label
+    """
+    derived: dict[str, dict[str, float | None]] = {}
+
+    for i, label in enumerate(labels):
+        tp = matrix[i][i]
+        actual_total = sum(matrix[i])
+        predicted_total = sum(row[i] for row in matrix)
+
+        precision = tp / predicted_total if predicted_total else None
+        recall = tp / actual_total if actual_total else None
+
+        derived[label] = {
+            "precision": round(precision, 4) if precision is not None else None,
+            "recall": round(recall, 4) if recall is not None else None,
+        }
+
+    return derived
 
 def export_per_class_metrics(
     reports_dir: Path,
@@ -173,23 +201,47 @@ def export_per_class_metrics(
 
     for spec in METRIC_FILE_SPECS:
         path = reports_dir / spec["path"]
+
         if not path.exists():
-            logger.warning("Metric file dilewati karena tidak ditemukan: %s", path.name)
+            logger.warning(
+                "Metric file dilewati karena tidak ditemukan: %s",
+                path.name,
+            )
             continue
 
         metrics = read_json(path)
         test = get_test_block(metrics)
         per_class = test.get("per_class", {})
 
+        matrix = test.get("confusion_matrix")
+        labels = test.get("labels") or metrics.get("labels") or LABEL_ORDER
+
+        derived_pr: dict[str, dict[str, float | None]] = {}
+        if matrix is not None:
+            derived_pr = derive_precision_recall_from_confusion(
+                matrix=matrix,
+                labels=labels,
+            )
+
         for label in LABEL_ORDER:
             class_metrics = per_class.get(label, {})
+
+            precision = class_metrics.get("precision")
+            recall = class_metrics.get("recall")
+
+            if precision is None:
+                precision = derived_pr.get(label, {}).get("precision")
+
+            if recall is None:
+                recall = derived_pr.get(label, {}).get("recall")
+
             rows.append(
                 {
                     "dataset": spec["dataset"],
                     "model": spec["model"],
                     "label": label,
-                    "precision": class_metrics.get("precision"),
-                    "recall": class_metrics.get("recall"),
+                    "precision": precision,
+                    "recall": recall,
                     "f1_score": get_f1_value(class_metrics),
                     "support": class_metrics.get("support"),
                     "accuracy": test.get("accuracy"),
@@ -201,10 +253,18 @@ def export_per_class_metrics(
             )
 
     df = pd.DataFrame(rows)
-    write_csv(df, output_dir / "tableau_per_class_metrics.csv")
-    logger.info("Exported tableau_per_class_metrics.csv (%s rows)", len(df))
-    return df
 
+    write_csv(
+        df,
+        output_dir / "tableau_per_class_metrics.csv",
+    )
+
+    logger.info(
+        "Exported tableau_per_class_metrics.csv (%s rows)",
+        len(df),
+    )
+
+    return df
 
 def export_confusion_matrix(
     reports_dir: Path,
@@ -356,14 +416,23 @@ def export_top_features(
     out = df.copy()
 
     column_aliases = {
-        "class": "label",
-        "kelas": "label",
-        "term": "feature",
-        "word": "feature",
-        "coef": "weight",
-        "score": "weight",
-        "importance": "weight",
-    }
+    "class": "label",
+    "kelas": "label",
+    "label_name": "label",
+
+    "term": "feature",
+    "word": "feature",
+    "token": "feature",
+    "ngram": "feature",
+    "kata": "feature",
+    "fitur": "feature",
+
+    "coef": "weight",
+    "koef": "weight",
+    "score": "weight",
+    "importance": "weight",
+    "weight_value": "weight",
+}
 
     out = out.rename(columns={k: v for k, v in column_aliases.items() if k in out.columns})
 
@@ -446,22 +515,47 @@ def maybe_extract_terms(obj: Any, source_path: str = "") -> list[dict[str, Any]]
         for key, value in obj.items():
             child_path = f"{source_path}.{key}" if source_path else str(key)
 
-            if isinstance(value, list) and any(token in key.lower() for token in ["term", "word", "token"]):
+            if isinstance(value, list) and any(
+                token in key.lower() for token in ["term", "word", "token", "vocab"]
+            ):
                 for rank, item in enumerate(value, start=1):
                     term = None
                     count = None
+                    path_value = key
 
                     if isinstance(item, dict):
                         term = item.get("term") or item.get("word") or item.get("token")
                         count = item.get("count") or item.get("freq") or item.get("frequency")
+                        path_value = item.get("path") or key
+
                     elif isinstance(item, (list, tuple)) and len(item) >= 2:
                         term = item[0]
                         count = item[1]
 
+                    elif isinstance(item, str):
+                        # Mengantisipasi format string seperti:
+                        # "terms,1,tidak,4760"
+                        parts = [part.strip() for part in item.split(",")]
+
+                        if len(parts) >= 4:
+                            path_value = parts[0]
+                            try:
+                                rank = int(parts[1])
+                            except ValueError:
+                                pass
+
+                            term = parts[2]
+
+                            try:
+                                count = int(parts[3])
+                            except ValueError:
+                                count = parts[3]
+
                     if term is not None:
                         rows.append(
                             {
-                                "source_path": child_path,
+                                "source": child_path,
+                                "path": path_value,
                                 "rank": rank,
                                 "term": term,
                                 "count": count,
@@ -527,6 +621,12 @@ def export_eda_tables(
     logger.info("Exported tableau_class_distribution.csv (%s rows)", len(class_distribution_df))
 
     top_terms_df = pd.DataFrame(maybe_extract_terms(eda))
+
+    if not top_terms_df.empty:
+        top_terms_df["rank"] = pd.to_numeric(top_terms_df["rank"], errors="coerce")
+        top_terms_df["count"] = pd.to_numeric(top_terms_df["count"], errors="coerce")
+        top_terms_df = top_terms_df.sort_values(["source", "rank"]).reset_index(drop=True)
+
     write_csv(top_terms_df, output_dir / "tableau_top_terms.csv")
     logger.info("Exported tableau_top_terms.csv (%s rows)", len(top_terms_df))
 

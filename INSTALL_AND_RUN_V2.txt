@@ -1,0 +1,16 @@
+UI POLISH PACK V2
+
+Cara pasang:
+
+1. Extract ZIP.
+2. Copy folder `streamlit_app/` ke root repository dan overwrite file lama.
+3. Copy folder `.streamlit/` ke root repository.
+4. Pastikan `outputs/tableau/` tetap berada di root repository.
+5. Jalankan:
+
+   python -m streamlit run streamlit_app/app.py
+
+Catatan:
+- Versi ini mengubah tampilan menjadi dark glassmorphism.
+- Tidak mengubah data mart atau pipeline modeling.
+- Jika tampilan masih seperti versi lama, tekan Ctrl + F5 pada browser atau restart Streamlit.

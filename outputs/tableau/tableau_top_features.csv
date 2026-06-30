@@ -1,46 +1,46 @@
 ﻿dataset,model,label,feature,weight,rank
-balanced3k,SVM sklearn,Negatif,,,1
-balanced3k,SVM sklearn,Negatif,,,2
-balanced3k,SVM sklearn,Negatif,,,3
-balanced3k,SVM sklearn,Negatif,,,4
-balanced3k,SVM sklearn,Negatif,,,5
-balanced3k,SVM sklearn,Negatif,,,6
-balanced3k,SVM sklearn,Negatif,,,7
-balanced3k,SVM sklearn,Negatif,,,8
-balanced3k,SVM sklearn,Negatif,,,9
-balanced3k,SVM sklearn,Negatif,,,10
-balanced3k,SVM sklearn,Negatif,,,11
-balanced3k,SVM sklearn,Negatif,,,12
-balanced3k,SVM sklearn,Negatif,,,13
-balanced3k,SVM sklearn,Negatif,,,14
-balanced3k,SVM sklearn,Negatif,,,15
-balanced3k,SVM sklearn,Netral,,,1
-balanced3k,SVM sklearn,Netral,,,2
-balanced3k,SVM sklearn,Netral,,,3
-balanced3k,SVM sklearn,Netral,,,4
-balanced3k,SVM sklearn,Netral,,,5
-balanced3k,SVM sklearn,Netral,,,6
-balanced3k,SVM sklearn,Netral,,,7
-balanced3k,SVM sklearn,Netral,,,8
-balanced3k,SVM sklearn,Netral,,,9
-balanced3k,SVM sklearn,Netral,,,10
-balanced3k,SVM sklearn,Netral,,,11
-balanced3k,SVM sklearn,Netral,,,12
-balanced3k,SVM sklearn,Netral,,,13
-balanced3k,SVM sklearn,Netral,,,14
-balanced3k,SVM sklearn,Netral,,,15
-balanced3k,SVM sklearn,Positif,,,1
-balanced3k,SVM sklearn,Positif,,,2
-balanced3k,SVM sklearn,Positif,,,3
-balanced3k,SVM sklearn,Positif,,,4
-balanced3k,SVM sklearn,Positif,,,5
-balanced3k,SVM sklearn,Positif,,,6
-balanced3k,SVM sklearn,Positif,,,7
-balanced3k,SVM sklearn,Positif,,,8
-balanced3k,SVM sklearn,Positif,,,9
-balanced3k,SVM sklearn,Positif,,,10
-balanced3k,SVM sklearn,Positif,,,11
-balanced3k,SVM sklearn,Positif,,,12
-balanced3k,SVM sklearn,Positif,,,13
-balanced3k,SVM sklearn,Positif,,,14
-balanced3k,SVM sklearn,Positif,,,15
+balanced3k,SVM sklearn,Negatif,fitnah,3.367,1
+balanced3k,SVM sklearn,Negatif,penjara,2.557,2
+balanced3k,SVM sklearn,Negatif,pak jokowi,2.485,3
+balanced3k,SVM sklearn,Negatif,benci,2.425,4
+balanced3k,SVM sklearn,Negatif,tuduh,2.377,5
+balanced3k,SVM sklearn,Negatif,cs,2.049,6
+balanced3k,SVM sklearn,Negatif,bilang,2.046,7
+balanced3k,SVM sklearn,Negatif,minta,2.032,8
+balanced3k,SVM sklearn,Negatif,pk jokowi,1.702,9
+balanced3k,SVM sklearn,Negatif,panci cs,1.667,10
+balanced3k,SVM sklearn,Negatif,kata,1.666,11
+balanced3k,SVM sklearn,Negatif,bui,1.561,12
+balanced3k,SVM sklearn,Negatif,percaya,1.559,13
+balanced3k,SVM sklearn,Negatif,hoax,1.465,14
+balanced3k,SVM sklearn,Negatif,gerombol,1.395,15
+balanced3k,SVM sklearn,Netral,gila,1.43,1
+balanced3k,SVM sklearn,Netral,jokowi hati,1.343,2
+balanced3k,SVM sklearn,Netral,panci,1.324,3
+balanced3k,SVM sklearn,Netral,andi,1.262,4
+balanced3k,SVM sklearn,Netral,gogon,1.239,5
+balanced3k,SVM sklearn,Netral,mulyono apa,1.161,6
+balanced3k,SVM sklearn,Netral,percaya polisi,1.146,7
+balanced3k,SVM sklearn,Netral,rismon tidak,1.136,8
+balanced3k,SVM sklearn,Netral,idola,1.127,9
+balanced3k,SVM sklearn,Netral,bu,1.124,10
+balanced3k,SVM sklearn,Netral,jokowi idola,1.112,11
+balanced3k,SVM sklearn,Netral,roy,1.057,12
+balanced3k,SVM sklearn,Netral,seru,1.008,13
+balanced3k,SVM sklearn,Netral,benar ungkap,0.962,14
+balanced3k,SVM sklearn,Netral,ibu,0.95,15
+balanced3k,SVM sklearn,Positif,palsu,4.832,1
+balanced3k,SVM sklearn,Positif,bohong,3.48,2
+balanced3k,SVM sklearn,Positif,ijazah,3.359,3
+balanced3k,SVM sklearn,Positif,jokowi,2.721,4
+balanced3k,SVM sklearn,Positif,mulyono,2.424,5
+balanced3k,SVM sklearn,Positif,kalau memang,1.705,6
+balanced3k,SVM sklearn,Positif,foto,1.684,7
+balanced3k,SVM sklearn,Positif,skripsi,1.663,8
+balanced3k,SVM sklearn,Positif,ijazah palsu,1.604,9
+balanced3k,SVM sklearn,Positif,jokowi harus,1.434,10
+balanced3k,SVM sklearn,Positif,tunjuk ijazah,1.423,11
+balanced3k,SVM sklearn,Positif,berani,1.394,12
+balanced3k,SVM sklearn,Positif,ijasahnya,1.384,13
+balanced3k,SVM sklearn,Positif,jujur,1.379,14
+balanced3k,SVM sklearn,Positif,memang ijazah,1.361,15

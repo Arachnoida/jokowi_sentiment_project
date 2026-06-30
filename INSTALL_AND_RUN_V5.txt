@@ -1,0 +1,22 @@
+YPO Analytics - Streamlit UI Polish Pack V5
+
+Cara instalasi:
+1. Extract ZIP ini.
+2. Copy folder streamlit_app/ ke root repository project kamu.
+3. Copy folder .streamlit/ ke root repository project kamu.
+4. Jika diminta overwrite, pilih Yes.
+5. Pastikan outputs/tableau/ berisi file CSV data mart.
+6. Jalankan:
+
+   python -m streamlit run streamlit_app/app.py
+
+7. Setelah browser terbuka, tekan Ctrl + F5 agar CSS lama tidak tersimpan dari cache.
+
+Catatan V5:
+- Reset Filters tetap menggunakan callback aman Streamlit.
+- Sidebar, metric card, chart theme, methodology card, dan narrative card diperhalus.
+- Raw HTML rendering sudah diamankan melalui helper compact HTML.
+- Error Analysis memiliki fallback ketika detail prediksi model tertentu tidak tersedia.
+
+
+V5.2: memperbaiki native sidebar reopen control pada Streamlit dengan menjaga layer header tetap hidup namun transparan dan non-blocking.

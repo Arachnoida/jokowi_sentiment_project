@@ -1,0 +1,2818 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0603.1643                               -->
+<workbook original-version='18.1' source-build='2026.2.0 (20262.26.0603.1643)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='Jokowi' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='tableau_class_distribution' inline='true' name='federated.04aop550blqqau1gijfrc0w550f9' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_class_distribution' name='textscan.1kanlxn1igar351gd9k7t0a8q1fg'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_class_distribution.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1kanlxn1igar351gd9k7t0a8q1fg' name='tableau_class_distribution.csv' table='[tableau_class_distribution#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID' separator=',' text-qualifier='&quot;'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='source_path' ordinal='1' />
+            <column datatype='string' name='label' ordinal='2' />
+            <column datatype='integer' name='count' ordinal='3' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_class_distribution.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='quote-char'>&quot;\&quot;&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_class_distribution.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>source_path</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[source_path]</local-name>
+            <parent-name>[tableau_class_distribution.csv]</parent-name>
+            <remote-alias>source_path</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[label]</local-name>
+            <parent-name>[tableau_class_distribution.csv]</parent-name>
+            <remote-alias>label</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[count]</local-name>
+            <parent-name>[tableau_class_distribution.csv]</parent-name>
+            <remote-alias>count</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_class_distribution.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_0pkfx181ky8hsn1cholb01xg3s4u.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 08:07:30 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_class_distribution.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>source_path</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[source_path]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>source_path</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_class_distribution.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>label</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_class_distribution.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>count</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_class_distribution.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='6' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_class_distribution.csv' id='tableau_class_distribution.csv_B34702F13DBE41CABDE830BE7E3E8286'>
+            <properties context=''>
+              <relation connection='textscan.1kanlxn1igar351gd9k7t0a8q1fg' name='tableau_class_distribution.csv' table='[tableau_class_distribution#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID' separator=',' text-qualifier='&quot;'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='source_path' ordinal='1' />
+                  <column datatype='string' name='label' ordinal='2' />
+                  <column datatype='integer' name='count' ordinal='3' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_predictions_balanced3k' inline='true' name='federated.07mgtcw00fmadw12ipg0r03pdo3k' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_predictions_balanced3k' name='textscan.1fm811318s4wzo1ben2z11igxxay'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_predictions_balanced3k.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1fm811318s4wzo1ben2z11igxxay' name='tableau_predictions_balanced3k.csv' table='[tableau_predictions_balanced3k#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='model' ordinal='1' />
+            <column datatype='string' name='comment_id' ordinal='2' />
+            <column datatype='string' name='text' ordinal='3' />
+            <column datatype='string' name='actual_label' ordinal='4' />
+            <column datatype='string' name='predicted_label' ordinal='5' />
+            <column datatype='string' name='is_correct' ordinal='6' />
+            <column datatype='string' name='error_status' ordinal='7' />
+            <column datatype='string' name='error_pair' ordinal='8' />
+            <column datatype='string' name='confidence' ordinal='9' />
+            <column datatype='string' name='F11' ordinal='10' />
+            <column datatype='string' name='F12' ordinal='11' />
+            <column datatype='string' name='F13' ordinal='12' />
+            <column datatype='string' name='F14' ordinal='13' />
+            <column datatype='string' name='F15' ordinal='14' />
+            <column datatype='string' name='F16' ordinal='15' />
+            <column datatype='string' name='F17' ordinal='16' />
+            <column datatype='string' name='F18' ordinal='17' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='quote-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>comment_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[comment_id]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>comment_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[text]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>text</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[actual_label]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>actual_label</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>predicted_label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[predicted_label]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>predicted_label</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_correct</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[is_correct]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>is_correct</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>error_status</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[error_status]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>error_status</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>error_pair</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[error_pair]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>error_pair</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>confidence</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[confidence]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>confidence</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F11</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F11]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F11</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F12</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F12]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F12</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F13</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F13]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F13</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F14</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F14]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F14</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F15</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F15]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F15</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F16</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F16]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F16</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F17</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F17]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F17</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F18</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F18]</local-name>
+            <parent-name>[tableau_predictions_balanced3k.csv]</parent-name>
+            <remote-alias>F18</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_predictions_balanced3k.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_002yyu91izm1tb1f577sd1ckkqkl.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:13:59 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>101</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>model</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[model]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>model</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>29</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>comment_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[comment_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>comment_id</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>310</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>text</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[text]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>text</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>310</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>actual_label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[actual_label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>actual_label</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>96</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>predicted_label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[predicted_label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>predicted_label</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>49</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_correct</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[is_correct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_correct</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>82</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>error_status</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[error_status]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>error_status</remote-alias>
+              <ordinal>7</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>42</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>error_pair</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[error_pair]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>error_pair</remote-alias>
+              <ordinal>8</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>26</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>confidence</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[confidence]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>confidence</remote-alias>
+              <ordinal>9</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>318</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F11</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F11]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F11</remote-alias>
+              <ordinal>10</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>102</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F12</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F12]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F12</remote-alias>
+              <ordinal>11</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>41</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F13</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F13]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F13</remote-alias>
+              <ordinal>12</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>11</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F14</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F14]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F14</remote-alias>
+              <ordinal>13</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>18</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F15</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F15]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F15</remote-alias>
+              <ordinal>14</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F16</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F16]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F16</remote-alias>
+              <ordinal>15</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F17</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F17]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F17</remote-alias>
+              <ordinal>16</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F18</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F18]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F18</remote-alias>
+              <ordinal>17</ordinal>
+              <family>tableau_predictions_balanced3k.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_predictions_balanced3k.csv' id='tableau_predictions_balanced3k.csv_90FF2AD4D15B4CFE8FCFACC002A3BD93'>
+            <properties context=''>
+              <relation connection='textscan.1fm811318s4wzo1ben2z11igxxay' name='tableau_predictions_balanced3k.csv' table='[tableau_predictions_balanced3k#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='model' ordinal='1' />
+                  <column datatype='string' name='comment_id' ordinal='2' />
+                  <column datatype='string' name='text' ordinal='3' />
+                  <column datatype='string' name='actual_label' ordinal='4' />
+                  <column datatype='string' name='predicted_label' ordinal='5' />
+                  <column datatype='string' name='is_correct' ordinal='6' />
+                  <column datatype='string' name='error_status' ordinal='7' />
+                  <column datatype='string' name='error_pair' ordinal='8' />
+                  <column datatype='string' name='confidence' ordinal='9' />
+                  <column datatype='string' name='F11' ordinal='10' />
+                  <column datatype='string' name='F12' ordinal='11' />
+                  <column datatype='string' name='F13' ordinal='12' />
+                  <column datatype='string' name='F14' ordinal='13' />
+                  <column datatype='string' name='F15' ordinal='14' />
+                  <column datatype='string' name='F16' ordinal='15' />
+                  <column datatype='string' name='F17' ordinal='16' />
+                  <column datatype='string' name='F18' ordinal='17' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_top_terms.csv (Multiple Connections)' inline='true' name='federated.07t5sei1ejbpao1ec4kr11dklbjw' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_top_terms' name='textscan.1c06d7d15y6gps12lhaer0kce6mw'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_top_terms.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='tableau_eda_summary' name='textscan.01mirsg06usurc12im2go1ftxkec'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_eda_summary.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1c06d7d15y6gps12lhaer0kce6mw' name='tableau_top_terms.csv' table='[tableau_top_terms#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID' separator='_'>
+            <column datatype='string' name='source' ordinal='0' />
+            <column datatype='string' name='path,rank,term,count' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_top_terms.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;_&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>source</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[source]</local-name>
+            <parent-name>[tableau_top_terms.csv]</parent-name>
+            <remote-alias>source</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>path,rank,term,count</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[path,rank,term,count]</local-name>
+            <parent-name>[tableau_top_terms.csv]</parent-name>
+            <remote-alias>path,rank,term,count</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_top_terms.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_12o0fwg105v1c618f01831e00bts.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:15:34 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>source</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[source]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>source</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_top_terms.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>path,rank,term,count</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[path,rank,term,count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>path,rank,term,count</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_top_terms.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout common-percentage='1' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' user-set-layout-v2='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_top_terms.csv' id='tableau_top_terms.csv_C19D8655242945D19B1CFBB016CE4264'>
+            <properties context=''>
+              <relation connection='textscan.1c06d7d15y6gps12lhaer0kce6mw' name='tableau_top_terms.csv' table='[tableau_top_terms#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID' separator='_'>
+                  <column datatype='string' name='source' ordinal='0' />
+                  <column datatype='string' name='path,rank,term,count' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_model_comparison.csv (Multiple Connections)' inline='true' name='federated.0uz35j10l8jeai1b8chsh1inatp7' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_model_comparison' name='textscan.0awevvd18bbib1148p3qh1jpwui7'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_model_comparison.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='tableau_class_distribution' name='textscan.0vfr3191wgsyyz1660bi006o3cqf'>
+            <connection class='textscan' cleaning='yes' compat='no' csvFile='D:/Code/jokowi_sentiment_project/outputs/tableau/tableau_class_distribution.csv' dataRefreshTime='' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='C:/Users/Asus/AppData/Local/Temp/TableauTemp/0ewkqya1tv8mg017flb670i4rrr0/tableau_class_distribution.csv.xlsx' interpretationMode='8' password='' server='' validate='no' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='tableau_confusion_matrix' name='textscan.0540vo313zbmzs15dlcsr0oi59xn'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_confusion_matrix.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0awevvd18bbib1148p3qh1jpwui7' name='tableau_model_comparison.csv' table='[D:\Code\jokowi_sentiment_project\outputs\tableau\tableau_model_comparison#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='model' ordinal='1' />
+            <column datatype='string' name='accuracy' ordinal='2' />
+            <column datatype='string' name='macro_f1' ordinal='3' />
+            <column datatype='string' name='f1_negatif' ordinal='4' />
+            <column datatype='string' name='f1_netral' ordinal='5' />
+            <column datatype='string' name='f1_positif' ordinal='6' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>accuracy</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[accuracy]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>accuracy</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>macro_f1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[macro_f1]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>macro_f1</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>f1_negatif</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[f1_negatif]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>f1_negatif</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>f1_netral</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[f1_netral]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>f1_netral</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>f1_positif</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[f1_positif]</local-name>
+            <parent-name>[tableau_model_comparison.csv]</parent-name>
+            <remote-alias>f1_positif</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_model_comparison.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_07ty3wa1phvl9k1dliwk11bh55i1.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:34:22 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>model</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[model]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>model</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>accuracy</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[accuracy]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>accuracy</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>macro_f1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[macro_f1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>macro_f1</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>f1_negatif</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[f1_negatif]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>f1_negatif</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>f1_netral</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[f1_netral]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>f1_netral</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>f1_positif</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[f1_positif]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>f1_positif</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_model_comparison.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_model_comparison.csv' id='tableau_model_comparison.csv_8F2D244D770D4B459DD7314F0A29FCA8'>
+            <properties context=''>
+              <relation connection='textscan.0awevvd18bbib1148p3qh1jpwui7' name='tableau_model_comparison.csv' table='[D:\Code\jokowi_sentiment_project\outputs\tableau\tableau_model_comparison#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='model' ordinal='1' />
+                  <column datatype='string' name='accuracy' ordinal='2' />
+                  <column datatype='string' name='macro_f1' ordinal='3' />
+                  <column datatype='string' name='f1_negatif' ordinal='4' />
+                  <column datatype='string' name='f1_netral' ordinal='5' />
+                  <column datatype='string' name='f1_positif' ordinal='6' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_top_features' inline='true' name='federated.1sa81l808gcrs61b1pwh70spgz5p' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_top_features' name='textscan.18y0um11ycqjgg1f1lg7112ktszz'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_top_features.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.18y0um11ycqjgg1f1lg7112ktszz' name='tableau_top_features.csv' table='[tableau_top_features#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='model' ordinal='1' />
+            <column datatype='string' name='label' ordinal='2' />
+            <column datatype='string' name='feature' ordinal='3' />
+            <column datatype='string' name='weight' ordinal='4' />
+            <column datatype='integer' name='rank' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[label]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>label</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>feature</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[feature]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>feature</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weight</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[weight]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>weight</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[rank]</local-name>
+            <parent-name>[tableau_top_features.csv]</parent-name>
+            <remote-alias>rank</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_top_features.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_1rchsux1eq2nt71eetddd16vsaa7.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:14:07 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>model</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[model]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>model</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>label</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>feature</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[feature]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>feature</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weight</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[weight]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>weight</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rank</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[rank]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rank</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_top_features.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>15</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_top_features.csv' id='tableau_top_features.csv_107C31F3807744DE87039EBB9B3464C9'>
+            <properties context=''>
+              <relation connection='textscan.18y0um11ycqjgg1f1lg7112ktszz' name='tableau_top_features.csv' table='[tableau_top_features#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='model' ordinal='1' />
+                  <column datatype='string' name='label' ordinal='2' />
+                  <column datatype='string' name='feature' ordinal='3' />
+                  <column datatype='string' name='weight' ordinal='4' />
+                  <column datatype='integer' name='rank' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_per_class_metrics' inline='true' name='federated.1u07fxw0glqfcq1awi5ov0wu5i0x' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_per_class_metrics' name='textscan.02ms1kt1i4bfr51fonba80qitf6g'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_per_class_metrics.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.02ms1kt1i4bfr51fonba80qitf6g' name='tableau_per_class_metrics.csv' table='[tableau_per_class_metrics#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='model' ordinal='1' />
+            <column datatype='string' name='label' ordinal='2' />
+            <column datatype='string' name='precision' ordinal='3' />
+            <column datatype='string' name='recall' ordinal='4' />
+            <column datatype='string' name='f1_score' ordinal='5' />
+            <column datatype='integer' name='support' ordinal='6' />
+            <column datatype='string' name='accuracy' ordinal='7' />
+            <column datatype='string' name='macro_f1' ordinal='8' />
+            <column datatype='string' name='weighted_f1' ordinal='9' />
+            <column datatype='string' name='n_train' ordinal='10' />
+            <column datatype='string' name='n_test' ordinal='11' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[label]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>label</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>precision</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[precision]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>precision</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>recall</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[recall]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>recall</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>f1_score</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[f1_score]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>f1_score</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>support</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[support]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>support</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>accuracy</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[accuracy]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>accuracy</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>macro_f1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[macro_f1]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>macro_f1</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weighted_f1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[weighted_f1]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>weighted_f1</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>n_train</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[n_train]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>n_train</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>n_test</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[n_test]</local-name>
+            <parent-name>[tableau_per_class_metrics.csv]</parent-name>
+            <remote-alias>n_test</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_per_class_metrics.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_12jem350ak8t9517k5xuv00ra33t.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:17:18 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>model</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[model]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>model</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>label</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>precision</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[precision]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>precision</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>18</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>recall</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[recall]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>recall</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>17</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>f1_score</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[f1_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>f1_score</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>18</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>support</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[support]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>support</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>accuracy</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[accuracy]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>accuracy</remote-alias>
+              <ordinal>7</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>macro_f1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[macro_f1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>macro_f1</remote-alias>
+              <ordinal>8</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weighted_f1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[weighted_f1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>weighted_f1</remote-alias>
+              <ordinal>9</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>n_train</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[n_train]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>n_train</remote-alias>
+              <ordinal>10</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>n_test</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[n_test]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>n_test</remote-alias>
+              <ordinal>11</ordinal>
+              <family>tableau_per_class_metrics.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_per_class_metrics.csv' id='tableau_per_class_metrics.csv_2CAF81E1528542C5A1D6C2035B1D43C4'>
+            <properties context=''>
+              <relation connection='textscan.02ms1kt1i4bfr51fonba80qitf6g' name='tableau_per_class_metrics.csv' table='[tableau_per_class_metrics#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='model' ordinal='1' />
+                  <column datatype='string' name='label' ordinal='2' />
+                  <column datatype='string' name='precision' ordinal='3' />
+                  <column datatype='string' name='recall' ordinal='4' />
+                  <column datatype='string' name='f1_score' ordinal='5' />
+                  <column datatype='integer' name='support' ordinal='6' />
+                  <column datatype='string' name='accuracy' ordinal='7' />
+                  <column datatype='string' name='macro_f1' ordinal='8' />
+                  <column datatype='string' name='weighted_f1' ordinal='9' />
+                  <column datatype='string' name='n_train' ordinal='10' />
+                  <column datatype='string' name='n_test' ordinal='11' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_confusion_matrix' inline='true' name='federated.1u4eozp1glnjlt1c6zcea1lf5nsb' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_confusion_matrix' name='textscan.0zju0p41mefx8w1cpzc6e1927giw'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_confusion_matrix.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0zju0p41mefx8w1cpzc6e1927giw' name='tableau_confusion_matrix.csv' table='[tableau_confusion_matrix#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID'>
+            <column datatype='string' name='dataset' ordinal='0' />
+            <column datatype='string' name='model' ordinal='1' />
+            <column datatype='string' name='actual_label' ordinal='2' />
+            <column datatype='string' name='predicted_label' ordinal='3' />
+            <column datatype='integer' name='count' ordinal='4' />
+            <column datatype='boolean' name='is_diagonal' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dataset</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dataset]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>dataset</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[model]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[actual_label]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>actual_label</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>predicted_label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[predicted_label]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>predicted_label</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[count]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>count</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_diagonal</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_diagonal]</local-name>
+            <parent-name>[tableau_confusion_matrix.csv]</parent-name>
+            <remote-alias>is_diagonal</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_confusion_matrix.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_0f8v2770jdw8w71h773y00e6f2we.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:12:19 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dataset</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[dataset]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dataset</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>model</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[model]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>model</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>actual_label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[actual_label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>actual_label</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>predicted_label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[predicted_label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>predicted_label</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>count</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>42</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_diagonal</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_diagonal]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_diagonal</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_confusion_matrix.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_confusion_matrix.csv' id='tableau_confusion_matrix.csv_E9D96B547A934E9FBFE94B5E248C1E2E'>
+            <properties context=''>
+              <relation connection='textscan.0zju0p41mefx8w1cpzc6e1927giw' name='tableau_confusion_matrix.csv' table='[tableau_confusion_matrix#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID'>
+                  <column datatype='string' name='dataset' ordinal='0' />
+                  <column datatype='string' name='model' ordinal='1' />
+                  <column datatype='string' name='actual_label' ordinal='2' />
+                  <column datatype='string' name='predicted_label' ordinal='3' />
+                  <column datatype='integer' name='count' ordinal='4' />
+                  <column datatype='boolean' name='is_diagonal' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_eda_summary' inline='true' name='federated.1ymjyjv1nxhwj018mu6ev0syy65u' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_eda_summary' name='textscan.08ctwev0lvhbs012414n90uyqxe8'>
+            <connection class='textscan' directory='D:/Code/jokowi_sentiment_project/outputs/tableau' filename='tableau_eda_summary.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.08ctwev0lvhbs012414n90uyqxe8' name='tableau_eda_summary.csv' table='[tableau_eda_summary#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='id_ID' separator='_'>
+            <column datatype='string' name='metric' ordinal='0' />
+            <column datatype='string' name='path,value,value' ordinal='1' />
+            <column datatype='string' name='type' ordinal='2' />
+            <column datatype='string' name='F4' ordinal='3' />
+            <column datatype='string' name='F5' ordinal='4' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;Rp&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;_&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;id_ID&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>metric</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[metric]</local-name>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias>metric</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>path,value,value</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[path,value,value]</local-name>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias>path,value,value</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[type]</local-name>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias>type</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F4</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F4]</local-name>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias>F4</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F5</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[F5]</local-name>
+            <parent-name>[tableau_eda_summary.csv]</parent-name>
+            <remote-alias>F5</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_eda_summary.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Asus/AppData/Local/Temp/TableauTemp/#TableauTemp_15hhdg51aizuno143tunf0iozwva.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/30/2026 07:17:50 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>metric</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[metric]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>metric</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_eda_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>11</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>path,value,value</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[path,value,value]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>path,value,value</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_eda_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>152</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>type</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_eda_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F4</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F4]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F4</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_eda_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F5</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[F5]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F5</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_eda_summary.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Indonesia&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_eda_summary.csv' id='tableau_eda_summary.csv_02A21C202F6B4831BB1F4C96CBA64D78'>
+            <properties context=''>
+              <relation connection='textscan.08ctwev0lvhbs012414n90uyqxe8' name='tableau_eda_summary.csv' table='[tableau_eda_summary#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='id_ID' separator='_'>
+                  <column datatype='string' name='metric' ordinal='0' />
+                  <column datatype='string' name='path,value,value' ordinal='1' />
+                  <column datatype='string' name='type' ordinal='2' />
+                  <column datatype='string' name='F4' ordinal='3' />
+                  <column datatype='string' name='F5' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='KPI - 14K'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_class_distribution' name='federated.04aop550blqqau1gijfrc0w550f9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.04aop550blqqau1gijfrc0w550f9'>
+            <column datatype='integer' name='[count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[dataset]' role='dimension' type='nominal' />
+            <column-instance column='[dataset]' derivation='None' name='[none:dataset:nk]' pivot='key' type='nominal' />
+            <column-instance column='[count]' derivation='Sum' name='[sum:count:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]'>
+            <groupfilter function='member' level='[none:dataset:nk]' member='&quot;full14k&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='1093' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.04aop550blqqau1gijfrc0w550f9].[sum:count:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontname='Times New Roman' fontsize='32'><![CDATA[<[federated.04aop550blqqau1gijfrc0w550f9].[sum:count:qk]>]]></run>
+                <run>Æ&#10;&#10;</run>
+                <run fontname='Times New Roman' fontsize='15'>Total Komentar</run>
+                <run>Æ&#10;</run>
+                <run fontname='Times New Roman' fontsize='15'>Full14k Dataset</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4DD8B978-5711-4381-A2D4-4E839E9111C2}' />
+    </worksheet>
+    <worksheet name='KPI - Balance'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_class_distribution' name='federated.04aop550blqqau1gijfrc0w550f9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.04aop550blqqau1gijfrc0w550f9'>
+            <column datatype='integer' name='[count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[dataset]' role='dimension' type='nominal' />
+            <column-instance column='[dataset]' derivation='None' name='[none:dataset:nk]' pivot='key' type='nominal' />
+            <column-instance column='[count]' derivation='Sum' name='[sum:count:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]'>
+            <groupfilter function='member' level='[none:dataset:nk]' member='&quot;balanced3k&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='1281' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.04aop550blqqau1gijfrc0w550f9].[sum:count:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontname='Times New Roman' fontsize='28'><![CDATA[<[federated.04aop550blqqau1gijfrc0w550f9].[sum:count:qk]>]]></run>
+                <run>Æ&#10;&#10;</run>
+                <run fontname='Times New Roman' fontsize='12'>Balanced Dataset</run>
+                <run>Æ&#10;</run>
+                <run fontname='Times New Roman' fontsize='12'>1.000 data per kelas</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{1798B302-ABC2-45C5-A759-DB5B27C08660}' />
+    </worksheet>
+    <worksheet name='KPI -Jumlah Kelas'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_class_distribution' name='federated.04aop550blqqau1gijfrc0w550f9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.04aop550blqqau1gijfrc0w550f9'>
+            <column datatype='integer' name='[count]' role='measure' type='quantitative' />
+            <column-instance column='[count]' derivation='Sum' name='[sum:count:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.04aop550blqqau1gijfrc0w550f9].[sum:count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4BEA1D7B-2996-45A2-AAB2-20486D2B2729}' />
+    </worksheet>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{E88FA2A3-3905-4AD3-BB89-13D310DB714E}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size maxheight='860' maxwidth='650' minheight='560' minwidth='420' />
+      <zones />
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='6' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='5' param='vert' type-v2='layout-flow' w='97538' x='1231' y='930' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{C11C49D3-EFDC-40FC-890E-49F8DAAAF1A3}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='219'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5E92286D-B5A3-42DC-BF0D-968A5C631136}' />
+    </window>
+    <window class='worksheet' name='KPI - 14K'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]</field>
+            <field>[federated.04aop550blqqau1gijfrc0w550f9].[none:path,label,count:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{8F0A7817-9036-49A8-A645-B75571640CF2}' />
+    </window>
+    <window class='worksheet' name='KPI - Balance'>
+      <cards>
+        <edge name='left'>
+          <strip size='128'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.04aop550blqqau1gijfrc0w550f9].[none:count:qk]</field>
+            <field>[federated.04aop550blqqau1gijfrc0w550f9].[none:dataset:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{668272EA-E47B-4844-995A-968007AB1A54}' />
+    </window>
+    <window class='worksheet' maximized='true' name='KPI -Jumlah Kelas'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{14AF6F6E-B298-4067-A67A-D04184C98A0A}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{4BF31DA9-A572-4897-8383-531B7BB61183}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Dashboard 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAACF0lEQVR4nO3TMQEAIAzAMIZ/z0MGRxMFfTq7uweCZmbu7wj4yQCkGYA0A5BmANIMQJoB
+      SDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0
+      A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMA
+      aQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5Bm
+      ANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYg
+      zQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIM
+      QJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCk
+      GYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoB
+      SDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0
+      A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSDMAaQYgzQCkGYA0A5BmANIMQJoBSHtb
+      egWA0FAUAAAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='143' name='KPI - 14K' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAACPCAYAAACs0tS+AAAACXBIWXMAABJ0AAASdAHeZh94
+      AAABlUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDtA46tBRpyBjgXAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='126' name='KPI - Balance' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAAB+CAYAAAByHB4CAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAABaElEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpHyv0BPhHeDRJAAAAAElF
+      TkSuQmCC
+    </thumbnail>
+    <thumbnail height='25' name='KPI -Jumlah Kelas' width='64'>
+      iVBORw0KGgoAAAANSUhEUgAAAEAAAAAZCAYAAACB6CjhAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAADOUlEQVRYhe2YwUsqXRjGf1cmEoUZCpMK2kUk0UJwFRoJRoWbFiGB0C7/hMJNi8SEIGrR
+      IqpVbSwlIiLatQhauGlRQqmrCayFC3UwseJ0FxeEQbv3ftePhsvtgVnM+573Oc955j3nwHx7
+      f39/5x+GyWgBRuPLAKMFGI0vA4wWYDS+DDBagNH4MsBoAUbjywCjBRiNf94A6f8gEUKQSqVI
+      JBKEw2FsNls9d3BwQDqdblrn9Xrxer0f8mqaxtbWFn19fczOzjbkb25uWF1dJZfL0d/fz8LC
+      AsPDwwA8PDywt7dHrVZrqJNlmVAohCzLrRkghOD+/p5YLMbLywuvr68IIXRjJicnGxYphGB9
+      fR1N0z7k3t7e5uTkhPb2dhRFachnMhmi0SiLi4s4nU6ur6+JRqMsLy8zMDBAd3c38/PzTev2
+      9/fr7y1tgUKhwO7uLuFwmI2NjaZCFUXBbrfrnmKxiKZpjI2N/ZT/8PCQiYmJprlkMkkgEMDp
+      dALgdDoJBAIkk0kA2traGua12WxcXFzg9/uRZRlo0QC73c7a2hoOhwOT6feohBAkEgl8Pl9d
+      RDOEQiEsFkvTnKZpFAoFXC6XLu5yuSgUCh92ViaTIZ/P4/F46rFPPwRzuRxPT08/3fu/QrVa
+      RQjR0HGKoiCEoFqtNtQIITg6OmJ8fJyOjo56/FMNEEJwdnbGyMiITsSfwGw2I0n6I0ySJMxm
+      c9Pxqqqiqiqjo6O6+KcasLm5SWdnJ8FgsCUeSZIoFouUSiVdvFQqUSwWG4xRVZWVlRUikYju
+      hoJPNEBVVW5vb5mammqZS5ZlFEUhm83q4tlsFkVRGs6W4+Nj3G43XV1dDVyfZsD5+Tkul6up
+      iLe3N66urnh8fPwtLkmS8Pv9xONxyuUyAOVymXg8jt/v13VAPp/n7u4On8/XnOsP1lLH5eUl
+      sVgM+LG/S6USc3NzmEwmHA4HkUgEi8VCPp8nlUqxtLTUlKdWq7Gzs0MwGKSnp4fn52dmZmYA
+      qFQqwI+vCBAOh/F4PLjdbrLZLMFgkKGhIdLpNNPT07jdbh336ekpg4OD9Pb2Np3729/+W7xS
+      qVCpVLBarVit1v9c/9cb0Cq+A+ExNxAqLh/rAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>

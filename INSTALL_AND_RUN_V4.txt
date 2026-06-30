@@ -1,0 +1,16 @@
+UI POLISH PACK V4
+
+Cara pasang:
+
+1. Extract ZIP.
+2. Copy folder `streamlit_app/` ke root repository dan overwrite file lama.
+3. Copy folder `.streamlit/` ke root repository.
+4. Restart Streamlit:
+
+   Ctrl + C
+   python -m streamlit run streamlit_app/app.py
+
+5. Jika browser masih menampilkan style lama:
+   Ctrl + F5
+
+V4 fokus pada final visual pass: memperbaiki HTML cards yang tampil sebagai kode mentah, merapikan visual hierarchy, menyelaraskan chart theme, menstabilkan spacing, menyederhanakan card system, dan memperbaiki readability untuk presentasi client/dosen.

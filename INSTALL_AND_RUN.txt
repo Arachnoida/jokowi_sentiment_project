@@ -1,0 +1,13 @@
+Cara memasang ke repository kamu:
+
+1. Extract ZIP ini.
+2. Copy folder `streamlit_app/` ke root repository `jokowi_sentiment_project`.
+3. Pastikan folder `outputs/tableau/` sudah ada dan berisi CSV hasil export.
+4. Install dependency:
+   pip install -r streamlit_app/requirements_streamlit.txt
+5. Jalankan:
+   streamlit run streamlit_app/app.py
+
+Jika folder data mart berada di lokasi lain:
+   set SENTIMENT_TABLEAU_DIR=D:\path\to\outputs\tableau
+   streamlit run streamlit_app/app.py
