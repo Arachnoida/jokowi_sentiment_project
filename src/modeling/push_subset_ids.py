@@ -1,14 +1,11 @@
-"""Push daftar comment_id subset (mis. balanced_3000.csv) ke koleksi Mongo khusus.
+"""Tandai anggota subset (mis. balanced_3000.csv) dgn FLAG boolean di processed_bert.
 
-Agar notebook Colab IndoBERT TIDAK perlu upload CSV manual: subset disimpan sebagai
-koleksi tersendiri (default `balanced3k_ids`, hanya {comment_id}) sehingga schema
-koleksi utama (raw_comments/processed_bert) tetap bersih. Notebook cukup baca koleksi
-ini lalu filter processed_bert.
+Agar notebook Colab IndoBERT self-contained (gaya indobert_finetune_colab_variant.ipynb):
+baca `processed_bert` lewat filter `{FLAG: True}` — tanpa upload CSV / clone repo, cukup
+MONGO_URI. Idempotent: unset flag lama lalu set True pada comment_id subset.
 
-Idempotent: drop + insert ulang.
-
-  python -m src.modeling.push_subset_ids                                  # balanced_3000 -> balanced3k_ids
-  python -m src.modeling.push_subset_ids --csv <path> --collection <name>
+  python -m src.modeling.push_subset_ids                                   # balanced_3000 -> flag in_balanced3k
+  python -m src.modeling.push_subset_ids --csv <path> --flag <field> --collection <name>
 """
 from __future__ import annotations
 
@@ -25,7 +22,9 @@ from pymongo import MongoClient
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default="outputs/labeling/balanced_3000.csv")
-    ap.add_argument("--collection", default="balanced3k_ids")
+    ap.add_argument("--flag", default="in_balanced3k", help="Nama field boolean penanda subset.")
+    ap.add_argument("--collection", default="processed_bert",
+                    help="Koleksi yang ditandai (default processed_bert; bisa 'raw_comments').")
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parents[2]
@@ -34,12 +33,12 @@ def main() -> None:
 
     uri = os.environ["MONGO_URI"]
     dbn = os.environ.get("MONGO_DB_NAME", "youtube_sentiment")
-    db = MongoClient(uri, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=30000)[dbn]
-    col = db[args.collection]
-    col.drop()
-    col.insert_many([{"comment_id": c} for c in ids])
-    col.create_index("comment_id")
-    print(f"{args.collection}: {col.count_documents({})} comment_id ditulis (dari {args.csv}).")
+    col = MongoClient(uri, tlsCAFile=certifi.where(), serverSelectionTimeoutMS=30000)[dbn][args.collection]
+
+    col.update_many({args.flag: {"$exists": True}}, {"$unset": {args.flag: ""}})
+    r = col.update_many({"comment_id": {"$in": ids}}, {"$set": {args.flag: True}})
+    n = col.count_documents({args.flag: True})
+    print(f"{args.collection}.{args.flag}: matched={r.matched_count} set True -> total {n} (subset {len(ids)} dari {args.csv})")
 
 
 if __name__ == "__main__":

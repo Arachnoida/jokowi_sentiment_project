@@ -256,11 +256,12 @@ baru tentukan konfigurasi final SEMUA model bersama. Trainer kanonik `train_svm_
 BELUM diubah (masih word-only, svm_balanced3k_metrics.json=0,730).
 
 **WAJIB BERIKUTNYA (user, Colab) — ANGKA PENENTU:** jalankan **IndoBERT balanced3k** pada label
-baru. Notebook siap pakai: **`indobert_balanced3k_colab.ipynb`** (root repo) — upload + upload
-`outputs/labeling/balanced_3000.csv` + set MONGO_URI (processed_bert di Mongo SUDAH ter-update).
-Output `indobert_balanced3k_metrics.json` → kirim ke Claude. Lalu putuskan config final +
-`compare_models --tag balanced3k`. Hipotesis: IndoBERT (kontekstual) unggul jauh di task stance
-ini → dataset domain-aware = win.
+baru. Notebook **self-contained** (gaya indobert_finetune_colab_variant): **`indobert_balanced3k_colab.ipynb`**
+(root repo) — TANPA upload CSV / clone, baca `processed_bert` via flag **`in_balanced3k=True`**,
+cuma butuh MONGO_URI. Flag diset oleh `python -m src.modeling.push_subset_ids` (sudah dijalankan;
+3000 doc ter-flag). Output `indobert_balanced3k_metrics.json` → kirim ke Claude. Lalu putuskan
+config final + `compare_models --tag balanced3k`. Hipotesis: IndoBERT (kontekstual) unggul jauh di
+task stance ini → dataset domain-aware = win.
 
 ## 9. Regen processed_svm + roadmap akurasi (2026-06-30, akhir sesi)
 
