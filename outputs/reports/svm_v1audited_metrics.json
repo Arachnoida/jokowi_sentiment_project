@@ -1,6 +1,5 @@
 {
   "model": "SVM+TF-IDF",
-  "dataset": "v1audited",
   "test": {
     "accuracy": 0.8567,
     "macro_f1": 0.8556,
@@ -36,11 +35,15 @@
         90
       ]
     ],
+    "n_train": 2700,
     "n_test": 300,
     "best_params": {
-      "features": "word(1,2)",
-      "clf": "LinearSVC(C=1.0,balanced)",
-      "dataset": "v1-audited"
+      "clf__C": 1.0,
+      "tfidf__min_df": 2,
+      "tfidf__ngram_range": [
+        1,
+        2
+      ]
     }
   }
 }

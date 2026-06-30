@@ -187,8 +187,16 @@ def main() -> None:
     client = _connect()
     df = load_df(client)
     if args.subset:
-        ids = load_subset_ids(args.subset)
-        df = df[df["comment_id"].astype(str).isin(ids)].reset_index(drop=True)
+        sub = pd.read_csv(args.subset)
+        sub["comment_id"] = sub["comment_id"].astype(str)
+        df = df[df["comment_id"].astype(str).isin(set(sub["comment_id"]))].reset_index(drop=True)
+        if "label" in sub.columns:
+            # Override label dari subset CSV (mendukung v1/v1audited tanpa ubah Mongo).
+            # Fitur `svm` tetap dari processed_svm (label-independent).
+            lab = dict(zip(sub["comment_id"], sub["label"]))
+            df["label"] = df["comment_id"].astype(str).map(lab)
+            df["label_id"] = df["label"].map(LABEL2ID)
+            print(f"[{tag}] label dari subset CSV (override raw_comments)")
     print(f"{len(df)} komentar berlabel [{tag}] | svm kosong (drop dari train/val): "
           f"{int((df['svm'].str.len() == 0).sum())}")
 
