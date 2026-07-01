@@ -30,13 +30,13 @@ Membandingkan dua paradigma pada dataset & split yang **identik**:
 2. **Preprocessing** → `processed_svm` (kolom `svm`) & `processed_bert` (kolom `bert`).
    Kini lewat `src/spark/preprocess_spark.py` (+ `src/modeling/_backfill_processed_{svm,bert}.py`
    utk tulis Mongo) — **bukan notebook lagi** (diarsipkan, lihat `notebooks/README.md`).
-3. **Training SVM** — `src/modeling/train_svm_full14k.py` (sklearn, angka final) &
+3. **Training SVM** — `src/modeling/train_svm.py` (sklearn, angka final) &
    `src/spark/train_svm_spark.py` (Spark MLlib): TF-IDF→LinearSVC, tuning di val, eval test.
 4. **`notebooks/3_modeling/indobert_finetune_colab.ipynb`** — baca `processed_bert`, fine-tune
    `indobert-base-p1` di Colab/GPU, evaluasi test set identik. (Tetap notebook — butuh GPU.)
 5. **Bandingkan** macro-F1 & per-kelas kedua model (deliverable utama).
 
-Perbandingan SVM vs IndoBERT dihasilkan otomatis oleh `src/modeling/train_svm_full14k.py`
+Perbandingan SVM vs IndoBERT dihasilkan otomatis oleh `src/modeling/train_svm.py`
 (membaca `outputs/reports/indobert_metrics.json` bila ada). Jalur preprocessing &
 training SVM lihat bagian **"Jalur PySpark (Big Data)"** di bawah.
 
@@ -204,7 +204,7 @@ Dua level tampilan (lihat juga `session.py`, `cluster.sh`):
   kelompok):** [`docs/spark_cluster_kelompok.md`](docs/spark_cluster_kelompok.md).
 
 **Kesetaraan dijaga:** split train/val/test deterministik dihitung sekali (logika
-identik `train_svm_full14k.py`) lalu di-join ke Spark DataFrame → **test set identik**
+identik `train_svm.py`) lalu di-join ke Spark DataFrame → **test set identik**
 lintas sklearn/Spark/IndoBERT. Preprocessing Spark **terverifikasi 100% cocok** dengan
 fitur Mongo (`svm` & `bert`).
 

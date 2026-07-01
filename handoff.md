@@ -78,7 +78,7 @@ cp outputs/labeling/labeling_dataset.backup_20260624.csv outputs/labeling/labeli
 .venv/bin/python -m src.spark.regenerate_processed_mongo            # -> processed_svm/bert (Mongo)
 .venv/bin/python -m src.spark.export_mongo                          # -> data/spark_parquet/*
 .venv/bin/python -m src.spark.preprocess_spark                     # -> features_spark.parquet
-.venv/bin/python -m src.modeling.train_svm_full14k                  # -> svm_full14k_metrics.json
+.venv/bin/python -m src.modeling.train_svm                  # -> svm_full14k_metrics.json
 .venv/bin/python -m src.spark.train_svm_spark                       # -> svm_spark_metrics.json
 # IndoBERT: Colab / python -m src.modeling.train_indobert           # -> indobert_metrics.json
 ```
@@ -105,7 +105,7 @@ cp outputs/labeling/labeling_dataset.backup_20260624.csv outputs/labeling/labeli
       `sependapat→dapat`. Kata `setuju/sependapat/sepaham/sepakat` didaftarkan sbg root
       word ke kamus stemmer di `src/spark/udf.py` (+`_backfill_processed_svm.py`), WAJIB
       sebelum stem pertama karena `CachedStemmer` meng-cache. Pipeline penuh sudah di-re-run
-      (regenerate_processed_mongo → export_mongo → preprocess_spark → train_svm_full14k →
+      (regenerate_processed_mongo → export_mongo → preprocess_spark → train_svm →
       train_svm_spark; ~17 mnt). Dampak kecil tapi positif: **F1 Negatif naik** (sklearn
       0,476→0,502 +2,6pp; Spark 0,41→0,443 +3,3pp), akurasi ~datar (sklearn 0,814→0,8115;
       Spark 0,768→0,7725), macro-F1 naik di keduanya. IndoBERT tak terpengaruh (kolom `bert`
@@ -150,14 +150,14 @@ bias "Netral dominan").
 - `src/modeling/build_balanced_subset.py` → `outputs/labeling/balanced_3000.csv`
   (top-1000/kelas by confidence; Neg conf 0.75–0.95, Net 0.90–1.0, Pos 0.85–0.99).
 - `src/modeling/subset.py` — helper `load_subset_ids`.
-- Trainer dapat `--subset <csv> --tag <tag>`: `train_svm_full14k`, `train_svm_spark`,
+- Trainer dapat `--subset <csv> --tag <tag>`: `train_svm`, `train_svm_spark`,
   `train_indobert`, dan `compare_models --tag`. Subset = FILTER baris setelah load
   (fitur sudah ada di processed_*/parquet → tak perlu regen). Artefak ber-suffix tag.
 
 **Reproduksi:**
 ```bash
 python -m src.modeling.build_balanced_subset                                    # -> balanced_3000.csv
-python -m src.modeling.train_svm_full14k --subset outputs/labeling/balanced_3000.csv --tag balanced3k
+python -m src.modeling.train_svm --subset outputs/labeling/balanced_3000.csv --tag balanced3k
 python -m src.spark.train_svm_spark     --subset outputs/labeling/balanced_3000.csv --tag balanced3k
 # IndoBERT (Colab, lihat outputs/reports/COLAB_indobert_balanced3k.md):
 #   python -m src.modeling.train_indobert --subset outputs/labeling/balanced_3000.csv --tag balanced3k
@@ -252,7 +252,7 @@ serap). **SVM pulih 0,730→0,767** murni model-side. Eksperimen → `outputs/re
 char n-gram = lever utama; ceiling bag-of-words ~0,767.
 
 **KEPUTUSAN PENDING (user):** promosi char+threshold jadi SVM resmi → **TUNGGU IndoBERT dulu**,
-baru tentukan konfigurasi final SEMUA model bersama. Trainer kanonik `train_svm_full14k.py`
+baru tentukan konfigurasi final SEMUA model bersama. Trainer kanonik `train_svm.py`
 BELUM diubah (masih word-only, svm_balanced3k_metrics.json=0,730).
 
 **WAJIB BERIKUTNYA (user, Colab) — ANGKA PENENTU:** jalankan **IndoBERT balanced3k** pada label
@@ -283,7 +283,7 @@ label valid, apa pun filosofi labelnya.
 
 **KEPUTUSAN (user): keep domain-aware + coba IndoBERTweet.**
 - **SVM Batch A DIPROMOSIKAN jadi resmi.** `svm_balanced3k_metrics.json` kini = char+thr (0,7667),
-  diproduksi `src/modeling/svm_batch_a.py --write-official` (BUKAN train_svm_full14k yg masih
+  diproduksi `src/modeling/svm_batch_a.py --write-official` (BUKAN train_svm yg masih
   word-only/baseline; trainer kanonik TIDAK diubah agar full14k aman). Varian: FeatureUnion
   word(1,2)+char_wb(3,5) + LinearSVC(C=0.5,balanced) + bias per-kelas [0.3,0,0.4] (tuned val).
 - `compare_models` kini **skip model yg file metriknya tak ada** (Spark dilewati). Output
@@ -424,7 +424,7 @@ tumpang-tindih kata (ijazah/palsu/asli) → pembeda cuma negasi + arah sikap.
 implementasi HashingTF, bukan riset). **Fokus = SVM sklearn + IndoBERT.**
 
 **Menu pengembangan SVM sklearn (next session)** — dipisah biaya:
-- **Batch A (TANPA regen, cuma ubah `train_svm_full14k.py build()`, re-train ~1mnt):**
+- **Batch A (TANPA regen, cuma ubah `train_svm.py build()`, re-train ~1mnt):**
   - A1 **Negation merge** `tidak palsu`→`tidak_palsu` sbg analyzer (kata negasi sudah tersimpan
     di kolom `svm`, jadi tak perlu regen) — serang stance-flip #1. *Paling menjanjikan.*
   - A2 FeatureUnion word + char n-gram (3–5). A3 sweep `LogisticRegression`/`ComplementNB`.

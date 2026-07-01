@@ -137,7 +137,7 @@ def rebuild(pid: int, token: str | None, commit: bool) -> None:
     cols = [c for c in ["comment_id", "label", "confidence", "is_gold", "text"] if c in new.columns]
     new[cols].to_csv(OUT_CSV, index=False)
     print(f"Tersimpan: {OUT_CSV}")
-    print("Lanjut re-train: train_svm_full14k / train_svm_spark / IndoBERT --subset balanced_3000.csv --tag balanced3k")
+    print("Lanjut re-train: train_svm / train_svm_spark / IndoBERT --subset balanced_3000.csv --tag balanced3k")
 
 
 def main() -> None:

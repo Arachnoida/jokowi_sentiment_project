@@ -13,7 +13,7 @@ Tahap preprocessing & training SVM dimigrasi ke `src/spark/` + `src/modeling/`:
   BERT (tulis `processed_bert`). Digantikan `src/spark/preprocess_spark.py` +
   `src/modeling/_backfill_processed_bert.py`.
 - `notebooks/train_svm.ipynb` — training SVM lintas versi. Digantikan
-  `src/modeling/train_svm_full14k.py` (sklearn) & `src/spark/train_svm_spark.py` (Spark MLlib).
+  `src/modeling/train_svm.py` (sklearn) & `src/spark/train_svm_spark.py` (Spark MLlib).
 - `notebooks/indobert_finetune_colab_variant.ipynb` — varian lama notebook IndoBERT
   (untracked); notebook IndoBERT AKTIF tetap di `../notebooks/3_modeling/`.
 

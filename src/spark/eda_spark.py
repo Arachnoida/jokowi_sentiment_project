@@ -21,7 +21,7 @@ import json
 import pandas as pd
 from pyspark.sql import functions as F
 
-from src.modeling.train_svm_full14k import LABELS, split_version
+from src.modeling.train_svm import LABELS, split_version
 from src.spark.session import get_spark, hold_for_ui, parquet_dir, reports_dir
 
 TEXT, LAB, IDC = "svm", "label_id", "comment_id"

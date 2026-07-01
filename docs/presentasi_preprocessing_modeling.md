@@ -88,7 +88,7 @@ Logika di `text_normalizer.py` **satu**, dieksekusi di **dua tempat (hasil ident
 
 ## 4. Modeling — buka cepat (sedikit saja)
 
-### `src/modeling/train_svm_full14k.py` — SVM (baseline)
+### `src/modeling/train_svm.py` — SVM (baseline)
 - **TF-IDF + `LinearSVC`**, `GridSearchCV` (ngram × min_df × C), tuning di validation
   (`PredefinedSplit`), refit train+val, evaluasi test.
 - **Split deterministik 70/20/10** (`split_version`): urut `comment_id` + `seed=42`
@@ -138,7 +138,7 @@ setara, tak hanya kelas mayoritas.
 ## 7. Tips eksekusi
 - **Jangan baca kode baris-per-baris** — tunjuk fungsi, jelaskan *kenapa* (keputusan desain).
 - Nyalakan **nomor baris** di editor biar mudah menunjuk.
-- Urutan aman: `text_normalizer.py` → **demo live** → `train_svm_full14k.py`.
+- Urutan aman: `text_normalizer.py` → **demo live** → `train_svm.py`.
 - Kalau gugup, 3 kalimat kunci:
   1. **"Dua jalur preprocessing"** (SVM agresif vs BERT minimal).
   2. **"Negasi dipertahankan"** karena menentukan sentimen.

@@ -31,7 +31,7 @@ notebooks/
 | Preprocessing SVM | `preprocessing_svm.ipynb` | `src/spark/preprocess_spark.py` (+ `src/modeling/_backfill_processed_svm.py` utk tulis Mongo) |
 | Preprocessing BERT | `preprocessing_indobert.ipynb` | `src/spark/preprocess_spark.py` (+ `_backfill_processed_bert.py`) |
 | EDA preprocessing | (sel EDA di notebook) | `src/spark/eda_spark.py` |
-| Training SVM | `train_svm.ipynb` | `src/modeling/train_svm_full14k.py` (sklearn) + `src/spark/train_svm_spark.py` (Spark MLlib) |
+| Training SVM | `train_svm.ipynb` | `src/modeling/train_svm.py` (sklearn) + `src/spark/train_svm_spark.py` (Spark MLlib) |
 
 Cara jalan jalur Spark: lihat `../MODELING.md` → "Jalur PySpark (Big Data)".
 

@@ -27,7 +27,7 @@ from sklearn.model_selection import StratifiedKFold, cross_val_predict
 
 from configs.config import Config
 from src.modeling.subset import load_subset_ids
-from src.modeling.train_svm_full14k import (
+from src.modeling.train_svm import (
     LAB,
     LABEL2ID,
     LABELS,

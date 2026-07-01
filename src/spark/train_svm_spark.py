@@ -1,6 +1,6 @@
 """Latih & evaluasi SVM + TF-IDF memakai PySpark MLlib (jalur Big Data).
 
-Padanan Spark dari ``src/modeling/train_svm_full14k.py`` (sklearn). Tujuannya
+Padanan Spark dari ``src/modeling/train_svm.py`` (sklearn). Tujuannya
 mendemonstrasikan pipeline ML terdistribusi, BUKAN menggantikan hasil sklearn —
 keduanya dilaporkan berdampingan. SATU dataset: full 14k komentar berlabel.
 
@@ -50,7 +50,7 @@ from pyspark.sql.functions import udf
 from sklearn.metrics import f1_score
 
 from src.modeling.subset import load_subset_ids
-from src.modeling.train_svm_full14k import LABELS, evaluate, split_version
+from src.modeling.train_svm import LABELS, evaluate, split_version
 from src.spark.session import get_spark, hold_for_ui, parquet_dir, reports_dir
 
 TEXT, LAB, IDC = "svm", "label_id", "comment_id"
@@ -255,7 +255,7 @@ def _cross_engine(rep, m, tag="full14k") -> None:
     s = json.load(open(sk_file)).get("test", {}).get("macro_f1")
     if s is None:
         print(f"\n({sk_file.name} belum format single-dataset — jalankan "
-              "ulang train_svm_full14k.py utk perbandingan sklearn vs Spark.)")
+              "ulang train_svm.py utk perbandingan sklearn vs Spark.)")
         return
     p = m["macro_f1"]
     df = pd.DataFrame([{

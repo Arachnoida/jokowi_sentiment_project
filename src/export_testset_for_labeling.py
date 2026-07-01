@@ -27,7 +27,7 @@ import pathlib
 
 import pandas as pd
 
-from src.modeling.train_svm_full14k import split_version
+from src.modeling.train_svm import split_version
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 LBL = ROOT / "outputs" / "labeling"

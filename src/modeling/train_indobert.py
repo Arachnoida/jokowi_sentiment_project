@@ -7,7 +7,7 @@ jadi skrip ini cukup butuh ``MONGO_URI`` + dependensi pip (transformers, torch,
 pymongo, scikit-learn, matplotlib). Bisa dijalankan di Colab/Kaggle/cloud GPU
 (``python -m src.modeling.train_indobert``); CPU mungkin tapi SANGAT lambat.
 
-Split & hyperparameter IDENTIK dengan ``train_svm_full14k`` agar perbandingan adil:
+Split & hyperparameter IDENTIK dengan ``train_svm`` agar perbandingan adil:
 urut ``comment_id`` -> test 10% -> val (0.20/0.90 sisa) -> train, stratify + seed=42.
 
 Artefak (default -> ``outputs/reports/``):

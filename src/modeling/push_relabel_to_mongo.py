@@ -1,7 +1,7 @@
 """Push koreksi re-label LLM pass-2 (Opus) ke MongoDB + master CSV.
 
 Label hidup di DUA tempat di Mongo:
-  - ``raw_comments.label``    → dibaca trainer SVM (src.modeling.train_svm_full14k)
+  - ``raw_comments.label``    → dibaca trainer SVM (src.modeling.train_svm)
   - ``processed_bert.label``  → dibaca trainer IndoBERT (src.modeling.train_indobert, Colab)
 Keduanya harus diperbarui agar SVM & IndoBERT memakai label baru.
 
