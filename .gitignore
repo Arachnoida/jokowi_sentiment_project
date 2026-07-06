@@ -28,3 +28,6 @@ outputs/labeling/*.before*.csv
 # Event log Spark (dibaca History Server; regenerate per run)
 logs/spark-events/
 outputs/labeling/*.bak
+
+# Virtual environment (jangan di-commit)
+venv/
