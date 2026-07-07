@@ -31,3 +31,6 @@ outputs/labeling/*.bak
 
 # Virtual environment (jangan di-commit)
 venv/
+
+# LibreOffice lock files
+.~lock.*#
