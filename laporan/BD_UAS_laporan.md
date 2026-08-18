@@ -5,7 +5,7 @@ toc-title: "DAFTAR ISI"
 
 ```{=openxml}
 <w:p><w:pPr><w:spacing w:before="240" w:after="0" w:line="276" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/><w:b/><w:sz w:val="24"/></w:rPr><w:t>LAPORAN UJIAN AKHIR SEMESTER</w:t></w:r></w:p>
-<w:p><w:pPr><w:spacing w:before="60" w:after="0" w:line="276" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/><w:b/><w:sz w:val="24"/></w:rPr><w:t xml:space="preserve">ANALISIS SENTIMEN KOMENTAR YOUTUBE PADA ISU DUGAAN IJAZAH PALSU JOKO WIDODO: PERBANDINGAN SVM + TF-IDF DAN INDOBERTWEET DI ATAS PIPELINE BIG DATA</w:t></w:r></w:p>
+<w:p><w:pPr><w:spacing w:before="60" w:after="0" w:line="276" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/><w:b/><w:sz w:val="24"/></w:rPr><w:t xml:space="preserve">ANALISIS SENTIMEN KOMENTAR YOUTUBE PADA ISU DUGAAN IJAZAH PALSU JOKO WIDODO</w:t></w:r></w:p>
 ```
 
 ::: {custom-style="Center"}
@@ -50,6 +50,7 @@ Berdasarkan latar belakang tersebut, rumusan masalah dalam laporan ini adalah se
 2. Bagaimana strategi pra-pemrosesan teks yang tepat untuk dua paradigma model yang berbeda (bag-of-words vs. berbasis konteks)?
 3. Antara SVM + TF-IDF dan IndoBERTweet, model manakah yang memberikan performa klasifikasi sentimen terbaik pada kondisi data seimbang?
 4. Sejauh mana infrastruktur Big Data (MongoDB Atlas + Apache Spark) dapat menopang pipeline tersebut secara benar-benar terdistribusi?
+5. Bagaimana menyajikan hasil analisis sentimen ke dalam dashboard *visual analytics* yang mampu menjawab pola waktu, komposisi sentimen, keyword dominan, sumber video, dan komentar representatif?
 
 ## 1.3 Tujuan
 
@@ -59,6 +60,7 @@ Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah sebaga
 2. Menerapkan dua jalur pra-pemrosesan teks yang berbeda dan sesuai kebutuhan tiap paradigma model.
 3. Melatih dan membandingkan dua model klasifikasi sentimen tiga kelas menggunakan metrik yang adil (macro-F1) pada *test set* identik.
 4. Mendokumentasikan temuan, kendala teknis, dan solusinya sebagai pembelajaran penerapan Big Data pada kasus nyata.
+5. Membangun dashboard *visual analytics* interaktif sebagai media eksplorasi opini publik dan penyajian *insight* berbasis data.
 
 ## 1.4 Manfaat
 
@@ -73,6 +75,7 @@ Agar pembahasan lebih terarah dan fokus, penelitian ini dibatasi pada hal-hal be
 3. Pelabelan berskala besar dilakukan secara *LLM-assisted*, dengan verifikasi manual pada sampel sebagai validasi.
 4. Model dilatih dan dievaluasi hanya pada dataset seimbang 3.000 komentar (1.000 per kelas).
 5. Fine-tuning transformer (IndoBERTweet) dijalankan di Google Colab (GPU) karena berada di luar cakupan Spark MLlib.
+6. Visualisasi geografis tidak diimplementasikan karena metadata komentar YouTube tidak menyediakan koordinat atau lokasi pengguna yang valid.
 
 # BAB II TINJAUAN PUSTAKA
 
@@ -204,22 +207,42 @@ Dua model utama dilatih di atas data dan *split* yang sama, ditambah satu varian
 
 Metrik utama adalah **macro-F1** pada *test set*, didukung akurasi, F1 per kelas, dan *confusion matrix*. Pada dataset seimbang, akurasi ikut bermakna karena tidak bias ke kelas mayoritas.
 
+## 3.8 Visualisasi dan Dashboard Analitik
+
+Tahap visualisasi dikembangkan sebagai tahap akhir pipeline untuk mengubah hasil pengumpulan data, pelabelan, pra-pemrosesan, dan pemodelan menjadi media eksplorasi opini publik. Dashboard dibangun menggunakan **Streamlit** dengan orientasi *Public Opinion Visual Analytics Dashboard*, sehingga fokusnya tidak hanya pada evaluasi model, tetapi juga pada pembacaan dinamika percakapan publik di YouTube.
+
+Sumber data visualisasi berasal dari dataset *analytics* hasil ekspor pipeline, yaitu `comments_analytics_full14k.csv`, yang berisi 14.107 komentar dengan metadata waktu WITA, label sentimen, *engagement*, sumber video, panjang teks, serta tautan sumber. Dataset ini digunakan untuk membangun agregasi temporal, distribusi sentimen, tren keyword, sumber video dominan, dan eksplorasi komentar mentah.
+
+Perancangan dashboard mengikuti prinsip visualisasi data yang menekankan kejelasan, relevansi, dan efisiensi visual. Setiap grafik dirancang untuk menjawab minimal satu pertanyaan analitis, misalnya kapan publik paling aktif berdiskusi, kapan percakapan meningkat, keyword apa yang menguat, video mana yang paling memicu percakapan, dan komentar mana yang paling representatif. Oleh karena itu, visualisasi dilengkapi dengan kartu *insight*, penanda puncak, rata-rata bergerak 7 hari, deteksi *outlier*, filter interaktif, serta narasi *insight* otomatis. Tabel 3.1 merangkum rancangan komponen dashboard beserta pertanyaan analitis yang dijawab.
+
+::: {custom-style="TabelCaption"}
+**Tabel 3.1** Rancangan komponen dashboard dan pertanyaan analitis yang dijawab.
+:::
+
+| Komponen Dashboard | Pertanyaan Analitis | Indikator Utama |
+|---|---|---|
+| Executive Overview | Bagaimana ringkasan kondisi umum diskusi publik? | Total komentar, rentang waktu, sentimen dominan, tanggal puncak, arah tren, executive insight |
+| Temporal Analytics | Kapan publik paling aktif berdiskusi dan kapan percakapan melonjak? | Jam aktif, hari aktif, tren harian, rata-rata bergerak 7 hari, outlier |
+| Topic & Keyword Intelligence | Kata atau frasa apa yang paling dominan dalam diskursus? | Meaningful word cloud, top terms, top bigrams, tren keyword |
+| Daily Topic Explorer | Apa yang sebenarnya dibahas pada tanggal tertentu? | Rasio sentimen, keyword tanggal terpilih, sumber video, komentar engagement tertinggi |
+| Comment Explorer | Komentar mentah apa yang relevan dengan filter atau keyword tertentu? | Pencarian komentar, filter sentimen, sumber video, engagement, preview teks |
+
 # BAB IV HASIL DAN PEMBAHASAN
 
 ## 4.1 Hasil Pengumpulan dan Karakteristik Data
 
-Pengumpulan menghasilkan **14.107 komentar** dari 17 video. Karena distribusi kelas pada korpus terkumpul cukup timpang, kelas Netral paling langka, untuk pemodelan diambil subset **seimbang 3.000 komentar** (1.000 per kelas) agar evaluasi antar-kelas adil dan macro-F1 bermakna.
+Pengumpulan menghasilkan **14.107 komentar** dari 17 video. Distribusi kelas pada korpus terkumpul sangat timpang, dengan kelas **Negatif paling langka** (hanya sekitar 1.213 komentar) dibanding Netral dan Positif yang jauh lebih banyak. Karena itu, untuk pemodelan diambil subset **seimbang 3.000 komentar** (1.000 per kelas) agar evaluasi antar-kelas adil dan macro-F1 bermakna.
 
 ## 4.2 Analisis Data Eksploratif (EDA Terdistribusi)
 
-EDA dihitung secara terdistribusi di Spark (agregasi `groupBy`/`explode`/`join`). Gambar 4.1 merangkum distribusi kelas dan rata-rata panjang teks per tahap. Efek dua jalur pra-pemrosesan terlihat jelas: jalur SVM memangkas rata-rata panjang dari **15,3 kata** menjadi **11,6 kata** (akibat pembuangan *stopword* dan *stemming*), sedangkan jalur BERT mempertahankannya di **15,2 kata**. Ukuran kosakata jalur SVM adalah 14.844 kata unik, dengan proporsi teks kosong 0,52% dan duplikat 1,45% (dilaporkan apa adanya).
+EDA dihitung secara terdistribusi di Spark (agregasi `groupBy`/`explode`/`join`). Gambar 4.1 merangkum distribusi kelas dan rata-rata panjang teks per tahap pada dataset final (*v1audited*, 3.000 komentar). Subset ini di-*sample* seimbang 1.000 per kelas, namun audit label menggeser distribusinya sedikit menjadi **961 Negatif, 1.042 Netral, dan 997 Positif**. Efek dua jalur pra-pemrosesan terlihat jelas: jalur SVM memangkas rata-rata panjang dari **18,1 kata** menjadi **13,8 kata** (akibat pembuangan *stopword* dan *stemming*), sedangkan jalur BERT mempertahankannya di **18,0 kata**. Ukuran kosakata jalur SVM pada dataset ini adalah 5.635 kata unik, tanpa teks kosong dan hanya 0,83% duplikat.
 
 +:----------------------------------------------------------------------:+
 | ![](outputs/reports/eda_spark.png){width=90%}                          |
 +------------------------------------------------------------------------+
 
 ::: {custom-style="GambarCaption"}
-**Gambar 4.1** Distribusi kelas korpus dan rata-rata jumlah kata per tahap pra-pemrosesan (mentah vs jalur SVM vs jalur BERT).
+**Gambar 4.1** Distribusi kelas dataset final v1audited (3.000 komentar) dan rata-rata jumlah kata per tahap pra-pemrosesan (mentah vs jalur SVM vs jalur BERT).
 :::
 Kata paling sering muncul (setelah pembersihan) adalah *tidak*, *jokowi*, *roy*, *orang*, *ijazah*, *palsu*, *asli*, dan *benar*, mengonfirmasi bahwa sinyal isu ini sangat leksikal dan berpusat pada perdebatan asli/palsu.
 
@@ -267,6 +290,21 @@ Gambar 4.3–4.4 menampilkan *confusion matrix* kedua model. Pada dataset seimba
 ::: {custom-style="GambarCaption"}
 **Gambar 4.4** Confusion matrix IndoBERTweet (test set, 300 komentar), model terbaik.
 :::
+
+Untuk memperjelas perilaku model secara kualitatif, Tabel 4.2 menyajikan contoh komentar aktual beserta label asli dan prediksi IndoBERTweet. Tiga baris pertama adalah klasifikasi yang benar untuk tiap kelas, sedangkan dua baris terakhir adalah kesalahan tersering, yakni komentar yang tertukar antara kutub Negatif dan Positif akibat berbagi kosakata isu (*palsu*, *asli*).
+
+::: {custom-style="TabelCaption"}
+**Tabel 4.2** Contoh hasil klasifikasi komentar oleh IndoBERTweet (label asli vs prediksi).
+:::
+
+| Komentar (test set) | Label Asli | Prediksi | Keterangan |
+|---|---|---|---|
+| ayo dukung kubu roy suryo agar tidak ada lagi pejabat ber-ijazah palsu | Positif | Positif | mendukung/menguatkan tuduhan |
+| orang stres si panci itu | Netral | Netral | hanya menyerang orang, tanpa sikap atas tuduhan |
+| salahnya sendiri, UGM sudah kasih tahu itu mahasiswanya, masih tidak percaya | Negatif | Negatif | membantah/menolak tuduhan |
+| gampang buktikan RS bohong, belum pernah lihat ijazah asli kok bilang palsu | Negatif | *Positif* | membantah tuduhan, tapi penuh kata *palsu/asli* sehingga tertukar |
+| yang bikin gaduh yang punya ijazah, selalu disembunyikan | Positif | *Negatif* | menuduh, tapi frasa menyerupai pembelaan sehingga tertukar |
+
 ## 4.6 Eksperimen Kualitas Label
 
 Sebuah eksperimen menguji apakah membersihkan label secara otomatis (relabel konsensus LLM tiga-lapis) dapat menaikkan performa. Hasilnya jujur dilaporkan: **relabel LLM tidak memberi peningkatan macro-F1 yang terukur**. Sebaliknya, audit label terhadap rubrik (*v1audited*) sedikit menaikkan performa (misalnya SVM 0,84 → 0,8567). Kesimpulannya, tanpa *gold-standard* manusia, plafon performa lebih ditentukan oleh **ambiguitas tugas** (khususnya Negatif↔Positif) daripada derau label yang dapat dibersihkan otomatis.
@@ -275,12 +313,29 @@ Sebuah eksperimen menguji apakah membersihkan label secara otomatis (relabel kon
 
 Sebagai bukti pemrosesan terdistribusi, varian SVM diimplementasikan di Spark MLlib dan dijalankan di atas *cluster*. Macro-F1-nya sedikit di bawah scikit-learn. Selisih ini **bukan bug atau kesalahan penyetelan**, melainkan perbedaan struktural: Spark MLlib `CountVectorizer+IDF` tidak memiliki *sublinear TF*, multiclass ditangani lewat *OneVsRest*, dan regularisasi diparametri `regParam` alih-alih `C`. Pola kesalahan antar-kelas tetap serupa. Karena itu, angka final memakai scikit-learn, sementara Spark dilaporkan sebagai jalur Big Data yang setara secara metodologi.
 
+Gambar 4.5 dan Gambar 4.6 menampilkan bukti bahwa *cluster* Spark benar-benar berjalan saat memproses pekerjaan ini. Gambar 4.5 adalah antarmuka Spark Master (port 8080) yang mendaftarkan beberapa *worker* aktif beserta sumber daya (*core* dan memori) masing-masing, sedangkan Gambar 4.6 adalah antarmuka aplikasi Spark (port 4040) yang menampilkan *job* dan *stage* yang tereksekusi secara terdistribusi pada aplikasi analisis sentimen ini.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_spark_master.png){width=98%}                        |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.5** Antarmuka Spark Master (port 8080): cluster standalone dengan beberapa worker aktif beserta core dan memori terdaftar.
+:::
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_spark_jobs.png){width=98%}                          |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.6** Antarmuka aplikasi Spark (port 4040): daftar job dan stage yang tereksekusi terdistribusi pada pekerjaan analisis sentimen.
+:::
+
 ## 4.8 Kendala dan Solusi
 
-Tabel 4.2 merangkum kendala teknis utama beserta solusinya.
+Tabel 4.3 merangkum kendala teknis utama beserta solusinya.
 
 ::: {custom-style="TabelCaption"}
-**Tabel 4.2** Kendala teknis utama dan solusinya.
+**Tabel 4.3** Kendala teknis utama dan solusinya.
 :::
 
 
@@ -292,6 +347,82 @@ Tabel 4.2 merangkum kendala teknis utama beserta solusinya.
 | Cluster tanpa HDFS, data hanya di koordinator | Data direplikasi ke tiap *worker* via skrip sinkronisasi sebelum submit job |
 | Java 21 tidak didukung Spark 3.5 | Menggunakan Spark 4.x yang kompatibel dengan Java 21 |
 
+## 4.9 Hasil Visualisasi Dashboard Social Media Intelligence
+
+Dashboard yang dihasilkan diberi orientasi *Social Media Intelligence Dashboard* karena tidak hanya menampilkan hasil klasifikasi sentimen, tetapi juga menyediakan fasilitas pembacaan pola percakapan publik. Visualisasi disusun dalam beberapa halaman, yaitu Executive Overview, Temporal Analytics, Topic & Keyword Intelligence, Daily Topic Explorer, dan Comment Explorer. Seluruh halaman menggunakan filter global berupa rentang tanggal, label sentimen, sumber video, dan batas minimum *engagement*.
+
+Pada Executive Overview, dashboard merangkum 14.107 komentar dalam rentang 2025-05-21 sampai 2026-05-13. Diskusi mencapai puncak pada 2025-12-18 dengan 798 komentar. Sentimen dominan adalah Netral sebesar 56,6%, sedangkan arah tren secara umum menurun sekitar 24,7% berdasarkan rata-rata bergerak 7 hari. Ringkasan ini membuktikan bahwa dashboard dapat memberikan gambaran eksekutif sebelum pengguna masuk ke analisis detail.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_executive.png){width=98%}                      |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.7** Executive Overview yang merangkum total komentar, puncak diskusi, sentimen dominan, arah tren, daily trend, sentiment breakdown, top discussion days, dan top video sources.
+:::
+
+Halaman Temporal Analytics memperlihatkan bahwa percakapan publik tidak berlangsung merata sepanjang periode pengamatan. Grafik tren harian menunjukkan adanya beberapa lonjakan yang ditandai sebagai *outlier*, dengan puncak tertinggi sebesar 798 komentar. Rata-rata komentar harian berada pada 39,41 komentar, sementara 38 hari terdeteksi sebagai hari dengan lonjakan tidak biasa. Informasi ini membantu pengguna mengidentifikasi tanggal yang perlu dianalisis lebih lanjut melalui Daily Topic Explorer.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_temporal.png){width=98%}                       |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.8** Temporal Analytics dengan tren komentar harian, rata-rata bergerak 7 hari, penanda puncak, dan deteksi outlier.
+:::
+
+Distribusi aktivitas berdasarkan waktu menunjukkan bahwa percakapan paling aktif terjadi pada pukul 22.00 WITA dengan 937 komentar. Dari sisi hari, Selasa menjadi hari paling aktif dengan 3.001 komentar. Pola ini menunjukkan bahwa diskusi mengenai isu ijazah cenderung menguat pada malam hari dan memiliki konsentrasi aktivitas tertentu pada hari kerja.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_hourly.png){width=98%}                         |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.9** Distribusi komentar berdasarkan jam WITA dan hari dalam minggu, dengan penanda jam dan hari paling aktif.
+:::
+
+Topic & Keyword Intelligence digunakan untuk membaca struktur isu yang muncul dalam korpus komentar. *Word cloud* tidak berdiri sendiri, tetapi dipasangkan dengan grafik frekuensi agar interpretasi tetap kuantitatif. Term paling dominan adalah *ijazah* sebanyak 2.990 kemunculan, *jokowi* sebanyak 2.979 kemunculan, *roy* sebanyak 2.587 kemunculan, *palsu* sebanyak 1.462 kemunculan, dan *asli* sebanyak 1.314 kemunculan. Pada level bigram, frasa *roy suryo* muncul sebanyak 920 kali, diikuti *ijazah jokowi* 584 kali, *ijazah palsu* 465 kali, dan *ijazah asli* 394 kali. Temuan ini memperlihatkan bahwa diskusi sangat berpusat pada isu keaslian ijazah dan aktor yang sering dikaitkan dengan perdebatan tersebut.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_keyword.png){width=98%}                        |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.10** Meaningful word cloud, Top 10 meaningful terms, dan Top 10 bigrams sebagai pembacaan topik dominan dalam korpus komentar.
+:::
+
+Keyword Trend Explorer memungkinkan pengguna membandingkan hingga dua keyword sekaligus. Pada contoh perbandingan keyword *jokowi* dan *ugm*, lonjakan tertinggi keyword *jokowi* mencapai 208 mention, sedangkan keyword *ugm* mencapai 68 mention. Fitur ini membantu menjawab kapan isu tertentu mulai menguat dan apakah penguatan tersebut bersifat sementara atau berulang sepanjang periode pengamatan.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_trend.png){width=98%}                          |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.11** Keyword Trend Explorer dengan perbandingan keyword Jokowi dan UGM, rata-rata bergerak 7 hari, serta anotasi puncak mention.
+:::
+
+Daily Topic Explorer menjadi fitur *drill-down* untuk menjawab apa yang sebenarnya dibahas pada tanggal tertentu. Pada tanggal puncak 2025-12-18, terdapat 798 komentar dengan sentimen dominan Netral sebesar 51,0%. Keyword teratas adalah *ijazah* dengan 315 kemunculan. Sumber video yang paling memicu komentar pada tanggal tersebut adalah video berjudul "Kasus Ijazah Jokowi, Apa yang Sebenarnya Terjadi? #HOTROOM" dengan 663 komentar. Komposisi sentimen pada tanggal ini terdiri atas 140 komentar Negatif, 407 komentar Netral, dan 251 komentar Positif.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_daily.png){width=98%}                          |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.12** Daily Topic Explorer pada tanggal 2025-12-18 yang menampilkan rasio sentimen, sumber video teratas, distribusi keyword, dan komentar dengan engagement tertinggi.
+:::
+
+Comment Explorer menyediakan akses terhadap komentar mentah sebagai penghubung antara pola agregat dan bukti kualitatif. Pada contoh pencarian keyword *ugm*, terdapat 596 komentar yang sesuai dengan filter, rata-rata *engagement* sebesar 18,55, dan 13 sumber video berbeda. Komentar dapat diurutkan berdasarkan *engagement* tertinggi sehingga pengguna dapat mengambil contoh komentar representatif saat menjelaskan hasil analisis.
+
++:----------------------------------------------------------------------:+
+| ![](laporan/img/ss_dash_comments.png){width=98%}                       |
++------------------------------------------------------------------------+
+
+::: {custom-style="GambarCaption"}
+**Gambar 4.13** Comment Explorer untuk pencarian keyword UGM, menampilkan jumlah komentar cocok, rata-rata engagement, sumber video, dan tabel komentar mentah.
+:::
+
+Secara keseluruhan, dashboard berhasil memperluas luaran proyek dari sekadar perbandingan model menjadi alat analisis opini publik. Dengan pendekatan ini, hasil klasifikasi sentimen dapat dibaca bersama pola waktu, topik dominan, sumber video, dan komentar mentah, sehingga lebih mudah dipresentasikan dan diverifikasi.
+
 # BAB V PENUTUP
 
 ## 5.1 Kesimpulan
@@ -299,6 +430,8 @@ Tabel 4.2 merangkum kendala teknis utama beserta solusinya.
 Proyek ini berhasil membangun pipeline analisis sentimen *end-to-end* di atas infrastruktur Big Data yang nyata, dengan **MongoDB Atlas** sebagai penyimpanan terpusat dan **Apache Spark** sebagai mesin pemrosesan terdistribusi yang terbukti mengeksekusi task pada mesin lintas-jaringan melalui Tailscale. Strategi dua jalur pra-pemrosesan, yakni pembersihan agresif untuk SVM dan pembersihan minimal untuk transformer, beserta keputusan mempertahankan kata negasi, terbukti tepat untuk kebutuhan masing-masing paradigma model.
 
 Pada dataset seimbang 3.000 komentar, IndoBERTweet menjadi model terbaik dengan akurasi 0,8733 dan macro-F1 0,8721, sedikit mengungguli SVM + TF-IDF (0,8567). Namun selisih keduanya tergolong tipis (sekitar 1,7 poin), yang menunjukkan bahwa model klasik SVM masih sangat kompetitif untuk kasus berbasis sinyal leksikal seperti ini dengan biaya komputasi yang jauh lebih ringan. Dari sisi pola kesalahan, kelas Negatif memiliki F1 terendah pada kedua model dan paling sering tertukar dengan kelas Positif karena keduanya berbagi kosakata isu yang sama, sehingga plafon performa lebih ditentukan oleh ambiguitas tugas daripada derau label.
+
+Selain menghasilkan model klasifikasi, proyek ini juga berhasil menghasilkan dashboard *visual analytics* berbasis Streamlit yang mengubah dataset komentar menjadi *insight* interaktif. Dashboard mampu merangkum 14.107 komentar, mengidentifikasi puncak diskusi, menunjukkan jam dan hari paling aktif, menampilkan keyword dominan, serta menyediakan eksplorasi komentar mentah. Dengan demikian, pipeline Big Data tidak berhenti pada model, tetapi berlanjut menjadi sistem analitik yang dapat digunakan untuk membaca dinamika opini publik.
 
 ## 5.2 Saran
 
@@ -312,11 +445,15 @@ Cortes, C., & Vapnik, V. (1995). Support-Vector Networks. *Machine Learning*, 20
 
 Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *Proceedings of NAACL-HLT 2019*, 4171–4186.
 
+Few, S. (2013). *Information Dashboard Design: Displaying Data for At-a-Glance Monitoring*. Analytics Press.
+
 Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A Benchmark Dataset and Pre-trained Language Model for Indonesian NLP. *Proceedings of COLING 2020*, 757–770.
 
 Koto, F., Lau, J. H., & Baldwin, T. (2021). IndoBERTweet: A Pretrained Language Model for Indonesian Twitter with Effective Domain-Specific Vocabulary Initialization. *Proceedings of EMNLP 2021*, 10660–10668.
 
 Salton, G., & Buckley, C. (1988). Term-weighting Approaches in Automatic Text Retrieval. *Information Processing & Management*, 24(5), 513–523.
+
+Tufte, E. R. (2001). *The Visual Display of Quantitative Information*. Graphics Press.
 
 Wilie, B., dkk. (2020). IndoNLU: Benchmark and Resources for Evaluating Indonesian Natural Language Understanding. *Proceedings of AACL-IJCNLP 2020*, 843–857.
 
@@ -338,6 +475,6 @@ Google Developers. (2024). *YouTube Data API v3 Documentation*. Diakses dari htt
 | 2 | Pelabelan Data | Pelabelan LLM-assisted, hosting Label Studio, dan verifikasi manual tim | Ravi Arnan Irianto (2305551076) |
 | 3 | Pra-pemrosesan | Pipeline Apache Spark antar-mesin, dua jalur (SVM & IndoBERTweet) | Ravi Arnan Irianto (2305551076) |
 | 4 | Pemodelan & Evaluasi | Pelatihan SVM + TF-IDF dan IndoBERTweet serta perbandingan metrik | Ravi Arnan Irianto (2305551076) |
-| 5 | Visualisasi | Pembuatan dashboard visualisasi (Streamlit) dan Tableau | Ida Bagus Gede Dhananjaya (2305551120) |
-| 6 | Penyusunan Laporan | Kompilasi dan penulisan laporan akhir | Ravi Arnan Irianto & Ida Bagus Gede Dhananjaya |
+| 5 | Visualisasi | Dashboard visual analytics interaktif berbasis Streamlit | Ida Bagus Gede Dhananjaya (2305551120) |
+| 6 | Penyusunan Laporan | Kompilasi dan penulisan laporan akhir | Ravi Arnan Irianto dan Ida Bagus Gede Dhananjaya |
 

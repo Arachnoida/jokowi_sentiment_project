@@ -10,29 +10,34 @@ OUT=os.path.join(ROOT,"outputs"); REP=os.path.join(OUT,"reports")
 
 # ---------- ARSITEKTUR ----------
 fig,ax=plt.subplots(figsize=(8.6,10.4)); ax.set_xlim(0,100); ax.set_ylim(0,100); ax.axis("off")
-def box(x,y,w,h,title,body,fc,ec):
-    ax.add_patch(FancyBboxPatch((x,y),w,h,boxstyle="round,pad=0.6,rounding_size=2.2",fc=fc,ec=ec,lw=1.6))
+INK="#1a1a1a"; SUB="#333333"; LW=1.1
+def box(x,y,w,h,title,body):
+    ax.add_patch(FancyBboxPatch((x,y),w,h,boxstyle="round,pad=0.5,rounding_size=1.2",fc="white",ec=INK,lw=LW))
     cx=x+w/2
-    ax.text(cx,y+h-2.6,title,ha="center",va="top",fontsize=9.5,weight="bold",color=ec)
-    ax.text(cx,y+h-6.0,body,ha="center",va="top",fontsize=7.4,color="#333333")
-def arrow(x1,y1,x2,y2):
-    ax.add_patch(FancyArrowPatch((x1,y1),(x2,y2),arrowstyle="-|>",mutation_scale=13,lw=1.4,color="#5A6B7B"))
-BLUE=("#DAE8FC","#3B6FB0"); PURP=("#E1D5E7","#8259A0"); GREEN=("#D5E8D4","#5B9E52")
-ORNG=("#FFE6CC","#D79B00"); YELL=("#FFF2CC","#C9A227"); GREY=("#F0F0F0","#8C8C8C")
-ax.text(50,98,"Pipeline Analisis Sentimen Komentar YouTube - Isu Ijazah Jokowi",ha="center",va="top",fontsize=11.5,weight="bold",color="#1a1a1a")
-ax.text(50,94.2,"SVM + TF-IDF  vs  IndoBERTweet   ·   3 kelas: Positif / Negatif / Netral",ha="center",va="top",fontsize=8.6,color="#7A7A7A")
-box(18,84,64,8.0,"1 · PENGUMPULAN DATA","YouTube Data API  ->  koleksi raw_comments (14.107 komentar)\nnotebook: ingestion.ipynb",*BLUE)
-box(15,69.5,70,10.5,"2 · PELABELAN","Pelabelan LLM (\"claude-llm\") · 10.000 komentar\nrubrik issue-anchored: sikap thd narasi tuduhan (bukan sosok Jokowi)\ndataset final: seimbang 3.000 (1.000/kelas), label diaudit (v1audited)",*PURP)
-box(6,54,42,11.0,"3a · PREPROCESSING - SVM","clean agresif + normalisasi slang\n+ buang stopword (negasi dipertahankan)\n+ stemming (Sastrawi)\n-> koleksi processed_svm",*GREEN)
-box(52,54,42,11.0,"3b · PREPROCESSING - IndoBERTweet","cleaning minimal\n(morfologi · tanda baca · negasi utuh)\n\n-> koleksi processed_bert",*GREEN)
-box(6,40,42,10.0,"4a · MODELING - SVM + TF-IDF","TF-IDF -> LinearSVC\ntuning di validation · LOKAL / CPU",*ORNG)
-box(52,40,42,10.0,"4b · MODELING - IndoBERTweet","fine-tune indobertweet-base-uncased\nCOLAB / GPU",*ORNG)
-box(15,23,70,11.0,"5 · HASIL & PERBANDINGAN","SVM + TF-IDF  vs  IndoBERTweet  (metrik utama: macro-F1)\ntest set identik (300 komentar, seimbang)\nIndoBERTweet 0,8721  >  SVM + TF-IDF 0,8556  (macro-F1)",*YELL)
-ax.add_patch(FancyBboxPatch((5,11),90,5.6,boxstyle="round,pad=0.5,rounding_size=1.5",fc=GREY[0],ec=GREY[1],lw=1.2))
-ax.text(50,13.8,"Penyimpanan terpusat: MongoDB Atlas - DB \"youtube_sentiment\"  (raw_comments · processed_svm · processed_bert) · semua data = dokumen JSON",ha="center",va="center",fontsize=7.2,color="#555555")
-arrow(50,84,50,80.2); arrow(40,69.4,27,65.2); arrow(60,69.4,73,65.2)
-arrow(27,54,27,50.2); arrow(73,54,73,50.2); arrow(27,40,42,34.2); arrow(73,40,58,34.2)
-ax.text(50,37.4,"Split kanonik identik per model (urut comment_id + seed=42)  ->  perbandingan adil",ha="center",va="center",fontsize=7.0,style="italic",color="#C0791A")
+    ax.text(cx,y+h-2.5,title,ha="center",va="top",fontsize=9.3,weight="bold",color=INK)
+    ax.text(cx,y+h-5.8,body,ha="center",va="top",fontsize=7.2,color=SUB)
+def adown(x,y0,y1):   # panah vertikal ke bawah (kepala di y1)
+    ax.annotate("",xy=(x,y1),xytext=(x,y0),arrowprops=dict(arrowstyle="-|>",color=INK,lw=LW,mutation_scale=11,shrinkA=0,shrinkB=0))
+def seg(xs,ys):       # garis siku polos
+    ax.plot(xs,ys,color=INK,lw=LW,solid_capstyle="round",solid_joinstyle="round")
+ax.text(50,98,"Pipeline Analisis Sentimen Komentar YouTube - Isu Ijazah Jokowi",ha="center",va="top",fontsize=11.3,weight="bold",color=INK)
+ax.text(50,94.2,"SVM + TF-IDF  vs  IndoBERTweet   ·   3 kelas: Positif / Negatif / Netral",ha="center",va="top",fontsize=8.4,color=SUB)
+box(18,84,64,8.0,"1 · PENGUMPULAN DATA","YouTube Data API  ->  koleksi raw_comments (14.107 komentar)")
+box(15,69.5,70,10.5,"2 · PELABELAN","Pelabelan LLM issue-anchored (sikap thd narasi tuduhan)\ndataset final: seimbang 3.000 (1.000/kelas), diaudit")
+box(6,54,42,11.0,"3a · PREPROCESSING - SVM","clean agresif + stemming\n(negasi dipertahankan)\n-> processed_svm")
+box(52,54,42,11.0,"3b · PREPROCESSING - IndoBERTweet","cleaning minimal\n(morfologi + negasi utuh)\n-> processed_bert")
+box(6,40,42,10.0,"4a · MODELING - SVM + TF-IDF","TF-IDF -> LinearSVC\nLOKAL / CPU")
+box(52,40,42,10.0,"4b · MODELING - IndoBERTweet","fine-tune indobertweet\nCOLAB / GPU")
+box(15,22,70,11.5,"5 · HASIL & PERBANDINGAN","metrik utama macro-F1 · test set identik (300, seimbang)\nsplit kanonik per model (urut comment_id + seed=42)\nIndoBERTweet 0,8721  >  SVM + TF-IDF 0,8556")
+# panah siku (orthogonal)
+adown(50,84,80.2)                                   # 1 -> 2
+bus=67.6                                              # split 2 -> 3a/3b
+seg([50,50],[69.5,bus]); seg([27,73],[bus,bus]); adown(27,bus,65.2); adown(73,bus,65.2)
+adown(27,54,50.2); adown(73,54,50.2)                 # 3a->4a, 3b->4b
+bus2=37.0                                             # merge 4a/4b -> 5
+seg([27,27],[40,bus2]); seg([73,73],[40,bus2]); seg([27,73],[bus2,bus2]); adown(50,bus2,33.7)
+ax.add_patch(FancyBboxPatch((5,11),90,5.6,boxstyle="round,pad=0.4,rounding_size=1.0",fc="white",ec=SUB,lw=0.9))
+ax.text(50,13.8,"Penyimpanan terpusat: MongoDB Atlas - DB \"youtube_sentiment\" · semua data = dokumen JSON",ha="center",va="center",fontsize=7.0,color=SUB)
 plt.subplots_adjust(left=0.01,right=0.99,top=0.99,bottom=0.01)
 plt.savefig(os.path.join(OUT,"architecture_2model.png"),dpi=150,bbox_inches="tight",facecolor="white"); plt.close()
 print("arch OK")
