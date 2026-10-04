@@ -38,3 +38,4 @@ venv/
 # Byte-identical copy of laporan/BD_UAS_laporan.{docx,pdf} under the submission
 # filename. Safe to delete locally; it costs 17 MB.
 laporan/terbaru/
+jokowi_sentiment_project/
